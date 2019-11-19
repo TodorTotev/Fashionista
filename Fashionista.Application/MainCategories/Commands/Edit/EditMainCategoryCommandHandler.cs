@@ -16,14 +16,11 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
     public class EditMainCategoryCommandHandler : IRequestHandler<EditMainCategoryCommand, int>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public EditMainCategoryCommandHandler(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
             this.mainCategoryRepository = mainCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<int> Handle(EditMainCategoryCommand request, CancellationToken cancellationToken)
@@ -39,7 +36,7 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
                 .AllAsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
-            this.mapper.Map(request, requestedEntity);
+            requestedEntity.Name = request.Name;
             await this.mainCategoryRepository.SaveChangesAsync();
 
             return requestedEntity.Id;
