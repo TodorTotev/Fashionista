@@ -1,8 +1,11 @@
 namespace Fashionista.Application.Tests.MainCategories.Commands
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using AutoMapper;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.MainCategories.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -37,6 +40,17 @@ namespace Fashionista.Application.Tests.MainCategories.Commands
 
             createdCategory.Name.ShouldBe("ValidCategory");
             createdCategory.SubCategories.Count.ShouldBe(0);
+        }
+
+        [Trait(nameof(MainCategory), "CreateMainCategory command tests")]
+        [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
+        public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
+        {
+            var test = new CreateMainCategoryCommandHandler(
+                It.IsAny<IDeletableEntityRepository<MainCategory>>(),
+                It.IsAny<IMapper>());
+
+            await Should.ThrowAsync<ArgumentNullException>(test.Handle(null, It.IsAny<CancellationToken>()));
         }
     }
 }

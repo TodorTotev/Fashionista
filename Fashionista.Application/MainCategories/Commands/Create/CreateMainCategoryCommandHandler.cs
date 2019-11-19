@@ -5,6 +5,8 @@ namespace Fashionista.Application.MainCategories.Commands.Create
     using System.Threading.Tasks;
 
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -25,6 +27,11 @@ namespace Fashionista.Application.MainCategories.Commands.Create
         public async Task<int> Handle(CreateMainCategoryCommand request, CancellationToken token)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
+
+            if (!await CommonCheckAssistant.CheckIfMainCategoryExists(request.Name, this.mainCategoryRepository))
+            {
+                throw new EntityAlreadyExistsException(nameof(MainCategory), request.Name);
+            }
 
             var category = this.mapper.Map<MainCategory>(request);
 
