@@ -1,15 +1,13 @@
-﻿using Fashionista.Application.Interfaces;
-using Fashionista.Persistence.Interfaces;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace Fashionista.Persistence.Repositories
+﻿namespace Fashionista.Persistence.Repositories
 {
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
-    using Persistence.Interfaces;
+    using Fashionista.Application.Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
 
     public class EfRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
@@ -43,7 +41,7 @@ namespace Fashionista.Persistence.Repositories
 
         public virtual void Delete(TEntity entity) => this.DbSet.Remove(entity);
 
-        public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken) => this.Context.SaveChangesAsync(cancellationToken);
 
         public void Dispose() => this.Context.Dispose();
     }

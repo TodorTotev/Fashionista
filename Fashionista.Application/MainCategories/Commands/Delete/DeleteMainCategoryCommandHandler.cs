@@ -24,8 +24,7 @@ namespace Fashionista.Application.MainCategories.Commands.Delete
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.mainCategoryRepository
-                                      .AllAsNoTracking()
-                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
+                                      .GetByIdWithDeletedAsync(request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(MainCategory), request.Id);
 
             this.mainCategoryRepository.Delete(requestedEntity);
