@@ -1,12 +1,10 @@
-﻿using Fashionista.Persistence.Interfaces;
-
-namespace Fashionista.Persistence.Seeding
+﻿namespace Fashionista.Persistence.Seeding
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Persistence.Interfaces;
+    using Fashionista.Persistence.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -29,6 +27,7 @@ namespace Fashionista.Persistence.Seeding
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
+                              new MainCategorySeeder(),
                           };
 
             foreach (var seeder in seeders)

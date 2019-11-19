@@ -1,14 +1,12 @@
-﻿using Fashionista.Persistence.Interfaces;
-
-namespace Fashionista.Persistence.Seeding
+﻿namespace Fashionista.Persistence.Seeding
 {
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
     using Fashionista.Common;
-    using Domain.Entities;
-    using Persistence.Interfaces;
+    using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Interfaces;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
 
