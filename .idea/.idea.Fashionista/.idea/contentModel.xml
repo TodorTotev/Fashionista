@@ -17,7 +17,9 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Common" t="Include">
-          <e p="Models" t="Include" />
+          <e p="Models" t="Include">
+            <e p="MainCategoryLookupModel.cs" t="Include" />
+          </e>
         </e>
         <e p="Exceptions" t="Include" />
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
@@ -38,6 +40,25 @@
             <e p="IMapTo.cs" t="Include" />
           </e>
         </e>
+        <e p="MainCategories" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateMainCategoryCommand.cs" t="Include" />
+              <e p="CreateMainCategoryCommandHandler.cs" t="Include" />
+              <e p="CreateMainCategoryValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetAllMainCategories" t="Include">
+              <e p="GetAllMainCategoriesQuery.cs" t="Include" />
+              <e p="GetAllMainCategoriesQueryHandler.cs" t="Include" />
+              <e p="GetAllMainCategoriesViewModel.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -56,6 +77,12 @@
           <e p="BaseTest.cs" t="Include" />
           <e p="CommandTestBase.cs" t="Include" />
           <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
+        </e>
+        <e p="MainCategories" t="Include">
+          <e p="Commands" t="Include">
+            <e p="CreateMainCategoryCommandTests.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

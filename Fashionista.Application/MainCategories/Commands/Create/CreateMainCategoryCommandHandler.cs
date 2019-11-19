@@ -15,8 +15,8 @@ namespace Fashionista.Application.MainCategories.Commands.Create
         private readonly IMapper mapper;
 
         public CreateMainCategoryCommandHandler(
-            IMapper mapper,
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
+            IMapper mapper)
         {
             this.mapper = mapper;
             this.mainCategoryRepository = mainCategoryRepository;

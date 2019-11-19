@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
         <PackageReference Include="MockQueryable.Moq" Version="3.0.1" />
         <PackageReference Include="Moq" Version="4.13.1" />
@@ -24,6 +24,10 @@
       <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
       <ProjectReference Include="..\Fashionista.Infrastructure\Fashionista.Infrastructure.csproj" />
       <ProjectReference Include="..\Fashionista.Persistence\Fashionista.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="MainCategories\Queries" />
     </ItemGroup>
 
 </Project>
