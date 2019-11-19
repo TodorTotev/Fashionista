@@ -1,8 +1,27 @@
-﻿@{
-    this.ViewData["Title"] = "Home Page";
+@{
+    this.ViewData["Title"] = "Fashion Nova | Affordable Clothing";
+    Layout = "Layouts/_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to AspNetCoreTemplate!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@if (TempData["Payment"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["Payment"]</strong>
+    </div>
+}
+
+<div class="home-slider-container">
+    <partial name="Partials/_HomeSliderPartial"/>
+</div>
+
+<div class="container product-wrapper">
+    @* @await Component.InvokeAsync("HomePageMenProductsComponent") *@
+</div>
+
+<div class="partners-container">
+    @* @await Component.InvokeAsync("HomePageBrandsComponent") *@
+</div>
+
+<div class="container product-wrapper">
+    @* @await Component.InvokeAsync("HomePageWomenProductsComponent") *@
 </div>
