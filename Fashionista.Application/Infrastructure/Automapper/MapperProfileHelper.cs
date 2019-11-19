@@ -1,14 +1,11 @@
-﻿using Fashionista.Application.Interfaces;
-using Fashionista.Application.Interfaces.Mapping;
-
-namespace Fashionista.Application.Infrastructure.Automapper
+﻿namespace Fashionista.Application.Infrastructure.Automapper
 {
-    
-    using Application.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+
+    using Fashionista.Application.Interfaces.Mapping;
 
     public static class MapperProfileHelper
     {
@@ -20,14 +17,14 @@ namespace Fashionista.Application.Infrastructure.Automapper
                     from type in types
                     from instance in type.GetInterfaces()
                     where
-                        instance.IsGenericType 
-                        && instance.GetGenericTypeDefinition() == typeof(IMapFrom<>) 
-                        && !type.IsAbstract 
+                        instance.IsGenericType
+                        && instance.GetGenericTypeDefinition() == typeof(IMapFrom<>)
+                        && !type.IsAbstract
                         && !type.IsInterface
                     select new Map
                     {
                         Source = type.GetInterfaces().First().GetGenericArguments().First(),
-                        Destination = type
+                        Destination = type,
                     })
                     .ToList();
 
@@ -42,7 +39,7 @@ namespace Fashionista.Application.Infrastructure.Automapper
                     from type in types
                     from instance in type.GetInterfaces()
                     where
-                        typeof(IHaveCustomMapping).IsAssignableFrom(type) 
+                        typeof(IHaveCustomMapping).IsAssignableFrom(type)
                         && !type.IsAbstract
                         && !type.IsInterface
                     select (IHaveCustomMapping)Activator.CreateInstance(type)).ToList();
@@ -91,6 +88,7 @@ namespace Fashionista.Application.Infrastructure.Automapper
         public sealed class Map
         {
             public Type Source { get; set; }
+
             public Type Destination { get; set; }
         }
     }

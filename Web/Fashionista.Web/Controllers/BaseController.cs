@@ -9,6 +9,6 @@
         private IMediator mediator;
 
         protected IMediator Mediator
-            => this.mediator ?? this.HttpContext.RequestServices.GetService<IMediator>();
+            => this.mediator ??= this.HttpContext.RequestServices.GetService<IMediator>();
     }
 }

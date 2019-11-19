@@ -1,11 +1,9 @@
-﻿using Fashionista.Persistence.Interfaces;
-
-namespace Fashionista.Persistence
+﻿namespace Fashionista.Persistence
 {
     using System;
     using System.Threading.Tasks;
 
-    using Persistence.Interfaces;
+    using Fashionista.Persistence.Interfaces;
     using Microsoft.EntityFrameworkCore;
 
     public class DbQueryRunner : IDbQueryRunner

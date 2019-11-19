@@ -1,5 +1,6 @@
 // ReSharper disable MemberCanBePrivate.Global
 
+// ReSharper disable SA1401
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;

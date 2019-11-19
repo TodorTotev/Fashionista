@@ -2,7 +2,7 @@
 {
     using System.Security.Claims;
 
-    using Domain.Entities;
+    using Fashionista.Domain.Entities;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 

@@ -19,7 +19,7 @@ namespace Fashionista.Persistence.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true)
+                    DeletedOn = table.Column<DateTime>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -36,7 +36,7 @@ namespace Fashionista.Persistence.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -54,7 +54,7 @@ namespace Fashionista.Persistence.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: false),
-                    Postcode = table.Column<string>(nullable: false)
+                    Postcode = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -71,7 +71,7 @@ namespace Fashionista.Persistence.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -87,7 +87,7 @@ namespace Fashionista.Persistence.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true)
+                    DeletedOn = table.Column<DateTime>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,7 @@ namespace Fashionista.Persistence.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -127,7 +127,7 @@ namespace Fashionista.Persistence.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    MainCategoryId = table.Column<int>(nullable: false)
+                    MainCategoryId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -163,7 +163,7 @@ namespace Fashionista.Persistence.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    ShoppingCartId = table.Column<int>(nullable: false)
+                    ShoppingCartId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -222,7 +222,7 @@ namespace Fashionista.Persistence.Migrations
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     CityId = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: false)
+                    ApplicationUserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -249,7 +249,7 @@ namespace Fashionista.Persistence.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -269,7 +269,7 @@ namespace Fashionista.Persistence.Migrations
                     LoginProvider = table.Column<string>(nullable: false),
                     ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -287,7 +287,7 @@ namespace Fashionista.Persistence.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    RoleId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -313,7 +313,7 @@ namespace Fashionista.Persistence.Migrations
                     UserId = table.Column<string>(nullable: false),
                     LoginProvider = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    Value = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -331,7 +331,7 @@ namespace Fashionista.Persistence.Migrations
                 columns: table => new
                 {
                     ProductId = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: false)
+                    ApplicationUserId = table.Column<string>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -362,7 +362,7 @@ namespace Fashionista.Persistence.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     PhotoUrl = table.Column<string>(nullable: false),
                     ProductId = table.Column<int>(nullable: true),
-                    BrandId = table.Column<int>(nullable: true)
+                    BrandId = table.Column<int>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -392,7 +392,7 @@ namespace Fashionista.Persistence.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Rating = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false)
+                    ProductId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -411,7 +411,7 @@ namespace Fashionista.Persistence.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false),
                     ShoppingCartId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -478,7 +478,7 @@ namespace Fashionista.Persistence.Migrations
                     OrderId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<decimal>(nullable: false),
                 },
                 constraints: table =>
                 {
