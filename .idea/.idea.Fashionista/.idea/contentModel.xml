@@ -21,7 +21,10 @@
             <e p="MainCategoryLookupModel.cs" t="Include" />
           </e>
         </e>
-        <e p="Exceptions" t="Include" />
+        <e p="Exceptions" t="Include">
+          <e p="BaseCustomException.cs" t="Include" />
+          <e p="EntityAlreadyExistsException.cs" t="Include" />
+        </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
           <e p="Automapper" t="Include">
@@ -29,6 +32,7 @@
             <e p="MapperProfileHelper.cs" t="Include" />
             <e p="QueryableMappingExtensions.cs" t="Include" />
           </e>
+          <e p="CommonCheckAssistant.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
           <e p="IDeletableEntityRepository.cs" t="Include" />

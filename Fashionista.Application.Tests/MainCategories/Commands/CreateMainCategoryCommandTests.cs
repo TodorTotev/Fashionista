@@ -1,3 +1,5 @@
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.MainCategories.Commands
 {
     using System;
@@ -26,9 +28,9 @@ namespace Fashionista.Application.Tests.MainCategories.Commands
                 Name = "ValidCategory",
             };
 
-            var categoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
+            var mainCategoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
 
-            var test = new CreateMainCategoryCommandHandler(categoryRepository, this.mapper);
+            var test = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
 
             // Act
             var id = await test.Handle(command, It.IsAny<CancellationToken>());
@@ -51,6 +53,30 @@ namespace Fashionista.Application.Tests.MainCategories.Commands
                 It.IsAny<IMapper>());
 
             await Should.ThrowAsync<ArgumentNullException>(test.Handle(null, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(MainCategory), "CreateMainCategory command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new CreateMainCategoryCommand
+            {
+                Name = "ValidName",
+            };
+
+            var secondCommand = new CreateMainCategoryCommand
+            {
+                Name = "ValidName",
+            };
+
+            var mainCategoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
+
+            var test = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
+
+            // Act & Assert
+            await test.Handle(command, It.IsAny<CancellationToken>());
+            await Should.ThrowAsync<EntityAlreadyExistsException>(test.Handle(secondCommand, It.IsAny<CancellationToken>()));
         }
     }
 }

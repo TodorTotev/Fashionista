@@ -8,7 +8,7 @@ namespace Fashionista.Application.Infrastructure
 
     internal static class CommonCheckAssistant
     {
-        internal static async Task<bool> CheckIfMainCategoryExists(
+        internal static async Task<bool> CheckIfMainCategoryWithSameNameExists(
             string name,
             IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {

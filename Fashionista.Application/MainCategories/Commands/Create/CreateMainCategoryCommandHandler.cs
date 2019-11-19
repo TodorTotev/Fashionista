@@ -28,7 +28,7 @@ namespace Fashionista.Application.MainCategories.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfMainCategoryExists(request.Name, this.mainCategoryRepository))
+            if (await CommonCheckAssistant.CheckIfMainCategoryWithSameNameExists(request.Name, this.mainCategoryRepository))
             {
                 throw new EntityAlreadyExistsException(nameof(MainCategory), request.Name);
             }
