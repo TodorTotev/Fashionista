@@ -1,3 +1,6 @@
+using AutoMapper;
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
 {
     using System.Threading;
@@ -32,6 +35,18 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
             command.ShouldNotBeNull();
             command.ShouldBeOfType<EditMainCategoryCommand>();
             command.Name.ShouldBe("TestCategory");
+        }
+
+        [Trait(nameof(MainCategory), "EditMainCategory query tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
+        {
+            // Arrange
+            var query = new EditMainCategoryQuery { Id = 1000 };
+            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+
+            // Act & Assert
+            await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
         }
     }
 }
