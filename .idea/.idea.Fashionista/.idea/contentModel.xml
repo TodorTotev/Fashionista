@@ -29,6 +29,8 @@
           </e>
         </e>
         <e p="Interfaces" t="Include">
+          <e p="IDeletableEntityRepository.cs" t="Include" />
+          <e p="IRepository.cs" t="Include" />
           <e p="IUserAccessor.cs" t="Include" />
           <e p="Mapping" t="Include">
             <e p="IHaveCustomMapping.cs" t="Include" />
@@ -80,8 +82,31 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Class1.cs" t="Include" />
         <e p="Entities" t="Include">
+          <e p="Address.cs" t="Include" />
           <e p="ApplicationRole.cs" t="Include" />
           <e p="ApplicationUser.cs" t="Include" />
+          <e p="Brand.cs" t="Include" />
+          <e p="City.cs" t="Include" />
+          <e p="Enums" t="Include">
+            <e p="DeliveryType.cs" t="Include" />
+            <e p="OrderState.cs" t="Include" />
+            <e p="PaymentState.cs" t="Include" />
+            <e p="PaymentType.cs" t="Include" />
+            <e p="ProductColors.cs" t="Include" />
+            <e p="ProductSize.cs" t="Include" />
+            <e p="ProductSort.cs" t="Include" />
+            <e p="ProductTypes.cs" t="Include" />
+          </e>
+          <e p="FavoriteProduct.cs" t="Include" />
+          <e p="MainCategory.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="OrderProduct.cs" t="Include" />
+          <e p="Photo.cs" t="Include" />
+          <e p="Product.cs" t="Include" />
+          <e p="Review.cs" t="Include" />
+          <e p="ShoppingCart.cs" t="Include" />
+          <e p="ShoppingCartProduct.cs" t="Include" />
+          <e p="SubCategory.cs" t="Include" />
         </e>
         <e p="Fashionista.Domain.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
@@ -128,7 +153,11 @@
         <e p="ApplicationUserStore.cs" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Configurations" t="Include" />
+        <e p="Configurations" t="Include">
+          <e p="ProductConfiguration.cs" t="Include" />
+          <e p="ShoppingCartConfiguration.cs" t="Include" />
+          <e p="UserConfiguration.cs" t="Include" />
+        </e>
         <e p="DbQueryRunner.cs" t="Include" />
         <e p="Fashionista.Persistence.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
@@ -138,13 +167,11 @@
         </e>
         <e p="Interfaces" t="Include">
           <e p="IDbQueryRunner.cs" t="Include" />
-          <e p="IDeletableEntityRepository.cs" t="Include" />
-          <e p="IRepository.cs" t="Include" />
           <e p="ISeeder.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190130121918_InitialCreate.cs" t="Include" />
-          <e p="20190130121918_InitialCreate.Designer.cs" t="Include" />
+          <e p="20191119105329_Initial.cs" t="Include" />
+          <e p="20191119105329_Initial.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

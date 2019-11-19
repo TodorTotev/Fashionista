@@ -1,17 +1,15 @@
-﻿using Fashionista.Application.Interfaces;
-
-namespace Fashionista.Web
+﻿namespace Fashionista.Web
 {
-    using Application;
-    using Application.Infrastructure.Automapper;
-    using Domain.Entities;
-    using Infrastructure.Messaging;
-    using Persistence;
-    using Persistence.Interfaces;
-    using Persistence.Repositories;
-    using Persistence.Seeding;
-    using AspNetCoreTemplate.Data;
     using AutoMapper;
+    using Fashionista.Application;
+    using Fashionista.Application.Infrastructure.Automapper;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Domain.Entities;
+    using Fashionista.Infrastructure.Messaging;
+    using Fashionista.Persistence;
+    using Fashionista.Persistence.Interfaces;
+    using Fashionista.Persistence.Repositories;
+    using Fashionista.Persistence.Seeding;
     using FluentValidation.AspNetCore;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
@@ -92,6 +90,7 @@ namespace Fashionista.Web
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services

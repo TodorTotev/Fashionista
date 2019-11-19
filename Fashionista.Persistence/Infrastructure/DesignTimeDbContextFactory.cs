@@ -2,7 +2,6 @@
 {
     using System.IO;
 
-    using AspNetCoreTemplate.Data;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;
     using Microsoft.EntityFrameworkCore.Diagnostics;

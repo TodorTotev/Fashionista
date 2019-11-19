@@ -1,14 +1,13 @@
 // ReSharper disable MemberCanBePrivate.Global
 
-using Fashionista.Domain.Infrastructure;
-
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
-    using Fashionista.Persistence;
-    using Fashionista.Persistence.Interfaces;
-    using Fashionista.Persistence.Repositories;
     using AutoMapper;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Domain.Infrastructure;
+    using Fashionista.Persistence;
+    using Fashionista.Persistence.Repositories;
     using MediatR;
     using Moq;
 

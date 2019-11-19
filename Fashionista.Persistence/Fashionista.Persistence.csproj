@@ -34,4 +34,10 @@
       <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
     </ItemGroup>
 
+
+
+    <ItemGroup>
+      <Folder Include="Migrations" />
+    </ItemGroup>
+
 </Project>
