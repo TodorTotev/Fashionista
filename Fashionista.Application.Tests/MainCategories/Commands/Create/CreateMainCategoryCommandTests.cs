@@ -1,12 +1,11 @@
-using Fashionista.Application.Exceptions;
-
-namespace Fashionista.Application.Tests.MainCategories.Commands
+namespace Fashionista.Application.Tests.MainCategories.Commands.Create
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.MainCategories.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
