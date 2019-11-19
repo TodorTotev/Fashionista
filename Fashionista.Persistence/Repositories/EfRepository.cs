@@ -1,5 +1,6 @@
 ﻿using Fashionista.Application.Interfaces;
 using Fashionista.Persistence.Interfaces;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Fashionista.Persistence.Repositories
 {
@@ -27,7 +28,7 @@ namespace Fashionista.Persistence.Repositories
 
         public virtual IQueryable<TEntity> AllAsNoTracking() => this.DbSet.AsNoTracking();
 
-        public virtual Task AddAsync(TEntity entity) => this.DbSet.AddAsync(entity);
+        public virtual ValueTask<EntityEntry<TEntity>> AddAsync(TEntity entity) => this.DbSet.AddAsync(entity);
 
         public virtual void Update(TEntity entity)
         {
