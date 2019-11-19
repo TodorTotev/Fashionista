@@ -1,10 +1,9 @@
-using AutoMapper;
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using AutoMapper;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.MainCategories.Commands.Edit;
     using Fashionista.Application.MainCategories.Queries.Edit;
     using Fashionista.Application.Tests.Infrastructure;
