@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Data.Common.Models
+﻿using Fashionista.Domain.Infrastructure;
+
+namespace AspNetCoreTemplate.Data.Common.Models
 {
     using System;
 

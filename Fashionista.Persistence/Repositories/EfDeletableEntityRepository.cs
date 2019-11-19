@@ -1,4 +1,5 @@
-﻿using Fashionista.Persistence.Infrastructure;
+﻿using Fashionista.Domain.Infrastructure;
+using Fashionista.Persistence.Infrastructure;
 using Fashionista.Persistence.Interfaces;
 
 namespace Fashionista.Persistence.Repositories

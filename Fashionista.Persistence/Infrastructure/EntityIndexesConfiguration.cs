@@ -1,4 +1,6 @@
-﻿namespace Fashionista.Persistence.Infrastructure
+﻿using Fashionista.Domain.Infrastructure;
+
+namespace Fashionista.Persistence.Infrastructure
 {
     using System.Linq;
 

@@ -1,38 +1,38 @@
-@model Fashionista.Application.MainCategories.Commands.Create.CreateMainCategoryCommand
-
-@{
-    this.ViewData["Title"] = "Administration | All Main Categories";
-}
-
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Create a new Main Category</h4>
-            </div>
-            <hr>
-            <form class="form-horizontal" form method="post" asp-controller="MainCategories" asp-action="Create">
-                <div class="card-body">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group row">
-                        <label for="ename" class="col-sm-3 text-right control-label col-form-label">Category Name</label>
-                        <div class="col-md-6">
-                            <input type="text" asp-for="Name" class="form-control" id="ename" placeholder="Category Name Here">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="card-body">
-                    <div class="form-group m-b-0 text-right">
-                        <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-@* @section Scripts { *@
-@*     <partial name="_ValidationScriptsPartial"/> *@
+@* @model Fashionista.Application.MainCategories.Commands.Create.CreateMainCategoryCommand *@
+@* *@
+@* @{ *@
+@*     this.ViewData["Title"] = "Administration | All Main Categories"; *@
 @* } *@
+@* *@
+@* *@
+@* <div class="row"> *@
+@*     <div class="col-12"> *@
+@*         <div class="card"> *@
+@*             <div class="card-body"> *@
+@*                 <h4 class="card-title">Create a new Main Category</h4> *@
+@*             </div> *@
+@*             <hr> *@
+@*             <form class="form-horizontal" form method="post" asp-controller="MainCategories" asp-action="Create"> *@
+@*                 <div class="card-body"> *@
+@*                     <div asp-validation-summary="All" class="text-danger"></div> *@
+@*                     <div class="form-group row"> *@
+@*                         <label for="ename" class="col-sm-3 text-right control-label col-form-label">Category Name</label> *@
+@*                         <div class="col-md-6"> *@
+@*                             <input type="text" asp-for="Name" class="form-control" id="ename" placeholder="Category Name Here"> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
+@*                 <hr> *@
+@*                 <div class="card-body"> *@
+@*                     <div class="form-group m-b-0 text-right"> *@
+@*                         <button type="submit" class="btn btn-info waves-effect waves-light">Save</button> *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </form> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+@* *@
+@* $1$ @section Scripts { #1# *@
+@* $1$     <partial name="_ValidationScriptsPartial"/> #1# *@
+@* $1$ } #1# *@

@@ -2,6 +2,7 @@
 
 using System;
 using AspNetCoreTemplate.Data.Common.Models;
+using Fashionista.Domain.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 
 namespace Fashionista.Domain.Entities

@@ -1,53 +1,53 @@
-@using System.Globalization
-@model Fashionista.Application.MainCategories.Queries.GetAllMainCategories.GetAllMainCategoriesViewModel
-
-@{
-    this.ViewData["Title"] = "Administration | All Main Categories";
-}
-
-<div class="row">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">List of all Main Categories</h4>
-                <a class="btn btn-info btn-rounded m-t-10 mb-2 float-left" asp-controller="MainCategories" asp-action="Create">Add New Category</a>
-                @if (Model.MainCategories.Any())
-                {
-                    <div class="table-responsive">
-                        <table id="footable-addrow" class="table" data-paging="true" data-filtering="true" data-sorting="true" data-editing="true" data-state="true">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Created On</th>
-                                <th>Subcategories</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach (var category in Model.MainCategories)
-                            {
-                                <tr>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Settings
-                                            </button>
-                                            <div class="dropdown-menu animated flipInX">
-                                                @* <a class="dropdown-item" asp-controller="MainCategories" asp-action="Edit" asp-route-id="@category.Id">Edit</a> *@
-                                                @* <a class="dropdown-item" asp-controller="MainCategories" asp-action="Delete" asp-route-id="@category.Id">Delete</a> *@
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>@category.Name</td>
-                                    <td>@category.CreatedOn.ToString(CultureInfo.InvariantCulture)</td>
-                                    <td>@category.Count</td>
-                                </tr>
-                            }
-                            </tbody>
-                        </table>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-</div>
+@* @using System.Globalization *@
+@* @model Fashionista.Application.MainCategories.Queries.GetAllMainCategories.GetAllMainCategoriesViewModel *@
+@* *@
+@* @{ *@
+@*     this.ViewData["Title"] = "Administration | All Main Categories"; *@
+@* } *@
+@* *@
+@* <div class="row"> *@
+@*     <div class="container-fluid"> *@
+@*         <div class="card"> *@
+@*             <div class="card-body"> *@
+@*                 <h4 class="card-title">List of all Main Categories</h4> *@
+@*                 <a class="btn btn-info btn-rounded m-t-10 mb-2 float-left" asp-controller="MainCategories" asp-action="Create">Add New Category</a> *@
+@*                 @if (Model.MainCategories.Any()) *@
+@*                 { *@
+@*                     <div class="table-responsive"> *@
+@*                         <table id="footable-addrow" class="table" data-paging="true" data-filtering="true" data-sorting="true" data-editing="true" data-state="true"> *@
+@*                             <thead> *@
+@*                             <tr> *@
+@*                                 <th></th> *@
+@*                                 <th>Name</th> *@
+@*                                 <th>Created On</th> *@
+@*                                 <th>Subcategories</th> *@
+@*                             </tr> *@
+@*                             </thead> *@
+@*                             <tbody> *@
+@*                             @foreach (var category in Model.MainCategories) *@
+@*                             { *@
+@*                                 <tr> *@
+@*                                     <td> *@
+@*                                         <div class="btn-group"> *@
+@*                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> *@
+@*                                                 Settings *@
+@*                                             </button> *@
+@*                                             <div class="dropdown-menu animated flipInX"> *@
+@*                                                 $1$ <a class="dropdown-item" asp-controller="MainCategories" asp-action="Edit" asp-route-id="@category.Id">Edit</a> #1# *@
+@*                                                 $1$ <a class="dropdown-item" asp-controller="MainCategories" asp-action="Delete" asp-route-id="@category.Id">Delete</a> #1# *@
+@*                                             </div> *@
+@*                                         </div> *@
+@*                                     </td> *@
+@*                                     <td>@category.Name</td> *@
+@*                                     <td>@category.CreatedOn.ToString(CultureInfo.InvariantCulture)</td> *@
+@*                                     <td>@category.Count</td> *@
+@*                                 </tr> *@
+@*                             } *@
+@*                             </tbody> *@
+@*                         </table> *@
+@*                     </div> *@
+@*                 } *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@

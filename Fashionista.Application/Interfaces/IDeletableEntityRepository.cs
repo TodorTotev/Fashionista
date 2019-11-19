@@ -1,11 +1,10 @@
-﻿using Fashionista.Domain.Infrastructure;
-
-namespace Fashionista.Persistence.Interfaces
+﻿namespace Fashionista.Application.Interfaces
 {
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Common.Models;
+    using Fashionista.Domain.Infrastructure;
+    using Fashionista.Persistence.Interfaces;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity
