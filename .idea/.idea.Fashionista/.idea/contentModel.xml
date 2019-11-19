@@ -90,6 +90,19 @@
           </e>
         </e>
         <e p="stylecop.json" t="Include" />
+        <e p="SubCategories" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateSubCategoryCommand.cs" t="Include" />
+              <e p="CreateSubCategoryCommandHandler.cs" t="Include" />
+              <e p="CreateSubCategoryValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
       </e>
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />

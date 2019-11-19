@@ -23,4 +23,8 @@
       <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="SubCategories\Queries" />
+    </ItemGroup>
+
 </Project>
