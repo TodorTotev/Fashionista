@@ -10,6 +10,7 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Fashionista.1260509013.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p=".git/info/exclude" t="IncludeRecursive" />
       <e p="Common" t="Include" />
       <e p="Core" t="Include" />
       <e p="Fashionista.Application" t="IncludeRecursive">
@@ -24,6 +25,7 @@
         <e p="Exceptions" t="Include">
           <e p="BaseCustomException.cs" t="Include" />
           <e p="EntityAlreadyExistsException.cs" t="Include" />
+          <e p="NotFoundException.cs" t="Include" />
         </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
@@ -51,11 +53,18 @@
               <e p="CreateMainCategoryCommandHandler.cs" t="Include" />
               <e p="CreateMainCategoryValidator.cs" t="Include" />
             </e>
+            <e p="Edit" t="Include">
+              <e p="EditMainCategoryCommand.cs" t="Include" />
+            </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Edit" t="Include">
+              <e p="EditMainCategoryQuery.cs" t="Include" />
+              <e p="EditMainCategoryQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllMainCategories" t="Include">
               <e p="GetAllMainCategoriesQuery.cs" t="Include" />
               <e p="GetAllMainCategoriesQueryHandler.cs" t="Include" />
@@ -84,9 +93,18 @@
         </e>
         <e p="MainCategories" t="Include">
           <e p="Commands" t="Include">
-            <e p="CreateMainCategoryCommandTests.cs" t="Include" />
+            <e p="Create" t="Include">
+              <e p="CreateMainCategoryCommandTests.cs" t="Include" />
+            </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Edit" t="Include">
+              <e p="EditMainCategoryQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetAllMainCategories" t="Include">
+              <e p="GetAllMainCategoriesQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -218,6 +236,7 @@
         </e>
         <e p="Seeding" t="Include">
           <e p="ApplicationDbContextSeeder.cs" t="Include" />
+          <e p="MainCategorySeeder.cs" t="Include" />
           <e p="RolesSeeder.cs" t="Include" />
         </e>
         <e p="stylecop.json" t="Include" />
