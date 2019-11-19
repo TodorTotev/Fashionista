@@ -1,13 +1,11 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 
-using Fashionista.Domain.Infrastructure;
-
 namespace Fashionista.Domain.Entities
 {
     using System;
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Data.Common.Models;
+    using Fashionista.Domain.Infrastructure;
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity

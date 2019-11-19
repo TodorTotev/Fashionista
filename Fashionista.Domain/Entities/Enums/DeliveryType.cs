@@ -1,4 +1,4 @@
-namespace FashionNova.Data.Models.Enums
+namespace Fashionista.Domain.Entities.Enums
 {
     public enum DeliveryType
     {

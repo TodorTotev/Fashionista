@@ -4,7 +4,6 @@ namespace Fashionista.Domain.Entities
 
     using Fashionista.Domain.Entities.Enums;
     using Fashionista.Domain.Infrastructure;
-    using FashionNova.Data.Models;
 
     public class Product : BaseDeletableModel<int>
     {

@@ -8,7 +8,6 @@ namespace Fashionista.Application.Tests.Infrastructure
     using Fashionista.Persistence;
     using Fashionista.Persistence.Interfaces;
     using Fashionista.Persistence.Repositories;
-    using AspNetCoreTemplate.Data.Common.Models;
     using AutoMapper;
     using MediatR;
     using Moq;

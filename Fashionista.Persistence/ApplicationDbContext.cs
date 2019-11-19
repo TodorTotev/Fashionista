@@ -7,8 +7,6 @@ namespace Fashionista.Persistence
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using AspNetCoreTemplate.Data.Common.Models;
     using Fashionista.Domain.Entities;
     using Fashionista.Persistence.Configurations;
     using Fashionista.Persistence.Infrastructure;

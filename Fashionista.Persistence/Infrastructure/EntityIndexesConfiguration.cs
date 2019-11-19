@@ -3,8 +3,6 @@
 namespace Fashionista.Persistence.Infrastructure
 {
     using System.Linq;
-
-    using AspNetCoreTemplate.Data.Common.Models;
     using Microsoft.EntityFrameworkCore;
 
     internal static class EntityIndexesConfiguration

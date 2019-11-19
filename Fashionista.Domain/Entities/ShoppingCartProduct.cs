@@ -1,7 +1,5 @@
 namespace Fashionista.Domain.Entities
 {
-    using FashionNova.Data.Models;
-
     public class ShoppingCartProduct
     {
         public int ProductId { get; set; }

@@ -2,8 +2,6 @@ namespace Fashionista.Domain.Entities
 {
     using System.Collections.Generic;
 
-    using FashionNova.Data.Models;
-
     public class Address
     {
         public Address()

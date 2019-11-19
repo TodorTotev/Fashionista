@@ -1,7 +1,6 @@
 namespace Fashionista.Domain.Entities
 {
     using Fashionista.Domain.Infrastructure;
-    using FashionNova.Data.Models;
 
     public class Review : BaseDeletableModel<int>
     {
