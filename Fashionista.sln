@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fashionista.Web", "Web\Fashionista.Web\Fashionista.Web.csproj", "{B90D1067-FE4C-400E-BA78-5413E30AB9ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AEF99DA2-8881-497E-B096-9E3D0F2AC88D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Application", "Fashionista.Application\Fashionista.Application.csproj", "{780F38DC-1430-4C37-958E-AF876E083888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Domain", "Fashionista.Domain\Fashionista.Domain.csproj", "{BF517FF9-2710-4E7B-99F8-FC2F4257EA21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9A822E00-A4D2-48D4-BD26-0AED2181A8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Persistence", "Fashionista.Persistence\Fashionista.Persistence.csproj", "{3EDBAF2F-F0FD-431B-9844-E8EAC978A813}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{27851818-8CBE-460A-BBC1-5B3EC4BA574D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Infrastructure", "Fashionista.Infrastructure\Fashionista.Infrastructure.csproj", "{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D3C13B77-3ED2-4C4D-AAC6-5B199308E351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Common", "Fashionista.Common\Fashionista.Common.csproj", "{63DA84E6-1876-4187-B4FD-3C36F4922BED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B9A5780-319D-4E16-BD40-A717D6A1FFE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashionista.Application.Tests", "Fashionista.Application.Tests\Fashionista.Application.Tests.csproj", "{B14B9F8D-2DD8-43D1-875E-F36E1F29562C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B90D1067-FE4C-400E-BA78-5413E30AB9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90D1067-FE4C-400E-BA78-5413E30AB9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90D1067-FE4C-400E-BA78-5413E30AB9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90D1067-FE4C-400E-BA78-5413E30AB9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780F38DC-1430-4C37-958E-AF876E083888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780F38DC-1430-4C37-958E-AF876E083888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780F38DC-1430-4C37-958E-AF876E083888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780F38DC-1430-4C37-958E-AF876E083888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF517FF9-2710-4E7B-99F8-FC2F4257EA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF517FF9-2710-4E7B-99F8-FC2F4257EA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF517FF9-2710-4E7B-99F8-FC2F4257EA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF517FF9-2710-4E7B-99F8-FC2F4257EA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EDBAF2F-F0FD-431B-9844-E8EAC978A813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EDBAF2F-F0FD-431B-9844-E8EAC978A813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EDBAF2F-F0FD-431B-9844-E8EAC978A813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EDBAF2F-F0FD-431B-9844-E8EAC978A813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DA84E6-1876-4187-B4FD-3C36F4922BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DA84E6-1876-4187-B4FD-3C36F4922BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DA84E6-1876-4187-B4FD-3C36F4922BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DA84E6-1876-4187-B4FD-3C36F4922BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14B9F8D-2DD8-43D1-875E-F36E1F29562C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14B9F8D-2DD8-43D1-875E-F36E1F29562C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14B9F8D-2DD8-43D1-875E-F36E1F29562C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14B9F8D-2DD8-43D1-875E-F36E1F29562C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{780F38DC-1430-4C37-958E-AF876E083888} = {AEF99DA2-8881-497E-B096-9E3D0F2AC88D}
+		{BF517FF9-2710-4E7B-99F8-FC2F4257EA21} = {AEF99DA2-8881-497E-B096-9E3D0F2AC88D}
+		{3EDBAF2F-F0FD-431B-9844-E8EAC978A813} = {9A822E00-A4D2-48D4-BD26-0AED2181A8E3}
+		{B90D1067-FE4C-400E-BA78-5413E30AB9ED} = {27851818-8CBE-460A-BBC1-5B3EC4BA574D}
+		{C29A8E2F-CDAB-4F91-8CD8-AAD4C12B77A4} = {9A822E00-A4D2-48D4-BD26-0AED2181A8E3}
+		{63DA84E6-1876-4187-B4FD-3C36F4922BED} = {D3C13B77-3ED2-4C4D-AAC6-5B199308E351}
+		{B14B9F8D-2DD8-43D1-875E-F36E1F29562C} = {9B9A5780-319D-4E16-BD40-A717D6A1FFE6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {384484BE-4680-4529-9CC2-AD37BA4D12D1}
+	EndGlobalSection
+EndGlobal

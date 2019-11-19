@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f8c4c68-1359-47fc-821a-11e33c86b2ef" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application/ApplicationDependencyInjectionHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application.Tests/Infrastructure/AutoMapperFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Domain/Entities/ApplicationUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Domain/Entities/ApplicationRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application.Tests/Infrastructure/CustomDynamicModelCacheKeyFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Domain/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application.Tests/Infrastructure/ApplicationDbContextFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application.Tests/Infrastructure/CommandTestBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application.Tests/Infrastructure/BaseTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Common/GlobalConstants.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Web/Fashionista.Web/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Infrastructure/Messaging/NullMessageSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Infrastructure/Messaging/SendGridEmailSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Web/Fashionista.Web/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Infrastructure/EntityIndexesConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6BCDFAAE-EEF5-425B-99B4-BFDE66161A46/73/b62a19e0/DbContextOptionsBuilder`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Infrastructure/DesignTimeDbContextFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Web/Fashionista.Web/Views/Shared/Error.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Repositories/EfDeletableEntityRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Interfaces/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Web/Fashionista.Web/Views/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Interfaces/IDeletableEntityRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Interfaces/IDbQueryRunner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Seeding/ApplicationDbContextSeeder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Interfaces/ISeeder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/Seeding/RolesSeeder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/ApplicationUserStore.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/ApplicationRoleStore.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Web/Fashionista.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/ApplicationDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Persistence/DbQueryRunner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application/Infrastructure/Automapper/AutoMapperProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application/Infrastructure/Automapper/MapperProfileHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Fashionista.Application/Infrastructure/Automapper/QueryableMappingExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/AspNetCore.Domain/Class1.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Class1.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Class1.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/IDeletableEntityRepository.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/ISeeder.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Infrastructure/DesignTimeDbContextFactory.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/ApplicationDbContext.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Infrastructure/EntityIndexesConfiguration.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Domain/Entities/ApplicationRole.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Domain/Entities/ApplicationUser.cs" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/appsettings.json" />
+        <option value="$PROJECT_DIR$/AspNetCore.Domain/appsettings.json" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/appsettings.json" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web.ViewModels/AspNetCoreTemplate.Web.ViewModels.csproj" />
+        <option value="$PROJECT_DIR$/Services/AspNetCoreTemplate.Services.Data/AspNetCoreTemplate.Services.Data.csproj" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/IRepository.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Repositories/EfDeletableEntityRepository.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Interfaces/IDbQueryRunner.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Interfaces/IDeletableEntityRepository.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Interfaces/IRepository.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Interfaces/ISeeder.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Seeding/ApplicationDbContextSeeder.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Domain/AspNetCore.Domain.csproj" />
+        <option value="$PROJECT_DIR$/AspNetCore.Infrastructure/Class1.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Infrastructure/Messaging/NullMessageSender.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Infrastructure/Messaging/SendGridEmailSender.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Infrastructure/Automapper/QueryableMappingExtensions.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/IHaveCustomMapping.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/IMapFrom.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Interfaces/IMapTo.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Infrastructure/Automapper/MapperProfileHelper.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/Infrastructure/Automapper/AutoMapperProfile.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Common/Class1.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Common/GlobalConstants.cs" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/AspNetCoreTemplate.Web.csproj" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/AspNetCore.Persistence.csproj" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/AspNetCore.Application.csproj" />
+        <option value="$PROJECT_DIR$/AspNetCore.Persistence/Seeding/RolesSeeder.cs" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/Views/_ViewImports.cshtml" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/Views/Shared/Error.cshtml" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application/ApplicationDependencyInjectionHelper.cs" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/Startup.cs" />
+        <option value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/Infrastructure/ServiceCollectionExtensions.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application.Tests/Infrastructure/ApplicationDbContextFactory.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application.Tests/Infrastructure/CustomDynamicModelCacheKeyFactory.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application.Tests/Infrastructure/AutoMapperFactory.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application.Tests/Infrastructure/BaseTest.cs" />
+        <option value="$PROJECT_DIR$/AspNetCore.Application.Tests/Infrastructure/CommandTestBase.cs" />
+        <option value="$PROJECT_DIR$/Fashionista.Common/GlobalConstants.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Tmu1sLTb3fNCh7P51QouShiRpG" />
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.AspNetCoreTemplate.Web">
+    <configuration name="AspNetCoreTemplate.Web" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/AspNetCoreTemplate.Web.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="AspNetCoreTemplate.Web" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AspNetCoreTemplate.Web: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Web/AspNetCoreTemplate.Web/AspNetCoreTemplate.Web.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AspNetCoreTemplate.Web.Tests" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Tests/AspNetCoreTemplate.Web.Tests/AspNetCoreTemplate.Web.Tests.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="AspNetCoreTemplate.Web.Tests" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AspNetCoreTemplate.Web.Tests: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Tests/AspNetCoreTemplate.Web.Tests/AspNetCoreTemplate.Web.Tests.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f8c4c68-1359-47fc-821a-11e33c86b2ef" name="Default Changelist" comment="" />
+      <created>1574077379673</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574077379673</updated>
+      <workItem from="1574077381593" duration="2069000" />
+      <workItem from="1574083225939" duration="1817000" />
+      <workItem from="1574085736966" duration="577000" />
+      <workItem from="1574159163255" duration="104000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

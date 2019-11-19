@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Fashionista.Application\Fashionista.Application.csproj" />
+      <ProjectReference Include="..\Fashionista.Common\Fashionista.Common.csproj" />
+      <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

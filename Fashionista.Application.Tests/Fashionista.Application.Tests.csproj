@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+        <PackageReference Include="MockQueryable.Moq" Version="3.0.1" />
+        <PackageReference Include="Moq" Version="4.13.1" />
+        <PackageReference Include="Shouldly" Version="3.0.2" />
+        <PackageReference Include="xunit" Version="2.4.0" />
+        <PackageReference Include="xunit.runner.console" Version="2.4.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+        <PackageReference Include="coverlet.collector" Version="1.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Fashionista.Application\Fashionista.Application.csproj" />
+      <ProjectReference Include="..\Fashionista.Common\Fashionista.Common.csproj" />
+      <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
+      <ProjectReference Include="..\Fashionista.Infrastructure\Fashionista.Infrastructure.csproj" />
+      <ProjectReference Include="..\Fashionista.Persistence\Fashionista.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>

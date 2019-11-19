@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="9.0.0" />
+      <PackageReference Include="MediatR" Version="7.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+      <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="appsettings.json">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Models" />
+      <Folder Include="Exceptions" />
+      <Folder Include="Infrastructure" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
