@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-
 namespace Fashionista.Application.MainCategories.Commands.Edit
 {
     using System;
@@ -12,6 +10,7 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditMainCategoryCommandHandler : IRequestHandler<EditMainCategoryCommand, int>
     {
@@ -33,10 +32,10 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
             }
 
             var requestedEntity = await this.mainCategoryRepository
-                .AllAsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+                .GetByIdWithDeletedAsync(request.Id);
 
             requestedEntity.Name = request.Name;
+            this.mainCategoryRepository.Update(requestedEntity);
             await this.mainCategoryRepository.SaveChangesAsync();
 
             return requestedEntity.Id;

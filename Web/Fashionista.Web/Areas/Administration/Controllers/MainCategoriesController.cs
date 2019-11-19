@@ -1,3 +1,6 @@
+using Fashionista.Application.MainCategories.Commands.Edit;
+using Fashionista.Application.MainCategories.Queries.Edit;
+
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
@@ -38,7 +41,25 @@ namespace Fashionista.Web.Areas.Administration.Controllers
 
             await this.mediator.Send(command);
 
-            return this.RedirectToAction(nameof(Create));
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> Edit(EditMainCategoryQuery query)
+        {
+            var viewModel = await this.mediator.Send(query);
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditMainCategoryCommand command)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(command);
+            }
+
+            var action = await this.mediator.Send(command);
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }

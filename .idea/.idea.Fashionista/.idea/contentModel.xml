@@ -55,6 +55,8 @@
             </e>
             <e p="Edit" t="Include">
               <e p="EditMainCategoryCommand.cs" t="Include" />
+              <e p="EditMainCategoryCommandHandler.cs" t="Include" />
+              <e p="EditMainCategoryCommandValidator.cs" t="Include" />
             </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
@@ -95,6 +97,9 @@
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
               <e p="CreateMainCategoryCommandTests.cs" t="Include" />
+            </e>
+            <e p="Edit" t="Include">
+              <e p="EditMainCategoryCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
@@ -264,6 +269,7 @@
               </e>
               <e p="MainCategories" t="Include">
                 <e p="Create.cshtml" t="Include" />
+                <e p="Edit.cshtml" t="Include" />
                 <e p="Index.cshtml" t="Include" />
               </e>
             </e>
@@ -309,6 +315,7 @@
           <e p="Shared" t="Include">
             <e p="_CookieConsentPartial.cshtml" t="Include" />
             <e p="_LoginPartial.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="Layouts" t="Include">
               <e p="_Layout.cshtml" t="Include" />
