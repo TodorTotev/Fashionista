@@ -1,5 +1,4 @@
 ﻿using Fashionista.Domain.Infrastructure;
-using Fashionista.Persistence.Infrastructure;
 
 namespace Fashionista.Persistence
 {
@@ -9,10 +8,10 @@ namespace Fashionista.Persistence
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Domain.Entities;
-    using Persistence.Infrastructure;
-    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Models;
+    using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Configurations;
+    using Fashionista.Persistence.Infrastructure;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +26,28 @@ namespace Fashionista.Persistence
             : base(options)
         {
         }
+        
+        public DbSet<OrderProduct> OrderProducts { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<MainCategory> MainCategories { get; set; }
+
+        public DbSet<SubCategory> SubCategories { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public DbSet<ShoppingCartProduct> ShoppingCartProducts { get; set; }
+
+        public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -52,20 +73,14 @@ namespace Fashionista.Persistence
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
-            ConfigureUserIdentityRelations(builder);
-
             EntityIndexesConfiguration.Configure(builder);
+            ProductConfiguration.Configure(builder);
+            ShoppingCartConfiguration.Configure(builder);
+            UserConfiguration.Configure(builder);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 
             // Set global query filter for not deleted entities only
-            var deletableEntityTypes = entityTypes
-                .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
-            foreach (var deletableEntityType in deletableEntityTypes)
-            {
-                var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
-                method.Invoke(null, new object[] { builder });
-            }
 
             // Disable cascade delete
             var foreignKeys = entityTypes
@@ -74,30 +89,6 @@ namespace Fashionista.Persistence
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-        }
-
-        private static void ConfigureUserIdentityRelations(ModelBuilder builder)
-        {
-            builder.Entity<ApplicationUser>()
-                .HasMany(e => e.Claims)
-                .WithOne()
-                .HasForeignKey(e => e.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<ApplicationUser>()
-                .HasMany(e => e.Logins)
-                .WithOne()
-                .HasForeignKey(e => e.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<ApplicationUser>()
-                .HasMany(e => e.Roles)
-                .WithOne()
-                .HasForeignKey(e => e.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

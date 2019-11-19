@@ -34,10 +34,4 @@
       <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
     </ItemGroup>
 
-
-
-    <ItemGroup>
-      <Folder Include="Configurations" />
-    </ItemGroup>
-
 </Project>

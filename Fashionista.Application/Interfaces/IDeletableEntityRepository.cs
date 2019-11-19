@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using Fashionista.Domain.Infrastructure;
-    using Fashionista.Persistence.Interfaces;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity

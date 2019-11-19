@@ -1,4 +1,6 @@
-﻿namespace Fashionista.Web
+﻿using Fashionista.Application.Interfaces;
+
+namespace Fashionista.Web
 {
     using Application;
     using Application.Infrastructure.Automapper;

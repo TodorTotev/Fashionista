@@ -1,4 +1,4 @@
-﻿namespace Fashionista.Persistence.Interfaces
+﻿namespace Fashionista.Application.Interfaces
 {
     using System;
     using System.Linq;

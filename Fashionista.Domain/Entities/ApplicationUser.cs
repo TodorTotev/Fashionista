@@ -1,13 +1,15 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 
-using System;
-using System.Collections.Generic;
-using AspNetCoreTemplate.Data.Common.Models;
 using Fashionista.Domain.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 
 namespace Fashionista.Domain.Entities
 {
+    using System;
+    using System.Collections.Generic;
+
+    using AspNetCoreTemplate.Data.Common.Models;
+    using Microsoft.AspNetCore.Identity;
+
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
@@ -27,6 +29,12 @@ namespace Fashionista.Domain.Entities
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public int ShoppingCartId { get; set; }
+
+        public virtual ShoppingCart ShoppingCart { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

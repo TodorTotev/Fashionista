@@ -1,17 +1,12 @@
-﻿using Fashionista.Domain.Infrastructure;
-using Fashionista.Persistence.Infrastructure;
-using Fashionista.Persistence.Interfaces;
-
-namespace Fashionista.Persistence.Repositories
+﻿namespace Fashionista.Persistence.Repositories
 {
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Persistence.Infrastructure;
-    using Persistence.Interfaces;
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Models;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Domain.Infrastructure;
+    using Fashionista.Persistence.Infrastructure;
     using Microsoft.EntityFrameworkCore;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>

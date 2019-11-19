@@ -1,4 +1,5 @@
-﻿using Fashionista.Persistence.Interfaces;
+﻿using Fashionista.Application.Interfaces;
+using Fashionista.Persistence.Interfaces;
 
 namespace Fashionista.Persistence.Repositories
 {
