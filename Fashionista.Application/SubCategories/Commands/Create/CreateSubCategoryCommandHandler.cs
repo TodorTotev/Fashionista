@@ -28,7 +28,7 @@ namespace Fashionista.Application.SubCategories.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfSubCategoryWithSameNameExists(nameof(SubCategory), this.subCategoryRepository))
+            if (await CommonCheckAssistant.CheckIfSubCategoryWithSameNameExists(request.Name, this.subCategoryRepository))
             {
                 throw new EntityAlreadyExistsException(nameof(SubCategory), request.Name);
             }

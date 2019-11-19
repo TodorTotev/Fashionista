@@ -47,11 +47,12 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
-            var test = new CreateMainCategoryCommandHandler(
+            var sut = new CreateMainCategoryCommandHandler(
                 It.IsAny<IDeletableEntityRepository<MainCategory>>(),
                 It.IsAny<IMapper>());
 
-            await Should.ThrowAsync<ArgumentNullException>(test.Handle(null, It.IsAny<CancellationToken>()));
+            await Should.ThrowAsync<ArgumentNullException>(
+                sut.Handle(null, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(MainCategory), "CreateMainCategory command tests")]
@@ -61,21 +62,16 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
             // Arrange
             var command = new CreateMainCategoryCommand
             {
-                Name = "ValidName",
-            };
-
-            var secondCommand = new CreateMainCategoryCommand
-            {
-                Name = "ValidName",
+                Name = "Category1",
             };
 
             var mainCategoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
 
-            var test = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
+            var sut = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
 
             // Act & Assert
-            await test.Handle(command, It.IsAny<CancellationToken>());
-            await Should.ThrowAsync<EntityAlreadyExistsException>(test.Handle(secondCommand, It.IsAny<CancellationToken>()));
+            await sut.Handle(command, It.IsAny<CancellationToken>());
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }
