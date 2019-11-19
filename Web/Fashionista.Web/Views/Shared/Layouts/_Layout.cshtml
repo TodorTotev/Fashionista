@@ -1,0 +1,57 @@
+﻿@using Fashionista.Domain.Entities
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="Fashionista is the top online fashion store for women & men. Shop sexy club dresses, jeans, shoes, bodysuits, skirts & more. Cheap & affordable fashion online">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/themes/fontawesome-stars-o.css">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="~/css/style.min.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <header class="header">
+        <partial name="Partials/_HeaderTopPartial"/>
+        <div class="header-middle sticky-header">
+            <div class="container">
+                
+            </div><!-- End .container -->
+        </div><!-- End .header-middle -->
+    </header><!-- End .header -->
+
+    <main class="main">
+        @this.RenderBody()
+    </main>
+    <partial name="Partials/_FooterPartial"/>
+</div>
+
+<div class="mobile-menu-overlay"></div>
+<div class="mobile-menu-container">
+    <partial name="Partials/_MobileMenuPartial"/>
+</div>
+
+<a id="scroll-top" href="#top" title="Top" role="button">
+    <i class="icon-angle-up"></i>
+</a>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/plugins.min.js"></script>
+<script src="~/js/main.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js" type="text/javascript"></script>
+@this.RenderSection("Scripts", required: false)
+</body>
+</html>

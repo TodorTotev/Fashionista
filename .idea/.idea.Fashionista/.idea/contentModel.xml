@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.2.0/build/netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Fashionista.1260509013.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Common" t="Include" />
+      <e p="Core" t="Include" />
+      <e p="Fashionista.Application" t="IncludeRecursive">
+        <e p="ApplicationDependencyInjectionHelper.cs" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include">
+          <e p="Models" t="Include" />
+        </e>
+        <e p="Exceptions" t="Include" />
+        <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include">
+          <e p="Automapper" t="Include">
+            <e p="AutoMapperProfile.cs" t="Include" />
+            <e p="MapperProfileHelper.cs" t="Include" />
+            <e p="QueryableMappingExtensions.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IUserAccessor.cs" t="Include" />
+          <e p="Mapping" t="Include">
+            <e p="IHaveCustomMapping.cs" t="Include" />
+            <e p="IMapFrom.cs" t="Include" />
+            <e p="IMapTo.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Application.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="stylecop.json" t="Include" />
+      </e>
+      <e p="Fashionista.Application.Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Fashionista.Application.Tests.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include">
+          <e p="ApplicationDbContextFactory.cs" t="Include" />
+          <e p="AutoMapperFactory.cs" t="Include" />
+          <e p="BaseTest.cs" t="Include" />
+          <e p="CommandTestBase.cs" t="Include" />
+          <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Application.Tests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Fashionista.Common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Fashionista.Common.csproj" t="IncludeRecursive" />
+        <e p="GlobalConstants.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Common.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Fashionista.Domain" t="IncludeRecursive">
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Class1.cs" t="Include" />
+        <e p="Entities" t="Include">
+          <e p="ApplicationRole.cs" t="Include" />
+          <e p="ApplicationUser.cs" t="Include" />
+        </e>
+        <e p="Fashionista.Domain.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include">
+          <e p="BaseDeletableModel.cs" t="Include" />
+          <e p="BaseModel.cs" t="Include" />
+          <e p="IAuditInfo.cs" t="Include" />
+          <e p="IDeletableEntity.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Domain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="stylecop.json" t="Include" />
+      </e>
+      <e p="Fashionista.Infrastructure" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Fashionista.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="Messaging" t="Include">
+          <e p="ISmsSender.cs" t="Include" />
+          <e p="NullMessageSender.cs" t="Include" />
+          <e p="SendGrid" t="Include">
+            <e p="SendGridContent.cs" t="Include" />
+            <e p="SendGridEmail.cs" t="Include" />
+            <e p="SendGridMessage.cs" t="Include" />
+            <e p="SendGridPersonalization.cs" t="Include" />
+          </e>
+          <e p="SendGridEmailSender.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Infrastructure.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="stylecop.json" t="Include" />
+      </e>
+      <e p="Fashionista.Persistence" t="IncludeRecursive">
+        <e p="ApplicationDbContext.cs" t="Include" />
+        <e p="ApplicationRoleStore.cs" t="Include" />
+        <e p="ApplicationUserStore.cs" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Configurations" t="Include" />
+        <e p="DbQueryRunner.cs" t="Include" />
+        <e p="Fashionista.Persistence.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include">
+          <e p="DesignTimeDbContextFactory.cs" t="Include" />
+          <e p="EfExpressionHelper.cs" t="Include" />
+          <e p="EntityIndexesConfiguration.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IDbQueryRunner.cs" t="Include" />
+          <e p="IDeletableEntityRepository.cs" t="Include" />
+          <e p="IRepository.cs" t="Include" />
+          <e p="ISeeder.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20190130121918_InitialCreate.cs" t="Include" />
+          <e p="20190130121918_InitialCreate.Designer.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Persistence.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="EfDeletableEntityRepository.cs" t="Include" />
+          <e p="EfRepository.cs" t="Include" />
+        </e>
+        <e p="Seeding" t="Include">
+          <e p="ApplicationDbContextSeeder.cs" t="Include" />
+          <e p="RolesSeeder.cs" t="Include" />
+        </e>
+        <e p="stylecop.json" t="Include" />
+      </e>
+      <e p="Fashionista.sln" t="IncludeFlat" />
+      <e p="Infrastructure" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Presentation" t="Include" />
+      <e p="Tests" t="Include" />
+      <e p="Web/Fashionista.Web" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="Areas" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bundleconfig.json" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="BaseController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+        </e>
+        <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include" />
+        <e p="libman.json" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Fashionista.Web.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="stylecop.json" t="Include" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_CookieConsentPartial.cshtml" t="Include" />
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+            <e p="site.min.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="js" t="Include">
+            <e p="site.js" t="Include" />
+            <e p="site.min.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+              </e>
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.validate.unobtrusive.js" t="Include" />
+                <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

@@ -1,0 +1,86 @@
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <!-- User Profile-->
+                <li>
+                    <!-- User Profile-->
+                    <div class="user-profile d-flex no-block dropdown mt-3">
+                        <div class="user-pic">
+                            <img src="~/admin/assets/images/users/1.jpg" alt="users" class="rounded-circle" width="40"/>
+                        </div>
+                        <div class="user-content hide-menu ml-2">
+                            <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <h5 class="mb-0 user-name font-medium">Steave Jobs <i class="fa fa-angle-down"></i></h5>
+                                <span class="op-5 user-email">varun@gmail.com</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i> My Profile</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet mr-1 ml-1"></i> My Balance</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email mr-1 ml-1"></i> Inbox</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End User Profile-->
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Products</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            @* <li class="sidebar-item"> *@
+                            @*     <a asp-controller="Products" asp-action="Index" class="sidebar-link"> *@
+                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Active Products</span> *@
+                            @*     </a> *@
+                            @* </li> *@
+                            @* <li class="sidebar-item"> *@
+                            @*     <a asp-controller="Products" asp-action="Draft" class="sidebar-link"> *@
+                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Draft Products</span> *@
+                            @*     </a> *@
+                            @* </li> *@
+                        </ul>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Categories</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            @* <li class="sidebar-item"> *@
+                            @*     <a asp-controller="MainCategories" asp-action="Index" class="sidebar-link"> *@
+                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Main Categories</span> *@
+                            @*     </a> *@
+                            @* </li> *@
+                            @* <li class="sidebar-item"> *@
+                            @*      <a asp-controller="SubCategories" asp-action="Index" class="sidebar-link"> *@
+                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Sub Categories</span> *@
+                            @*     </a> *@
+                            @* </li> *@
+                        </ul>
+                        <li class="sidebar-item">
+                            <a href="index2.html" class="sidebar-link">
+                                <i class="mdi mdi-adjust"></i><span class="hide-menu"> Invoices </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="index3.html" class="sidebar-link">
+                                <i class="mdi mdi-adjust"></i><span class="hide-menu"> Orders </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

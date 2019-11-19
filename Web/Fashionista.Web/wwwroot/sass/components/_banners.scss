@@ -1,0 +1,142 @@
+// Banners
+.banner {
+  display: block;
+  position: relative;
+  margin-bottom: 3.4rem;
+  background-color: #ccc;
+
+  &.banner-cat {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 220px;
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 0;
+  }
+
+  > a {
+    display: block;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  .banner-content {
+    display: inline-block;
+    padding-left: 1rem;
+  }
+
+  .banner-title {
+    color: $primary-color;
+    font: 700 3rem/1.1 $second-font-family;
+    margin-bottom: 2rem;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .banner-subtitle {
+    color: $primary-color;
+    font: 300 1.5rem/1.1 $font-family;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+
+    span {
+      font-weight: 700;
+      font-family: $second-font-family;
+      font-size: 2.4rem;
+    }
+  }
+
+  .btn {
+    padding: 1.2rem 1rem;
+    font-size: 1.3rem;
+    min-width: 119px;
+  }
+}
+
+.banner-image {
+  > a {
+    position: relative;
+
+    &::after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: all .3s ease;
+      background-color: rgba(0, 0, 0, .2);
+      content: '';
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@include mq('md') {
+  .banner {
+    &.banner-cat {
+      height: 260px;
+    }
+
+    .banner-content {
+      padding-left: 2rem;
+    }
+
+    .banner-title {
+      font-size: 3.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .banner-subtitle {
+      font-size: 1.6rem;
+
+      span {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@include mq('lg') {
+  .banner {
+    &.banner-cat {
+      height: 300px;
+    }
+
+    .banner-content {
+      padding-left: 4rem;
+    }
+
+    .banner-title {
+      font-size: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .banner-subtitle {
+      font-size: 1.8rem;
+
+      span {
+        font-size: 2.6rem;
+      }
+    }
+  }
+}
