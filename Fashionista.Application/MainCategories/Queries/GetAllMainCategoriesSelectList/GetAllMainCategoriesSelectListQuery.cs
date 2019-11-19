@@ -7,6 +7,5 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
 
     public class GetAllMainCategoriesSelectListQuery : IRequest<IEnumerable<MainCategoryLookupModel>>
     {
-
     }
 }

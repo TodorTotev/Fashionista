@@ -1,8 +1,7 @@
 namespace Fashionista.Application.SubCategories.Commands.Create
 {
     using System.Collections.Generic;
-
-    using Fashionista.Application.Interfaces;
+    using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
     using Fashionista.Domain.Entities;
     using MediatR;

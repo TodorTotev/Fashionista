@@ -1,4 +1,4 @@
-﻿namespace Fashionista.Application.Interfaces
+﻿namespace Fashionista.Application.Interfaces.Mapping
 {
     using AutoMapper;
 

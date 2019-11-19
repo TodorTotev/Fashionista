@@ -169,7 +169,6 @@
       <e p="Fashionista.Domain" t="IncludeRecursive">
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Class1.cs" t="Include" />
         <e p="Entities" t="Include">
           <e p="Address.cs" t="Include" />
           <e p="ApplicationRole.cs" t="Include" />

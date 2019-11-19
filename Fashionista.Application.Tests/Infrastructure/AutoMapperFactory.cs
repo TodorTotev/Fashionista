@@ -1,7 +1,7 @@
 namespace Fashionista.Application.Tests.Infrastructure
 {
-    using Fashionista.Application.Infrastructure.Automapper;
     using AutoMapper;
+    using Fashionista.Application.Infrastructure.Automapper;
 
     public class AutoMapperFactory
     {

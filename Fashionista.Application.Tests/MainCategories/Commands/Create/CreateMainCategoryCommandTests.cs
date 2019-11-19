@@ -1,3 +1,4 @@
+// ReSharper disable PossibleNullReferenceException
 namespace Fashionista.Application.Tests.MainCategories.Commands.Create
 {
     using System;

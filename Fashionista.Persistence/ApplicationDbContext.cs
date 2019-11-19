@@ -1,13 +1,13 @@
-﻿using Fashionista.Domain.Infrastructure;
-
-namespace Fashionista.Persistence
+﻿namespace Fashionista.Persistence
 {
     using System;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Fashionista.Domain.Entities;
+    using Fashionista.Domain.Infrastructure;
     using Fashionista.Persistence.Configurations;
     using Fashionista.Persistence.Infrastructure;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -24,7 +24,7 @@ namespace Fashionista.Persistence
             : base(options)
         {
         }
-        
+
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public DbSet<Address> Addresses { get; set; }

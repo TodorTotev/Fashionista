@@ -1,6 +1,4 @@
-﻿using Fashionista.Infrastructure.Messaging.SendGrid;
-
-namespace Fashionista.Infrastructure.Messaging
+﻿namespace Fashionista.Infrastructure.Messaging
 {
     using System;
     using System.Net.Http;
@@ -8,7 +6,7 @@ namespace Fashionista.Infrastructure.Messaging
     using System.Text;
     using System.Threading.Tasks;
 
-    using Infrastructure.Messaging.SendGrid;
+    using Fashionista.Infrastructure.Messaging.SendGrid;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;

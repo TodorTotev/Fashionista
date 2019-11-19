@@ -1,4 +1,5 @@
 ﻿using Fashionista.Application.Interfaces;
+using Fashionista.Application.Interfaces.Mapping;
 
 namespace Fashionista.Application.Infrastructure.Automapper
 {

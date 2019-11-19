@@ -4,7 +4,7 @@ namespace Fashionista.Application.Common.Models
     using System.ComponentModel.DataAnnotations;
 
     using AutoMapper;
-    using Fashionista.Application.Interfaces;
+    using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
 
     public class MainCategoryLookupModel : IMapFrom<MainCategory>, IHaveCustomMapping
@@ -14,7 +14,7 @@ namespace Fashionista.Application.Common.Models
         public string Name { get; set; }
 
         public int Count { get; set; }
-        
+
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime CreatedOn { get; set; }
 

@@ -1,14 +1,12 @@
 // ReSharper disable PossibleNullReferenceException
 
-using System;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Interfaces;
-
 namespace Fashionista.Application.Tests.MainCategories.Commands.Delete
 {
-    using System.Linq;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.MainCategories.Commands.Delete;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;

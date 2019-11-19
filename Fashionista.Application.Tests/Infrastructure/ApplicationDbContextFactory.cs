@@ -1,7 +1,6 @@
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Fashionista.Persistence;
     using Microsoft.EntityFrameworkCore;

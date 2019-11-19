@@ -77,7 +77,8 @@
 
             services.AddRazorPages();
             services.AddControllersWithViews()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ApplicationDependencyInjectionHelper>());
+                .AddFluentValidation(fv =>
+                    fv.RegisterValidatorsFromAssemblyContaining<ApplicationDependencyInjectionHelper>());
 
             services.AddHttpContextAccessor();
 

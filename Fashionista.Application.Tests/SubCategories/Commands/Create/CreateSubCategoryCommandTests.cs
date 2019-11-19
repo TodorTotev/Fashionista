@@ -1,23 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Interfaces;
-using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
-using Fashionista.Application.SubCategories.Commands.Create;
-using Fashionista.Persistence.Repositories;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Moq;
-using Shouldly;
-using Xunit;
+// ReSharper disable PossibleNullReferenceException
 
 namespace Fashionista.Application.Tests.SubCategories.Commands.Create
 {
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Application.SubCategories.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Repositories;
+    using Moq;
+    using Shouldly;
+    using Xunit;
 
     public class CreateSubCategoryCommandTests : BaseTest<SubCategory>
     {

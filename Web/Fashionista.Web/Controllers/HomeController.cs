@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Fashionista.Web.Controllers
+﻿namespace Fashionista.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeController : BaseController
     {
         public IActionResult Index()
