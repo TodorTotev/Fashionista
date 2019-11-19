@@ -1,5 +1,6 @@
 namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -30,7 +31,9 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
             GetAllMainCategoriesSelectListQuery request,
             CancellationToken cancellationToken)
         {
-             return await this.mainCategoryRepository
+            request = request ?? throw new ArgumentNullException(nameof(request));
+
+            return await this.mainCategoryRepository
                 .AllAsNoTracking()
                 .ProjectTo<MainCategoryLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
