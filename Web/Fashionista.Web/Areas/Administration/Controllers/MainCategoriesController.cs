@@ -1,3 +1,4 @@
+using Fashionista.Application.MainCategories.Commands.Delete;
 using Fashionista.Application.MainCategories.Commands.Edit;
 using Fashionista.Application.MainCategories.Queries.Edit;
 
@@ -59,6 +60,12 @@ namespace Fashionista.Web.Areas.Administration.Controllers
             }
 
             var action = await this.mediator.Send(command);
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> Delete(DeleteMainCategoryCommand command)
+        {
+            await this.mediator.Send(command);
             return this.RedirectToAction(nameof(this.Index));
         }
     }
