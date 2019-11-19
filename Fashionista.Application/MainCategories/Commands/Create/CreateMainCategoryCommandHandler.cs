@@ -24,7 +24,7 @@ namespace Fashionista.Application.MainCategories.Commands.Create
             this.mainCategoryRepository = mainCategoryRepository;
         }
 
-        public async Task<int> Handle(CreateMainCategoryCommand request, CancellationToken token)
+        public async Task<int> Handle(CreateMainCategoryCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -36,7 +36,7 @@ namespace Fashionista.Application.MainCategories.Commands.Create
             var category = this.mapper.Map<MainCategory>(request);
 
             await this.mainCategoryRepository.AddAsync(category);
-            await this.mainCategoryRepository.SaveChangesAsync();
+            await this.mainCategoryRepository.SaveChangesAsync(cancellationToken);
 
             return category.Id;
         }

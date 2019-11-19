@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -19,6 +20,6 @@
 
         void Delete(TEntity entity);
 
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

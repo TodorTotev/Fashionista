@@ -4,7 +4,6 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
@@ -32,11 +31,12 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
             }
 
             var requestedEntity = await this.mainCategoryRepository
-                .GetByIdWithDeletedAsync(request.Id);
+                .AllAsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
             requestedEntity.Name = request.Name;
             this.mainCategoryRepository.Update(requestedEntity);
-            await this.mainCategoryRepository.SaveChangesAsync();
+            await this.mainCategoryRepository.SaveChangesAsync(cancellationToken);
 
             return requestedEntity.Id;
         }
