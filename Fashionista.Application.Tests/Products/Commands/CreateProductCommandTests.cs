@@ -39,7 +39,7 @@ namespace Fashionista.Application.Tests.Products.Commands
                 ProductColor = ProductColors.Brown,
                 ProductSize = ProductSize.L,
                 ProductType = ProductTypes.Men,
-                SubCategoryId = 1
+                SubCategoryId = 1,
             };
 
             var brandsRepository = new EfDeletableEntityRepository<Brand>(this.dbContext);

@@ -2,10 +2,10 @@ namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelec
 {
     using System.Collections.Generic;
 
-    using Fashionista.Application.Common.Models;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class GetAllSubCategoriesSelectListViewModel
     {
-        public IEnumerable<SubCategoryLookupModel> SubCategories { get; set; }
+        public IEnumerable<SelectListItem> SubCategories { get; set; }
     }
 }

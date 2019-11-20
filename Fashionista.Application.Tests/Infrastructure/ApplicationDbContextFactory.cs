@@ -1,3 +1,9 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Fashionista.Domain.Entities.Enums;
+using Microsoft.AspNetCore.Http;
+using Moq;
+
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
@@ -26,7 +32,7 @@ namespace Fashionista.Application.Tests.Infrastructure
                 new MainCategory { Name = "Category3" },
             });
 
-            dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
 
             for (int i = 1; i <= 3; i++)
             {
@@ -41,12 +47,28 @@ namespace Fashionista.Application.Tests.Infrastructure
                 dbContext.SaveChanges();
             }
 
-            dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
 
             dbContext.Brands.Add(new Brand
             {
                 Name = "TestBrand",
                 BrandPhotoUrl = "https://imgur.com/uyT0KJ8",
+            });
+
+            dbContext.SaveChanges();
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "TestName",
+                Description = "TestDesc",
+                Price = 100,
+                BrandId = 1,
+                IsHidden = false,
+                Photos = new List<string>(),
+                ProductColor = ProductColors.Brown,
+                ProductSize = ProductSize.L,
+                ProductType = ProductTypes.Men,
+                SubCategoryId = 1,
             });
 
             dbContext.SaveChanges();

@@ -2,10 +2,10 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
 {
     using System.Collections.Generic;
 
-    using Fashionista.Application.Common.Models;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class GetAllMainCategoriesSelectListViewModel
     {
-        public IEnumerable<MainCategoryLookupModel> MainCategories { get; set; }
+        public IEnumerable<SelectListItem> MainCategories { get; set; }
     }
 }

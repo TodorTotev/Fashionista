@@ -29,6 +29,7 @@
                               new RolesSeeder(),
                               new MainCategorySeeder(),
                               new SubCategorySeeder(),
+                              new BrandSeeder(),
                           };
 
             foreach (var seeder in seeders)

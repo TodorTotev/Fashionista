@@ -1,16 +1,16 @@
 namespace Fashionista.Application.Brands.Queries.GetAllBrandsSelectList
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using X.PagedList;
 
     public class GetAllBrandsSelectListQueryHandler :
         IRequestHandler<GetAllBrandsSelectListQuery, GetAllBrandsSelectListViewModel>
@@ -32,7 +32,11 @@ namespace Fashionista.Application.Brands.Queries.GetAllBrandsSelectList
 
             var brands = await this.brandsRepository
                 .AllAsNoTracking()
-                .ProjectTo<BrandLookupModel>(this.mapper.ConfigurationProvider)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name,
+                })
                 .ToListAsync(cancellationToken);
 
             return new GetAllBrandsSelectListViewModel

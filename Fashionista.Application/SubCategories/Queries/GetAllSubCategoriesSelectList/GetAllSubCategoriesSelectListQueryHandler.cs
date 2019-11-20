@@ -1,3 +1,6 @@
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelectList
 {
     using System;
@@ -33,7 +36,11 @@ namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelec
 
             var categories = await this.subCategoryRepository
                 .AllAsNoTracking()
-                .ProjectTo<SubCategoryLookupModel>(this.mapper.ConfigurationProvider)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name,
+                })
                 .ToListAsync(cancellationToken);
 
             return new GetAllSubCategoriesSelectListViewModel

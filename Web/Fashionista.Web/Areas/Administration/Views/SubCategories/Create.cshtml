@@ -30,7 +30,7 @@
                     <div class="form-group row">
                         <label for="ename" class="col-sm-3 text-right control-label col-form-label">Main Category</label>
                         <div class="col-sm-9">
-                            <select asp-for="MainCategoryId" asp-items="@Model.AllMainCategoriesSelectList.MainCategories.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name}).ToList()" class="custom-select"></select>
+                            <select asp-for="MainCategoryId" asp-items="@Model.AllMainCategoriesSelectList.MainCategories" class="custom-select"></select>
                         </div>
                     </div>
                 </div>

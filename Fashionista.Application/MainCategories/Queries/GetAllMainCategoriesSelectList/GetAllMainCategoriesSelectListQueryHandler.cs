@@ -1,16 +1,15 @@
 namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
 
     public class GetAllMainCategoriesSelectListQueryHandler :
@@ -35,7 +34,11 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
 
             var categories = await this.mainCategoryRepository
                 .AllAsNoTracking()
-                .ProjectTo<MainCategoryLookupModel>(this.mapper.ConfigurationProvider)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name,
+                })
                 .ToListAsync(cancellationToken);
 
             return new GetAllMainCategoriesSelectListViewModel

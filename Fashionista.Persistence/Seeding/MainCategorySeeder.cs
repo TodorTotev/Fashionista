@@ -1,17 +1,11 @@
-using Fashionista.Application.Interfaces;
-using Microsoft.EntityFrameworkCore;
-
 namespace Fashionista.Persistence.Seeding
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
 
-    using Fashionista.Common;
     using Fashionista.Domain.Entities;
     using Fashionista.Persistence.Interfaces;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.EntityFrameworkCore;
 
     internal class MainCategorySeeder : ISeeder
     {
