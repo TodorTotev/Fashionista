@@ -13,9 +13,9 @@ namespace Fashionista.Web.Areas.Administration.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var model = await this.Mediator.Send(new GetAllMainCategoriesQuery());
+            var viewModel = await this.Mediator.Send(new GetAllMainCategoriesQuery());
 
-            return this.View(model);
+            return this.View(viewModel);
         }
 
         public IActionResult Create()
