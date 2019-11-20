@@ -2,13 +2,16 @@ namespace Fashionista.Application.Products.Commands.Create
 {
     using System.Collections.Generic;
 
+    using AutoMapper;
     using Fashionista.Application.Brands.Queries.GetAllBrandsSelectList;
+    using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelectList;
+    using Fashionista.Domain.Entities;
     using Fashionista.Domain.Entities.Enums;
     using MediatR;
     using Microsoft.AspNetCore.Http;
 
-    public class CreateProductCommand : IRequest<int>
+    public class CreateProductCommand : IRequest<int>, IMapTo<Product>
     {
         public int Id { get; set; }
 

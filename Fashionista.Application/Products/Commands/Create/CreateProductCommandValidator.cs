@@ -22,9 +22,6 @@ namespace Fashionista.Application.Products.Commands.Create
             this.RuleFor(x => x.BrandId)
                 .NotEmpty();
 
-            this.RuleFor(x => x.Photos)
-                .NotEmpty();
-
             this.RuleFor(x => x.Price)
                 .NotEmpty();
 

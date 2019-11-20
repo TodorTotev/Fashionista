@@ -1,16 +1,19 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Infrastructure;
-using Fashionista.Application.Interfaces;
-using Fashionista.Domain.Entities;
-using MediatR;
-using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace Fashionista.Application.Products.Commands.Create
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Domain.Entities;
+    using MediatR;
+    using Microsoft.AspNetCore.Http;
+
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
@@ -34,7 +37,7 @@ namespace Fashionista.Application.Products.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfBrandExists(request.BrandId, this.brandsRepository))
+            if (!await CommonCheckAssistant.CheckIfBrandExists(request.BrandId, this.brandsRepository))
             {
                 throw new NotFoundException(nameof(Brand), request.BrandId);
             }
@@ -46,9 +49,12 @@ namespace Fashionista.Application.Products.Commands.Create
 
             var product = this.mapper.Map<Product>(request);
 
-            foreach (var photo in request.Photos)
+            if (request.Photos != null)
             {
-                product.Photos.Add(await this.UploadImage(photo));
+                foreach (var photo in request.Photos)
+                {
+                    product.Photos.Add(await this.UploadImage(photo));
+                }
             }
 
             await this.productsRepository.AddAsync(product);
