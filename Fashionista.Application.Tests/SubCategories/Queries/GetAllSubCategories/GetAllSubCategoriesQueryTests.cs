@@ -1,34 +1,33 @@
-using Fashionista.Application.SubCategories.Queries;
+using System;
 
-namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategories
+namespace Fashionista.Application.Tests.SubCategories.Queries.GetAllSubCategories
 {
-    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.MainCategories.Queries.GetAllMainCategories;
+    using Fashionista.Application.SubCategories.Queries;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;
     using Shouldly;
     using Xunit;
 
-    public class GetAllMainCategoriesQueryTests : BaseTest<MainCategory>
+    public class GetAllSubCategoriesQueryTests : BaseTest<SubCategory>
     {
-        [Trait(nameof(MainCategory), "GetAllMainCategories query tests")]
+        [Trait(nameof(SubCategory), "GetAllSubCategories query tests")]
         [Fact(DisplayName = "Handle given valid request should return view model")]
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var query = new GetAllMainCategoriesQuery();
-            var sut = new GetAllMainCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var query = new GetAllSubCategoriesQuery();
+            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
 
             // Assert
             viewModel.ShouldNotBeNull();
-            viewModel.MainCategories.Count().ShouldBe(3);
+            viewModel.SubCategories.Count().ShouldBe(3);
             viewModel.ShouldBeOfType<GetAllSubCategoriesViewModel>();
         }
 
@@ -36,7 +35,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllMainCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

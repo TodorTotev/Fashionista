@@ -36,8 +36,8 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
 
             // Assert
             viewModel.ShouldNotBeNull();
-            viewModel.ShouldBeAssignableTo<IEnumerable<MainCategoryLookupModel>>();
-            viewModel.Count().ShouldBe(1);
+            viewModel.ShouldBeAssignableTo<GetAllMainCategoriesSelectListViewModel>();
+            viewModel.MainCategories.Count().ShouldBe(1);
         }
 
         [Trait(nameof(MainCategory), "GetAllMainCategorySelectList query tests")]

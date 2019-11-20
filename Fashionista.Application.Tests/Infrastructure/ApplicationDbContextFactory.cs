@@ -1,3 +1,5 @@
+using Fashionista.Domain.Entities;
+
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
@@ -16,10 +18,30 @@ namespace Fashionista.Application.Tests.Infrastructure
                 .Options;
 
             var dbContext = new ApplicationDbContext(dbContextOptions);
-
             dbContext.Database.EnsureCreated();
 
-            DetachAllEntities(dbContext);
+            dbContext.AddRange(new[]
+            {
+                new MainCategory { Name = "Category1" },
+                new MainCategory { Name = "Category2" },
+                new MainCategory { Name = "Category3" },
+            });
+
+            dbContext.SaveChangesAsync();
+
+            for (int i = 1; i <= 3; i++)
+            {
+                var category = new SubCategory()
+                {
+                    Name = "Category" + i,
+                    Description = "TestDesc",
+                    MainCategoryId = 1,
+                };
+
+                dbContext.SubCategories.Add(category);
+                dbContext.SaveChanges();
+            }
+
             dbContext.SaveChanges();
 
             return dbContext;
