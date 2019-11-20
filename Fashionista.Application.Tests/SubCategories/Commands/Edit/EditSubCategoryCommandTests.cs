@@ -1,16 +1,13 @@
-using System;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Interfaces;
-
 namespace Fashionista.Application.Tests.SubCategories.Commands.Edit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.SubCategories.Commands.Edit;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.VisualStudio.TestPlatform.ObjectModel;
     using Moq;
     using Shouldly;
     using Xunit;

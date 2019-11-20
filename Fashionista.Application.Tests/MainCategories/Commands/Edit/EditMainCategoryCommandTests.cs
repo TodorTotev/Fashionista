@@ -1,10 +1,9 @@
-using System;
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.MainCategories.Commands.Edit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.MainCategories.Commands.Edit;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;

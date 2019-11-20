@@ -337,6 +337,7 @@
               </e>
               <e p="SubCategories" t="Include">
                 <e p="Create.cshtml" t="Include" />
+                <e p="Edit.cshtml" t="Include" />
                 <e p="Index.cshtml" t="Include" />
               </e>
             </e>

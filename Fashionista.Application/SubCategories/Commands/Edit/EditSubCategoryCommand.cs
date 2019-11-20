@@ -1,9 +1,8 @@
-using AutoMapper;
-using Fashionista.Domain.Entities;
-
 namespace Fashionista.Application.SubCategories.Commands.Edit
 {
+    using AutoMapper;
     using Fashionista.Application.Interfaces.Mapping;
+    using Fashionista.Domain.Entities;
     using MediatR;
 
     public class EditSubCategoryCommand : IRequest<int>, IHaveCustomMapping

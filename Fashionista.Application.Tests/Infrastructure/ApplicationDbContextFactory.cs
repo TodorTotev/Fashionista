@@ -1,9 +1,8 @@
-using Fashionista.Domain.Entities;
-
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
     using System.Linq;
+    using Fashionista.Domain.Entities;
     using Fashionista.Persistence;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Infrastructure;
