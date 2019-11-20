@@ -3,9 +3,9 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
     using System.Collections.Generic;
 
     using Fashionista.Application.Common.Models;
-    using MediatR;
 
-    public class GetAllMainCategoriesSelectListQuery : IRequest<GetAllMainCategoriesSelectListViewModel>
+    public class GetAllMainCategoriesSelectListViewModel
     {
+        public IEnumerable<MainCategoryLookupModel> MainCategories { get; set; }
     }
 }

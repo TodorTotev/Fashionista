@@ -42,6 +42,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
                 .AllAsNoTracking()
                 .SingleOrDefault(x => x.Name == "ValidCategory");
 
+            id.ShouldBe(1);
             createdCategory.Name.ShouldBe("ValidCategory");
             createdCategory.Description.ShouldBe("ValidDescription");
             createdCategory.MainCategoryId.ShouldBe(1);

@@ -1,8 +1,9 @@
 namespace Fashionista.Application.SubCategories.Commands.Create
 {
     using System.Collections.Generic;
+
+    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Interfaces.Mapping;
-    using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
     using Fashionista.Domain.Entities;
     using MediatR;
 
@@ -14,6 +15,6 @@ namespace Fashionista.Application.SubCategories.Commands.Create
 
         public int MainCategoryId { get; set; }
 
-        public IEnumerable<GetAllMainCategoriesSelectListQuery> AllMainCategoriesSelectList { get; set; }
+        public IEnumerable<MainCategoryLookupModel> AllMainCategoriesSelectList { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
     using Microsoft.EntityFrameworkCore;
 
     public class GetAllMainCategoriesSelectListQueryHandler :
-        IRequestHandler<GetAllMainCategoriesSelectListQuery, IEnumerable<MainCategoryLookupModel>>
+        IRequestHandler<GetAllMainCategoriesSelectListQuery, GetAllMainCategoriesSelectListViewModel>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
         private readonly IMapper mapper;
@@ -27,16 +27,21 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<MainCategoryLookupModel>> Handle(
+        public async Task<GetAllMainCategoriesSelectListViewModel> Handle(
             GetAllMainCategoriesSelectListQuery request,
             CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            return await this.mainCategoryRepository
+            var categories = await this.mainCategoryRepository
                 .AllAsNoTracking()
                 .ProjectTo<MainCategoryLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
+
+            return new GetAllMainCategoriesSelectListViewModel
+            {
+                MainCategories = categories,
+            };
         }
     }
 }
