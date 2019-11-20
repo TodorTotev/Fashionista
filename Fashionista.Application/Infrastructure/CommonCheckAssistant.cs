@@ -34,5 +34,23 @@ namespace Fashionista.Application.Infrastructure
                 .AllAsNoTracking()
                 .AnyAsync(x => x.Name == name);
         }
+
+        internal static async Task<bool> CheckIfBrandExists(
+            int brandId,
+            IDeletableEntityRepository<Brand> brandRepository)
+        {
+            return await brandRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Id == brandId);
+        }
+
+        internal static async Task<bool> CheckIfProductWithSameNameExists(
+            string name,
+            IDeletableEntityRepository<Product> productRepository)
+        {
+            return await productRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
+        }
     }
 }
