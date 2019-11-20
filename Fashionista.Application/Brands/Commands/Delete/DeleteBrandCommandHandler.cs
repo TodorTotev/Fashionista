@@ -1,0 +1,35 @@
+namespace Fashionista.Application.Brands.Commands.Delete
+{
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
+    using Fashionista.Domain.Entities;
+    using MediatR;
+
+    public class DeleteBrandCommandHandler : IRequestHandler<DeleteBrandCommand, int>
+    {
+        private readonly IDeletableEntityRepository<Brand> brandRepository;
+
+        public DeleteBrandCommandHandler(IDeletableEntityRepository<Brand> brandRepository)
+        {
+            this.brandRepository = brandRepository;
+        }
+
+        public async Task<int> Handle(DeleteBrandCommand request, CancellationToken cancellationToken)
+        {
+            request = request ?? throw new ArgumentNullException(nameof(request));
+
+            var requestedEntity = await this.brandRepository
+                                      .GetByIdWithDeletedAsync(request.Id, cancellationToken)
+                                  ?? throw new NotFoundException(nameof(MainCategory), request.Id);
+
+            this.brandRepository.Delete(requestedEntity);
+            await this.brandRepository.SaveChangesAsync(cancellationToken);
+
+            return requestedEntity.Id;
+        }
+    }
+}
