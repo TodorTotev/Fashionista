@@ -33,10 +33,15 @@
             </e>
           </e>
           <e p="Queries" t="Include">
-            <e p="Queries" t="Include">
+            <e p="GetAllBrandsPaged" t="Include">
               <e p="GetAllBrandsPagedQuery.cs" t="Include" />
               <e p="GetAllBrandsPagedQueryHandler.cs" t="Include" />
               <e p="GetAllBrandsPagedViewModel.cs" t="Include" />
+            </e>
+            <e p="GetAllBrandsSelectList" t="Include">
+              <e p="GetAllBrandsSelectListQuery.cs" t="Include" />
+              <e p="GetAllBrandsSelectListQueryHandler.cs" t="Include" />
+              <e p="GetAllBrandsSelectListViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -116,6 +121,18 @@
             </e>
           </e>
         </e>
+        <e p="products" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductCommand.cs" t="Include" />
+              <e p="CreateProductCommandHandler.cs" t="Include" />
+              <e p="CreateProductCommandValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="stylecop.json" t="Include" />
         <e p="SubCategories" t="Include">
           <e p="Commands" t="Include">
@@ -147,6 +164,11 @@
               <e p="GetAllSubCategoriesQueryHandler.cs" t="Include" />
               <e p="GetAllSubCategoriesViewModel.cs" t="Include" />
             </e>
+            <e p="GetAllSubCategoriesSelectList" t="Include">
+              <e p="GetAllSubCategoriesSelectListQuery.cs" t="Include" />
+              <e p="GetAllSubCategoriesSelectListQueryHandler.cs" t="Include" />
+              <e p="GetAllSubCategoriesSelectListViewModel.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>
@@ -162,8 +184,11 @@
             </e>
           </e>
           <e p="Queries" t="Include">
-            <e p="GetAllBrandsPagedQueryTests" t="Include">
+            <e p="GetAllBrandsPagedQuery" t="Include">
               <e p="GetAllBrandsPagedQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetAllBrandsSelectList" t="Include">
+              <e p="GetAllBrandsSelectListTests.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -225,6 +250,7 @@
             <e p="GetAllSubCategories" t="Include">
               <e p="GetallSubCategoriesQueryTests.cs" t="Include" />
             </e>
+            <e p="GetAllSubCategoriesSelectListTests.cs" t="Include" />
           </e>
         </e>
       </e>
@@ -263,7 +289,6 @@
           <e p="MainCategory.cs" t="Include" />
           <e p="Order.cs" t="Include" />
           <e p="OrderProduct.cs" t="Include" />
-          <e p="Photo.cs" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="Review.cs" t="Include" />
           <e p="ShoppingCart.cs" t="Include" />
@@ -340,6 +365,8 @@
           <e p="20191119105329_Initial.Designer.cs" t="Include" />
           <e p="20191120165713_BrandPhotos.cs" t="Include" />
           <e p="20191120165713_BrandPhotos.Designer.cs" t="Include" />
+          <e p="20191120211419_RemovePhotoEntity.cs" t="Include" />
+          <e p="20191120211419_RemovePhotoEntity.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

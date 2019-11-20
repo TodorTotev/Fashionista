@@ -35,7 +35,7 @@ namespace Fashionista.Domain.Entities
 
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; } = new List<FavoriteProduct>();
 
-        public virtual ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public virtual ICollection<string> Photos { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     }

@@ -55,16 +55,32 @@
                             <i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Categories</span>
                         </a>
                         <ul aria-expanded="false" class="collapse first-level">
-                            @* <li class="sidebar-item"> *@
-                            @*     <a asp-controller="MainCategories" asp-action="Index" class="sidebar-link"> *@
-                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Main Categories</span> *@
-                            @*     </a> *@
-                            @* </li> *@
-                            @* <li class="sidebar-item"> *@
-                            @*      <a asp-controller="SubCategories" asp-action="Index" class="sidebar-link"> *@
-                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Sub Categories</span> *@
-                            @*     </a> *@
-                            @* </li> *@
+                            <li class="sidebar-item">
+                                <a asp-controller="MainCategories" asp-action="Index" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Main Categories</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-controller="SubCategories" asp-action="Index" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Sub Categories</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Orders</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Unprocessed Orders</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Processed orders</span>
+                                </a>
+                            </li>
                         </ul>
                         <li class="sidebar-item">
                             <a href="index2.html" class="sidebar-link">
@@ -72,8 +88,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="index3.html" class="sidebar-link">
-                                <i class="mdi mdi-adjust"></i><span class="hide-menu"> Orders </span>
+                            <a asp-controller="Brands" asp-action="Index" class="sidebar-link">
+                                <i class="mdi mdi-adjust"></i><span class="hide-menu"> Brands </span>
                             </a>
                         </li>
                     </ul>

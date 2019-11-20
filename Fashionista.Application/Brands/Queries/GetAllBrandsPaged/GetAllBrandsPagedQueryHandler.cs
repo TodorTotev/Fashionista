@@ -1,4 +1,4 @@
-namespace Fashionista.Application.Brands.Queries.Queries
+namespace Fashionista.Application.Brands.Queries.GetAllBrandsPaged
 {
     using System;
     using System.Linq;

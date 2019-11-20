@@ -1,7 +1,10 @@
 namespace Fashionista.Persistence.Configurations
 {
+    using System.Collections.Generic;
+
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
 
     public static class ProductConfiguration
     {
@@ -12,6 +15,12 @@ namespace Fashionista.Persistence.Configurations
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.SubCategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Product>()
+                .Property(x => x.Photos)
+                .HasConversion(
+                    v => JsonConvert.SerializeObject(v),
+                    v => JsonConvert.DeserializeObject<List<string>>(v));
 
             builder.Entity<FavoriteProduct>()
                 .HasKey(x => new { x.ProductId, x.ApplicationUserId });

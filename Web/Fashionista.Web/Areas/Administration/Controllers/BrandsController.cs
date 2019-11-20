@@ -5,7 +5,7 @@ namespace Fashionista.Web.Areas.Administration.Controllers
 
     using Fashionista.Application.Brands.Commands.Create;
     using Fashionista.Application.Brands.Commands.Delete;
-    using Fashionista.Application.Brands.Queries.Queries;
+    using Fashionista.Application.Brands.Queries.GetAllBrandsPaged;
     using Fashionista.Application.Common.Models;
     using Microsoft.AspNetCore.Mvc;
     using X.PagedList;

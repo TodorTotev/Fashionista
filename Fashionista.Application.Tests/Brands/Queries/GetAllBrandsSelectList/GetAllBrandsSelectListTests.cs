@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsSelectList
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
