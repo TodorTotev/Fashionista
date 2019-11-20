@@ -8,7 +8,7 @@ namespace Fashionista.Domain.Entities
     {
         public string Name { get; set; }
 
-        public virtual ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public string BrandPhotoUrl { get; set; }
 
         public ICollection<Product> Products { get; set; } = new List<Product>();
     }

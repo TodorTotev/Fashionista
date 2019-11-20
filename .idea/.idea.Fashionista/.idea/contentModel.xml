@@ -17,6 +17,19 @@
         <e p="ApplicationDependencyInjectionHelper.cs" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Brands" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateBrandCommand.cs" t="Include" />
+              <e p="CreateBrandCommandHandler.cs" t="Include" />
+              <e p="CreateBrandCommandValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
         <e p="Common" t="Include">
           <e p="Models" t="Include">
             <e p="MainCategoryLookupModel.cs" t="Include" />
@@ -38,6 +51,7 @@
           <e p="CommonCheckAssistant.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
+          <e p="ICloudinaryHelper.cs" t="Include" />
           <e p="IDeletableEntityRepository.cs" t="Include" />
           <e p="IRepository.cs" t="Include" />
           <e p="IUserAccessor.cs" t="Include" />
@@ -248,6 +262,10 @@
       </e>
       <e p="Fashionista.Infrastructure" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Cloudinary" t="Include">
+          <e p="CloudinaryFactory.cs" t="Include" />
+          <e p="CloudinaryHelper.cs" t="Include" />
+        </e>
         <e p="Fashionista.Infrastructure.csproj" t="IncludeRecursive" />
         <e p="Messaging" t="Include">
           <e p="ISmsSender.cs" t="Include" />
@@ -294,6 +312,8 @@
         <e p="Migrations" t="Include">
           <e p="20191119105329_Initial.cs" t="Include" />
           <e p="20191119105329_Initial.Designer.cs" t="Include" />
+          <e p="20191120165713_BrandPhotos.cs" t="Include" />
+          <e p="20191120165713_BrandPhotos.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

@@ -25,7 +25,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Brands\Commands" />
       <Folder Include="Brands\Queries" />
     </ItemGroup>
 

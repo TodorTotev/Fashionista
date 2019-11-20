@@ -1,12 +1,11 @@
-﻿using Fashionista.Infrastructure.Cloudinary;
-
-namespace Fashionista.Web
+﻿namespace Fashionista.Web
 {
     using AutoMapper;
     using Fashionista.Application;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
+    using Fashionista.Infrastructure.Cloudinary;
     using Fashionista.Infrastructure.Messaging;
     using Fashionista.Persistence;
     using Fashionista.Persistence.Interfaces;
@@ -100,6 +99,7 @@ namespace Fashionista.Web
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
             services.AddSingleton(x => CloudinaryFactory.GetInstance(this.configuration));
+            services.AddTransient<ICloudinaryHelper, CloudinaryHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
