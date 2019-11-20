@@ -1,6 +1,6 @@
 // ReSharper disable PossibleNullReferenceException
 
-namespace Fashionista.Application.Tests.Brands.Create
+namespace Fashionista.Application.Tests.Brands.Commands.Create
 {
     using System;
     using System.Linq;
