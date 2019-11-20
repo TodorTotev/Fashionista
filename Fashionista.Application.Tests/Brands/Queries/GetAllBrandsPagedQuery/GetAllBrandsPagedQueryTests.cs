@@ -1,10 +1,10 @@
-namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQueryTests
+namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQuery
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.Brands.Queries.Queries;
+    using Fashionista.Application.Brands.Queries.GetAllBrandsPaged;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;
@@ -18,7 +18,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQueryTes
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var query = new GetAllBrandsPagedQuery { PageNumber = 0, PageSize = 3 };
+            var query = new Application.Brands.Queries.GetAllBrandsPaged.GetAllBrandsPagedQuery { PageNumber = 0, PageSize = 3 };
             var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act

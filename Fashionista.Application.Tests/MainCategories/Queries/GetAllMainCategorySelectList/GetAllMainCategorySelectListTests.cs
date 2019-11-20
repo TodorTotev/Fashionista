@@ -22,8 +22,6 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
         public async Task Handle_GivenValidRequest_ShouldReturnIEnumerable()
         {
             // Arrange
-            await this.deletableEntityRepository.SaveChangesAsync();
-
             var query = new GetAllMainCategoriesSelectListQuery();
             var sut = new GetAllMainCategoriesSelectListQueryHandler(this.deletableEntityRepository, this.mapper);
 
