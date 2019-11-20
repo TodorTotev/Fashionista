@@ -1,6 +1,7 @@
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
+
     using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
     using Fashionista.Application.SubCategories.Commands.Create;
     using Fashionista.Application.SubCategories.Commands.Delete;

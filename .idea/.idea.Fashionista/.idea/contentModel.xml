@@ -24,14 +24,25 @@
               <e p="CreateBrandCommandHandler.cs" t="Include" />
               <e p="CreateBrandCommandValidator.cs" t="Include" />
             </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteBrandCommand.cs" t="Include" />
+              <e p="DeleteBrandCommandHandler.cs" t="Include" />
+            </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Queries" t="Include">
+              <e p="GetAllBrandsPagedQuery.cs" t="Include" />
+              <e p="GetAllBrandsPagedQueryHandler.cs" t="Include" />
+              <e p="GetAllBrandsPagedViewModel.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Common" t="Include">
           <e p="Models" t="Include">
+            <e p="BrandLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
             <e p="SubCategoryLookupModel.cs" t="Include" />
           </e>
@@ -142,8 +153,18 @@
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Brands" t="Include">
-          <e p="Create" t="Include">
-            <e p="CreateBrandCommandTests.cs" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateBrandCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteBrandCommandTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetAllBrandsPagedQueryTests" t="Include">
+              <e p="GetAllBrandsPagedQueryTests.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Fashionista.Application.Tests.csproj" t="IncludeRecursive" />
@@ -354,11 +375,16 @@
             <e p="_ViewStart.cshtml" t="Include" />
             <e p="Controllers" t="Include">
               <e p="AdministrationController.cs" t="Include" />
+              <e p="BrandsController.cs" t="Include" />
               <e p="HomeController.cs" t="Include" />
               <e p="MainCategoriesController.cs" t="Include" />
               <e p="SubCategoriesController.cs" t="Include" />
             </e>
             <e p="Views" t="Include">
+              <e p="Brands" t="Include">
+                <e p="Create.cshtml" t="Include" />
+                <e p="Index.cshtml" t="Include" />
+              </e>
               <e p="Home" t="Include">
                 <e p="Index.cshtml" t="Include" />
               </e>

@@ -14,6 +14,8 @@ namespace Fashionista.Application.Common.Models
 
         public DateTime CreatedOn { get; set; }
 
+        public string BrandPhotoUrl { get; set; }
+
         public int ProductsCount { get; set; }
 
         public void CreateMappings(Profile configuration)

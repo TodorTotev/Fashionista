@@ -1,6 +1,7 @@
 namespace Fashionista.Application.Brands.Queries.Queries
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Fashionista.Application.Brands.Queries.Queries
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using X.PagedList;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetAllBrandsPagedQueryHandler : IRequestHandler<GetAllBrandsPagedQuery, GetAllBrandsPagedViewModel>
     {
@@ -31,8 +32,10 @@ namespace Fashionista.Application.Brands.Queries.Queries
 
             var currentPageEntities = await this.brandsRepository
                 .AllAsNoTracking()
+                .Skip(request.PageNumber * request.PageSize)
+                .Take(request.PageSize)
                 .ProjectTo<BrandLookupModel>(this.mapper.ConfigurationProvider)
-                .ToPagedListAsync(request.PageNumber, request.PageSize, cancellationToken);
+                .ToListAsync(cancellationToken);
 
             return new GetAllBrandsPagedViewModel
             {

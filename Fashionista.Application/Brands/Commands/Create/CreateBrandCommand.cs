@@ -1,7 +1,5 @@
 namespace Fashionista.Application.Brands.Commands.Create
 {
-    using System.Collections.Generic;
-
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
     using MediatR;

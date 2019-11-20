@@ -7,8 +7,8 @@ namespace Fashionista.Common
         
         #region Brands
 
-        public const int BRAND_IMAGE_HEIGHT = 45;
-        public const int BRAND_IMAGE_WIDTH = 140;
+        public const int BRAND_IMAGE_HEIGHT = 184;
+        public const int BRAND_IMAGE_WIDTH = 184;
 
         #endregion
     }

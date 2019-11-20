@@ -18,7 +18,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQueryTes
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var query = new GetAllBrandsPagedQuery { PageNumber = 1, PageSize = 25 };
+            var query = new GetAllBrandsPagedQuery { PageNumber = 0, PageSize = 3 };
             var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
