@@ -1,3 +1,6 @@
+using System;
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.MainCategories.Commands.Edit
 {
     using System.Threading;
@@ -29,10 +32,38 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Edit
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
 
             // Assert
-            var modifiedCategory = this.dbContext.MainCategories
+            var modifiedCategory = await this.dbContext.MainCategories
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             modifiedCategory.ShouldNotBeNull();
+            modifiedCategory.Name.ShouldBe("ModifiedCategory");
+        }
+
+        [Trait(nameof(MainCategory), "EditMainCategory command tests")]
+        [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
+        public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var sut = new EditMainCategoryCommandHandler(this.deletableEntityRepository);
+
+            // Act & Assert
+            await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(MainCategory), "EditMainCategory command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new EditMainCategoryCommand()
+            {
+                Name = "Category1",
+            };
+
+            var sut = new EditMainCategoryCommandHandler(this.deletableEntityRepository);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }

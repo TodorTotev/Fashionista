@@ -61,7 +61,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
         }
 
         [Trait(nameof(SubCategory), "CreateSubCategory command tests")]
-        [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
         public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
         {
             // Arrange
