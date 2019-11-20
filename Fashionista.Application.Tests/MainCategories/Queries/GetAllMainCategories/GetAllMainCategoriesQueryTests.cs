@@ -30,7 +30,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
             // Assert
             viewModel.ShouldNotBeNull();
             viewModel.MainCategories.Count().ShouldBe(3);
-            viewModel.ShouldBeOfType<GetAllSubCategoriesViewModel>();
+            viewModel.ShouldBeOfType<GetAllMainCategoriesViewModel>();
         }
 
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
