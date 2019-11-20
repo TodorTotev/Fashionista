@@ -22,10 +22,6 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
         public async Task Handle_GivenValidRequest_ShouldReturnIEnumerable()
         {
             // Arrange
-            await this.deletableEntityRepository.AddAsync(new MainCategory
-            {
-                Name = "TestCategory",
-            });
             await this.deletableEntityRepository.SaveChangesAsync();
 
             var query = new GetAllMainCategoriesSelectListQuery();
@@ -37,7 +33,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
             // Assert
             viewModel.ShouldNotBeNull();
             viewModel.ShouldBeAssignableTo<GetAllMainCategoriesSelectListViewModel>();
-            viewModel.MainCategories.Count().ShouldBe(1);
+            viewModel.MainCategories.Count().ShouldBe(3);
         }
 
         [Trait(nameof(MainCategory), "GetAllMainCategorySelectList query tests")]

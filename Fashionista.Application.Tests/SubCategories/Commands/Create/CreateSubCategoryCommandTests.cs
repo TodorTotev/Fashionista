@@ -30,9 +30,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
                 Description = "ValidDescription",
                 MainCategoryId = 1,
             };
-
-            var subCategoryRepository = new EfDeletableEntityRepository<SubCategory>(this.dbContext);
-            var test = new CreateSubCategoryCommandHandler(subCategoryRepository, this.mapper);
+            var test = new CreateSubCategoryCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
             var id = await test.Handle(command, It.IsAny<CancellationToken>());
@@ -42,7 +40,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
                 .AllAsNoTracking()
                 .SingleOrDefault(x => x.Name == "ValidCategory");
 
-            id.ShouldBe(1);
+            id.ShouldBe(4);
             createdCategory.Name.ShouldBe("ValidCategory");
             createdCategory.Description.ShouldBe("ValidDescription");
             createdCategory.MainCategoryId.ShouldBe(1);

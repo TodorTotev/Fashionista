@@ -8,7 +8,6 @@ namespace Fashionista.Application.MainCategories.Commands.Delete
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class DeleteMainCategoryCommandHandler : IRequestHandler<DeleteMainCategoryCommand, int>
     {

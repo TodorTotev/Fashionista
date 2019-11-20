@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
         public async Task Handle_GivenValidRequest_ShouldReturnEditSubCategoryCommand()
         {
             // Arrange
-            var query = new EditSubCategoryQuery {Id = 1};
+            var query = new EditSubCategoryQuery { Id = 1 };
             var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act

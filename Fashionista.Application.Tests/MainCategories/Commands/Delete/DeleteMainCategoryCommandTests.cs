@@ -19,15 +19,9 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Delete
     {
         [Trait(nameof(MainCategory), "DeleteMainCategory command tests")]
         [Fact(DisplayName = "Handle given valid request should delete category")]
-        public async Task Handle_GivenValidRequest_ShouldDeleteMatch()
+        public async Task Handle_GivenValidRequest_ShouldDeleteCategory()
         {
             // Arrange
-            await this.deletableEntityRepository.AddAsync(new MainCategory
-            {
-                Name = "TestCategory",
-            });
-            await this.deletableEntityRepository.SaveChangesAsync();
-
             var command = new DeleteMainCategoryCommand { Id = 1 };
             var sut = new DeleteMainCategoryCommandHandler(this.deletableEntityRepository);
 

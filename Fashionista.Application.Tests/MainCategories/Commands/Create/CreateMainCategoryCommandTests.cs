@@ -71,7 +71,6 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
             var sut = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
 
             // Act & Assert
-            await sut.Handle(command, It.IsAny<CancellationToken>());
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
