@@ -99,14 +99,25 @@
               <e p="CreateSubCategoryCommandHandler.cs" t="Include" />
               <e p="CreateSubCategoryValidator.cs" t="Include" />
             </e>
+            <e p="Edit" t="Include">
+              <e p="EditSubCategoryCommand.cs" t="Include" />
+              <e p="EditSubCategoryCommandHandler.cs" t="Include" />
+              <e p="EditSubCategoryCommandValidator.cs" t="Include" />
+            </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
-            <e p="GetAllSubCategoriesQuery.cs" t="Include" />
-            <e p="GetAllSubCategoriesQueryHandler.cs" t="Include" />
-            <e p="GetAllSubCategoriesViewModel.cs" t="Include" />
+            <e p="Edit" t="Include">
+              <e p="EditSubCategoryQuery.cs" t="Include" />
+              <e p="EditSubCategoryQueryHandler.cs" t="Include" />
+            </e>
+            <e p="GetAllSubCategories" t="Include">
+              <e p="GetAllSubCategoriesQuery.cs" t="Include" />
+              <e p="GetAllSubCategoriesQueryHandler.cs" t="Include" />
+              <e p="GetAllSubCategoriesViewModel.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>
@@ -156,8 +167,14 @@
             <e p="Create" t="Include">
               <e p="CreateSubCategoryCommandTests.cs" t="Include" />
             </e>
+            <e p="Edit" t="Include">
+              <e p="EditSubCategoryCommandTests.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Edit" t="Include">
+              <e p="EditSubCategoryQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllSubCategories" t="Include">
               <e p="GetallSubCategoriesQueryTests.cs" t="Include" />
             </e>

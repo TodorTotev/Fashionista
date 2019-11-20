@@ -17,12 +17,6 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Edit
         public async Task Handle_GivenValidRequest_ShouldEditMainCategory()
         {
             // Arrange
-            await this.deletableEntityRepository.AddAsync(new MainCategory
-            {
-                Name = "TestCategory",
-            });
-            await this.deletableEntityRepository.SaveChangesAsync();
-
             var command = new EditMainCategoryCommand
             {
                 Id = 1,
