@@ -141,6 +141,11 @@
       </e>
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Brands" t="Include">
+          <e p="Create" t="Include">
+            <e p="CreateBrandCommandTests.cs" t="Include" />
+          </e>
+        </e>
         <e p="Fashionista.Application.Tests.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
           <e p="ApplicationDbContextFactory.cs" t="Include" />

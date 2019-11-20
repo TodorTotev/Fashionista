@@ -41,6 +41,14 @@ namespace Fashionista.Application.Tests.Infrastructure
                 dbContext.SaveChanges();
             }
 
+            dbContext.SaveChangesAsync();
+
+            dbContext.Brands.Add(new Brand
+            {
+                Name = "TestBrand",
+                BrandPhotoUrl = "https://imgur.com/uyT0KJ8",
+            });
+
             dbContext.SaveChanges();
 
             return dbContext;

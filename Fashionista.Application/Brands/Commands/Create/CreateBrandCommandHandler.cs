@@ -3,6 +3,7 @@ namespace Fashionista.Application.Brands.Commands.Create
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
