@@ -1,4 +1,4 @@
-namespace Fashionista.Application.SubCategories.Queries
+namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategories
 {
     using System;
     using System.Threading;

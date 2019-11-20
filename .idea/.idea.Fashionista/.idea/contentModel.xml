@@ -20,6 +20,7 @@
         <e p="Common" t="Include">
           <e p="Models" t="Include">
             <e p="MainCategoryLookupModel.cs" t="Include" />
+            <e p="SubCategoryLookupModel.cs" t="Include" />
           </e>
         </e>
         <e p="Exceptions" t="Include">
@@ -79,6 +80,7 @@
             <e p="GetAllMainCategoriesSelectList" t="Include">
               <e p="GetAllMainCategoriesSelectListQuery.cs" t="Include" />
               <e p="GetAllMainCategoriesSelectListQueryHandler.cs" t="Include" />
+              <e p="GetAllMainCategoriesSelectListViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -101,7 +103,11 @@
               <e p="Constants.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetAllSubCategoriesQuery.cs" t="Include" />
+            <e p="GetAllSubCategoriesQueryHandler.cs" t="Include" />
+            <e p="GetAllSubCategoriesViewModel.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
@@ -151,7 +157,11 @@
               <e p="CreateSubCategoryCommandTests.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetAllSubCategories" t="Include">
+              <e p="GetallSubCategoriesQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
       </e>
       <e p="Fashionista.Common" t="IncludeRecursive">
@@ -310,6 +320,7 @@
               </e>
               <e p="SubCategories" t="Include">
                 <e p="Create.cshtml" t="Include" />
+                <e p="Index.cshtml" t="Include" />
               </e>
             </e>
           </e>

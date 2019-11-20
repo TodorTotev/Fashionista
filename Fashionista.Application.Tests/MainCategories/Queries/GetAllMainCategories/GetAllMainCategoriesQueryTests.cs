@@ -1,4 +1,5 @@
 using Fashionista.Application.SubCategories.Queries;
+using Fashionista.Application.SubCategories.Queries.GetAllSubCategories;
 
 namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategories
 {

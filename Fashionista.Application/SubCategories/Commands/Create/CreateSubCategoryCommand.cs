@@ -1,3 +1,5 @@
+using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
+
 namespace Fashionista.Application.SubCategories.Commands.Create
 {
     using System.Collections.Generic;
@@ -15,6 +17,6 @@ namespace Fashionista.Application.SubCategories.Commands.Create
 
         public int MainCategoryId { get; set; }
 
-        public IEnumerable<MainCategoryLookupModel> AllMainCategoriesSelectList { get; set; }
+        public GetAllMainCategoriesSelectListViewModel AllMainCategoriesSelectList { get; set; }
     }
 }
