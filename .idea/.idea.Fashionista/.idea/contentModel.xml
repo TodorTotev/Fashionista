@@ -99,6 +99,10 @@
               <e p="CreateSubCategoryCommandHandler.cs" t="Include" />
               <e p="CreateSubCategoryValidator.cs" t="Include" />
             </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteSubCategoryCommand.cs" t="Include" />
+              <e p="DeleteSubCategoryCommandHandler.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditSubCategoryCommand.cs" t="Include" />
               <e p="EditSubCategoryCommandHandler.cs" t="Include" />
@@ -166,6 +170,9 @@
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
               <e p="CreateSubCategoryCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteSubCategoryCommandTests.cs" t="Include" />
             </e>
             <e p="Edit" t="Include">
               <e p="EditSubCategoryCommandTests.cs" t="Include" />
