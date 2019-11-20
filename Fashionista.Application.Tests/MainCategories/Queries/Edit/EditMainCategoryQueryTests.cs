@@ -22,18 +22,12 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
             var query = new EditMainCategoryQuery { Id = 1 };
             var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, this.mapper);
 
-            await this.deletableEntityRepository.AddAsync(new MainCategory
-            {
-                Name = "TestCategory",
-            });
-            await this.deletableEntityRepository.SaveChangesAsync();
-
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
 
             command.ShouldNotBeNull();
             command.ShouldBeOfType<EditMainCategoryCommand>();
-            command.Name.ShouldBe("TestCategory");
+            command.Name.ShouldBe("Category1");
         }
 
         [Trait(nameof(MainCategory), "EditMainCategory query tests")]
