@@ -1,4 +1,6 @@
 using System.Linq;
+using Fashionista.Application.ProductColors.Commands.Create;
+using Fashionista.Application.ProductSizes.Commands.Create;
 
 namespace Fashionista.Application.Products.Commands.Create
 {

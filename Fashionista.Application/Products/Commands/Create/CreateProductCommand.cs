@@ -2,7 +2,6 @@ namespace Fashionista.Application.Products.Commands.Create
 {
     using System.Collections.Generic;
 
-    using AutoMapper;
     using Fashionista.Application.Brands.Queries.GetAllBrandsSelectList;
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelectList;
@@ -30,10 +29,6 @@ namespace Fashionista.Application.Products.Commands.Create
         public ICollection<IFormFile> Photos { get; set; }
 
         public ProductType ProductType { get; set; }
-
-//        public ProductColor ProductColor { get; set; }
-//
-//        public ProductSize ProductSize { get; set; }
 
         public GetAllSubCategoriesSelectListViewModel SubCategories { get; set; }
 
