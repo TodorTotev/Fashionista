@@ -158,6 +158,10 @@
               <e p="CreateProductCommandHandler.cs" t="Include" />
               <e p="CreateProductCommandValidator.cs" t="Include" />
             </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductCommand.cs" t="Include" />
+              <e p="DeleteProductCommandHandler.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditProductCommand.cs" t="Include" />
               <e p="EditProductCommandHandler.cs" t="Include" />
@@ -319,6 +323,9 @@
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
               <e p="CreateProductCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductCommandTests.cs" t="Include" />
             </e>
             <e p="Edit" t="Include">
               <e p="EditProductCommandTests.cs" t="Include" />
