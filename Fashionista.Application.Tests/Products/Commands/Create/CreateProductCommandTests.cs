@@ -1,7 +1,4 @@
-using System.IO;
-using Shouldly;
-
-namespace Fashionista.Application.Tests.Products.Commands
+namespace Fashionista.Application.Tests.Products.Commands.Create
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -16,6 +13,7 @@ namespace Fashionista.Application.Tests.Products.Commands
     using Fashionista.Persistence.Repositories;
     using Microsoft.AspNetCore.Http;
     using Moq;
+    using Shouldly;
     using Xunit;
 
     public class CreateProductCommandTests : BaseTest<Product>

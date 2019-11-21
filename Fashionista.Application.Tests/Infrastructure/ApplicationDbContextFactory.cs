@@ -1,14 +1,10 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Fashionista.Domain.Entities.Enums;
-using Microsoft.AspNetCore.Http;
-using Moq;
-
 namespace Fashionista.Application.Tests.Infrastructure
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Fashionista.Domain.Entities;
+    using Fashionista.Domain.Entities.Enums;
     using Fashionista.Persistence;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -59,12 +55,28 @@ namespace Fashionista.Application.Tests.Infrastructure
 
             dbContext.Products.Add(new Product
             {
-                Name = "TestName",
+                Name = "ActiveProduct",
                 Description = "TestDesc",
                 Price = 100,
                 BrandId = 1,
                 IsHidden = false,
                 Photos = new List<string>(),
+                Reviews = new List<Review>(),
+                ProductColor = ProductColors.Brown,
+                ProductSize = ProductSize.L,
+                ProductType = ProductTypes.Men,
+                SubCategoryId = 1,
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "DraftProduct",
+                Description = "TestDesc",
+                Price = 100,
+                BrandId = 1,
+                IsHidden = true,
+                Photos = new List<string>(),
+                Reviews = new List<Review>(),
                 ProductColor = ProductColors.Brown,
                 ProductSize = ProductSize.L,
                 ProductType = ProductTypes.Men,

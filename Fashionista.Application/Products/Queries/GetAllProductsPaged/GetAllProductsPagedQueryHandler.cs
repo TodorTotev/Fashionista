@@ -47,7 +47,7 @@ namespace Fashionista.Application.Products.Queries.GetAllProductsPaged
             {
                 currentPageEntities = await this.productsRepository
                     .AllAsNoTracking()
-                    .Where(x => x.IsHidden == true)
+                    .Where(x => x.IsHidden)
                     .Skip(request.PageNumber * request.PageSize)
                     .Take(request.PageSize)
                     .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
