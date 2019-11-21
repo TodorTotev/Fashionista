@@ -4,7 +4,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateProductAttributeCommand : IRequest<int>, IMapTo<ProductAttributes>
+    public class CreateProductAttributeCommand : IRequest<ProductAttributes>, IMapTo<ProductAttributes>
     {
         public int ProductColorId { get; set; }
 

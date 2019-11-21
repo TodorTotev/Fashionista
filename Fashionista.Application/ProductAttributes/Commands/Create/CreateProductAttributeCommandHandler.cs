@@ -9,7 +9,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateProductAttributeCommandHandler : IRequestHandler<CreateProductAttributeCommand, int>
+    public class CreateProductAttributeCommandHandler : IRequestHandler<CreateProductAttributeCommand, ProductAttributes>
     {
         private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
         private readonly IMapper mapper;
@@ -22,7 +22,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
             this.mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateProductAttributeCommand request, CancellationToken cancellationToken)
+        public async Task<ProductAttributes> Handle(CreateProductAttributeCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -31,7 +31,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
             await this.productAttributesRepository.AddAsync(attribute);
             await this.productAttributesRepository.SaveChangesAsync(cancellationToken);
 
-            return attribute.Id;
+            return attribute;
         }
     }
 }

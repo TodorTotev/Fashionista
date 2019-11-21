@@ -21,13 +21,13 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create.Create
             var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
-            var id = await sut.Handle(command, It.IsAny<CancellationToken>());
+            var action = await sut.Handle(command, It.IsAny<CancellationToken>());
 
             // Assert
             var attribute = await this.dbContext.ProductAttributes
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.Id == action.Id);
 
-            id.ShouldBe(2);
+            attribute.Id.ShouldBe(2);
             attribute.ShouldNotBeNull();
             attribute.ProductColor.Name.ShouldBe("TestColor");
             attribute.ProductSize.Name.ShouldBe("TestSize");
