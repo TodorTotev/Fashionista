@@ -66,7 +66,7 @@ namespace Fashionista.Application.Infrastructure
 
         internal static async Task<bool> CheckIfProductSizeExists(
             string name,
-            IDeletableEntityRepository<ProductColor> colorsRepository)
+            IDeletableEntityRepository<ProductSize> colorsRepository)
         {
             return await colorsRepository
                 .AllAsNoTracking()

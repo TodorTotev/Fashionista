@@ -30,7 +30,6 @@
       <Folder Include="ProductAttributes\Queries" />
       <Folder Include="ProductColors\Commands" />
       <Folder Include="ProductColors\Queries" />
-      <Folder Include="ProductSizes\Queries" />
     </ItemGroup>
 
 </Project>
