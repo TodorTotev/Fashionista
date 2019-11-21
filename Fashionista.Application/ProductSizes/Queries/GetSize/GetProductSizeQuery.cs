@@ -1,10 +1,10 @@
-using Fashionista.Domain.Entities;
-using MediatR;
-
 namespace Fashionista.Application.ProductSizes.Queries.GetSize
 {
+    using Fashionista.Domain.Entities;
+    using MediatR;
+
     public class GetProductSizeQuery : IRequest<ProductSize>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -24,14 +24,14 @@ namespace Fashionista.Application.ProductSizes.Queries.GetSize
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfProductSizeExistsByName(request.Name, this.productSizesRepository))
+            if (!await CommonCheckAssistant.CheckIfProductSizeExists(request.Id, this.productSizesRepository))
             {
-                throw new NotFoundException(nameof(ProductSize), request.Name);
+                throw new NotFoundException(nameof(ProductSize), "Size not found");
             }
 
             return await this.productSizesRepository
                 .AllAsNoTracking()
-                .FirstOrDefaultAsync(x => x.Name == request.Name, cancellationToken);
+                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         }
     }
 }

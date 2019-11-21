@@ -1,3 +1,5 @@
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
 {
     using System;
@@ -17,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         public async Task Handle_GivenValidRequest_ShouldReturnSize()
         {
             // Arrange
-            var query = new GetProductSizeQuery { Name = "TestSize" };
+            var query = new GetProductSizeQuery { Id = 1 };
             var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
 
             // Act
@@ -32,11 +34,24 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         [Fact(DisplayName = "Handle given valid request should return ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
-            // Assert
+            // Arrange
             var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
+
+        [Trait(nameof(ProductSize), "GetProductSize query tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
+        {
+            // Arrange
+            var query = new GetProductSizeQuery { Id = 1000 };
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
+
+            // Act & Assert
+            await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
+        }
+
     }
 }
