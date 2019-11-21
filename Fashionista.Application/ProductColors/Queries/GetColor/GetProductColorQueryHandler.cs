@@ -4,6 +4,9 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
     using System.Threading;
     using System.Threading.Tasks;
 
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
@@ -11,16 +14,20 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetProductColorQueryHandler : IRequestHandler<GetProductColorQuery, ProductColor>
+    public class GetProductColorQueryHandler : IRequestHandler<GetProductColorQuery, ProductColorLookupModel>
     {
         private readonly IDeletableEntityRepository<ProductColor> colorsRepository;
+        private readonly IMapper mapper;
 
-        public GetProductColorQueryHandler(IDeletableEntityRepository<ProductColor> colorsRepository)
+        public GetProductColorQueryHandler(
+            IDeletableEntityRepository<ProductColor> colorsRepository,
+            IMapper mapper)
         {
             this.colorsRepository = colorsRepository;
+            this.mapper = mapper;
         }
 
-        public async Task<ProductColor> Handle(GetProductColorQuery request, CancellationToken cancellationToken)
+        public async Task<ProductColorLookupModel> Handle(GetProductColorQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -31,6 +38,7 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
 
             return await this.colorsRepository
                 .AllAsNoTracking()
+                .ProjectTo<ProductColorLookupModel>(this.mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         }
     }
