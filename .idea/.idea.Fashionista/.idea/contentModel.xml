@@ -127,6 +127,7 @@
             <e p="Create" t="Include">
               <e p="CreateProductAttributeCommand.cs" t="Include" />
               <e p="CreateProductAttributeCommandHandler.cs" t="Include" />
+              <e p="CreateProductAttributeCommandValidator.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include" />
@@ -151,6 +152,10 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
+            <e p="AssignAttributes" t="Include">
+              <e p="AssignProductAttributesCommand.cs" t="Include" />
+              <e p="AssignProductAttributesCommandHandler.cs" t="Include" />
+            </e>
             <e p="Create" t="Include">
               <e p="CreateProductCommand.cs" t="Include" />
               <e p="CreateProductCommandHandler.cs" t="Include" />
@@ -472,6 +477,8 @@
           <e p="20191120211419_RemovePhotoEntity.Designer.cs" t="Include" />
           <e p="20191121090015_ProductEntityModification.cs" t="Include" />
           <e p="20191121090015_ProductEntityModification.Designer.cs" t="Include" />
+          <e p="20191121174148_ModifySizeEntity.cs" t="Include" />
+          <e p="20191121174148_ModifySizeEntity.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

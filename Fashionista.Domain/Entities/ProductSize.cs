@@ -7,5 +7,9 @@ namespace Fashionista.Domain.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public int MainCategoryId { get; set; }
+        
+        public virtual MainCategory MainCategory { get; set; }
     }
 }
