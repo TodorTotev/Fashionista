@@ -1,24 +1,24 @@
-namespace Fashionista.Application.Tests.ProductColors.Commands.CreateColor
+namespace Fashionista.Application.Tests.ProductColors.Commands.Create
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.ProductColors.Commands.CreateColor;
+    using Fashionista.Application.ProductColors.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;
     using Shouldly;
     using Xunit;
 
-    public class CreateColorCommandTests : BaseTest<ProductColor>
+    public class CreateProductColorCommandTests : BaseTest<ProductColor>
     {
-        [Trait(nameof(ProductColor), "CreateColor command tests")]
+        [Trait(nameof(ProductColor), "CreateProductColor command tests")]
         [Fact(DisplayName = "Handle given valid request should create color")]
         public async Task Handle_GivenValidRequest_ShouldCreateColor()
         {
             // Arrange
-            var command = new CreateColorCommand { Name = "TestColor" };
-            var sut = new CreateColorCommandHandler(this.deletableEntityRepository, this.mapper);
+            var command = new CreateProductColorCommand { Name = "TestColor" };
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -36,7 +36,7 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.CreateColor
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateColorCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

@@ -1,4 +1,4 @@
-namespace Fashionista.Application.ProductColors.Commands.CreateColor
+namespace Fashionista.Application.ProductColors.Commands.Create
 {
     using System;
     using System.Threading;
@@ -9,12 +9,12 @@ namespace Fashionista.Application.ProductColors.Commands.CreateColor
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateColorCommandHandler : IRequestHandler<CreateColorCommand, int>
+    public class CreateProductColorCommandHandler : IRequestHandler<CreateProductColorCommand, int>
     {
         private readonly IDeletableEntityRepository<ProductColor> productColorsRepository;
         private readonly IMapper mapper;
 
-        public CreateColorCommandHandler(
+        public CreateProductColorCommandHandler(
             IDeletableEntityRepository<ProductColor> productColorsRepository,
             IMapper mapper)
         {
@@ -22,7 +22,7 @@ namespace Fashionista.Application.ProductColors.Commands.CreateColor
             this.mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateColorCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateProductColorCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 

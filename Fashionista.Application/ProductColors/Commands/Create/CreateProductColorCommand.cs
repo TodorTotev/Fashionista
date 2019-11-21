@@ -1,10 +1,10 @@
-namespace Fashionista.Application.ProductColors.Commands.CreateColor
+namespace Fashionista.Application.ProductColors.Commands.Create
 {
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateColorCommand : IRequest<int>, IMapTo<ProductColor>
+    public class CreateProductColorCommand : IRequest<int>, IMapTo<ProductColor>
     {
         public string Name { get; set; }
     }

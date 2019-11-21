@@ -11,15 +11,15 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
     using Shouldly;
     using Xunit;
 
-    public class GetColorQueryTests : BaseTest<ProductColor>
+    public class GetProductColorQueryTests : BaseTest<ProductColor>
     {
-        [Trait(nameof(ProductColor), "GetColor query tests")]
+        [Trait(nameof(ProductColor), "GetProductColor query tests")]
         [Fact(DisplayName = "Handle given valid request should return color")]
         public async Task Handle_GivenValidRequest_ShouldReturnColor()
         {
             // Arrange
-            var query = new GetColorQuery { Name = "TestColor" };
-            var sut = new GetColorQueryHandler(this.deletableEntityRepository);
+            var query = new GetProductColorQuery { Name = "TestColor" };
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act
             var color = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -34,8 +34,8 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         public async Task Handle_GivenValidRequest_ShouldReturnNotFoundException()
         {
             // Arrange
-            var query = new GetColorQuery { Name = "InvalidName" };
-            var sut = new GetColorQueryHandler(this.deletableEntityRepository);
+            var query = new GetProductColorQuery { Name = "InvalidName" };
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -46,7 +46,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         public async Task Handle_GivenValidRequest_ShouldReturnArgumentNullException()
         {
             // Arrange
-            var sut = new GetColorQueryHandler(this.deletableEntityRepository);
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

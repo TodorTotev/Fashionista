@@ -11,16 +11,16 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetColorQueryHandler : IRequestHandler<GetColorQuery, ProductColor>
+    public class GetProductColorQueryHandler : IRequestHandler<GetProductColorQuery, ProductColor>
     {
         private readonly IDeletableEntityRepository<ProductColor> colorsRepository;
 
-        public GetColorQueryHandler(IDeletableEntityRepository<ProductColor> colorsRepository)
+        public GetProductColorQueryHandler(IDeletableEntityRepository<ProductColor> colorsRepository)
         {
             this.colorsRepository = colorsRepository;
         }
 
-        public async Task<ProductColor> Handle(GetColorQuery request, CancellationToken cancellationToken)
+        public async Task<ProductColor> Handle(GetProductColorQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
