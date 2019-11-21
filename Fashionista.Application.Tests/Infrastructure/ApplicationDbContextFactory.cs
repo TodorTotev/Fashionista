@@ -57,7 +57,15 @@ namespace Fashionista.Application.Tests.Infrastructure
             {
                 Name = "TestColor",
             });
-            
+            dbContext.SaveChanges();
+
+            dbContext.ProductSizes.AddAsync(new ProductSize
+            {
+                Name = "TestSize",
+            });
+
+            dbContext.SaveChanges();
+
             dbContext.Products.Add(new Product
             {
                 Name = "ActiveProduct",
@@ -67,8 +75,6 @@ namespace Fashionista.Application.Tests.Infrastructure
                 IsHidden = false,
                 Photos = new List<string>(),
                 Reviews = new List<Review>(),
-//                ProductColor = ProductColor.Brown,
-//                ProductSize = ProductSize.L,
                 ProductType = ProductType.Men,
                 SubCategoryId = 1,
             });
@@ -82,8 +88,6 @@ namespace Fashionista.Application.Tests.Infrastructure
                 IsHidden = true,
                 Photos = new List<string>(),
                 Reviews = new List<Review>(),
-//                ProductColor = ProductColor.Brown,
-//                ProductSize = ProductSize.L,
                 ProductType = ProductType.Men,
                 SubCategoryId = 1,
             });

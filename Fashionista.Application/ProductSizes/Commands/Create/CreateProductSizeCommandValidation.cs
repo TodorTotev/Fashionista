@@ -1,13 +1,13 @@
-namespace Fashionista.Application.ProductColors.Commands.CreateColor
+namespace Fashionista.Application.ProductSizes.Commands.Create
 {
     using Fashionista.Domain.Entities;
     using FluentValidation;
 
     using static Validation.Constants;
 
-    public class CreateColorCommandValidator : AbstractValidator<ProductColor>
+    public class CreateProductSizeCommandValidation : AbstractValidator<ProductSize>
     {
-        public CreateColorCommandValidator()
+        public CreateProductSizeCommandValidation()
         {
             this.RuleFor(x => x.Name)
                 .NotEmpty()

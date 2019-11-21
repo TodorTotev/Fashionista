@@ -11,14 +11,14 @@ namespace Fashionista.Application.ProductColors.Commands.CreateColor
 
     public class CreateColorCommandHandler : IRequestHandler<CreateColorCommand, int>
     {
-        private readonly IDeletableEntityRepository<ProductColor> colorsRepository;
+        private readonly IDeletableEntityRepository<ProductColor> productColorsRepository;
         private readonly IMapper mapper;
 
         public CreateColorCommandHandler(
-            IDeletableEntityRepository<ProductColor> colorsRepository,
+            IDeletableEntityRepository<ProductColor> productColorsRepository,
             IMapper mapper)
         {
-            this.colorsRepository = colorsRepository;
+            this.productColorsRepository = productColorsRepository;
             this.mapper = mapper;
         }
 
@@ -27,8 +27,8 @@ namespace Fashionista.Application.ProductColors.Commands.CreateColor
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var productColor = this.mapper.Map<ProductColor>(request);
-            await this.colorsRepository.AddAsync(productColor);
-            await this.colorsRepository.SaveChangesAsync(cancellationToken);
+            await this.productColorsRepository.AddAsync(productColor);
+            await this.productColorsRepository.SaveChangesAsync(cancellationToken);
 
             return productColor.Id;
         }
