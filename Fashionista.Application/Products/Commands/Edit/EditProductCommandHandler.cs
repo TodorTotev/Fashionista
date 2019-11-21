@@ -54,8 +54,8 @@ namespace Fashionista.Application.Products.Commands.Edit
             requestedEntity.IsHidden = request.IsHidden;
             requestedEntity.BrandId = request.BrandId;
             requestedEntity.SubCategoryId = request.SubCategoryId;
-            requestedEntity.ProductColor = request.ProductColor;
-            requestedEntity.ProductSize = request.ProductSize;
+//            requestedEntity.ProductColor = request.ProductColor;
+//            requestedEntity.ProductSize = request.ProductSize;
             requestedEntity.ProductType = request.ProductType;
 
             if (request.Photos == null)

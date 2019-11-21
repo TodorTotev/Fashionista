@@ -71,13 +71,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Product Color</label>
-                                        <select asp-for="ProductColor" asp-items="Html.GetEnumSelectList<ProductColors>()" class="custom-select"></select>
+                                        @* <select asp-for="ProductColor" asp-items="Html.GetEnumSelectList<ProductColor>()" class="custom-select"></select> *@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Product Type</label>
-                                        <select asp-for="ProductType" asp-items="Html.GetEnumSelectList<ProductTypes>()" class="custom-select"></select>
+                                        <select asp-for="ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="custom-select"></select>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Product Size</label>
-                                        <select asp-for="ProductSize" asp-items="Html.GetEnumSelectList<ProductSize>()" class="custom-select"></select>
+                                        @* <select asp-for="ProductSize" asp-items="Html.GetEnumSelectList<ProductSize>()" class="custom-select"></select> *@
                                     </div>
                                 </div>
                             </div>

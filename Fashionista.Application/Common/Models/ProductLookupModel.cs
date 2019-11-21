@@ -33,9 +33,9 @@ namespace Fashionista.Application.Common.Models
 
         public int ReviewsCount { get; set; }
 
-        public ProductTypes ProductType { get; set; }
+        public ProductType ProductType { get; set; }
 
-        public ProductColors ProductColor { get; set; }
+        public ProductColor ProductColor { get; set; }
 
         public ProductSize ProductSize { get; set; }
 

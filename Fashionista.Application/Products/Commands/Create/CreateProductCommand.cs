@@ -29,11 +29,11 @@ namespace Fashionista.Application.Products.Commands.Create
 
         public ICollection<IFormFile> Photos { get; set; }
 
-        public ProductTypes ProductType { get; set; }
+        public ProductType ProductType { get; set; }
 
-        public ProductColors ProductColor { get; set; }
-
-        public ProductSize ProductSize { get; set; }
+//        public ProductColor ProductColor { get; set; }
+//
+//        public ProductSize ProductSize { get; set; }
 
         public GetAllSubCategoriesSelectListViewModel SubCategories { get; set; }
 

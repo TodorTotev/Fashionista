@@ -49,6 +49,7 @@
           <e p="Models" t="Include">
             <e p="BrandLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
+            <e p="ProductLookupModel.cs" t="Include" />
             <e p="SubCategoryLookupModel.cs" t="Include" />
           </e>
         </e>
@@ -128,8 +129,20 @@
               <e p="CreateProductCommandHandler.cs" t="Include" />
               <e p="CreateProductCommandValidator.cs" t="Include" />
             </e>
+            <e p="Edit" t="Include">
+              <e p="EditProductCommand.cs" t="Include" />
+              <e p="EditProductCommandHandler.cs" t="Include" />
+              <e p="EditProductCommandValidator.cs" t="Include" />
+            </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetAllProductsPaged" t="Include">
+              <e p="GetAllProductsPagedQuery.cs" t="Include" />
+              <e p="GetAllProductsPagedQueryHandler.cs" t="Include" />
+              <e p="GetAllProductsPagedViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -233,9 +246,15 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
-            <e p="CreateProductCommandTests.cs" t="Include" />
+            <e p="Create" t="Include">
+              <e p="CreateProductCommandTests.cs" t="Include" />
+            </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetAllProductsPaged" t="Include">
+              <e p="GetAllProductsPagedQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="SubCategories" t="Include">
           <e p="Commands" t="Include">
@@ -286,16 +305,19 @@
             <e p="OrderState.cs" t="Include" />
             <e p="PaymentState.cs" t="Include" />
             <e p="PaymentType.cs" t="Include" />
-            <e p="ProductColors.cs" t="Include" />
+            <e p="ProductColor.cs" t="Include" />
             <e p="ProductSize.cs" t="Include" />
             <e p="ProductSort.cs" t="Include" />
-            <e p="ProductTypes.cs" t="Include" />
+            <e p="ProductType.cs" t="Include" />
           </e>
           <e p="FavoriteProduct.cs" t="Include" />
           <e p="MainCategory.cs" t="Include" />
           <e p="Order.cs" t="Include" />
           <e p="OrderProduct.cs" t="Include" />
           <e p="Product.cs" t="Include" />
+          <e p="ProductAttributes.cs" t="Include" />
+          <e p="ProductColor.cs" t="Include" />
+          <e p="ProductSize.cs" t="Include" />
           <e p="Review.cs" t="Include" />
           <e p="ShoppingCart.cs" t="Include" />
           <e p="ShoppingCartProduct.cs" t="Include" />
@@ -373,6 +395,8 @@
           <e p="20191120165713_BrandPhotos.Designer.cs" t="Include" />
           <e p="20191120211419_RemovePhotoEntity.cs" t="Include" />
           <e p="20191120211419_RemovePhotoEntity.Designer.cs" t="Include" />
+          <e p="20191121090015_ProductEntityModification.cs" t="Include" />
+          <e p="20191121090015_ProductEntityModification.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

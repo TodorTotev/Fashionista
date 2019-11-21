@@ -34,9 +34,9 @@ namespace Fashionista.Application.Tests.Products.Commands.Create
                 Photos = It.IsAny<ICollection<IFormFile>>(),
                 BrandId = 1,
                 Price = 120,
-                ProductColor = ProductColors.Brown,
-                ProductSize = ProductSize.L,
-                ProductType = ProductTypes.Men,
+//                ProductColor = ProductColor.Brown,
+//                ProductSize = ProductSize.L,
+                ProductType = ProductType.Men,
                 SubCategoryId = 1,
             };
 
@@ -61,9 +61,9 @@ namespace Fashionista.Application.Tests.Products.Commands.Create
             createdProduct.Price.ShouldBe(120);
             createdProduct.BrandId.ShouldBe(1);
 
-            createdProduct.ProductColor.ShouldBe(ProductColors.Brown);
-            createdProduct.ProductSize.ShouldBe(ProductSize.L);
-            createdProduct.ProductType.ShouldBe(ProductTypes.Men);
+//            createdProduct.ProductColor.ShouldBe(ProductColor.Brown);
+//            createdProduct.ProductSize.ShouldBe(ProductSize.L);
+            createdProduct.ProductType.ShouldBe(ProductType.Men);
             createdProduct.SubCategoryId.ShouldBe(1);
         }
     }

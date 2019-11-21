@@ -62,9 +62,9 @@ namespace Fashionista.Application.Tests.Infrastructure
                 IsHidden = false,
                 Photos = new List<string>(),
                 Reviews = new List<Review>(),
-                ProductColor = ProductColors.Brown,
-                ProductSize = ProductSize.L,
-                ProductType = ProductTypes.Men,
+//                ProductColor = ProductColor.Brown,
+//                ProductSize = ProductSize.L,
+                ProductType = ProductType.Men,
                 SubCategoryId = 1,
             });
 
@@ -77,9 +77,9 @@ namespace Fashionista.Application.Tests.Infrastructure
                 IsHidden = true,
                 Photos = new List<string>(),
                 Reviews = new List<Review>(),
-                ProductColor = ProductColors.Brown,
-                ProductSize = ProductSize.L,
-                ProductType = ProductTypes.Men,
+//                ProductColor = ProductColor.Brown,
+//                ProductSize = ProductSize.L,
+                ProductType = ProductType.Men,
                 SubCategoryId = 1,
             });
 
