@@ -24,7 +24,7 @@ namespace Fashionista.Application.ProductSizes.Queries.GetSize
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfProductSizeExists(request.Name, this.productSizesRepository))
+            if (!await CommonCheckAssistant.CheckIfProductSizeExistsByName(request.Name, this.productSizesRepository))
             {
                 throw new NotFoundException(nameof(ProductSize), request.Name);
             }

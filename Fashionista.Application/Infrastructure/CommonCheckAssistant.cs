@@ -55,7 +55,7 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Name == name);
         }
 
-        internal static async Task<bool> CheckIfProductColorExists(
+        internal static async Task<bool> CheckIfProductColorExistsByName(
             string name,
             IDeletableEntityRepository<ProductColor> colorsRepository)
         {
@@ -64,11 +64,11 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Name == name);
         }
 
-        internal static async Task<bool> CheckIfProductSizeExists(
+        internal static async Task<bool> CheckIfProductSizeExistsByName(
             string name,
-            IDeletableEntityRepository<ProductSize> colorsRepository)
+            IDeletableEntityRepository<ProductSize> sizesRepository)
         {
-            return await colorsRepository
+            return await sizesRepository
                 .AllAsNoTracking()
                 .AnyAsync(x => x.Name == name);
         }

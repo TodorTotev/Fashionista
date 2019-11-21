@@ -122,6 +122,33 @@
             </e>
           </e>
         </e>
+        <e p="ProductAttributes" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductAttributeCommand.cs" t="Include" />
+              <e p="CreateProductAttributeCommandHandler.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
+        <e p="ProductColors" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductColorCommand.cs" t="Include" />
+              <e p="CreateProductColorCommandHandler.cs" t="Include" />
+              <e p="CreateProductColorCommandValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetColor" t="Include">
+              <e p="GetProductColorQuery.cs" t="Include" />
+              <e p="GetProductColorQueryHandler.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
@@ -143,6 +170,24 @@
               <e p="GetAllProductsPagedQuery.cs" t="Include" />
               <e p="GetAllProductsPagedQueryHandler.cs" t="Include" />
               <e p="GetAllProductsPagedViewModel.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ProductSizes" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductSizeCommand.cs" t="Include" />
+              <e p="CreateProductSizeCommandHandler.cs" t="Include" />
+              <e p="CreateProductSizeCommandValidation.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetSize" t="Include">
+              <e p="GetProductSizeQuery.cs" t="Include" />
+              <e p="GetProductSizeQueryHandler.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -244,6 +289,28 @@
             </e>
           </e>
         </e>
+        <e p="ProductAttributes" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductAttributeCommandTests" t="Include">
+                <e p="CreateProductAttributeCommandTests.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
+        <e p="ProductColors" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductColorCommandTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetColor" t="Include">
+              <e p="GetProductColorQueryTests.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
@@ -253,6 +320,16 @@
           <e p="Queries" t="Include">
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQueryTests.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ProductSizes" t="Include">
+          <e p="Commands" t="Include">
+            <e p="CreateProductSizeCommandTests.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetProductSize" t="Include">
+              <e p="GetProductSizeQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -305,8 +382,6 @@
             <e p="OrderState.cs" t="Include" />
             <e p="PaymentState.cs" t="Include" />
             <e p="PaymentType.cs" t="Include" />
-            <e p="ProductColor.cs" t="Include" />
-            <e p="ProductSize.cs" t="Include" />
             <e p="ProductSort.cs" t="Include" />
             <e p="ProductType.cs" t="Include" />
           </e>

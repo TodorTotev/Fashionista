@@ -24,7 +24,7 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfProductColorExists(request.Name, this.colorsRepository))
+            if (!await CommonCheckAssistant.CheckIfProductColorExistsByName(request.Name, this.colorsRepository))
             {
                 throw new NotFoundException(nameof(ProductColor), request.Name);
             }
