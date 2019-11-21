@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create.CreateProductAttributeCommandTests
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.ProductAttributes.Commands.Create;
