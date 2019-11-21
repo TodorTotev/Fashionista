@@ -5,6 +5,8 @@ namespace Fashionista.Application.ProductColors.Commands.Create
     using System.Threading.Tasks;
 
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -25,6 +27,13 @@ namespace Fashionista.Application.ProductColors.Commands.Create
         public async Task<int> Handle(CreateProductColorCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
+
+            if (await CommonCheckAssistant.CheckIfProductColorWithSameNameExists(
+                request.Name,
+                this.productColorsRepository))
+            {
+                throw new EntityAlreadyExistsException(nameof(ProductColor), request.Name);
+            }
 
             var productColor = this.mapper.Map<ProductColor>(request);
             await this.productColorsRepository.AddAsync(productColor);

@@ -1,3 +1,5 @@
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.ProductColors.Commands.Create
 {
     using System;
@@ -17,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateColor()
         {
             // Arrange
-            var command = new CreateProductColorCommand { Name = "TestColor" };
+            var command = new CreateProductColorCommand { Name = "NewColor" };
             var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
@@ -28,7 +30,19 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.Create
                 .GetByIdWithDeletedAsync(id);
 
             createdColor.Id.ShouldBe(2);
-            createdColor.Name.ShouldBe("TestColor");
+            createdColor.Name.ShouldBe("NewColor");
+        }
+
+        [Trait(nameof(ProductColor), "CreateProductColor command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new CreateProductColorCommand { Name = "TestColor" };
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(ProductColor), "CreateColor command tests")]
