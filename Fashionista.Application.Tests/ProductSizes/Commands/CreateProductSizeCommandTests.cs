@@ -3,6 +3,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductSizes.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -18,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands
         public async Task Handle_GivenValidRequest_ShouldCreateSize()
         {
             // Arrange
-            var command = new CreateProductSizeCommand { Name = "TestSize" };
+            var command = new CreateProductSizeCommand { Name = "NewSize" };
             var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
@@ -29,7 +30,19 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands
             var createdSize = await this.dbContext.ProductSizes
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            createdSize.Name.ShouldBe("TestSize");
+            createdSize.Name.ShouldBe("NewSize");
+        }
+
+        [Trait(nameof(ProductSize), "CreateProductSize command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new CreateProductSizeCommand { Name = "TestSize" };
+            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(ProductSize), "CreateProductSize command tests")]

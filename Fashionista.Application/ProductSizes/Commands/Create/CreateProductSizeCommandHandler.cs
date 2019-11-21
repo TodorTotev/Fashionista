@@ -5,6 +5,8 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
     using System.Threading.Tasks;
 
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -25,6 +27,13 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
         public async Task<int> Handle(CreateProductSizeCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
+
+            if (await CommonCheckAssistant.CheckIfProductSizeWithSameNameExists(
+                request.Name,
+                this.productSizeRepository))
+            {
+                throw new EntityAlreadyExistsException(nameof(ProductSize), request.Name);
+            }
 
             var productSize = this.mapper.Map<ProductSize>(request);
             await this.productSizeRepository.AddAsync(productSize);
