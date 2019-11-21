@@ -3,6 +3,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductAttributes.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -28,10 +29,11 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
             var attribute = await this.dbContext.ProductAttributes
                 .FirstOrDefaultAsync(x => x.Id == action.Id);
 
-            attribute.Id.ShouldBe(1);
+            attribute.Id.ShouldBe(2);
             attribute.ShouldNotBeNull();
             attribute.ProductColor.Name.ShouldBe("TestColor");
             attribute.ProductSize.Name.ShouldBe("TestSize");
+            attribute.Product.Name.ShouldBe("DraftProduct");
         }
 
         [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
@@ -43,6 +45,18 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new CreateProductAttributeCommand { Quantity = 1, ProductColorId = 1, ProductSizeId = 1, ProductId = 1 };
+            var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository, this.mapper);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }

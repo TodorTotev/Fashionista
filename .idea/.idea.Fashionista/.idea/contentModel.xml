@@ -168,6 +168,10 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Edit" t="Include">
+              <e p="EditProductQuery.cs" t="Include" />
+              <e p="EditProductQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQuery.cs" t="Include" />
               <e p="GetAllProductsPagedQueryHandler.cs" t="Include" />
@@ -316,8 +320,12 @@
             <e p="Create" t="Include">
               <e p="CreateProductCommandTests.cs" t="Include" />
             </e>
+            <e p="Edit" t="Include" />
           </e>
           <e p="Queries" t="Include">
+            <e p="Edit" t="Include">
+              <e p="EditProductQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQueryTests.cs" t="Include" />
             </e>

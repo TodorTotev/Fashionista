@@ -1,3 +1,5 @@
+using System;
+
 namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
 {
     using System.Threading;
@@ -40,6 +42,17 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(MainCategory), "EditMainCategory query tests")]
+        [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
+        public async Task Handle_GivenNullRequest_ShouldTurnArgumentNullException()
+        {
+            // Arrange
+            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+
+            // Act & Assert
+            await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
     }
 }
