@@ -39,6 +39,12 @@
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ProductAttributes> ProductAttributes { get; set; }
+
+        public DbSet<ProductColor> ProductColors { get; set; }
+
+        public DbSet<ProductSize> ProductSizes { get; set; }
+
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         public DbSet<ShoppingCartProduct> ShoppingCartProducts { get; set; }
