@@ -5,6 +5,6 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
 
     public class GetProductColorQuery : IRequest<ProductColor>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
     }
 }

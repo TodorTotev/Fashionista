@@ -24,14 +24,14 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfProductColorExistsByName(request.Name, this.colorsRepository))
+            if (!await CommonCheckAssistant.CheckIfProductColorExistsByName(request.Id, this.colorsRepository))
             {
-                throw new NotFoundException(nameof(ProductColor), request.Name);
+                throw new NotFoundException(nameof(ProductColor), "Color doesnt exist!");
             }
 
             return await this.colorsRepository
                 .AllAsNoTracking()
-                .FirstOrDefaultAsync(x => x.Name == request.Name, cancellationToken);
+                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         }
     }
 }

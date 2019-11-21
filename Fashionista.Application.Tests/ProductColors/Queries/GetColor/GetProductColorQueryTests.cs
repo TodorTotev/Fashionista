@@ -18,7 +18,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         public async Task Handle_GivenValidRequest_ShouldReturnColor()
         {
             // Arrange
-            var query = new GetProductColorQuery { Name = "TestColor" };
+            var query = new GetProductColorQuery { Id = 1 };
             var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act
@@ -34,7 +34,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         public async Task Handle_GivenValidRequest_ShouldReturnNotFoundException()
         {
             // Arrange
-            var query = new GetProductColorQuery { Name = "InvalidName" };
+            var query = new GetProductColorQuery { Id = 1000 };
             var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
