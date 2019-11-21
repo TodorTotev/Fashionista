@@ -1,4 +1,4 @@
-namespace Fashionista.Application.ProductAttributes.Commands.Validation
+namespace Fashionista.Application.ProductColors.Commands.Validation
 {
     internal static class Constants
     {

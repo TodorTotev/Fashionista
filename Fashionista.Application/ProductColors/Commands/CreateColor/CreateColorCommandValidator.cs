@@ -1,9 +1,11 @@
-namespace Fashionista.Application.ProductAttributes.Commands.CreateColor
+using Fashionista.Application.ProductColors.Commands.Validation;
+
+namespace Fashionista.Application.ProductColors.Commands.CreateColor
 {
     using Fashionista.Domain.Entities;
     using FluentValidation;
 
-    using static Validation.Constants;
+    using static Constants;
 
     public class CreateColorCommandValidator : AbstractValidator<ProductColor>
     {

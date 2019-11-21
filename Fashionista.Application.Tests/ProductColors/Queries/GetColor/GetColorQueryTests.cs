@@ -1,10 +1,10 @@
-namespace Fashionista.Application.Tests.ProductAttributes.Queries.GetColor
+namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Exceptions;
-    using Fashionista.Application.ProductAttributes.Queries.GetColor;
+    using Fashionista.Application.ProductColors.Queries.GetColor;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;

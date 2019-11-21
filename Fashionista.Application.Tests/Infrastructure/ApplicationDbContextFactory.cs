@@ -53,6 +53,11 @@ namespace Fashionista.Application.Tests.Infrastructure
 
             dbContext.SaveChanges();
 
+            dbContext.ProductColors.Add(new ProductColor
+            {
+                Name = "TestColor",
+            });
+            
             dbContext.Products.Add(new Product
             {
                 Name = "ActiveProduct",

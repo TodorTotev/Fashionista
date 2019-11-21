@@ -1,4 +1,4 @@
-namespace Fashionista.Application.ProductAttributes.Queries.GetColor
+namespace Fashionista.Application.ProductColors.Queries.GetColor
 {
     using System;
     using System.Threading;

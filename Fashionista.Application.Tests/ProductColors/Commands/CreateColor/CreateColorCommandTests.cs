@@ -1,13 +1,11 @@
-using System;
-
-namespace Fashionista.Application.Tests.ProductAttributes.Commands.CreateColor
+namespace Fashionista.Application.Tests.ProductColors.Commands.CreateColor
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.ProductAttributes.Commands.CreateColor;
+    using Fashionista.Application.ProductColors.Commands.CreateColor;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
-    using Microsoft.VisualStudio.TestPlatform.ObjectModel;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -29,7 +27,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.CreateColor
             var createdColor = await this.deletableEntityRepository
                 .GetByIdWithDeletedAsync(id);
 
-            createdColor.Id.ShouldBe(1);
+            createdColor.Id.ShouldBe(2);
             createdColor.Name.ShouldBe("TestColor");
         }
 

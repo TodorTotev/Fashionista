@@ -1,4 +1,4 @@
-namespace Fashionista.Application.ProductAttributes.Commands.CreateColor
+namespace Fashionista.Application.ProductColors.Commands.CreateColor
 {
     using System;
     using System.Threading;

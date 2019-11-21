@@ -55,7 +55,7 @@ namespace Fashionista.Application.Tests.Products.Commands.Create
                 .AllAsNoTracking()
                 .SingleOrDefault(x => x.Name == "ValidName");
 
-            id.ShouldBe(2);
+            id.ShouldBe(3);
             createdProduct.Name.ShouldBe("ValidName");
             createdProduct.Description.ShouldBe("ValidDescription");
             createdProduct.Price.ShouldBe(120);
