@@ -1,3 +1,5 @@
+using System;
+
 namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
 {
     using System.Threading;
@@ -41,6 +43,17 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(SubCategory), "EditSubCategory query tests")]
+        [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
+        public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+
+            // Act & Assert
+            await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
     }
 }

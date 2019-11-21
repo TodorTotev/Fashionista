@@ -320,7 +320,9 @@
             <e p="Create" t="Include">
               <e p="CreateProductCommandTests.cs" t="Include" />
             </e>
-            <e p="Edit" t="Include" />
+            <e p="Edit" t="Include">
+              <e p="EditProductCommandTests.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
             <e p="Edit" t="Include">
