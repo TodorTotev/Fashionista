@@ -54,6 +54,7 @@ namespace Fashionista.Application.Products.Commands.Create
                 foreach (var photo in request.Photos)
                 {
                     product.Photos.Add(await this.UploadImage(photo));
+                    product.Photos.Remove("Microsoft.AspNetCore.Http.FormFile");
                 }
             }
 
