@@ -3,6 +3,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductSizes.Queries.GetSize;
     using Fashionista.Application.Tests.Infrastructure;
@@ -19,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         {
             // Arrange
             var query = new GetProductSizeQuery { Id = 1 };
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
             var size = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -27,6 +28,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
             // Assert
             size.ShouldNotBeNull();
             size.Name.ShouldBe("TestSize");
+            size.ShouldBeOfType<ProductSizeLookupModel>();
         }
 
         [Trait(nameof(ProductSize), "GetProductSize query tests")]
@@ -34,7 +36,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
@@ -46,7 +48,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         {
             // Arrange
             var query = new GetProductSizeQuery { Id = 1000 };
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
