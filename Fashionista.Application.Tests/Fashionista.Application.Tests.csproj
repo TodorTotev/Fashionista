@@ -26,4 +26,8 @@
       <ProjectReference Include="..\Fashionista.Persistence\Fashionista.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ProductAttributes\Queries" />
+    </ItemGroup>
+
 </Project>

@@ -26,7 +26,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.CreateColor
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            var productColor = this.mapper.Map<ProductColor>(this.mapper.ConfigurationProvider);
+            var productColor = this.mapper.Map<ProductColor>(request);
             await this.colorsRepository.AddAsync(productColor);
             await this.colorsRepository.SaveChangesAsync(cancellationToken);
 
