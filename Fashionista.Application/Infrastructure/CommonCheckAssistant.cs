@@ -1,7 +1,8 @@
+// ReSharper disable SA1124
+
 namespace Fashionista.Application.Infrastructure
 {
     using System.Threading.Tasks;
-
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
@@ -26,15 +27,6 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Name == name);
         }
 
-        internal static async Task<bool> CheckIfBrandWithSameNameExists(
-            string name,
-            IDeletableEntityRepository<Brand> brandRepository)
-        {
-            return await brandRepository
-                .AllAsNoTracking()
-                .AnyAsync(x => x.Name == name);
-        }
-
         internal static async Task<bool> CheckIfBrandExists(
             int brandId,
             IDeletableEntityRepository<Brand> brandRepository)
@@ -44,11 +36,38 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Id == brandId);
         }
 
+        internal static async Task<bool> CheckIfBrandWithSameNameExists(
+            string name,
+            IDeletableEntityRepository<Brand> brandRepository)
+        {
+            return await brandRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
+        }
+
         internal static async Task<bool> CheckIfProductWithSameNameExists(
             string name,
             IDeletableEntityRepository<Product> productRepository)
         {
             return await productRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
+        }
+
+        internal static async Task<bool> CheckIfProductColorExists(
+            string name,
+            IDeletableEntityRepository<ProductColor> colorsRepository)
+        {
+            return await colorsRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
+        }
+
+        internal static async Task<bool> CheckIfProductSizeExists(
+            string name,
+            IDeletableEntityRepository<ProductColor> colorsRepository)
+        {
+            return await colorsRepository
                 .AllAsNoTracking()
                 .AnyAsync(x => x.Name == name);
         }

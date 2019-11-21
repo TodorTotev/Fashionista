@@ -25,4 +25,8 @@
       <ProjectReference Include="..\Fashionista.Domain\Fashionista.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ProductAttributes\Queries" />
+    </ItemGroup>
+
 </Project>
