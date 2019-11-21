@@ -1,7 +1,6 @@
-using Fashionista.Application.Common.Models;
-
 namespace Fashionista.Application.ProductColors.Queries.GetColor
 {
+    using Fashionista.Application.Common.Models;
     using Fashionista.Domain.Entities;
     using MediatR;
 

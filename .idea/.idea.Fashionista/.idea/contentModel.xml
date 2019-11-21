@@ -10,7 +10,6 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Fashionista.1260509013.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p=".git/info/exclude" t="IncludeRecursive" />
       <e p="Common" t="Include" />
       <e p="Core" t="Include" />
       <e p="Fashionista.Application" t="IncludeRecursive">
@@ -49,7 +48,9 @@
           <e p="Models" t="Include">
             <e p="BrandLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
+            <e p="ProductColorLookupModel.cs" t="Include" />
             <e p="ProductLookupModel.cs" t="Include" />
+            <e p="ProductSizeLookupModel.cs" t="Include" />
             <e p="SubCategoryLookupModel.cs" t="Include" />
           </e>
         </e>
@@ -152,10 +153,6 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
-            <e p="AssignAttributes" t="Include">
-              <e p="AssignProductAttributesCommand.cs" t="Include" />
-              <e p="AssignProductAttributesCommandHandler.cs" t="Include" />
-            </e>
             <e p="Create" t="Include">
               <e p="CreateProductCommand.cs" t="Include" />
               <e p="CreateProductCommandHandler.cs" t="Include" />
@@ -297,9 +294,7 @@
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
-              <e p="CreateProductAttributeCommandTests" t="Include">
-                <e p="CreateProductAttributeCommandTests.cs" t="Include" />
-              </e>
+              <e p="CreateProductAttributeCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include" />

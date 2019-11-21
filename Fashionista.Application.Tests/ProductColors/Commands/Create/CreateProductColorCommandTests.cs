@@ -1,10 +1,9 @@
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.ProductColors.Commands.Create
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductColors.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;

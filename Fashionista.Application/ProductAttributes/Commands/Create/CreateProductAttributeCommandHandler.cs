@@ -1,3 +1,6 @@
+using Fashionista.Application.Exceptions;
+using Fashionista.Application.Infrastructure;
+
 namespace Fashionista.Application.ProductAttributes.Commands.Create
 {
     using System;
@@ -25,6 +28,17 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
         public async Task<ProductAttributes> Handle(CreateProductAttributeCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
+            
+            if (await CommonCheckAssistant.CheckIfProductAttributeExists(
+                request.ProductColorId,
+                request.ProductSizeId,
+                request.ProductId,
+                this.productAttributesRepository))
+            {
+                throw new EntityAlreadyExistsException(
+                    nameof(Product),
+                    "Attribute with same color and size already exists!");
+            }
 
             var attribute = this.mapper.Map<ProductAttributes>(request);
 

@@ -1,23 +1,24 @@
-namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create.CreateProductAttributeCommandTests
+namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.ProductAttributes.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
+    using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
     using Moq;
     using Shouldly;
     using Xunit;
 
-    public class CreateProductAttributeCommandTests : BaseTest<Domain.Entities.ProductAttributes>
+    public class CreateProductAttributeCommandTests : BaseTest<ProductAttributes>
     {
         [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
         [Fact(DisplayName = "Handle given valid request should create attribute")]
         public async Task Handle_GivenValidRequest_ShouldCreateAttribute()
         {
             // Arrange
-            var command = new CreateProductAttributeCommand { Quantity = 1, ProductColorId = 1, ProductSizeId = 1 };
+            var command = new CreateProductAttributeCommand { Quantity = 1, ProductColorId = 1, ProductSizeId = 1, ProductId = 2 };
             var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
@@ -27,7 +28,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create.Create
             var attribute = await this.dbContext.ProductAttributes
                 .FirstOrDefaultAsync(x => x.Id == action.Id);
 
-            attribute.Id.ShouldBe(2);
+            attribute.Id.ShouldBe(1);
             attribute.ShouldNotBeNull();
             attribute.ProductColor.Name.ShouldBe("TestColor");
             attribute.ProductSize.Name.ShouldBe("TestSize");

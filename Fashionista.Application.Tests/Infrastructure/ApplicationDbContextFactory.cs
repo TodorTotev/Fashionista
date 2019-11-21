@@ -62,16 +62,18 @@ namespace Fashionista.Application.Tests.Infrastructure
             dbContext.ProductSizes.AddAsync(new ProductSize
             {
                 Name = "TestSize",
+                MainCategoryId = 1,
             });
 
             dbContext.SaveChanges();
 
-            dbContext.ProductAttributes.AddAsync(new ProductAttributes
+            var attribute = new ProductAttributes
             {
                 Quantity = 1,
                 ProductSizeId = 1,
                 ProductColorId = 1,
-            });
+                ProductId = 1,
+            };
 
             dbContext.SaveChanges();
 

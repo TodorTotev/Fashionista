@@ -3,7 +3,6 @@ namespace Fashionista.Application.Infrastructure
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Threading.Tasks;
-
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
@@ -12,6 +11,7 @@ namespace Fashionista.Application.Infrastructure
     internal static class CommonCheckAssistant
     {
         #region Categories
+
         internal static async Task<bool> CheckIfMainCategoryWithSameNameExists(
             string name,
             IDeletableEntityRepository<MainCategory> mainCategoryRepository)
@@ -105,15 +105,13 @@ namespace Fashionista.Application.Infrastructure
             int colorId,
             int sizeId,
             int productId,
-            IDeletableEntityRepository<Product> productRepository)
+            IDeletableEntityRepository<ProductAttributes> productRepository)
         {
             return await productRepository
                 .All()
-                .AnyAsync(
-                    x => x.Id == productId
-                               && x.ProductAttributes.Any(
-                                   attribute => attribute.ProductSize.Id == sizeId
-                                                                       && attribute.ProductColor.Id == colorId));
+                .AnyAsync(x => x.ProductId == productId &&
+                               x.ProductSizeId == sizeId
+                               && x.ProductColorId == colorId);
         }
 
         #endregion

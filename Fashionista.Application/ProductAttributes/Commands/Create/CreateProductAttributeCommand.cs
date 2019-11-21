@@ -10,6 +10,8 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
 
         public int ProductSizeId { get; set; }
 
+        public int ProductId { get; set; }
+
         public int Quantity { get; set; }
     }
 }
