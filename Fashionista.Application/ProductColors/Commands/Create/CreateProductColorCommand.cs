@@ -7,5 +7,7 @@ namespace Fashionista.Application.ProductColors.Commands.Create
     public class CreateProductColorCommand : IRequest<int>, IMapTo<ProductColor>
     {
         public string Name { get; set; }
+
+        public int ProductId { get; set; }
     }
 }

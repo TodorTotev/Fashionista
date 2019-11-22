@@ -557,6 +557,7 @@
               <e p="BrandsController.cs" t="Include" />
               <e p="HomeController.cs" t="Include" />
               <e p="MainCategoriesController.cs" t="Include" />
+              <e p="ProductColorController.cs" t="Include" />
               <e p="ProductsController.cs" t="Include" />
               <e p="ProductSizeController.cs" t="Include" />
               <e p="SubCategoriesController.cs" t="Include" />
@@ -573,6 +574,9 @@
                 <e p="Create.cshtml" t="Include" />
                 <e p="Edit.cshtml" t="Include" />
                 <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="ProductColor" t="Include">
+                <e p="Create.cshtml" t="Include" />
               </e>
               <e p="products" t="Include">
                 <e p="AddAttributes.cshtml" t="Include" />
