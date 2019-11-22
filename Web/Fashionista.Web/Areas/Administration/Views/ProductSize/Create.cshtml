@@ -13,7 +13,7 @@
                         <input type="hidden" asp-for="ProductId"/>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-body">
-                            <h5 class="card-title">Add Attributes</h5>
+                            <h5 class="card-title">Create a new size</h5>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
@@ -48,3 +48,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

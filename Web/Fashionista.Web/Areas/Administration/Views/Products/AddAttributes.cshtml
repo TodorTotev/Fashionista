@@ -10,7 +10,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form asp-controller="Products" asp-action="Create" method="post" enctype="multipart/form-data">
+                    <form asp-controller="Products" asp-action="AddAttributes" method="post">
+                        <input asp-for="ProductId" hidden/>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-body">
                             <h5 class="card-title">Add Attributes</h5>
@@ -51,7 +52,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Product Colors</label>
-                                        <select asp-for="ProductSizeId" asp-items="@Model.ColorsSelectListViewModel.AllColors" class="custom-select">
+                                        <select asp-for="ProductColorId" asp-items="@Model.ColorsSelectListViewModel.AllColors" class="custom-select">
                                             @if (!Model.SizesSelectListViewModel.AllSizes.Any())
                                             {
                                                 <option value="" disabled selected> There are no available colors, please add new size from the link below! </option>
@@ -61,7 +62,7 @@
                                                 <option value="" disabled selected> Please select size</option>
                                             }
                                         </select>
-                                        <button asp-controller="SubCategories" asp-action="Create" type="submit" class="btn btn-link">Click here to add new color</button>
+                                        <a asp-controller="ProductColor" asp-action="Create" asp-route-id="@Model.ProductId" class="btn btn-link">Click here to add new color</a>
                                     </div>
                                 </div>
                             </div>
