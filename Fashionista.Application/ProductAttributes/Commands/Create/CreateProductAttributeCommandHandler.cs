@@ -1,6 +1,3 @@
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Infrastructure;
-
 namespace Fashionista.Application.ProductAttributes.Commands.Create
 {
     using System;
@@ -8,6 +5,8 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
     using System.Threading.Tasks;
 
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -28,7 +27,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
         public async Task<ProductAttributes> Handle(CreateProductAttributeCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
-            
+
             if (await CommonCheckAssistant.CheckIfProductAttributeExists(
                 request.ProductColorId,
                 request.ProductSizeId,

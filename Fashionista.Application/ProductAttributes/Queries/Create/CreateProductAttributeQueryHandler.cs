@@ -31,6 +31,7 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
             {
                 ProductId = requestedEntity.Id,
                 ProductName = requestedEntity.Name,
+                MainCategoryId = requestedEntity.SubCategory.MainCategoryId,
             };
         }
     }
