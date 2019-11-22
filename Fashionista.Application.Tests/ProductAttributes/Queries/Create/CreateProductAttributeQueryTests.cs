@@ -12,7 +12,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
     using Shouldly;
     using Xunit;
 
-    public class CreateProductAttributeQueryTests : BaseTest<ProductAttributes>
+    public class CreateProductAttributeQueryTests : BaseTest<Product>
     {
         [Trait(nameof(ProductAttributes), "CreateProductAttribute query tests")]
         [Fact(DisplayName = "Handle given valid request should return command")]
@@ -28,6 +28,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
             // Assert
             command.ShouldNotBeNull();
             command.ProductId.ShouldBe(1);
+            command.ProductName.ShouldBe("ActiveProduct");
             command.ShouldBeOfType<CreateProductAttributeCommand>();
         }
 

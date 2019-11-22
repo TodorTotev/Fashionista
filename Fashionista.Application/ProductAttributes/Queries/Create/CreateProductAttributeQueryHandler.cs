@@ -12,9 +12,9 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
 
     public class CreateProductAttributeQueryHandler : IRequestHandler<CreateProductAttributeQuery, CreateProductAttributeCommand>
     {
-        private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
+        private readonly IDeletableEntityRepository<Product> productAttributesRepository;
 
-        public CreateProductAttributeQueryHandler(IDeletableEntityRepository<ProductAttributes> productAttributesRepository)
+        public CreateProductAttributeQueryHandler(IDeletableEntityRepository<Product> productAttributesRepository)
         {
             this.productAttributesRepository = productAttributesRepository;
         }
@@ -30,6 +30,7 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
             return new CreateProductAttributeCommand
             {
                 ProductId = requestedEntity.Id,
+                ProductName = requestedEntity.Name,
             };
         }
     }

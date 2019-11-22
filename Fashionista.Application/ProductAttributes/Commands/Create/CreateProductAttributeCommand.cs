@@ -6,6 +6,8 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
 
     public class CreateProductAttributeCommand : IRequest<ProductAttributes>, IMapTo<ProductAttributes>
     {
+        public string ProductName { get; set; }
+
         public int ProductColorId { get; set; }
 
         public int ProductSizeId { get; set; }
