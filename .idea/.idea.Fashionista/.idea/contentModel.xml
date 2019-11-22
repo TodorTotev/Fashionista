@@ -150,6 +150,11 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllColorsSelectList" t="Include">
+              <e p="GetAllColorsSelectListQuery.cs" t="Include" />
+              <e p="GetAllColorsSelectListQueryHandler.cs" t="Include" />
+              <e p="GetAllColorsSelectListViewModel.cs" t="Include" />
+            </e>
             <e p="GetColor" t="Include">
               <e p="GetProductColorQuery.cs" t="Include" />
               <e p="GetProductColorQueryHandler.cs" t="Include" />
@@ -200,6 +205,11 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSizesSelectList" t="Include">
+              <e p="GetAllSizesSelectListQuery.cs" t="Include" />
+              <e p="GetAllSizesSelectListQueryHandler.cs" t="Include" />
+              <e p="GetAllSizesSelectListViewModel.cs" t="Include" />
+            </e>
             <e p="GetSize" t="Include">
               <e p="GetProductSizeQuery.cs" t="Include" />
               <e p="GetProductSizeQueryHandler.cs" t="Include" />
@@ -323,6 +333,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllColorsSelectList" t="Include">
+              <e p="GetAllColorsSelectListQueryTests.cs" t="Include" />
+            </e>
             <e p="GetColor" t="Include">
               <e p="GetProductColorQueryTests.cs" t="Include" />
             </e>
@@ -351,9 +364,14 @@
         </e>
         <e p="ProductSizes" t="Include">
           <e p="Commands" t="Include">
-            <e p="CreateProductSizeCommandTests.cs" t="Include" />
+            <e p="Create" t="Include">
+              <e p="CreateProductSizeCommandTests.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSizesSelectList" t="Include">
+              <e p="GetAllSizesSelectListQueryTests.cs" t="Include" />
+            </e>
             <e p="GetProductSize" t="Include">
               <e p="GetProductSizeQueryTests.cs" t="Include" />
             </e>
@@ -556,6 +574,7 @@
                 <e p="Index.cshtml" t="Include" />
               </e>
               <e p="products" t="Include">
+                <e p="AddAttributes.cshtml" t="Include" />
                 <e p="Create.cshtml" t="Include" />
                 <e p="Draft.cshtml" t="Include" />
                 <e p="Edit.cshtml" t="Include" />

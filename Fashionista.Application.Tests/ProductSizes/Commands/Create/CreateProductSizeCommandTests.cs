@@ -1,4 +1,4 @@
-namespace Fashionista.Application.Tests.ProductSizes.Commands
+namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
 {
     using System;
     using System.Threading;
