@@ -1,3 +1,4 @@
+@using Fashionista.Domain.Entities
 @model Fashionista.Application.ProductAttributes.Commands.Create.CreateProductAttributeCommand
 
 @{
@@ -44,7 +45,7 @@
                                                 <option value="" disabled selected> Please select size</option>
                                             }
                                         </select>
-                                        <button asp-controller="SubCategories" asp-action="Create" type="submit" class="btn btn-link">Click here to add new size</button>
+                                        <a asp-controller="ProductSize" asp-action="Create" asp-route-id="@Model.ProductId" class="btn btn-link">Click here to add new size</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

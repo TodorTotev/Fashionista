@@ -1,6 +1,7 @@
 namespace Fashionista.Application.ProductSizes.Commands.Create
 {
     using Fashionista.Application.Interfaces.Mapping;
+    using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
     using Fashionista.Domain.Entities;
     using MediatR;
 
@@ -9,5 +10,9 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
         public string Name { get; set; }
 
         public int MainCategoryId { get; set; }
+
+        public GetAllMainCategoriesSelectListViewModel MainCategoriesSelectList { get; set; }
+
+        public int ProductId { get; set; }
     }
 }

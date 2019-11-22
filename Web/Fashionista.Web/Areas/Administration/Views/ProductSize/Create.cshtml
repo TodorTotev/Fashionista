@@ -1,0 +1,50 @@
+@model Fashionista.Application.ProductSizes.Commands.Create.CreateProductSizeCommand
+
+@{
+    this.ViewData["Title"] = "Administration | Create size";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-controller="ProductSize" asp-action="Create" method="post">
+                        <input type="hidden" asp-for="ProductId"/>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-body">
+                            <h5 class="card-title">Add Attributes</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Size</label>
+                                        <input asp-for="Name" type="text" asp class="form-control" placeholder="Enter your size here">
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Category</label>
+                                        <select asp-for="MainCategoryId" asp-items="@Model.MainCategoriesSelectList.MainCategories" class="custom-select">
+                                            @if (Model.MainCategoriesSelectList.MainCategories.Any())
+                                            {
+                                                <option value="" disabled selected> Please select category </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/row-->
+                        <!--/row-->
+                        <div class="form-actions m-t-40">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

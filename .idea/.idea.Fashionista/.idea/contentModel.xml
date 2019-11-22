@@ -558,6 +558,7 @@
               <e p="HomeController.cs" t="Include" />
               <e p="MainCategoriesController.cs" t="Include" />
               <e p="ProductsController.cs" t="Include" />
+              <e p="ProductSizeController.cs" t="Include" />
               <e p="SubCategoriesController.cs" t="Include" />
             </e>
             <e p="Views" t="Include">
@@ -579,6 +580,9 @@
                 <e p="Draft.cshtml" t="Include" />
                 <e p="Edit.cshtml" t="Include" />
                 <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="ProductSize" t="Include">
+                <e p="Create.cshtml" t="Include" />
               </e>
               <e p="SubCategories" t="Include">
                 <e p="Create.cshtml" t="Include" />
