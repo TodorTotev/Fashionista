@@ -27,14 +27,6 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (request.MainCategoryId == null)
-            {
-                return new GetAllSizesSelectListViewModel
-                {
-                    AllSizes = new List<SelectListItem>(),
-                };
-            }
-
             var sizes = await this.productSizesRepository
                 .AllAsNoTracking()
                 .Where(x => x.MainCategoryId == request.MainCategoryId)
@@ -47,7 +39,10 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
 
             if (sizes.Count == 0)
             {
-                 throw new NotFoundException(nameof(ProductSize), request.MainCategoryId);
+                return new GetAllSizesSelectListViewModel
+                {
+                    AllSizes = new List<SelectListItem>(),
+                };
             }
 
             return new GetAllSizesSelectListViewModel

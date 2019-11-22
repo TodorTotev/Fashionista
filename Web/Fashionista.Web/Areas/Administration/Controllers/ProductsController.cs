@@ -1,4 +1,7 @@
 using Fashionista.Application.ProductAttributes.Commands.Create;
+using Fashionista.Application.ProductAttributes.Queries.Create;
+using Fashionista.Application.ProductColors.Queries.GetAllColorsSelectList;
+using Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList;
 
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
@@ -21,7 +24,7 @@ namespace Fashionista.Web.Areas.Administration.Controllers
         public async Task<IActionResult> Index(int? page)
         {
             page = (page ?? 1) - 1;
-            const int pageSize = 10;
+            const int pageSize = 20;
             var query = new GetAllProductsPagedQuery { PageNumber = page.Value, PageSize = pageSize, IsActive = true };
 
             var viewModel = await this.Mediator.Send(query);
@@ -34,7 +37,7 @@ namespace Fashionista.Web.Areas.Administration.Controllers
         public async Task<IActionResult> Draft(int? page)
         {
             page = (page ?? 1) - 1;
-            const int pageSize = 10;
+            const int pageSize = 20;
             var query = new GetAllProductsPagedQuery { PageNumber = page.Value, PageSize = pageSize, IsActive = false };
 
             var viewModel = await this.Mediator.Send(query);
@@ -96,9 +99,28 @@ namespace Fashionista.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-//        public async Task<IActionResult> AddAttributes(CreateProductAttributeCommand request)
-//        {
-//            
-//        }
+        public async Task<IActionResult> AddAttributes(CreateProductAttributeQuery query)
+        {
+            var viewModel = await this.Mediator.Send(query);
+            viewModel.ColorsSelectListViewModel = await this.Mediator.Send(new GetAllColorsSelectListQuery());
+            viewModel.SizesSelectListViewModel = await this.Mediator
+                .Send(new GetAllSizesSelectListQuery { MainCategoryId = viewModel.MainCategoryId });
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAttributes(CreateProductAttributeCommand command)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                command.ColorsSelectListViewModel = await this.Mediator.Send(new GetAllColorsSelectListQuery());
+                command.SizesSelectListViewModel = await this.Mediator
+                    .Send(new GetAllSizesSelectListQuery { MainCategoryId = command.MainCategoryId });
+            }
+
+            await this.Mediator.Send(command);
+            return this.RedirectToAction(nameof(this.Index));
+        }
     }
 }

@@ -1,6 +1,10 @@
 @using Fashionista.Domain.Entities.Enums
 @model Fashionista.Application.Products.Commands.Edit.EditProductCommand
 
+@{
+    this.ViewData["Title"] = "Administration | Edit Product";
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -9,7 +13,7 @@
                     <form asp-controller="Products" asp-action="Create" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-body">
-                            <h5 class="card-title">Create Product</h5>
+                            <h5 class="card-title">Edit Product</h5>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">

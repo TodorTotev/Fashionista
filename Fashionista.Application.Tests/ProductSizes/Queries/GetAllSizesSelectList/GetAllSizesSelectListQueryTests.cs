@@ -32,7 +32,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesSelectLi
         }
 
         [Trait(nameof(ProductSize), "GetAllProductSizesSelectList query tests")]
-        [Fact(DisplayName = "Handle given valid request with null MainCategoryId should return viewmodel with empty list")]
+        [Fact(DisplayName = "Handle given invalid request with should return viewmodel with empty list")]
         public async Task Handle_GivenValidRequest_ShouldReturnViewModelWithEmptyList()
         {
             // Arrange
@@ -46,18 +46,6 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesSelectLi
             viewModel.ShouldNotBeNull();
             viewModel.ShouldBeOfType<GetAllSizesSelectListViewModel>();
             viewModel.AllSizes.Count().ShouldBe(0);
-        }
-
-        [Trait(nameof(ProductSize), "GetAllProductSizesSelectList query tests")]
-        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
-        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
-        {
-            // Arrange
-            var query = new GetAllSizesSelectListQuery { MainCategoryId = 100 };
-            var sut = new GetAllSizesSelectListQueryHandler(this.deletableEntityRepository);
-
-            // Act & Assert
-            await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(ProductSize), "GetAllProductSizesSelectList query tests")]
