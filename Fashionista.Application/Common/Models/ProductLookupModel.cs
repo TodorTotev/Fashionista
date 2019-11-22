@@ -25,6 +25,8 @@ namespace Fashionista.Application.Common.Models
 
         public string SubCategoryName { get; set; }
 
+        public string SubCategoryMainCategoryName { get; set; }
+
         public virtual ICollection<string> Photos { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -64,6 +66,12 @@ namespace Fashionista.Application.Common.Models
                     x => x.AverageRating,
                     y => y.MapFrom(
                         src => src.Reviews.Select(x => x.Rating).Sum() / src.Reviews.Count));
+
+            configuration.CreateMap<Product, ProductLookupModel>()
+                .ForMember(
+                    x => x.SubCategoryMainCategoryName,
+                    y => y.MapFrom(
+                        src => src.SubCategory.MainCategory.Name));
         }
     }
 }
