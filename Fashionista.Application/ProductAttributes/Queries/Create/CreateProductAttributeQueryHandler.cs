@@ -3,28 +3,30 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.ProductAttributes.Commands.Create;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
-    public class CreateProductAttributeQueryHandler : IRequestHandler<CreateProductAttributeQuery, CreateProductAttributeCommand>
+    public class
+        CreateProductAttributeQueryHandler : IRequestHandler<CreateProductAttributeQuery, CreateProductAttributeCommand>
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
-        private readonly IMapper mapper;
+        private readonly IDeletableEntityRepository<SubCategory> subCategoryRepository;
 
         public CreateProductAttributeQueryHandler(
             IDeletableEntityRepository<Product> productRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<SubCategory> subCategoryRepository)
         {
             this.productRepository = productRepository;
-            this.mapper = mapper;
+            this.subCategoryRepository = subCategoryRepository;
         }
 
-        public async Task<CreateProductAttributeCommand> Handle(CreateProductAttributeQuery request, CancellationToken cancellationToken)
+        public async Task<CreateProductAttributeCommand> Handle(
+            CreateProductAttributeQuery request,
+            CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -32,11 +34,14 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
                     .GetByIdWithDeletedAsync(request.Id)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
+            var subCategory = await this.subCategoryRepository
+                .GetByIdWithDeletedAsync(requestedEntity.SubCategoryId);
+
             return new CreateProductAttributeCommand
             {
                 ProductId = requestedEntity.Id,
                 ProductName = requestedEntity.Name,
-                MainCategoryId = 1,
+                MainCategoryId = subCategory.MainCategoryId,
             };
         }
     }

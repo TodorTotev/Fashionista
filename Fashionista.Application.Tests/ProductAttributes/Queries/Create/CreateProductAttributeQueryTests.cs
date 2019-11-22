@@ -1,3 +1,6 @@
+using Fashionista.Application.Interfaces;
+using Fashionista.Persistence.Repositories;
+
 namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
 {
     using System;
@@ -20,7 +23,8 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         {
             // Arrange
             var query = new CreateProductAttributeQuery { Id = 1 };
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var subCategoryRepository = new EfDeletableEntityRepository<SubCategory>(this.dbContext);
+            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, subCategoryRepository);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -39,7 +43,9 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         {
             // Arrange
             var query = new CreateProductAttributeQuery { Id = 100 };
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductAttributeQueryHandler(
+                this.deletableEntityRepository,
+                It.IsAny<IDeletableEntityRepository<SubCategory>>());
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -50,7 +56,9 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductAttributeQueryHandler(
+                this.deletableEntityRepository,
+                It.IsAny<IDeletableEntityRepository<SubCategory>>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
