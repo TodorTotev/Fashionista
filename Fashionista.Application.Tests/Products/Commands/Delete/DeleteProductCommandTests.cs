@@ -1,10 +1,9 @@
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.Products.Commands.Delete
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.Products.Commands.Delete;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;

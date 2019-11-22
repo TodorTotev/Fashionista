@@ -2,6 +2,7 @@ namespace Fashionista.Application.Products.Commands.Edit
 {
     using System.Collections.Generic;
 
+    using AutoMapper;
     using Fashionista.Application.Brands.Queries.GetAllBrandsSelectList;
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelectList;
@@ -10,7 +11,7 @@ namespace Fashionista.Application.Products.Commands.Edit
     using MediatR;
     using Microsoft.AspNetCore.Http;
 
-    public class EditProductCommand : IRequest<int>, IMapTo<Product>
+    public class EditProductCommand : IRequest<int>, IHaveCustomMapping
     {
         public int Id { get; set; }
 
@@ -30,12 +31,14 @@ namespace Fashionista.Application.Products.Commands.Edit
 
         public ProductType ProductType { get; set; }
 
-//        public ProductColor ProductColor { get; set; }
-//
-//        public ProductSize ProductSize { get; set; }
-
         public GetAllSubCategoriesSelectListViewModel SubCategories { get; set; }
 
         public GetAllBrandsSelectListViewModel Brands { get; set; }
+
+        public void CreateMappings(Profile configuration)
+        {
+            configuration.CreateMap<Product, EditProductCommand>()
+                .ForMember(x => x.Photos, opt => opt.Ignore());
+        }
     }
 }
