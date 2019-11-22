@@ -67,16 +67,6 @@ namespace Fashionista.Application.Tests.Infrastructure
 
             dbContext.SaveChanges();
 
-            dbContext.Add(new ProductAttributes
-            {
-                Quantity = 1,
-                ProductSizeId = 1,
-                ProductColorId = 1,
-                ProductId = 1,
-            });
-
-            dbContext.SaveChanges();
-
             dbContext.Products.Add(new Product
             {
                 Name = "ActiveProduct",
@@ -89,6 +79,16 @@ namespace Fashionista.Application.Tests.Infrastructure
                 ProductType = ProductType.Men,
                 SubCategoryId = 1,
             });
+
+            dbContext.Add(new ProductAttributes
+            {
+                Quantity = 1,
+                ProductSizeId = 1,
+                ProductColorId = 1,
+                ProductId = 1,
+            });
+
+            dbContext.SaveChanges();
 
             dbContext.Products.Add(new Product
             {

@@ -48,6 +48,7 @@
           <e p="Models" t="Include">
             <e p="BrandLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
+            <e p="ProductAttributesLookupModel.cs" t="Include" />
             <e p="ProductColorLookupModel.cs" t="Include" />
             <e p="ProductLookupModel.cs" t="Include" />
             <e p="ProductSizeLookupModel.cs" t="Include" />
@@ -135,6 +136,11 @@
             <e p="Create" t="Include">
               <e p="CreateProductAttributeQuery.cs" t="Include" />
               <e p="CreateProductAttributeQueryHandler.cs" t="Include" />
+            </e>
+            <e p="GetAll" t="Include">
+              <e p="GetAllProductAttributesQuery.cs" t="Include" />
+              <e p="GetAllProductAttributesQueryHandler.cs" t="Include" />
+              <e p="GetAllProductAttributesViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -323,6 +329,9 @@
           <e p="Queries" t="Include">
             <e p="Create" t="Include">
               <e p="CreateProductAttributeQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetAll" t="Include">
+              <e p="GetAllProductAttributesQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>

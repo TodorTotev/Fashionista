@@ -1,8 +1,8 @@
 namespace Fashionista.Application.Infrastructure
 {
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
     using System.Threading.Tasks;
+
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
@@ -61,6 +61,15 @@ namespace Fashionista.Application.Infrastructure
             return await productRepository
                 .AllAsNoTracking()
                 .AnyAsync(x => x.Name == name);
+        }
+
+        internal static async Task<bool> CheckIfProductExists(
+            int id,
+            IDeletableEntityRepository<Product> productRepository)
+        {
+            return await productRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Id == id);
         }
 
         #region ProductAttributes
