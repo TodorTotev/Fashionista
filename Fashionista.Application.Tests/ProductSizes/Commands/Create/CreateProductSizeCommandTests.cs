@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateSize()
         {
             // Arrange
-            var command = new CreateProductSizeCommand { Name = "NewSize" };
+            var command = new CreateProductSizeCommand { Name = "NewSize", MainCategoryId = 1};
             var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
@@ -31,6 +31,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             createdSize.Name.ShouldBe("NewSize");
+            createdSize.MainCategoryId.ShouldBe(1);
         }
 
         [Trait(nameof(ProductSize), "CreateProductSize command tests")]

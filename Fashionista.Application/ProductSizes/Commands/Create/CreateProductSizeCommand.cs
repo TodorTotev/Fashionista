@@ -7,5 +7,7 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
     public class CreateProductSizeCommand : IRequest<int>, IMapTo<ProductSize>
     {
         public string Name { get; set; }
+
+        public int MainCategoryId { get; set; }
     }
 }
