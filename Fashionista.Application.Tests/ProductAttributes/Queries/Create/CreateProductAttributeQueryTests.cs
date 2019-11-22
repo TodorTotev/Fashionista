@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         {
             // Arrange
             var query = new CreateProductAttributeQuery { Id = 1 };
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -29,6 +29,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
             command.ShouldNotBeNull();
             command.ProductId.ShouldBe(1);
             command.ProductName.ShouldBe("ActiveProduct");
+            command.MainCategoryId.ShouldBe(1);
             command.ShouldBeOfType<CreateProductAttributeCommand>();
         }
 
@@ -38,7 +39,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         {
             // Arrange
             var query = new CreateProductAttributeQuery { Id = 100 };
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -49,7 +50,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

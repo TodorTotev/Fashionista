@@ -4,6 +4,7 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
     using System.Threading;
     using System.Threading.Tasks;
 
+    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.ProductAttributes.Commands.Create;
@@ -12,26 +13,30 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
 
     public class CreateProductAttributeQueryHandler : IRequestHandler<CreateProductAttributeQuery, CreateProductAttributeCommand>
     {
-        private readonly IDeletableEntityRepository<Product> productAttributesRepository;
+        private readonly IDeletableEntityRepository<Product> productRepository;
+        private readonly IMapper mapper;
 
-        public CreateProductAttributeQueryHandler(IDeletableEntityRepository<Product> productAttributesRepository)
+        public CreateProductAttributeQueryHandler(
+            IDeletableEntityRepository<Product> productRepository,
+            IMapper mapper)
         {
-            this.productAttributesRepository = productAttributesRepository;
+            this.productRepository = productRepository;
+            this.mapper = mapper;
         }
 
         public async Task<CreateProductAttributeCommand> Handle(CreateProductAttributeQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            var requestedEntity = await this.productAttributesRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+            var requestedEntity = await this.productRepository
+                    .GetByIdWithDeletedAsync(request.Id)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
             return new CreateProductAttributeCommand
             {
                 ProductId = requestedEntity.Id,
                 ProductName = requestedEntity.Name,
-                MainCategoryId = requestedEntity.SubCategory.MainCategoryId,
+                MainCategoryId = 1,
             };
         }
     }

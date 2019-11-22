@@ -1,6 +1,7 @@
 namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -25,6 +26,14 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
         public async Task<GetAllSizesSelectListViewModel> Handle(GetAllSizesSelectListQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
+
+            if (request.MainCategoryId == null)
+            {
+                return new GetAllSizesSelectListViewModel
+                {
+                    AllSizes = new List<SelectListItem>(),
+                };
+            }
 
             var sizes = await this.productSizesRepository
                 .AllAsNoTracking()

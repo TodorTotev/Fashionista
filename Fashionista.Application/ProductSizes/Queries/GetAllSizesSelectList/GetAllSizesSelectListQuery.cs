@@ -4,6 +4,6 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
 
     public class GetAllSizesSelectListQuery : IRequest<GetAllSizesSelectListViewModel>
     {
-        public int MainCategoryId { get; set; }
+        public int? MainCategoryId { get; set; }
     }
 }
