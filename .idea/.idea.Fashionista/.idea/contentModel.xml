@@ -131,7 +131,12 @@
               <e p="CreateProductAttributeCommandValidator.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductAttributeQuery.cs" t="Include" />
+              <e p="CreateProductAttributeQueryHandler.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="ProductColors" t="Include">
           <e p="Commands" t="Include">
@@ -305,7 +310,11 @@
               <e p="CreateProductAttributeCommandTests.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateProductAttributeQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="ProductColors" t="Include">
           <e p="Commands" t="Include">
@@ -548,6 +557,9 @@
               </e>
               <e p="products" t="Include">
                 <e p="Create.cshtml" t="Include" />
+                <e p="Draft.cshtml" t="Include" />
+                <e p="Edit.cshtml" t="Include" />
+                <e p="Index.cshtml" t="Include" />
               </e>
               <e p="SubCategories" t="Include">
                 <e p="Create.cshtml" t="Include" />

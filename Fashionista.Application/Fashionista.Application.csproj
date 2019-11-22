@@ -27,7 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ProductAttributes\Queries" />
       <Folder Include="ProductColors\Commands" />
       <Folder Include="ProductColors\Queries" />
     </ItemGroup>
