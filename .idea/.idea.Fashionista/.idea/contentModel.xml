@@ -589,6 +589,7 @@
               </e>
               <e p="products" t="Include">
                 <e p="AddAttributes.cshtml" t="Include" />
+                <e p="Attributes.cshtml" t="Include" />
                 <e p="Create.cshtml" t="Include" />
                 <e p="Draft.cshtml" t="Include" />
                 <e p="Edit.cshtml" t="Include" />

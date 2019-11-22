@@ -1,8 +1,3 @@
-using Fashionista.Application.ProductAttributes.Commands.Create;
-using Fashionista.Application.ProductAttributes.Queries.Create;
-using Fashionista.Application.ProductColors.Queries.GetAllColorsSelectList;
-using Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList;
-
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Linq;
@@ -10,11 +5,16 @@ namespace Fashionista.Web.Areas.Administration.Controllers
 
     using Fashionista.Application.Brands.Queries.GetAllBrandsSelectList;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.ProductAttributes.Commands.Create;
+    using Fashionista.Application.ProductAttributes.Queries.Create;
+    using Fashionista.Application.ProductAttributes.Queries.GetAll;
+    using Fashionista.Application.ProductColors.Queries.GetAllColorsSelectList;
     using Fashionista.Application.Products.Commands.Create;
     using Fashionista.Application.Products.Commands.Delete;
     using Fashionista.Application.Products.Commands.Edit;
     using Fashionista.Application.Products.Queries.Edit;
     using Fashionista.Application.Products.Queries.GetAllProductsPaged;
+    using Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList;
     using Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelectList;
     using Microsoft.AspNetCore.Mvc;
     using X.PagedList;
@@ -99,6 +99,12 @@ namespace Fashionista.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
+        public async Task<IActionResult> Attributes(int id)
+        {
+            var viewModel = await this.Mediator.Send(new GetAllProductAttributesQuery { Id = id });
+            return this.View(viewModel);
+        }
+
         public async Task<IActionResult> AddAttributes(CreateProductAttributeQuery query)
         {
             var viewModel = await this.Mediator.Send(query);
@@ -120,7 +126,7 @@ namespace Fashionista.Web.Areas.Administration.Controllers
             }
 
             await this.Mediator.Send(command);
-            return this.RedirectToAction(nameof(this.Index));
+            return this.RedirectToAction("Attributes", "Products", new { Id = command.ProductId });
         }
     }
 }

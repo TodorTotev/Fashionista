@@ -1,9 +1,11 @@
 namespace Fashionista.Application.Exceptions
 {
+    using Humanizer;
+
     public class NotFoundException : BaseCustomException
     {
         public NotFoundException(string name, object key)
-            : base($"Entity \"{name}\" ({key}) was not found.")
+            : base("Entity \"{0}\" ({1}) was not found.".FormatWith(name, key))
         {
         }
     }

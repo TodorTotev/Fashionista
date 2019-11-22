@@ -7,5 +7,9 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
     public class GetAllProductAttributesViewModel
     {
         public IEnumerable<ProductAttributesLookupModel> ProductAttributesList { get; set; }
+
+        public string ProductName { get; set; }
+
+        public int ProductId { get; set; }
     }
 }

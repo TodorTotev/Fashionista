@@ -42,7 +42,7 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
 
             if (!await CommonCheckAssistant.CheckIfProductExists(request.Id, this.productsRepository))
             {
-                throw new NotFoundException(nameof(Product), "with id {0} not found".FormatWith(request.Id));
+                throw new NotFoundException(nameof(Product), "with id {0}".FormatWith(request.Id));
             }
 
             var requestedEntities = await this.productAttributesRepository
@@ -51,9 +51,15 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
                 .ProjectTo<ProductAttributesLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
+            var product = await this.productsRepository
+                .AllAsNoTracking()
+                .FirstAsync(x => x.Id == request.Id, cancellationToken);
+
             return new GetAllProductAttributesViewModel
             {
                 ProductAttributesList = requestedEntities,
+                ProductName = product.Name,
+                ProductId = request.Id,
             };
         }
     }

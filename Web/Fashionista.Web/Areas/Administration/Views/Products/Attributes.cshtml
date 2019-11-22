@@ -1,0 +1,64 @@
+@using System.Globalization
+@model Fashionista.Application.ProductAttributes.Queries.GetAll.GetAllProductAttributesViewModel
+
+@{
+    this.ViewData["Title"] = "Administration | Attribute details";
+}
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All attributes of @Model.ProductName</h4>
+                <a asp-controller="Products" asp-action="AddAttributes" asp-route-id="@Model.ProductId" class="btn btn-info btn-rounded m-t-10 mb-2 float-left">Add new</a>
+                @if (Model.ProductAttributesList.Any())
+                {
+                    var count = 1;
+                    <div class="table-responsive">
+                        <table id="footable-addrow" class="table" data-paging="true" data-filtering="true" data-sorting="true" data-editing="true" data-state="true">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Size</th>
+                                <th>Color</th>
+                                <th>Created On</th>
+                                <th>Quantity</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var productAttributes in Model.ProductAttributesList)
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@productAttributes.ProductSizeName</td>
+                                    <td>@productAttributes.ProductColorName</td>
+                                    <td>@productAttributes.CreatedOn.ToString(CultureInfo.InvariantCulture)</td>
+                                    <td>@productAttributes.Quantity</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Settings
+                                            </button>
+                                            <div class="dropdown-menu animated flipInX">
+                                                @* <a class="dropdown-item" asp-controller="MainCategories" asp-action="Edit" asp-route-id="@category.Id">Edit</a> *@
+                                                @* <a class="dropdown-item" asp-controller="MainCategories" asp-action="Delete" asp-route-id="@category.Id">Delete</a> *@
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
