@@ -660,6 +660,7 @@
         <e p="components" t="Include">
           <e p="HomePageBrandsViewComponent.cs" t="Include" />
           <e p="HomePageMenProductsViewComponent.cs" t="Include" />
+          <e p="HomePageWomenProductsViewComponent.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
@@ -702,6 +703,9 @@
                 <e p="Default.cshtml" t="Include" />
               </e>
               <e p="HomePageMenProducts" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="HomePageWomenProducts" t="Include">
                 <e p="Default.cshtml" t="Include" />
               </e>
             </e>
