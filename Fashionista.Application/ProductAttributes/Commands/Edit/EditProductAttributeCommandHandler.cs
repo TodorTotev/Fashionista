@@ -3,11 +3,11 @@ namespace Fashionista.Application.ProductAttributes.Commands.Edit
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class EditProductAttributeCommandHandler : IRequestHandler<EditProductAttributeCommand, int>
     {

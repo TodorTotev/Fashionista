@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
