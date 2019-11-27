@@ -209,10 +209,20 @@
               <e p="EditProductQuery.cs" t="Include" />
               <e p="EditProductQueryHandler.cs" t="Include" />
             </e>
+            <e p="GetAllMenProducts" t="Include">
+              <e p="GetAllMenProductsQuery.cs" t="Include" />
+              <e p="GetAllMenProductsQueryHandler.cs" t="Include" />
+              <e p="GetAllMenProductsViewModel.cs" t="Include" />
+            </e>
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQuery.cs" t="Include" />
               <e p="GetAllProductsPagedQueryHandler.cs" t="Include" />
               <e p="GetAllProductsPagedViewModel.cs" t="Include" />
+            </e>
+            <e p="GetAllWomenProducts" t="Include">
+              <e p="GetAllWomenProductsQuery.cs" t="Include" />
+              <e p="GetAllWomenProductsQueryHandler.cs" t="Include" />
+              <e p="GetAllWomenProductsViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -395,8 +405,14 @@
             <e p="Edit" t="Include">
               <e p="EditProductQueryTests.cs" t="Include" />
             </e>
+            <e p="GetAllMenProducts" t="Include">
+              <e p="GetAllMenProductsQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetAllWomenProducts" t="Include">
+              <e p="GetAllWomenProductsQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -643,6 +659,7 @@
         </e>
         <e p="components" t="Include">
           <e p="HomePageBrandsViewComponent.cs" t="Include" />
+          <e p="HomePageMenProductsViewComponent.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
@@ -682,6 +699,9 @@
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
             <e p="components" t="Include">
               <e p="HomePageBrands" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="HomePageMenProducts" t="Include">
                 <e p="Default.cshtml" t="Include" />
               </e>
             </e>
