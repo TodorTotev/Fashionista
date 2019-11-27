@@ -110,14 +110,14 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Name == name);
         }
 
-        internal static async Task<bool> CheckIfProductAttributeExists(
+        internal static async Task<bool> CheckIfProductContainsAttribute(
             int colorId,
             int sizeId,
             int productId,
             IDeletableEntityRepository<ProductAttributes> productRepository)
         {
             return await productRepository
-                .All()
+                .AllAsNoTracking()
                 .AnyAsync(x => x.ProductId == productId &&
                                x.ProductSizeId == sizeId
                                && x.ProductColorId == colorId);

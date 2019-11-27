@@ -131,6 +131,10 @@
               <e p="CreateProductAttributeCommandHandler.cs" t="Include" />
               <e p="CreateProductAttributeCommandValidator.cs" t="Include" />
             </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductAttributeCommand.cs" t="Include" />
+              <e p="DeleteProductAttributeCommandHandler.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
             <e p="Create" t="Include">
@@ -324,6 +328,9 @@
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
               <e p="CreateProductAttributeCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductAttributeCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">

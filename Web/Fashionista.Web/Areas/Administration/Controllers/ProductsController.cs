@@ -1,3 +1,5 @@
+using Fashionista.Application.ProductAttributes.Commands.Delete;
+
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Linq;
@@ -125,6 +127,12 @@ namespace Fashionista.Web.Areas.Administration.Controllers
                     .Send(new GetAllSizesSelectListQuery { MainCategoryId = command.MainCategoryId });
             }
 
+            await this.Mediator.Send(command);
+            return this.RedirectToAction("Attributes", "Products", new { Id = command.ProductId });
+        }
+
+        public async Task<IActionResult> DeleteAttribute(DeleteProductAttributeCommand command)
+        {
             await this.Mediator.Send(command);
             return this.RedirectToAction("Attributes", "Products", new { Id = command.ProductId });
         }

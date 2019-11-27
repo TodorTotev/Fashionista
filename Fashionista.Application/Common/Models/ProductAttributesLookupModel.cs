@@ -8,6 +8,8 @@ namespace Fashionista.Application.Common.Models
 
     public class ProductAttributesLookupModel : IMapFrom<ProductAttributes>
     {
+        public int Id { get; set; }
+
         public string ProductColorName { get; set; }
 
         public string ProductSizeName { get; set; }

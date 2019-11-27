@@ -28,7 +28,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfProductAttributeExists(
+            if (await CommonCheckAssistant.CheckIfProductContainsAttribute(
                 request.ProductColorId,
                 request.ProductSizeId,
                 request.ProductId,
