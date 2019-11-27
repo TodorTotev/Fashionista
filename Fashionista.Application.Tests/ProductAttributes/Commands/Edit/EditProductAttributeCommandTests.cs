@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Edit
         public async Task Handle_GivenValidRequest_ShouldEditAttribute()
         {
             // Arrange
-            var command = new EditProductAttributeCommand { ProductId = 1, Quantity = 5 };
+            var command = new EditProductAttributeCommand { Id = 1, Quantity = 5 };
             var sut = new EditProductAttributeCommandHandler(this.deletableEntityRepository);
 
             // Act
