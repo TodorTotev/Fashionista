@@ -99,7 +99,7 @@ namespace Fashionista.Application.Tests.Infrastructure
                 IsHidden = true,
                 Photos = new List<string>(),
                 Reviews = new List<Review>(),
-                ProductType = ProductType.Men,
+                ProductType = ProductType.Women,
                 SubCategoryId = 1,
             });
 
