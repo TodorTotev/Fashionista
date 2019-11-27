@@ -1,0 +1,12 @@
+@model Fashionista.Application.Brands.Queries.GetAllBrands.GetAllBrandsViewModel
+
+<div class="container">
+    <div class="partners-carousel owl-carousel owl-theme">
+        @foreach (var brand in Model.Brands)
+        {
+            <a href="#" class="partner">
+                <img src="@brand.BrandPhotoUrl" alt="logo" max-width="100px" max-height="100px">
+            </a>
+        }
+    </div><!-- End .partners-carousel -->
+</div><!-- End .container -->

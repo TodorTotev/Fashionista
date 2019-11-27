@@ -32,6 +32,11 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllBrands" t="Include">
+              <e p="GetAllBrandsQuery.cs" t="Include" />
+              <e p="GetAllBrandsQueryHandler.cs" t="Include" />
+              <e p="GetAllBrandsViewModel.cs" t="Include" />
+            </e>
             <e p="GetAllBrandsPaged" t="Include">
               <e p="GetAllBrandsPagedQuery.cs" t="Include" />
               <e p="GetAllBrandsPagedQueryHandler.cs" t="Include" />
@@ -285,6 +290,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllBrands" t="Include">
+              <e p="GetAllBrandsQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllBrandsPagedQuery" t="Include">
               <e p="GetAllBrandsPagedQueryTests.cs" t="Include" />
             </e>
@@ -633,6 +641,9 @@
         <e p="Common" t="Include">
           <e p="ListSelectionAssistant.cs" t="Include" />
         </e>
+        <e p="components" t="Include">
+          <e p="HomePageBrandsViewComponent.cs" t="Include" />
+        </e>
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
@@ -669,6 +680,11 @@
             <e p="_CookieConsentPartial.cshtml" t="Include" />
             <e p="_LoginPartial.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="components" t="Include">
+              <e p="HomePageBrands" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+            </e>
             <e p="Error.cshtml" t="Include" />
             <e p="Layouts" t="Include">
               <e p="_Layout.cshtml" t="Include" />

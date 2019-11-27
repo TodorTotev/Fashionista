@@ -1,3 +1,5 @@
+@using Fashionista.Web.Components
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
     this.ViewData["Title"] = "Fashionista | Affordable Clothing";
     Layout = "Layouts/_Layout";
@@ -19,7 +21,7 @@
 </div>
 
 <div class="partners-container">
-    @* @await Component.InvokeAsync("HomePageBrandsComponent") *@
+    @await Component.InvokeAsync(typeof(HomePageBrandsViewComponent))
 </div>
 
 <div class="container product-wrapper">
