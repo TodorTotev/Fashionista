@@ -1,3 +1,7 @@
+using System.Linq;
+using AutoMapper.QueryableExtensions;
+using Fashionista.Application.Products.Commands.Edit;
+
 namespace Fashionista.Application.ProductAttributes.Queries.Edit
 {
     using System;
@@ -32,12 +36,13 @@ namespace Fashionista.Application.ProductAttributes.Queries.Edit
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            var product = await this.productAttributesRepository
-                              .AllAsNoTracking()
-                              .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
+            var command = await this.productAttributesRepository
+                              .All()
+                              .Where(x => x.Id == request.Id)
+                              .ProjectTo<EditProductAttributeCommand>(this.mapper.ConfigurationProvider)
+                              .SingleOrDefaultAsync(cancellationToken)
                           ?? throw new NotFoundException(nameof(Product), request.Id);
-
-            var command = this.mapper.Map<EditProductAttributeCommand>(product);
+            
             return command;
         }
     }

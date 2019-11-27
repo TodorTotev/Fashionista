@@ -1,4 +1,6 @@
 using Fashionista.Application.ProductAttributes.Commands.Delete;
+using Fashionista.Application.ProductAttributes.Commands.Edit;
+using Fashionista.Application.ProductAttributes.Queries.Edit;
 
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
@@ -125,6 +127,24 @@ namespace Fashionista.Web.Areas.Administration.Controllers
                 command.ColorsSelectListViewModel = await this.Mediator.Send(new GetAllColorsSelectListQuery());
                 command.SizesSelectListViewModel = await this.Mediator
                     .Send(new GetAllSizesSelectListQuery { MainCategoryId = command.MainCategoryId });
+            }
+
+            await this.Mediator.Send(command);
+            return this.RedirectToAction("Attributes", "Products", new { Id = command.ProductId });
+        }
+
+        public async Task<IActionResult> EditAttributes(EditProductAttributeQuery query)
+        {
+            var viewModel = await this.Mediator.Send(query);
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditAttributes(EditProductAttributeCommand command)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(command);
             }
 
             await this.Mediator.Send(command);

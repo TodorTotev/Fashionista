@@ -41,7 +41,7 @@
                                                 Settings
                                             </button>
                                             <div class="dropdown-menu animated flipInX">
-                                                @* <a class="dropdown-item" asp-controller="MainCategories" asp-action="Edit" asp-route-id="@category.Id">Edit</a> *@
+                                                <a class="dropdown-item" asp-controller="Products" asp-action="EditAttributes" asp-route-id="@productAttributes.Id">Edit</a>
                                                 <a class="dropdown-item" asp-controller="Products" asp-action="DeleteAttribute" asp-route-id="@productAttributes.Id" asp-route-ProductId="@Model.ProductId">Delete</a>
                                             </div>
                                         </div>

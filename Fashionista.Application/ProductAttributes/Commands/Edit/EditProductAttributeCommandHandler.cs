@@ -24,11 +24,10 @@ namespace Fashionista.Application.ProductAttributes.Commands.Edit
             request = request ?? throw new ArgumentNullException(nameof(ProductAttributes));
 
             var requestedEntity = await this.productAttributesRepository
-                                      .GetByIdWithDeletedAsync(request.ProductId)
+                                      .GetByIdWithDeletedAsync(request.Id)
                                   ?? throw new NotFoundException(nameof(ProductAttributes), request.ProductId);
 
             requestedEntity.Quantity = request.Quantity;
-            this.productAttributesRepository.Update(requestedEntity);
             await this.productAttributesRepository.SaveChangesAsync(cancellationToken);
 
             return requestedEntity.Id;
