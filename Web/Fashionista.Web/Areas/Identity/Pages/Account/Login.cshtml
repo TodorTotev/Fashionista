@@ -24,7 +24,7 @@
                 <p>If you have an account with us, please log in.</p>
             </div><!-- End .heading -->
 
-            <form id="account" method="post">
+            <form method="post">
 
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input asp-for="Input.Email" class="form-control" placeholder="Email Address" required>
@@ -36,18 +36,8 @@
                     <button type="submit" class="btn btn-primary" id="customLogin">LOGIN</button>
                     <a asp-page="./ForgotPassword" class="forget-pass"> Forgot your password?</a>
                 </div><!-- End .form-footer -->
-                <div class="btn-group">
-                    <a class="btn btn-social-login btn-md btn-gplus mb-1">
-                        <i class="icon-gplus"></i><span>Google</span>
-                    </a>
-                    <a class="btn btn-social-login btn-md btn-facebook mb-1">
-                        <i class="icon-facebook"></i><span>Facebook</span>
-                    </a>
-                    <a class="btn btn-social-login btn-md btn-twitter mb-1">
-                        <i class="icon-twitter"></i><span>Twitter</span>
-                    </a>
-                </div>
             </form>
+            <partial name="ExternalLoginsPartial"/>
         </div><!-- End .col-md-6 -->
         <div class="col-md-6">
             <div class="heading">

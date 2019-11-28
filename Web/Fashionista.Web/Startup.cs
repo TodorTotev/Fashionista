@@ -85,6 +85,12 @@
 
             services.AddSingleton(this.configuration);
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = this.configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = this.configuration["Authentication:Google:ClientSecret"];
+            });
+
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();

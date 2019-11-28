@@ -654,6 +654,7 @@
           </e>
           <e p="Identity" t="Include">
             <e p="pages" t="Include">
+              <e p="_ValidationScriptsPartial.cshtml" t="Include" />
               <e p="_ViewImports.cshtml" t="Include" />
               <e p="_ViewStart.cshtml" t="Include" />
               <e p="Account" t="Include">
@@ -719,6 +720,7 @@
               </e>
               <e p="Error.cshtml" t="Include" />
               <e p="Error.cshtml.cs" t="Include" />
+              <e p="ExternalLoginsPartial.cshtml" t="Include" />
             </e>
           </e>
         </e>
