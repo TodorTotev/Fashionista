@@ -12,7 +12,9 @@
                 }
                 else if (provider.Name == "Facebook")
                 {
-                    <button type="submit" class="btn btn-social-login btn-md btn-facebook mb-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                    <button type="submit" class="btn btn-social-login btn-md btn-facebook mb-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                        <i class="icon-facebook"></i><span>Facebook</span>
+                    </button>
                 }
             }
         </div>

@@ -90,6 +90,12 @@
                 googleOptions.ClientId = this.configuration["Authentication:Google:ClientId"];
                 googleOptions.ClientSecret = this.configuration["Authentication:Google:ClientSecret"];
             });
+            
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = this.configuration["Authentication:Facebook:AppSecret"];
+            });
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
