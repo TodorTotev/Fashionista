@@ -66,7 +66,12 @@
             <e p="CreateCityCommand.cs" t="Include" />
             <e p="CreateCityCommandHandler.cs" t="Include" />
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetCity" t="Include">
+              <e p="GetCityQuery.cs" t="Include" />
+              <e p="GetCityQueryHandler.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Common" t="Include">
           <e p="Models" t="Include">
@@ -306,8 +311,22 @@
             </e>
           </e>
         </e>
+        <e p="Users" t="Include">
+          <e p="Queries" t="Include">
+            <e p="GetUserQuery.cs" t="Include" />
+            <e p="GetUserQueryHandler.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
+        <e p="Address" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateAddressCommandTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Brands" t="Include">
           <e p="Commands" t="Include">
@@ -336,7 +355,11 @@
               <e p="CreateCityCommandTests.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetCity" t="Include">
+              <e p="GetCityQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Fashionista.Application.Tests.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">

@@ -1,8 +1,11 @@
 namespace Fashionista.Domain.Entities
 {
+    using System;
     using System.Collections.Generic;
 
-    public class Address
+    using Fashionista.Domain.Infrastructure;
+
+    public class Address : IDeletableEntity
     {
         public Address()
         {
@@ -21,8 +24,12 @@ namespace Fashionista.Domain.Entities
 
         public string ApplicationUserId { get; set; }
 
-        public virtual ApplicationUser FashionNovaUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<Order> Addresses { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }
