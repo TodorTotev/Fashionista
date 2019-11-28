@@ -19,6 +19,10 @@ namespace Fashionista.Domain.Entities
         }
 
         // Audit info
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -39,9 +43,5 @@ namespace Fashionista.Domain.Entities
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
     }
 }

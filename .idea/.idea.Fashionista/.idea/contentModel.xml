@@ -573,6 +573,8 @@
           <e p="20191121090015_ProductEntityModification.Designer.cs" t="Include" />
           <e p="20191121174148_ModifySizeEntity.cs" t="Include" />
           <e p="20191121174148_ModifySizeEntity.Designer.cs" t="Include" />
+          <e p="20191128124400_UserModification.cs" t="Include" />
+          <e p="20191128124400_UserModification.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
