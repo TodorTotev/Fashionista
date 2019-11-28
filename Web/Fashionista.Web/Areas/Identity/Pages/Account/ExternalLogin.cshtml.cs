@@ -103,7 +103,7 @@
 
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? this.Url.Content("~/");
+            returnUrl ??= this.Url.Content("~/");
 
             // Get the information about the user from the external login provider
             var info = await this.signInManager.GetExternalLoginInfoAsync();
@@ -115,7 +115,14 @@
 
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = this.Input.Email,
+                    Email = this.Input.Email,
+                    FirstName = this.Input.FirstName,
+                    LastName = this.Input.LastName,
+                    ShoppingCart = new ShoppingCart(),
+                };
                 var result = await this.userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -146,6 +153,12 @@
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            public string FirstName { get; set; }
+
+            [Required]
+            public string LastName { get; set; }
         }
     }
 }
