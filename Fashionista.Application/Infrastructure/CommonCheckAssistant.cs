@@ -124,5 +124,14 @@ namespace Fashionista.Application.Infrastructure
         }
 
         #endregion
+
+        internal static async Task<bool> CheckIfCityWithSameNameExists(
+            string name,
+            IDeletableEntityRepository<City> citiesRepository)
+        {
+            return await citiesRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
+        }
     }
 }

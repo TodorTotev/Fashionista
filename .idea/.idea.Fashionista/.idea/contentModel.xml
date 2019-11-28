@@ -13,6 +13,18 @@
       <e p="Common" t="Include" />
       <e p="Core" t="Include" />
       <e p="Fashionista.Application" t="IncludeRecursive">
+        <e p="Addresses" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateAddressCommand.cs" t="Include" />
+              <e p="CreateAddressCommandHandler.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
+        </e>
         <e p="ApplicationDependencyInjectionHelper.cs" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -48,6 +60,13 @@
               <e p="GetAllBrandsSelectListViewModel.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Cities" t="Include">
+          <e p="Commands" t="Include">
+            <e p="CreateCityCommand.cs" t="Include" />
+            <e p="CreateCityCommandHandler.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include" />
         </e>
         <e p="Common" t="Include">
           <e p="Models" t="Include">
@@ -310,6 +329,14 @@
               <e p="GetAllBrandsSelectListTests.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Cities" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateCityCommandTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include" />
         </e>
         <e p="Fashionista.Application.Tests.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
