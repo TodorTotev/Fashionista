@@ -12,14 +12,14 @@
     using Microsoft.AspNetCore.Mvc.RazorPages;
 
 #pragma warning disable SA1649 // File name should match first type name
-    public class IndexModel : PageModel
+    public class AccountInformationModel : PageModel
 #pragma warning restore SA1649 // File name should match first type name
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IEmailSender emailSender;
 
-        public IndexModel(
+        public AccountInformationModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender)
@@ -30,7 +30,7 @@
         }
 
         public string Username { get; set; }
-
+        
         public bool IsEmailConfirmed { get; set; }
 
         [TempData]
@@ -53,11 +53,15 @@
 
             this.Username = userName;
 
-            this.Input = new InputModel
+            if (this.Input == null)
             {
-                Email = email,
-                PhoneNumber = phoneNumber,
-            };
+                this.Input = new InputModel();
+            }
+
+            this.Input.FirstName = user.FirstName;
+            this.Input.LastName = user.LastName;
+            this.Input.Email = email;
+            this.Input.PhoneNumber = phoneNumber;
 
             this.IsEmailConfirmed = await this.userManager.IsEmailConfirmedAsync(user);
 
@@ -143,6 +147,10 @@
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
         }
     }
 }
