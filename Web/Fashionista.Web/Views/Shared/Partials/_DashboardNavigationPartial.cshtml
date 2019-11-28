@@ -11,7 +11,7 @@
             <li class="@ManageNavPages.AccountInformationNavClass(ViewContext)">
                 <a asp-page="./AccountInformation">Account Information</a>
             </li>
-             <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)">
+            <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)">
                 <a asp-page="./ChangePassword">Change Password</a>
             </li>
             @* <li class="@Html.IsActive("Dashboard", "Addresses")"> *@
@@ -25,6 +25,9 @@
             </li>
             <li>
                 <a href="#">Order History</a>
+            </li>
+            <li class="@ManageNavPages.PersonalDataNavClass(ViewContext)">
+                <a asp-page="./PersonalData">Personal Data</a>
             </li>
         </ul>
     </div><!-- End .widget -->

@@ -693,27 +693,17 @@
                   <e p="ChangePassword.cshtml.cs" t="Include" />
                   <e p="DeletePersonalData.cshtml" t="Include" />
                   <e p="DeletePersonalData.cshtml.cs" t="Include" />
-                  <e p="Disable2fa.cshtml" t="Include" />
-                  <e p="Disable2fa.cshtml.cs" t="Include" />
                   <e p="DownloadPersonalData.cshtml" t="Include" />
                   <e p="DownloadPersonalData.cshtml.cs" t="Include" />
-                  <e p="EnableAuthenticator.cshtml" t="Include" />
-                  <e p="EnableAuthenticator.cshtml.cs" t="Include" />
                   <e p="ExternalLogins.cshtml" t="Include" />
                   <e p="ExternalLogins.cshtml.cs" t="Include" />
-                  <e p="GenerateRecoveryCodes.cshtml" t="Include" />
-                  <e p="GenerateRecoveryCodes.cshtml.cs" t="Include" />
                   <e p="Index.cshtml" t="Include" />
                   <e p="Index.cshtml.cs" t="Include" />
                   <e p="ManageNavPages.cs" t="Include" />
                   <e p="PersonalData.cshtml" t="Include" />
                   <e p="PersonalData.cshtml.cs" t="Include" />
-                  <e p="ResetAuthenticator.cshtml" t="Include" />
-                  <e p="ResetAuthenticator.cshtml.cs" t="Include" />
                   <e p="SetPassword.cshtml" t="Include" />
                   <e p="SetPassword.cshtml.cs" t="Include" />
-                  <e p="TwoFactorAuthentication.cshtml" t="Include" />
-                  <e p="TwoFactorAuthentication.cshtml.cs" t="Include" />
                 </e>
                 <e p="Register.cshtml" t="Include" />
                 <e p="Register.cshtml.cs" t="Include" />
