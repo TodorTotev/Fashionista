@@ -675,10 +675,6 @@
                 <e p="Lockout.cshtml.cs" t="Include" />
                 <e p="Login.cshtml" t="Include" />
                 <e p="Login.cshtml.cs" t="Include" />
-                <e p="LoginWith2fa.cshtml" t="Include" />
-                <e p="LoginWith2fa.cshtml.cs" t="Include" />
-                <e p="LoginWithRecoveryCode.cshtml" t="Include" />
-                <e p="LoginWithRecoveryCode.cshtml.cs" t="Include" />
                 <e p="Logout.cshtml" t="Include" />
                 <e p="Logout.cshtml.cs" t="Include" />
                 <e p="Manage" t="Include">
