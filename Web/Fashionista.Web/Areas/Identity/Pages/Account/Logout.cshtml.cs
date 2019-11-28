@@ -1,9 +1,8 @@
-﻿using Fashionista.Domain.Entities;
-
-namespace Fashionista.Web.Areas.Identity.Pages.Account
+﻿namespace Fashionista.Web.Areas.Identity.Pages.Account
 {
     using System.Threading.Tasks;
 
+    using Fashionista.Domain.Entities;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
