@@ -24,12 +24,12 @@ namespace Fashionista.Application.Tests.Cities.Commands.Create
             var sut = new CreateCityCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act
-            var id = await sut.Handle(command, It.IsAny<CancellationToken>());
+            var createdCity = await sut.Handle(command, It.IsAny<CancellationToken>());
 
-            id.ShouldBe(2);
+            createdCity.Id.ShouldBe(2);
 
             var city = await this.dbContext.Cities
-                .SingleOrDefaultAsync(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id == createdCity.Id);
 
             city.Name.ShouldBe("NewCity");
             city.Postcode.ShouldBe("NewZip");

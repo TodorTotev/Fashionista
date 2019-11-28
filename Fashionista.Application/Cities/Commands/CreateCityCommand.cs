@@ -4,7 +4,7 @@ namespace Fashionista.Application.Cities.Commands
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateCityCommand : IRequest<int>, IMapTo<City>
+    public class CreateCityCommand : IRequest<City>, IMapTo<City>
     {
         public string Name { get; set; }
 

@@ -1,12 +1,10 @@
-using System;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.ProductAttributes.Commands.Edit;
-
 namespace Fashionista.Application.Tests.Cities.Queries.GetCity
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Cities.Queries.GetCity;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;

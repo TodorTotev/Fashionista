@@ -11,7 +11,7 @@ namespace Fashionista.Application.Cities.Commands
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, int>
+    public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, City>
     {
         private readonly IDeletableEntityRepository<City> citiesRepository;
         private readonly IMapper mapper;
@@ -24,7 +24,7 @@ namespace Fashionista.Application.Cities.Commands
             this.mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateCityCommand request, CancellationToken cancellationToken)
+        public async Task<City> Handle(CreateCityCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException();
 
@@ -37,7 +37,7 @@ namespace Fashionista.Application.Cities.Commands
             await this.citiesRepository.AddAsync(city);
             await this.citiesRepository.SaveChangesAsync(cancellationToken);
 
-            return city.Id;
+            return city;
         }
     }
 }
