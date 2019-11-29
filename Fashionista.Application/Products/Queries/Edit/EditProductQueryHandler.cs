@@ -10,6 +10,7 @@ namespace Fashionista.Application.Products.Queries.Edit
     using Fashionista.Application.Products.Commands.Edit;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditProductQueryHandler : IRequestHandler<EditProductQuery, EditProductCommand>
     {
@@ -29,7 +30,8 @@ namespace Fashionista.Application.Products.Queries.Edit
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.productRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+                                      .AllAsNoTracking()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
             var command = this.mapper.Map<EditProductCommand>(requestedEntity);
