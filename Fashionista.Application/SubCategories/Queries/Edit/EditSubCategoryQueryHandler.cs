@@ -1,16 +1,16 @@
-using System;
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.SubCategories.Queries.Edit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
     using AutoMapper;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.SubCategories.Commands.Edit;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditSubCategoryQueryHandler : IRequestHandler<EditSubCategoryQuery, EditSubCategoryCommand>
     {
@@ -30,7 +30,8 @@ namespace Fashionista.Application.SubCategories.Queries.Edit
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.subCategoryRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+                                      .AllAsNoTracking()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(SubCategory), request.Id);
 
             var command = this.mapper.Map<EditSubCategoryCommand>(requestedEntity);
