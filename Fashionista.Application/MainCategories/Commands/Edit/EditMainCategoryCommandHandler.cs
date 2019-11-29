@@ -31,7 +31,9 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
             }
 
             var requestedEntity = await this.mainCategoryRepository
-                .GetByIdWithDeletedAsync(request.Id, cancellationToken);
+                .All()
+                .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
+                                  ?? throw new NotFoundException(nameof(MainCategory), request.Id);
 
             requestedEntity.Name = request.Name;
             this.mainCategoryRepository.Update(requestedEntity);
