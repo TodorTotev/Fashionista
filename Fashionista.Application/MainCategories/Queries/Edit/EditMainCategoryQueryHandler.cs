@@ -10,6 +10,7 @@ namespace Fashionista.Application.MainCategories.Queries.Edit
     using Fashionista.Application.MainCategories.Commands.Edit;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditMainCategoryQueryHandler : IRequestHandler<EditMainCategoryQuery, EditMainCategoryCommand>
     {
@@ -29,7 +30,8 @@ namespace Fashionista.Application.MainCategories.Queries.Edit
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.mainCategoryRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+                                      .AllAsNoTracking()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(MainCategory), request.Id);
 
             var command = this.mapper.Map<EditMainCategoryCommand>(requestedEntity);
