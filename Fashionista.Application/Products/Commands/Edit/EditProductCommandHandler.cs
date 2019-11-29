@@ -3,12 +3,14 @@ namespace Fashionista.Application.Products.Commands.Edit
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditProductCommandHandler : IRequestHandler<EditProductCommand, int>
     {
@@ -41,7 +43,8 @@ namespace Fashionista.Application.Products.Commands.Edit
             }
 
             var requestedEntity = await this.productsRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+                                      .All()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
             requestedEntity.Name = request.Name;
