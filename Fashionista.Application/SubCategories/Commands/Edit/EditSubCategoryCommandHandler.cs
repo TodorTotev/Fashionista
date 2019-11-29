@@ -8,6 +8,7 @@ namespace Fashionista.Application.SubCategories.Commands.Edit
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditSubCategoryCommandHandler : IRequestHandler<EditSubCategoryCommand, int>
     {
@@ -22,13 +23,16 @@ namespace Fashionista.Application.SubCategories.Commands.Edit
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfSubCategoryWithSameNameExists(request.Name, this.subCategoryRepository))
+            if (await CommonCheckAssistant.CheckIfSubCategoryWithSameNameExists(request.Name,
+                this.subCategoryRepository))
             {
                 throw new EntityAlreadyExistsException(nameof(SubCategory), request.Name);
             }
 
             var requestedEntity = await this.subCategoryRepository
-                .GetByIdWithDeletedAsync(request.Id, cancellationToken);
+                                      .All()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
+                                  ?? throw new NotFoundException(nameof(SubCategory), request.Id);
 
             requestedEntity.Name = request.Name;
             requestedEntity.Description = request.Description;
