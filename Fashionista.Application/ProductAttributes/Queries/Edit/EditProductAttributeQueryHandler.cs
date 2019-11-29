@@ -37,12 +37,12 @@ namespace Fashionista.Application.ProductAttributes.Queries.Edit
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var command = await this.productAttributesRepository
-                              .All()
+                              .AllAsNoTracking()
                               .Where(x => x.Id == request.Id)
                               .ProjectTo<EditProductAttributeCommand>(this.mapper.ConfigurationProvider)
                               .SingleOrDefaultAsync(cancellationToken)
                           ?? throw new NotFoundException(nameof(Product), request.Id);
-            
+
             return command;
         }
     }
