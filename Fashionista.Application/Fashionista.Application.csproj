@@ -28,7 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Addresses\Queries" />
       <Folder Include="ProductColors\Commands" />
     </ItemGroup>
 
