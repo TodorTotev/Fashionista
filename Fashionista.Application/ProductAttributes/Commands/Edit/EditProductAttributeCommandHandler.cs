@@ -8,6 +8,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Edit
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class EditProductAttributeCommandHandler : IRequestHandler<EditProductAttributeCommand, int>
     {
@@ -24,7 +25,8 @@ namespace Fashionista.Application.ProductAttributes.Commands.Edit
             request = request ?? throw new ArgumentNullException(nameof(ProductAttributes));
 
             var requestedEntity = await this.productAttributesRepository
-                                      .GetByIdWithDeletedAsync(request.Id)
+                                      .All()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(ProductAttributes), request.ProductId);
 
             requestedEntity.Quantity = request.Quantity;
