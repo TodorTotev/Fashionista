@@ -18,6 +18,11 @@
             <e p="Create" t="Include">
               <e p="CreateAddressCommand.cs" t="Include" />
               <e p="CreateAddressCommandHandler.cs" t="Include" />
+              <e p="CreateAddressCommandValidator.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteAddressCommand.cs" t="Include" />
+              <e p="DeleteAddressCommandHandler.cs" t="Include" />
             </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
@@ -323,6 +328,9 @@
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
               <e p="CreateAddressCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteAddressCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include" />
