@@ -1,0 +1,47 @@
+@model Fashionista.Application.Addresses.Commands.Create.CreateAddressCommand
+@{
+    ViewData["Title"] = "Fashion Nova | Create address";
+}
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-page="/Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Create address</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="heading">
+                <h2 class="title">Create An Address</h2>
+            </div><!-- End .heading -->
+
+            <form method="post" asp-controller="Address" asp-action="Create">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input asp-for="@Model.Street" class="form-control" placeholder="Street Address" required>
+                <span asp-validation-for="@Model.Street" class="text-danger"></span>
+                <input asp-for="@Model.Description" class="form-control" placeholder="Description" required>
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                <input asp-for="@Model.City" class="form-control" placeholder="City" required>
+                <span asp-validation-for="@Model.City" class="text-danger"></span>
+                <input asp-for="@Model.Zip" class="form-control" placeholder="Zip code" required>
+                <span asp-validation-for="@Model.Zip" class="text-danger"></span>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">Add address</button>
+                </div><!-- End .form-footer -->
+            </form>
+        </div><!-- End .col-md-6 -->
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

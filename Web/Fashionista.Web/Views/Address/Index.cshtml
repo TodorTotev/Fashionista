@@ -1,0 +1,73 @@
+@model Fashionista.Application.Addresses.Queries.GetAllUserAddresses.GetAllUserAddressesViewModel
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 order-lg-last dashboard-content">
+            <h2>My Wishlist</h2>
+
+            <div class="cart-table-container">
+                <table class="table table-cart">
+                    <thead>
+                    <tr>
+                        <th class="price-col">Street</th>
+                        <th class="price-col">Additional Information</th>
+                        <th class="price-col">City</th>
+                        <th class="price-col">Postcode</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var address in Model.Addresses)
+                    {
+                        <tr class="product-row">
+                            <td>@address.Name</td>
+                            <td>@address.Description</td>
+                            <td>@address.CityName</td>
+                            <td>@address.CityPostcode</td>
+                            <td>
+                                <a asp-controller="Address" asp-action="Delete" asp-route-id="@address.Id" class="btn-remove">
+                                    <span class="sr-only">Remove</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Addresses.Any())
+                    {
+                        <p>Currently you do not have any products in your wishlist</p>
+                    }
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                        <td colspan="8">
+                            <div class="footable-pagination-wrapper">
+                                <div class="form-footer">
+                                    <a asp-controller="Address" asp-action="Create" class="btn btn-primary">Add address</a>
+                                </div><!-- End .form-footer -->
+                                <div class="divider>"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div><!-- End .cart-table-container -->
+
+        </div><!-- End .col-lg-9 -->
+        <partial name="Partials/_DashboardNavigationPartial"/>
+    </div><!-- End .row -->
+</div><!-- End .container -->
+
+<div class="mb-5"></div><!-- margin -->
