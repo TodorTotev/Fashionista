@@ -8,6 +8,7 @@ namespace Fashionista.Application.MainCategories.Commands.Delete
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class DeleteMainCategoryCommandHandler : IRequestHandler<DeleteMainCategoryCommand, int>
     {
@@ -23,7 +24,8 @@ namespace Fashionista.Application.MainCategories.Commands.Delete
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.mainCategoryRepository
-                                      .GetByIdWithDeletedAsync(request.Id, cancellationToken)
+                                      .AllWithDeleted()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(MainCategory), request.Id);
 
             this.mainCategoryRepository.Delete(requestedEntity);
