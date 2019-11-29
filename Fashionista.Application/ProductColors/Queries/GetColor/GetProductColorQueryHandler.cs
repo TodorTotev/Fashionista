@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Fashionista.Application.ProductColors.Queries.GetColor
 {
     using System;
@@ -38,8 +40,9 @@ namespace Fashionista.Application.ProductColors.Queries.GetColor
 
             return await this.colorsRepository
                 .AllAsNoTracking()
+                .Where(x => x.Id == request.Id)
                 .ProjectTo<ProductColorLookupModel>(this.mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+                .SingleOrDefaultAsync(cancellationToken);
         }
     }
 }
