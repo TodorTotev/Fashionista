@@ -8,6 +8,7 @@ namespace Fashionista.Application.Products.Commands.Delete
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, int>
     {
@@ -23,7 +24,8 @@ namespace Fashionista.Application.Products.Commands.Delete
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.productsRepository
-                                      .GetByIdWithDeletedAsync(request.Id, cancellationToken)
+                                      .AllWithDeleted()
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
             this.productsRepository.Delete(requestedEntity);
