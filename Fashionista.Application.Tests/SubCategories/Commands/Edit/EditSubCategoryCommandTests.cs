@@ -1,3 +1,5 @@
+using AutoMapper;
+
 namespace Fashionista.Application.Tests.SubCategories.Commands.Edit
 {
     using System;
@@ -66,6 +68,23 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Edit
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(SubCategory), "EditSubCategory command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
+        {
+            // Arrange
+            var command = new EditSubCategoryCommand
+            {
+                Id = 1000,
+                Name = "Category111",
+                Description = "TestDesc111",
+            };
+            var sut = new EditSubCategoryCommandHandler(this.deletableEntityRepository);
+
+            // Act & Assert
+            await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }
