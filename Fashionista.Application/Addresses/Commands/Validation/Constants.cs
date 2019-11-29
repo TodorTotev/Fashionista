@@ -2,16 +2,24 @@ namespace Fashionista.Application.Addresses.Commands.Validation
 {
     internal static class Constants
     {
-        public const int StreetMinLength = 3;
-        public const int StreetMaxLength = 20;
+        internal const int MinStreetLength = 3;
+        internal const int MaxStreetLength = 20;
 
-        public const int DescMinLength = 5;
-        public const int DescMaxLength = 25;
+        internal const string StreetLengthMessage = "Street name length must be between {0} and {1} characters long!";
 
-        public const int CityNameMinLength = 3;
-        public const int CityNameMaxLength = 15;
+        internal const int MinDescLength = 5;
+        internal const int MaxDescLength = 25;
 
-        public const int ZipMinLength = 2;
-        public const int ZipMaxLength = 10;
+        internal const string DescLengthMessage = "Street name length must be between {0} and {1} characters long!";
+
+        internal const int MinCityNameLength = 3;
+        internal const int MaxCityNameLength = 15;
+
+        internal const string CityLengthMessage = "Street name length must be between {0} and {1} characters long!";
+
+        internal const int MinZipLength = 2;
+        internal const int MaxZipLength = 10;
+
+        internal const string ZipLengthMessage = "Street name length must be between {0} and {1} characters long!";
     }
 }
