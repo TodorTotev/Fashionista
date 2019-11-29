@@ -1,4 +1,4 @@
-namespace Fashionista.Application.Users.Queries
+namespace Fashionista.Application.Users.Queries.GetUser
 {
     using System;
     using System.Threading;
