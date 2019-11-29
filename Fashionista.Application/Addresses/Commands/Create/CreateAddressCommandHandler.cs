@@ -1,11 +1,8 @@
-using Fashionista.Application.Infrastructure;
-
 namespace Fashionista.Application.Addresses.Commands.Create
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-
     using Fashionista.Application.Cities.Commands;
     using Fashionista.Application.Cities.Queries.GetCity;
     using Fashionista.Application.Interfaces;
@@ -29,25 +26,15 @@ namespace Fashionista.Application.Addresses.Commands.Create
         {
             request = request ?? throw new ArgumentNullException();
 
-            var city = this.mediator.Send(
-                new GetCityQuery
-                       {
-                           Name = request.City,
-                       })
-
-                       ?? this.mediator.Send(
-                           new CreateCityCommand
-                       {
-                           Name = request.City,
-                           Postcode = request.Zip,
-                       });
+            var city = this.mediator.Send(new GetCityQuery { Name = request.City })
+                       ?? this.mediator.Send(new CreateCityCommand { Name = request.City, Postcode = request.Zip });
 
             var address = new Address
             {
                 CityId = city.Id,
                 Name = request.Street,
                 Description = request.Description,
-                ApplicationUser = request.User,
+                ApplicationUserId = request.User.Id,
             };
 
             await this.addressesRepository.AddAsync(address);

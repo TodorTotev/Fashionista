@@ -28,7 +28,13 @@
               <e p="Constants.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetAllUserAddresses" t="Include">
+              <e p="GetAllUserAddressesQuery.cs" t="Include" />
+              <e p="GetAllUserAddressesQueryHandler.cs" t="Include" />
+              <e p="GetAllUserAddressesViewModel.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="ApplicationDependencyInjectionHelper.cs" t="Include" />
         <e p="appsettings.json" t="Include" />
@@ -80,6 +86,7 @@
         </e>
         <e p="Common" t="Include">
           <e p="Models" t="Include">
+            <e p="AddressLookupModel.cs" t="Include" />
             <e p="BrandLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
             <e p="ProductAttributesLookupModel.cs" t="Include" />
@@ -333,7 +340,11 @@
               <e p="DeleteAddressCommandTests.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="GetAllUserAddresses" t="Include">
+              <e p="GetAllUserAddressesQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Brands" t="Include">
@@ -633,6 +644,8 @@
           <e p="20191121174148_ModifySizeEntity.Designer.cs" t="Include" />
           <e p="20191128124400_UserModification.cs" t="Include" />
           <e p="20191128124400_UserModification.Designer.cs" t="Include" />
+          <e p="20191129112032_AddresDeletableEntity.cs" t="Include" />
+          <e p="20191129112032_AddresDeletableEntity.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -783,6 +796,7 @@
           <e p="HomePageWomenProductsViewComponent.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
+          <e p="AddressController.cs" t="Include" />
           <e p="BaseController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
         </e>
@@ -807,6 +821,7 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Address" t="Include">
             <e p="Create.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />

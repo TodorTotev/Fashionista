@@ -1,13 +1,12 @@
-using System;
-using Microsoft.EntityFrameworkCore;
-
 namespace Fashionista.Application.Tests.Address.Commands.Create
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Addresses.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
+    using Microsoft.EntityFrameworkCore;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -19,13 +18,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateAddress()
         {
             // Arrange
-            var user = new ApplicationUser
-            {
-                FirstName = "Test",
-                LastName = "Test",
-                Email = "Test@mail.com",
-                ShoppingCart = new ShoppingCart(),
-            };
+            var user = await this.dbContext.Users.FirstOrDefaultAsync();
             var command = new CreateAddressCommand
             {
                 Street = "NewStreet",
@@ -49,7 +42,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
             address.Name.ShouldBe("NewStreet");
             address.Description.ShouldBe("NewDesc");
             address.City.Name.ShouldBe("TestCity");
-            address.ApplicationUser.Email.ShouldBe("Test@mail.com");
+            address.ApplicationUser.Email.ShouldBe("Test@test.com");
         }
 
         [Trait(nameof(Address), "CreateAddress command tests")]
