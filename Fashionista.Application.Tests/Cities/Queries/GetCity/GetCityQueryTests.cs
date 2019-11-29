@@ -50,7 +50,5 @@ namespace Fashionista.Application.Tests.Cities.Queries.GetCity
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
-
-        
     }
 }

@@ -25,11 +25,6 @@ namespace Fashionista.Application.Cities.Queries.GetCity
         {
             request = request ?? throw new ArgumentNullException();
 
-            if (!await CommonCheckAssistant.CheckIfCityWithSameNameExists(request.Name, this.citiesRepository))
-            {
-                throw new NotFoundException(nameof(City), request.Name);
-            }
-
             return await this.citiesRepository
                 .AllAsNoTracking()
                 .Where(x => x.Name == request.Name)
