@@ -1,6 +1,10 @@
 namespace Fashionista.Domain.Entities
 {
-    public class FavoriteProduct
+    using System;
+
+    using Fashionista.Domain.Infrastructure;
+
+    public class FavoriteProduct : IDeletableEntity
     {
         public int ProductId { get; set; }
 
@@ -9,5 +13,9 @@ namespace Fashionista.Domain.Entities
         public string ApplicationUserId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }
