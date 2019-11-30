@@ -591,6 +591,9 @@
           <e p="CloudinaryHelper.cs" t="Include" />
         </e>
         <e p="Fashionista.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="Humanizer" t="Include">
+          <e p="HumanizerMetadataProvider.cs" t="Include" />
+        </e>
         <e p="Messaging" t="Include">
           <e p="ISmsSender.cs" t="Include" />
           <e p="NullMessageSender.cs" t="Include" />
@@ -805,6 +808,7 @@
           <e p="HomeController.cs" t="Include" />
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
+        <e p="Infrastructure" t="Include" />
         <e p="libman.json" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

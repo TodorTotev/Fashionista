@@ -1,4 +1,6 @@
-﻿namespace Fashionista.Web
+﻿using Fashionista.Infrastructure.Humanizer;
+
+namespace Fashionista.Web
 {
     using AutoMapper;
     using Fashionista.Application;
@@ -78,6 +80,7 @@
 
             services.AddRazorPages();
             services.AddControllersWithViews()
+                .AddMvcOptions(m => m.ModelMetadataDetailsProviders.Add(new HumanizerMetadataProvider()))
                 .AddFluentValidation(fv =>
                     fv.RegisterValidatorsFromAssemblyContaining<ApplicationDependencyInjectionHelper>());
 
@@ -90,7 +93,7 @@
                 googleOptions.ClientId = this.configuration["Authentication:Google:ClientId"];
                 googleOptions.ClientSecret = this.configuration["Authentication:Google:ClientSecret"];
             });
-            
+
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
                 facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
