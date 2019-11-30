@@ -11,14 +11,14 @@ namespace Fashionista.Web.Controllers
     [Authorize]
     public class AddressController : BaseController
     {
-        [Route("Identity/Address/Create")]
+        [Route("Identity/Account/Manage/CreateAddress")]
         public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        [Route("Identity/Address/Create")]
+        [Route("Identity/Account/Manage/CreateAddress")]
         public async Task<IActionResult> Create(CreateAddressCommand command)
         {
             if (!this.ModelState.IsValid)
@@ -31,14 +31,15 @@ namespace Fashionista.Web.Controllers
 
             await this.Mediator.Send(command);
 
-            return this.RedirectToPage("Addresses");
+            return this.Redirect("Addresses");
         }
 
+        [Route("Identity/Account/Manage/Delete")]
         public async Task<IActionResult> Delete(DeleteAddressCommand command)
         {
             await this.Mediator.Send(command);
 
-            return this.RedirectToPage("Addresses");
+            return this.Redirect("Addresses");
         }
     }
 }
