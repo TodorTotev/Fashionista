@@ -151,6 +151,11 @@
               <e p="GetAllMainCategoriesQueryHandler.cs" t="Include" />
               <e p="GetAllMainCategoriesViewModel.cs" t="Include" />
             </e>
+            <e p="GetAllMainCategoriesNavigation" t="Include">
+              <e p="CategoriesNavigationViewModel.cs" t="Include" />
+              <e p="GetAllMainCategoriesNavigationQuery.cs" t="Include" />
+              <e p="GetAllMainCategoriesNavigationQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllMainCategoriesSelectList" t="Include">
               <e p="GetAllMainCategoriesSelectListQuery.cs" t="Include" />
               <e p="GetAllMainCategoriesSelectListQueryHandler.cs" t="Include" />
@@ -409,6 +414,9 @@
             </e>
             <e p="GetAllMainCategories" t="Include">
               <e p="GetAllMainCategoriesQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetAllMainCategoriesNavigation" t="Include">
+              <e p="GetAllMainCategoriesNavigationQueryTests.cs" t="Include" />
             </e>
             <e p="GetAllMainCategorySelectList" t="Include">
               <e p="GetAllMainCategorySelectListTests.cs" t="Include" />
@@ -801,6 +809,7 @@
           <e p="HomePageBrandsViewComponent.cs" t="Include" />
           <e p="HomePageMenProductsViewComponent.cs" t="Include" />
           <e p="HomePageWomenProductsViewComponent.cs" t="Include" />
+          <e p="NavigationViewComponent.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
           <e p="AddressController.cs" t="Include" />
@@ -850,6 +859,9 @@
                 <e p="Default.cshtml" t="Include" />
               </e>
               <e p="HomePageWomenProducts" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="Navigation" t="Include">
                 <e p="Default.cshtml" t="Include" />
               </e>
             </e>

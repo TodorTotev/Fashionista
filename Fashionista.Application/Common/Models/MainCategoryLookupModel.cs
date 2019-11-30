@@ -1,6 +1,7 @@
 namespace Fashionista.Application.Common.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AutoMapper;
@@ -17,6 +18,8 @@ namespace Fashionista.Application.Common.Models
 
         [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime CreatedOn { get; set; }
+
+        public IEnumerable<SubCategory> SubCategories { get; set; }
 
         public void CreateMappings(Profile configuration)
         {

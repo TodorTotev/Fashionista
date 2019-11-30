@@ -1,0 +1,122 @@
+@model Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesNavigation.CategoriesNavigationViewModel
+
+
+<div class="header-left">
+    <ul class="menu sf-arrows">
+        <li class="active">
+            <a  asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        @if (Model.Categories.Any())
+        {
+            foreach (var category in Model.Categories)
+            {
+                <li>
+                    <a href="#" class="sf-with-ul">@category.Name</a>
+                    <ul>
+                        @foreach (var subCategory in category.SubCategories)
+                        {
+                            <li>
+                                <a href="#">@subCategory.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+</div>
+<div class="header-center">
+    <a href="index.html" class="logo">
+        <img src="~/images/newlogo.png" alt="Logo">
+    </a>
+</div>
+
+<div class="header-right">
+    <ul class="menu sf-arrows">
+        <li>
+            <a href="#" class="sf-with-ul">Pages</a>
+            <ul>
+                <li>
+                    <a href="cart.html">Shopping Cart</a>
+                </li>
+                <li>
+                    <a href="#">Checkout</a>
+                    <ul>
+                        <li>
+                            <a href="checkout-shipping.html">Checkout Shipping</a>
+                        </li>
+                        <li>
+                            <a href="checkout-shipping-2.html">Checkout Shipping 2</a>
+                        </li>
+                        <li>
+                            <a href="checkout-review.html">Checkout Review</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                    <ul>
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                           <a href="#">My Account</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                </li>
+                <li>
+                    <a href="#">Blog</a>
+                    <ul>
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="single.html">Blog Post</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Contact">Contact Us</a>
+                </li>
+                <li>
+                    <partial name="_LoginPartial"/>
+                </li>
+                <li>
+                    <a href="#">Forgot Password</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="sf-with-ul">Features</a>
+
+            <ul>
+                <li>
+                    <a href="#">Header Types</a>
+                </li>
+                <li>
+                    <a href="#">Footer Types</a>
+                </li>
+                <li>
+                    <a href="#">Homepage Variants</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Special Offer!</a>
+        </li>
+        @if (User.IsInRole("Administrator"))
+        {
+            <li>
+                <a asp-controller="Home" asp-action="Index">Admin Panel</a>
+            </li>
+        }
+
+    </ul>
+
+    <button class="mobile-menu-toggler" type="button">
+        <i class="icon-menu"></i>
+    </button>
+</div><!-- End .header-right -->

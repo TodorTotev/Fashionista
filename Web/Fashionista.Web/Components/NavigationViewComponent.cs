@@ -1,7 +1,9 @@
-using MediatR;
-
 namespace Fashionista.Web.Components
 {
+    using System.Threading.Tasks;
+
+    using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesNavigation;
+    using MediatR;
     using Microsoft.AspNetCore.Mvc;
 
     public class NavigationViewComponent : ViewComponent
@@ -15,7 +17,9 @@ namespace Fashionista.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = new N
+            var model = await this.mediator.Send(new GetAllMainCategoriesNavigationQuery());
+
+            return this.View(model);
         }
     }
 }

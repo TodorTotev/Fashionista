@@ -27,7 +27,7 @@
         <partial name="Partials/_HeaderTopPartial"/>
         <div class="header-middle sticky-header">
             <div class="container">
-                
+                @await Component.InvokeAsync("Navigation")
             </div><!-- End .container -->
         </div><!-- End .header-middle -->
     </header><!-- End .header -->
