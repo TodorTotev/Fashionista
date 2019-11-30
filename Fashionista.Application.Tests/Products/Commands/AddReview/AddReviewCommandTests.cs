@@ -21,7 +21,7 @@ namespace Fashionista.Application.Tests.Products.Commands.AddReview
         public async Task Handle_GivenValidRequest_ShouldAddReview()
         {
             // Arrange
-            var command = new AddReviewCommand { ProductId = 1, Rating = 5 };
+            var command = new AddReviewCommand { Id = 1, Rating = 5 };
             var sut = new AddReviewCommandHandler(this.deletableEntityRepository);
 
             // Act
@@ -40,7 +40,7 @@ namespace Fashionista.Application.Tests.Products.Commands.AddReview
         public async Task Handle_GivenInvalidRequest_ShouldThrowArgumentOutOfRangeException()
         {
             // Arrange
-            var query = new AddReviewCommand { ProductId = 1, Rating = 6 };
+            var query = new AddReviewCommand { Id = 1, Rating = 6 };
             var sut = new AddReviewCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
@@ -52,7 +52,7 @@ namespace Fashionista.Application.Tests.Products.Commands.AddReview
         public async Task Handle_GivenInvalidRequest_ShouldReturnNotFoundException()
         {
             // Arrange
-            var query = new AddReviewCommand { ProductId = 1000, Rating = 2 };
+            var query = new AddReviewCommand { Id = 1000, Rating = 2 };
             var sut = new AddReviewCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert

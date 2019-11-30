@@ -227,6 +227,11 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
+            <e p="AddReview" t="Include">
+              <e p="AddReviewCommand.cs" t="Include" />
+              <e p="AddReviewCommandHandler.cs" t="Include" />
+              <e p="AddReviewCommandValidator.cs" t="Include" />
+            </e>
             <e p="Create" t="Include">
               <e p="CreateProductCommand.cs" t="Include" />
               <e p="CreateProductCommandHandler.cs" t="Include" />
@@ -246,6 +251,11 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Details" t="Include">
+              <e p="GetProductDetailsQuery.cs" t="Include" />
+              <e p="GetProductDetailsQueryHandler.cs" t="Include" />
+              <e p="GetProductDetailsViewModel.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditProductQuery.cs" t="Include" />
               <e p="EditProductQueryHandler.cs" t="Include" />
@@ -471,6 +481,9 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
+            <e p="AddReview" t="Include">
+              <e p="AddReviewCommandTests.cs" t="Include" />
+            </e>
             <e p="Create" t="Include">
               <e p="CreateProductCommandTests.cs" t="Include" />
             </e>
@@ -482,6 +495,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Details" t="Include">
+              <e p="GetProductDetailsQueryTests.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditProductQueryTests.cs" t="Include" />
             </e>
@@ -815,6 +831,7 @@
           <e p="AddressController.cs" t="Include" />
           <e p="BaseController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="ProductController.cs" t="Include" />
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include" />
@@ -846,6 +863,9 @@
             <e p="Returns.cshtml" t="Include" />
             <e p="Shipping.cshtml" t="Include" />
             <e p="TermsOfService.cshtml" t="Include" />
+          </e>
+          <e p="product" t="Include">
+            <e p="Details.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_CookieConsentPartial.cshtml" t="Include" />

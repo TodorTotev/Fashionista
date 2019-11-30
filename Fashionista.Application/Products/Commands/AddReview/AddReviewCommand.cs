@@ -4,7 +4,7 @@ namespace Fashionista.Application.Products.Commands.AddReview
 
     public class AddReviewCommand : IRequest<int>
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         public int Rating { get; set; }
     }

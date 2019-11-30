@@ -23,10 +23,12 @@ namespace Fashionista.Application.Common.Models
 
         public string BrandName { get; set; }
 
+        public string BrandPhotoUrl { get; set; }
+
         public string SubCategoryName { get; set; }
 
         public string SubCategoryMainCategoryName { get; set; }
-        
+
         public int SubCategoryMainCategoryId { get; set; }
 
         public virtual ICollection<string> Photos { get; set; }
@@ -74,12 +76,18 @@ namespace Fashionista.Application.Common.Models
                     x => x.SubCategoryMainCategoryName,
                     y => y.MapFrom(
                         src => src.SubCategory.MainCategory.Name));
-            
+
             configuration.CreateMap<Product, ProductLookupModel>()
                 .ForMember(
                     x => x.SubCategoryMainCategoryId,
                     y => y.MapFrom(
                         src => src.SubCategory.MainCategoryId));
+
+            configuration.CreateMap<Product, ProductLookupModel>()
+                .ForMember(
+                    x => x.BrandPhotoUrl,
+                    y => y.MapFrom(
+                        src => src.Brand.BrandPhotoUrl));
         }
     }
 }

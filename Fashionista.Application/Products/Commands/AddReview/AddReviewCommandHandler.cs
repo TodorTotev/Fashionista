@@ -30,8 +30,8 @@ namespace Fashionista.Application.Products.Commands.AddReview
 
             var requestedEntity = await this.productsRepository
                                       .All()
-                                      .SingleOrDefaultAsync(x => x.Id == request.ProductId, cancellationToken)
-                                  ?? throw new NotFoundException(nameof(Product), request.ProductId);
+                                      .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
+                                  ?? throw new NotFoundException(nameof(Product), request.Id);
 
             requestedEntity.Reviews.Add(new Review
             {
