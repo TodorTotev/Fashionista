@@ -6,28 +6,28 @@
 
         <ul class="list">
             <li class="@ManageNavPages.IndexNavClass(ViewContext)">
-                <a asp-page="/Index">Account Dashboard</a>
+                <a asp-page="./Index">Account Dashboard</a>
             </li>
             <li class="@ManageNavPages.AccountInformationNavClass(ViewContext)">
-                <a asp-page="/AccountInformation">Account Information</a>
+                <a asp-page="./AccountInformation">Account Information</a>
             </li>
             <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)">
-                <a asp-page="/ChangePassword">Change Password</a>
+                <a asp-page="./ChangePassword">Change Password</a>
             </li>
-            @* <li class="@Html.IsActive("Dashboard", "Addresses")"> *@
-            @*     <a asp-controller="Dashboard" asp-action="Addresses">Address Book</a> *@
-            @* </li> *@
+            <li class="@ManageNavPages.AddressesNavClass(ViewContext)">
+                <a asp-page="./Addresses">Address Book</a>
+            </li>
             @* <li class="@Html.IsActive("Wishlist", "All")"> *@
             @*     <a asp-controller="Wishlist" asp-action="All">My Wishlist</a> *@
             @* </li> *@
             <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)">
-                <a asp-page="/ExternalLogins">External logins</a>
+                <a asp-page="./ExternalLogins">External logins</a>
             </li>
             <li>
                 <a href="#">Order History</a>
             </li>
             <li class="@ManageNavPages.PersonalDataNavClass(ViewContext)">
-                <a asp-page="/PersonalData">Personal Data</a>
+                <a asp-page="./PersonalData">Personal Data</a>
             </li>
         </ul>
     </div><!-- End .widget -->

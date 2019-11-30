@@ -758,6 +758,8 @@
                   <e p="_ViewStart.cshtml" t="Include" />
                   <e p="AccountInformation.cshtml" t="Include" />
                   <e p="AccountInformation.cshtml.cs" t="Include" />
+                  <e p="Addresses.cshtml" t="Include" />
+                  <e p="Addresses.cshtml.cs" t="Include" />
                   <e p="ChangePassword.cshtml" t="Include" />
                   <e p="ChangePassword.cshtml.cs" t="Include" />
                   <e p="DeletePersonalData.cshtml" t="Include" />
@@ -822,7 +824,6 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Address" t="Include">
             <e p="Create.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />

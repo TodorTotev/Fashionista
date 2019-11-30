@@ -1,14 +1,15 @@
-@model Fashionista.Application.Addresses.Queries.GetAllUserAddresses.GetAllUserAddressesViewModel
+@page
+@model Fashionista.Web.Areas.Identity.Pages.Account.Manage.Addresses
 
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a asp-controller="Home" asp-action="Index">
+                <a asp-page="./Index">
                     <i class="icon-home"></i>
                 </a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+            <li class="breadcrumb-item active" aria-current="page">Address book</li>
         </ol>
     </div><!-- End .container -->
 </nav>
@@ -16,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-9 order-lg-last dashboard-content">
-            <h2>My Wishlist</h2>
+            <h2>Address Book</h2>
 
             <div class="cart-table-container">
                 <table class="table table-cart">
@@ -30,7 +31,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach (var address in Model.Addresses)
+                    @foreach (var address in Model.AddressList.Addresses)
                     {
                         <tr class="product-row">
                             <td>@address.Name</td>
@@ -44,7 +45,7 @@
                             </td>
                         </tr>
                     }
-                    @if (!Model.Addresses.Any())
+                    @if (!Model.AddressList.Addresses.Any())
                     {
                         <p>Currently you do not have any products in your wishlist</p>
                     }
@@ -70,4 +71,4 @@
     </div><!-- End .row -->
 </div><!-- End .container -->
 
-<div class="mb-5"></div><!-- margin -->
+<div class="mb-5"></div><!-- margin -->}
