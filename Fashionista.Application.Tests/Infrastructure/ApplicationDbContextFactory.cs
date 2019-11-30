@@ -67,7 +67,7 @@ namespace Fashionista.Application.Tests.Infrastructure
 
             dbContext.SaveChanges();
 
-            dbContext.Products.Add(new Product
+            var product = dbContext.Products.Add(new Product
             {
                 Name = "ActiveProduct",
                 Description = "TestDesc",
@@ -86,6 +86,11 @@ namespace Fashionista.Application.Tests.Infrastructure
                 ProductSizeId = 1,
                 ProductColorId = 1,
                 ProductId = 1,
+            });
+
+            product.Entity.Reviews.Add(new Review
+            {
+                Rating = 5,
             });
 
             dbContext.SaveChanges();
@@ -134,6 +139,14 @@ namespace Fashionista.Application.Tests.Infrastructure
             });
 
             dbContext.SaveChangesAsync();
+
+            dbContext.FavoriteProducts.Add(new FavoriteProduct
+            {
+                ProductId = product.Entity.Id,
+                ApplicationUserId = user.Id,
+            });
+
+            dbContext.SaveChanges();
 
             return dbContext;
         }

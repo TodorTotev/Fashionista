@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <Folder Include="ProductColors\Commands" />
+      <Folder Include="Wishlist\Commands" />
     </ItemGroup>
 
 </Project>
