@@ -307,6 +307,10 @@
               <e p="AddProductInCartCommand.cs" t="Include" />
               <e p="AddProductInCartCommandHandler.cs" t="Include" />
             </e>
+            <e p="AddSesssion" t="Include">
+              <e p="AddSessionShoppingCartProductCommand.cs" t="Include" />
+              <e p="AddSessionShoppingCartProductCommandHandler.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
             <e p="GetAllShoppingCartProducts" t="Include">
