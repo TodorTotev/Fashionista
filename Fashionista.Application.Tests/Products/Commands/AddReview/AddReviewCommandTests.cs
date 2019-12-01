@@ -32,7 +32,7 @@ namespace Fashionista.Application.Tests.Products.Commands.AddReview
 
             var product = this.dbContext.Products.FirstOrDefault(x => x.Id == id);
             product.Name.ShouldBe("ActiveProduct");
-            product.Reviews.Count().ShouldBe(1);
+            product.Reviews.Count().ShouldBe(2);
         }
 
         [Trait(nameof(Product), "EditProduct query tests")]

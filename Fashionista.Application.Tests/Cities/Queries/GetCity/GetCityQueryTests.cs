@@ -29,18 +29,6 @@ namespace Fashionista.Application.Tests.Cities.Queries.GetCity
         }
 
         [Trait(nameof(City), "GetCity query tests")]
-        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
-        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
-        {
-            // Arrange
-            var command = new GetCityQuery { Name = "Invalid" };
-            var sut = new GetCityQueryHandler(this.deletableEntityRepository);
-
-            // Act & assert
-            await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
-        }
-
-        [Trait(nameof(City), "GetCity query tests")]
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {

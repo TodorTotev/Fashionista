@@ -79,7 +79,6 @@
 
   <ItemGroup>
     <Folder Include="Areas" />
-    <Folder Include="Infrastructure" />
   </ItemGroup>
 
   <ItemGroup>

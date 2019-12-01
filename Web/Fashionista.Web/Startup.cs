@@ -1,13 +1,16 @@
-﻿using Fashionista.Infrastructure.Humanizer;
+﻿using Fashionista.Web.Infrastructure;
 
 namespace Fashionista.Web
 {
+    using System;
+
     using AutoMapper;
     using Fashionista.Application;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Fashionista.Infrastructure.Cloudinary;
+    using Fashionista.Infrastructure.Humanizer;
     using Fashionista.Infrastructure.Messaging;
     using Fashionista.Persistence;
     using Fashionista.Persistence.Interfaces;
@@ -44,52 +47,16 @@ namespace Fashionista.Web
                 options => options
                     .UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
-            services
-                .AddIdentity<ApplicationUser, ApplicationRole>(options =>
-                {
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireUppercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequiredLength = 6;
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddUserStore<ApplicationUserStore>()
-                .AddRoleStore<ApplicationRoleStore>()
-                .AddDefaultTokenProviders();
-
-            services
-                .ConfigureApplicationCookie(options =>
-                {
-                    options.LoginPath = "/Identity/Account/Login";
-                    options.LogoutPath = "/Identity/Account/Logout";
-                    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-                });
-
-            services
-                .Configure<CookiePolicyOptions>(options =>
-                {
-                    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.Lax;
-                    options.ConsentCookie.Name = ".AspNetCore.ConsentCookie";
-                });
+            services.ConfigureIdentity();
+            services.ConfigureApplicationCookie();
+            services.ConfigureCookiePolicy();
+            services.ConfigureSession();
+            services.AddRazorPages();
+            services.ConfigureControllers();
+            services.AddHttpContextAccessor();
 
             services.AddMediatR(typeof(ApplicationDependencyInjectionHelper).Assembly);
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
-
-            services.AddRazorPages();
-            services.AddControllersWithViews()
-                .AddRazorPagesOptions(o =>
-                {
-                    o.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
-                    o.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-                })
-                .AddMvcOptions(m => m.ModelMetadataDetailsProviders.Add(new HumanizerMetadataProvider()))
-                .AddFluentValidation(fv =>
-                    fv.RegisterValidatorsFromAssemblyContaining<ApplicationDependencyInjectionHelper>());
-
-            services.AddHttpContextAccessor();
 
             services.AddSingleton(this.configuration);
 
