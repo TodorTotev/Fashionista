@@ -25,7 +25,7 @@ namespace Fashionista.Web.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await this.mediator.Send(new GetUserQuery { Principal = this.User });
-            var addresses = await this.mediator.Send(new GetAllUserAddressesQuery { User = user });
+            var addresses = await this.mediator.Send(new GetAllUserAddressesQuery());
 
             this.AddressList = addresses;
 

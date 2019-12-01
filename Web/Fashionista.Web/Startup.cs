@@ -1,26 +1,20 @@
-﻿using Fashionista.Web.Infrastructure;
-
-namespace Fashionista.Web
+﻿namespace Fashionista.Web
 {
-    using System;
-
     using AutoMapper;
     using Fashionista.Application;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Fashionista.Infrastructure.Cloudinary;
-    using Fashionista.Infrastructure.Humanizer;
     using Fashionista.Infrastructure.Messaging;
     using Fashionista.Persistence;
     using Fashionista.Persistence.Interfaces;
     using Fashionista.Persistence.Repositories;
     using Fashionista.Persistence.Seeding;
-    using FluentValidation.AspNetCore;
+    using Fashionista.Web.Infrastructure;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.EntityFrameworkCore;
