@@ -1,0 +1,98 @@
+@page
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common
+@model Fashionista.Web.Areas.Identity.Pages.Account.Manage.Wishlist
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 order-lg-last dashboard-content">
+            <h2>My Wishlist</h2>
+
+            <div class="cart-table-container">
+                <table class="table table-cart">
+                    <thead>
+                    <tr>
+                        <th class="product-col">Product</th>
+                        <th class="price-col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (!Model.Products.Any())
+                    {
+                        <p>Currently you do not have any products in your wishlist</p>
+                    }
+                    else
+                    {
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr class="product-row">
+                                <td class="product-col">
+                                    <figure class="product-image-container">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="product-image">
+                                            <img src="@product.Photos.FirstOrDefault()" alt="product">
+                                        </a>
+                                    </figure>
+                                    <h2 class="product-title">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+                                    </h2>
+                                </td>
+                                <td>$@product.Price</td>
+                            </tr>
+                            <tr class="product-action-row">
+                                <td colspan="4" class="clearfix">
+                                    <div class="float-left">
+                                        <a href="#" class="btn-move">Move to Cart</a>
+                                    </div><!-- End .float-left -->
+
+                                    <div class="float-right">
+                                        @* <a asp-controller="Wishlist" asp-action="Delete" asp-route-id="@product.ProductId" class="btn-remove"> *@
+                                        <a href="#">
+                                            <span class="sr-only">Remove</span>
+                                        </a>
+                                    </div><!-- End .float-right -->
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+
+                    <tfoot>
+                    <tr>
+                        <td colspan="8">
+                            <div class="footable-pagination-wrapper">
+                                <ul class="pagination justify-content-center">
+                                    @Html.PagedListPager(Model.Products, page => Url.Page("Wishlist", new {page}),
+                                        new PagedListRenderOptions
+                                        {
+                                            MaximumPageNumbersToDisplay = 5,
+                                            LiElementClasses = new[] {"page-item"},
+                                            PageClasses = new[] {"page-link"}
+                                        })
+                                </ul>
+                                <div class="divider>"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div><!-- End .cart-table-container -->
+
+        </div><!-- End .col-lg-9 -->
+        <partial name="Partials/_DashboardNavigationPartial"/>
+    </div><!-- End .row -->
+</div><!-- End .container -->
+
+<div class="mb-5"></div><!-- margin -->
