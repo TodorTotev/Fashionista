@@ -94,6 +94,7 @@
             <e p="ProductLookupModel.cs" t="Include" />
             <e p="ProductSizeLookupModel.cs" t="Include" />
             <e p="SubCategoryLookupModel.cs" t="Include" />
+            <e p="WishlistProductLookup.cs" t="Include" />
           </e>
         </e>
         <e p="Exceptions" t="Include">
@@ -346,6 +347,25 @@
             </e>
           </e>
         </e>
+        <e p="Wishlist" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateFavoriteProductCommand.cs" t="Include" />
+              <e p="CreateFavoriteProductCommandHandler.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteFavoriteProductCommand.cs" t="Include" />
+              <e p="DeleteFavoriteProductCommandHandler.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetAllWishlistProductsPaged" t="Include">
+              <e p="GetAllWishlistProductsPagedQuery.cs" t="Include" />
+              <e p="GetAllWishlistProductsPagedQueryHandler.cs" t="Include" />
+              <e p="WishlistProductsViewModel.cs" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
       <e p="Fashionista.Application.Tests" t="IncludeRecursive">
         <e p="Address" t="Include">
@@ -549,6 +569,19 @@
             <e p="GetAllSubCategoriesSelectListTests.cs" t="Include" />
           </e>
         </e>
+        <e p="Wishlist" t="Include">
+          <e p="Commands" t="Include">
+            <e p="Create" t="Include">
+              <e p="CreateFavoriteProductCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteFavoriteProductCommandTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="GetAllWishlistProductsPagedQueryTests.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="Fashionista.Common" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -675,6 +708,8 @@
           <e p="20191128124400_UserModification.Designer.cs" t="Include" />
           <e p="20191129112032_AddresDeletableEntity.cs" t="Include" />
           <e p="20191129112032_AddresDeletableEntity.Designer.cs" t="Include" />
+          <e p="20191130131928_FAvoriteProductsDeletableEntity.cs" t="Include" />
+          <e p="20191130131928_FAvoriteProductsDeletableEntity.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -802,6 +837,8 @@
                   <e p="PersonalData.cshtml.cs" t="Include" />
                   <e p="SetPassword.cshtml" t="Include" />
                   <e p="SetPassword.cshtml.cs" t="Include" />
+                  <e p="Wishlist.cshtml" t="Include" />
+                  <e p="Wishlist.cshtml.cs" t="Include" />
                 </e>
                 <e p="Register.cshtml" t="Include" />
                 <e p="Register.cshtml.cs" t="Include" />
@@ -832,6 +869,7 @@
           <e p="BaseController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductController.cs" t="Include" />
+          <e p="WishlistController.cs" t="Include" />
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include" />

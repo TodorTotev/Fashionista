@@ -5,7 +5,6 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Tests.Infrastructure;
-    using Fashionista.Application.Wishlist.Queries.GetAllWishlistProducts;
     using Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged;
     using Fashionista.Domain.Entities;
     using Moq;

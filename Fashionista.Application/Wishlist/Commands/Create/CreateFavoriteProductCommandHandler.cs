@@ -31,7 +31,7 @@ namespace Fashionista.Application.Wishlist.Commands.Create
 
             if (!await CommonCheckAssistant.CheckIfProductExists(request.Id, this.productsRepository))
             {
-                throw new NotFoundException(nameof(request), request.Id);
+                throw new NotFoundException(nameof(Product), request.Id);
             }
 
             if (await this.CheckIfUserContainsFavoriteProductAlready(request.Id, request.User.Id))

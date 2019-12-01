@@ -1,4 +1,4 @@
-namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProducts
+namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
 {
     using System.Collections.Generic;
 
@@ -6,6 +6,6 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProducts
 
     public class WishlistProductsViewModel
     {
-        public IEnumerable<WishlistProductLookup> Products { get; set; }
+        public IEnumerable<ProductLookupModel> Products { get; set; }
     }
 }

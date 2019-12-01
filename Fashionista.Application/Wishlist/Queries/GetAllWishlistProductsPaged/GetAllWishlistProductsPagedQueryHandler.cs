@@ -9,7 +9,6 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
     using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Interfaces;
-    using Fashionista.Application.Wishlist.Queries.GetAllWishlistProducts;
     using Fashionista.Domain.Entities;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
@@ -36,11 +35,12 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var products = await this.favoriteProductsRepository
-                .AllAsNoTracking()
+                .All()
                 .Where(x => x.ApplicationUserId == request.User.Id)
+                .Select(x => x.Product)
                 .Skip(request.PageNumber * request.PageSize)
                 .Take(request.PageSize)
-                .ProjectTo<WishlistProductLookup>(this.mapper.ConfigurationProvider)
+                .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
             return new WishlistProductsViewModel
