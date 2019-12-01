@@ -80,6 +80,11 @@ namespace Fashionista.Web
 
             services.AddRazorPages();
             services.AddControllersWithViews()
+                .AddRazorPagesOptions(o =>
+                {
+                    o.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+                    o.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+                })
                 .AddMvcOptions(m => m.ModelMetadataDetailsProviders.Add(new HumanizerMetadataProvider()))
                 .AddFluentValidation(fv =>
                     fv.RegisterValidatorsFromAssemblyContaining<ApplicationDependencyInjectionHelper>());

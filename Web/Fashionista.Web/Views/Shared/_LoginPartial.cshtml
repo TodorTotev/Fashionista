@@ -2,12 +2,12 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@* *@
-@* @if (this.SignInManager.IsSignedIn(this.User)) *@
-@*     { *@
-@*         <a asp-controller="Account" asp-action="Logout">Logout</a> *@
-@*     } *@
-@*     else *@
-@*     { *@
-@*         <a asp-controller="Account" asp-action="Login">Login</a> *@
-@*     } *@
+
+ @if (this.SignInManager.IsSignedIn(this.User))
+     { 
+         <a asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+     } 
+     else
+     {
+         <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+     } 
