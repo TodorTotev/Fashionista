@@ -1,6 +1,5 @@
 namespace Fashionista.Application.Addresses.Commands.Create
 {
-    using Fashionista.Domain.Entities;
     using MediatR;
 
     public class CreateAddressCommand : IRequest<int>
@@ -12,7 +11,5 @@ namespace Fashionista.Application.Addresses.Commands.Create
         public string City { get; set; }
 
         public string Zip { get; set; }
-
-        public ApplicationUser User { get; set; }
     }
 }

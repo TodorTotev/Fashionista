@@ -23,11 +23,8 @@ namespace Fashionista.Web.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                command.User = await this.Mediator.Send(new GetUserQuery { Principal = this.User });
                 return this.View(command);
             }
-
-            command.User = await this.Mediator.Send(new GetUserQuery { Principal = this.User });
 
             await this.Mediator.Send(command);
 

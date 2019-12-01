@@ -1,3 +1,8 @@
+using System.Linq;
+using Fashionista.Application.Interfaces;
+
+// ReSharper disable PossibleNullReferenceException
+
 namespace Fashionista.Application.Tests.Address.Commands.Create
 {
     using System;
@@ -18,17 +23,22 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateAddress()
         {
             // Arrange
-            var user = await this.dbContext.Users.FirstOrDefaultAsync();
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
             var command = new CreateAddressCommand
             {
                 Street = "NewStreet",
                 Description = "NewDesc",
                 City = "TestCity",
                 Zip = "1000",
-                User = user,
             };
 
-            var sut = new CreateAddressCommandHandler(this.deletableEntityRepository, this.mediatorMock.Object);
+            var sut = new CreateAddressCommandHandler(
+            this.deletableEntityRepository,
+            this.mediatorMock.Object,
+            userAccessorMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -50,7 +60,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateAddressCommandHandler(this.deletableEntityRepository, this.mediatorMock.Object);
+            var sut = new CreateAddressCommandHandler(this.deletableEntityRepository, this.mediatorMock.Object, It.IsAny<IUserAssistant>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

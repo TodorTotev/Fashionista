@@ -3,6 +3,7 @@ namespace Fashionista.Application.Addresses.Commands.Create
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Fashionista.Application.Cities.Commands;
     using Fashionista.Application.Cities.Queries.GetCity;
     using Fashionista.Application.Interfaces;
@@ -13,13 +14,16 @@ namespace Fashionista.Application.Addresses.Commands.Create
     {
         private readonly IDeletableEntityRepository<Address> addressesRepository;
         private readonly IMediator mediator;
+        private readonly IUserAssistant userAssistant;
 
         public CreateAddressCommandHandler(
             IDeletableEntityRepository<Address> addressesRepository,
-            IMediator mediator)
+            IMediator mediator,
+            IUserAssistant userAssistant)
         {
             this.addressesRepository = addressesRepository;
             this.mediator = mediator;
+            this.userAssistant = userAssistant;
         }
 
         public async Task<int> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
@@ -34,7 +38,7 @@ namespace Fashionista.Application.Addresses.Commands.Create
                 CityId = city.Id,
                 Name = request.Street,
                 Description = request.Description,
-                ApplicationUserId = request.User.Id,
+                ApplicationUserId = this.userAssistant.UserId,
             };
 
             await this.addressesRepository.AddAsync(address);
