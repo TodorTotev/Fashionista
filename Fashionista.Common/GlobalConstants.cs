@@ -5,6 +5,8 @@ namespace Fashionista.Common
     {
         public const string AdministratorRoleName = "Administrator";
         
+        public const string ShoppingCartKey = "shoppingCart";
+        
         #region Brands
 
         public const int BRAND_IMAGE_HEIGHT = 184;

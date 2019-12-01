@@ -31,19 +31,19 @@ namespace Fashionista.Application.ShoppingCart.Commands.Add
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CommonCheckAssistant.CheckIfProductExists(request.ProductId, this.productsRepository))
+            if (!await CommonCheckAssistant.CheckIfProductExists(request.Id, this.productsRepository))
             {
-                throw new NotFoundException(nameof(Product), request.ProductId);
+                throw new NotFoundException(nameof(Product), request.Id);
             }
 
-            if (await this.CheckIfProductIsPresentInUserShoppingCart(request.ProductId, this.userAssistant.ShoppingCartId))
+            if (await this.CheckIfProductIsPresentInUserShoppingCart(request.Id, this.userAssistant.ShoppingCartId))
             {
-                throw new EntityAlreadyExistsException(nameof(request), request.ProductId);
+                throw new EntityAlreadyExistsException(nameof(request), request.Id);
             }
 
             var product = new ShoppingCartProduct
             {
-                ProductId = request.ProductId,
+                ProductId = request.Id,
                 ShoppingCartId = this.userAssistant.ShoppingCartId,
                 Quantity = request.Quantity ?? 1,
             };

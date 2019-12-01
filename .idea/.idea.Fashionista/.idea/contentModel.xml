@@ -892,6 +892,7 @@
           <e p="BaseController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="ProductController.cs" t="Include" />
+          <e p="ShoppingCartController.cs" t="Include" />
           <e p="WishlistController.cs" t="Include" />
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
@@ -967,6 +968,9 @@
                 <e p="_AdminNavigationPartial.cshtml" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="ShoppingCart" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
         </e>
         <e p="wwwroot" t="Include">

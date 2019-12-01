@@ -28,7 +28,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
             userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand { ProductId = 2, Quantity = 2 };
+            var command = new AddProductInCartCommand { Id = 2, Quantity = 2 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
@@ -53,7 +53,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
             userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand { ProductId = 1000, Quantity = 2 };
+            var command = new AddProductInCartCommand { Id = 1000, Quantity = 2 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
@@ -73,7 +73,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
             userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand {ProductId = 1, Quantity = 2};
+            var command = new AddProductInCartCommand {Id = 1, Quantity = 2};
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
