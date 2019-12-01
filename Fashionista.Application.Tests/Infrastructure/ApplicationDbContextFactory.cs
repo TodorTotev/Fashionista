@@ -148,6 +148,15 @@ namespace Fashionista.Application.Tests.Infrastructure
 
             dbContext.SaveChanges();
 
+            dbContext.ShoppingCartProducts.Add(new ShoppingCartProduct
+            {
+                ProductId = product.Entity.Id,
+                Quantity = 1,
+                ShoppingCartId = user.ShoppingCartId,
+            });
+
+            dbContext.SaveChanges();
+
             return dbContext;
         }
 
