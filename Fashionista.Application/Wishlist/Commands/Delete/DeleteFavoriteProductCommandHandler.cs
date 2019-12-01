@@ -13,11 +13,14 @@ namespace Fashionista.Application.Wishlist.Commands.Delete
     public class DeleteFavoriteProductCommandHandler : IRequestHandler<DeleteFavoriteProductCommand, int>
     {
         private readonly IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository;
+        private readonly IUserAssistant userAssistant;
 
         public DeleteFavoriteProductCommandHandler(
-            IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository)
+            IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository,
+            IUserAssistant userAssistant)
         {
             this.favoriteProductsRepository = favoriteProductsRepository;
+            this.userAssistant = userAssistant;
         }
 
         public async Task<int> Handle(DeleteFavoriteProductCommand request, CancellationToken cancellationToken)
@@ -28,7 +31,7 @@ namespace Fashionista.Application.Wishlist.Commands.Delete
                                         .AllWithDeleted()
                                         .SingleOrDefaultAsync(
                                             x => x.Product.Id == request.Id
-                                                 && x.ApplicationUserId == request.User.Id,
+                                                 && x.ApplicationUserId == this.userAssistant.UserId,
                                             cancellationToken)
                                     ?? throw new NotFoundException(nameof(FavoriteProduct), request.Id);
 

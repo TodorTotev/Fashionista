@@ -20,7 +20,6 @@ namespace Fashionista.Web.Controllers
         [Route("Identity/Account/Manage/DeleteFavoriteProduct")]
         public async Task<IActionResult> Delete(DeleteFavoriteProductCommand command)
         {
-            command.User = await this.Mediator.Send(new GetUserQuery { Principal = this.User });
             await this.Mediator.Send(command);
 
             return this.Redirect("Wishlist");

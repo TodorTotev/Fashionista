@@ -7,6 +7,7 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Delete
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Application.Wishlist.Commands.Delete;
     using Fashionista.Domain.Entities;
@@ -21,9 +22,12 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Delete
         public async Task Handle_GivenValidRequest_ShouldDeleteProduct()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
-            var command = new DeleteFavoriteProductCommand { User = user, Id = 1 };
-            var sut = new DeleteFavoriteProductCommandHandler(this.deletableEntityRepository);
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
+            var command = new DeleteFavoriteProductCommand { Id = 1 };
+            var sut = new DeleteFavoriteProductCommandHandler(this.deletableEntityRepository, userAccessorMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -36,9 +40,12 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Delete
         public async Task Handle_GivenValidRequest_ShouldThrowNotFoundException()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
-            var command = new DeleteFavoriteProductCommand { User = user, Id = 100 };
-            var sut = new DeleteFavoriteProductCommandHandler(this.deletableEntityRepository);
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
+            var command = new DeleteFavoriteProductCommand { Id = 100 };
+            var sut = new DeleteFavoriteProductCommandHandler(this.deletableEntityRepository, userAccessorMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -49,7 +56,9 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Delete
         public async Task Handle_GivenValidRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new DeleteFavoriteProductCommandHandler(this.deletableEntityRepository);
+            var sut = new DeleteFavoriteProductCommandHandler(
+                this.deletableEntityRepository,
+                It.IsAny<IUserAssistant>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
