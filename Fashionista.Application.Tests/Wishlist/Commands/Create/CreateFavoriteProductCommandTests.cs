@@ -1,5 +1,7 @@
 // ReSharper disable PossibleNullReferenceException
 
+using Fashionista.Application.Interfaces;
+
 namespace Fashionista.Application.Tests.Wishlist.Commands.Create
 {
     using System;
@@ -22,10 +24,16 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateFavoriteProduct()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
             var productRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new CreateFavoriteProductCommand {User = user, Id = 2};
-            var sut = new CreateFavoriteProductCommandHandler(this.deletableEntityRepository, productRepository);
+            var command = new CreateFavoriteProductCommand { Id = 2 };
+            var sut = new CreateFavoriteProductCommandHandler(
+                this.deletableEntityRepository,
+                productRepository,
+                userAccessorMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -34,18 +42,24 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Create
             id.ShouldBe(2);
 
             var favoriteProduct = this.dbContext.FavoriteProducts.FirstOrDefault(x => x.ProductId == id);
-            favoriteProduct.ApplicationUserId.ShouldBe(user.Id);
+            favoriteProduct.ApplicationUserId.ShouldBe(userId);
         }
 
         [Trait(nameof(FavoriteProduct), "CreateFavoriteProduct command tests")]
         [Fact(DisplayName = "Handle given invalid product id should throw NotFoundException")]
-        public async Task Handle_GivenValidRequest_ShouldThrowNotFoundException()
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
             var productRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new CreateFavoriteProductCommand {User = user, Id = 500};
-            var sut = new CreateFavoriteProductCommandHandler(this.deletableEntityRepository, productRepository);
+            var command = new CreateFavoriteProductCommand { Id = 500 };
+            var sut = new CreateFavoriteProductCommandHandler(
+                this.deletableEntityRepository,
+                productRepository,
+                userAccessorMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -56,10 +70,16 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldThrowEntityAlreadyExistsException()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
             var productRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new CreateFavoriteProductCommand {User = user, Id = 1};
-            var sut = new CreateFavoriteProductCommandHandler(this.deletableEntityRepository, productRepository);
+            var command = new CreateFavoriteProductCommand { Id = 1 };
+            var sut = new CreateFavoriteProductCommandHandler(
+                this.deletableEntityRepository,
+                productRepository,
+                userAccessorMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -72,7 +92,8 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Create
             // Arrange;
             var sut = new CreateFavoriteProductCommandHandler(
                 this.deletableEntityRepository,
-                It.IsAny<EfDeletableEntityRepository<Product>>());
+                It.IsAny<EfDeletableEntityRepository<Product>>(),
+                It.IsAny<IUserAssistant>());
 
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

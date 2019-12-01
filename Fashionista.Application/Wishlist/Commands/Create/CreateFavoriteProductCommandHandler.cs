@@ -16,13 +16,16 @@ namespace Fashionista.Application.Wishlist.Commands.Create
     {
         private readonly IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository;
         private readonly IDeletableEntityRepository<Product> productsRepository;
+        private readonly IUserAssistant userAssistant;
 
         public CreateFavoriteProductCommandHandler(
             IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository,
-            IDeletableEntityRepository<Product> productsRepository)
+            IDeletableEntityRepository<Product> productsRepository,
+            IUserAssistant userAssistant)
         {
             this.favoriteProductsRepository = favoriteProductsRepository;
             this.productsRepository = productsRepository;
+            this.userAssistant = userAssistant;
         }
 
         public async Task<int> Handle(CreateFavoriteProductCommand request, CancellationToken cancellationToken)
@@ -34,14 +37,14 @@ namespace Fashionista.Application.Wishlist.Commands.Create
                 throw new NotFoundException(nameof(Product), request.Id);
             }
 
-            if (await this.CheckIfUserContainsFavoriteProductAlready(request.Id, request.User.Id))
+            if (await this.CheckIfUserContainsFavoriteProductAlready(request.Id, this.userAssistant.UserId))
             {
                 throw new EntityAlreadyExistsException(nameof(request), request.Id);
             }
 
             var favoriteProduct = new FavoriteProduct
             {
-                ApplicationUserId = request.User.Id,
+                ApplicationUserId = this.userAssistant.UserId,
                 ProductId = request.Id,
             };
 

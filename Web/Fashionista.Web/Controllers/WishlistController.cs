@@ -12,7 +12,6 @@ namespace Fashionista.Web.Controllers
         [Route("Identity/Account/Manage/CreateFavoriteProduct")]
         public async Task<IActionResult> Create(CreateFavoriteProductCommand command)
         {
-            command.User = await this.Mediator.Send(new GetUserQuery { Principal = this.User });
             await this.Mediator.Send(command);
 
             return this.Redirect("Wishlist");
