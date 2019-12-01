@@ -2,7 +2,7 @@ namespace Fashionista.Application.Interfaces
 {
     using System.Security.Claims;
 
-    public interface IUserAccessor
+    public interface IUserAssistant
     {
         ClaimsPrincipal User { get; }
 

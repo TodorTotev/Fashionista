@@ -1,4 +1,4 @@
-namespace Fashionista.Web.Infrastructure
+namespace Fashionista.Infrastructure
 {
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;

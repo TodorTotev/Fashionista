@@ -1,3 +1,6 @@
+using Fashionista.Application.Interfaces;
+// ReSharper disable PossibleNullReferenceException
+
 namespace Fashionista.Application.Tests.Address.Queries.GetAllUserAddresses
 {
     using System;
@@ -19,9 +22,12 @@ namespace Fashionista.Application.Tests.Address.Queries.GetAllUserAddresses
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var user = await this.dbContext.Users.SingleOrDefaultAsync(x => x.FirstName == "TestFirstName");
-            var command = new GetAllUserAddressesQuery { User = user };
-            var sut = new GetAllUserAddressesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var userId = this.dbContext.Users.FirstOrDefault().Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
+            var command = new GetAllUserAddressesQuery();
+            var sut = new GetAllUserAddressesQueryHandler(this.deletableEntityRepository, this.mapper, userAccessorMock.Object);
 
             // Act
             var viewModel = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -37,7 +43,10 @@ namespace Fashionista.Application.Tests.Address.Queries.GetAllUserAddresses
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllUserAddressesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns("1");
+
+            var sut = new GetAllUserAddressesQueryHandler(this.deletableEntityRepository, this.mapper, userAccessorMock.Object);
 
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

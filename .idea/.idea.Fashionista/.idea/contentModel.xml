@@ -114,7 +114,7 @@
           <e p="ICloudinaryHelper.cs" t="Include" />
           <e p="IDeletableEntityRepository.cs" t="Include" />
           <e p="IRepository.cs" t="Include" />
-          <e p="IUserAccessor.cs" t="Include" />
+          <e p="IUserAssistant.cs" t="Include" />
           <e p="Mapping" t="Include">
             <e p="IHaveCustomMapping.cs" t="Include" />
             <e p="IMapFrom.cs" t="Include" />
@@ -668,7 +668,9 @@
             </e>
           </e>
         </e>
+        <e p="SessionAssistant.cs" t="Include" />
         <e p="stylecop.json" t="Include" />
+        <e p="UserAssistant.cs" t="Include" />
       </e>
       <e p="Fashionista.Persistence" t="IncludeRecursive">
         <e p="ApplicationDbContext.cs" t="Include" />
@@ -871,7 +873,9 @@
           <e p="WishlistController.cs" t="Include" />
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
-        <e p="Infrastructure" t="Include" />
+        <e p="Infrastructure" t="Include">
+          <e p="ServiceCollectionExtensions.cs" t="Include" />
+        </e>
         <e p="libman.json" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

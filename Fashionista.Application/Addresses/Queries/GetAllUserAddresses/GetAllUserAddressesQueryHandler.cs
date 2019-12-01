@@ -17,11 +17,16 @@ namespace Fashionista.Application.Addresses.Queries.GetAllUserAddresses
     {
         private readonly IDeletableEntityRepository<Address> addressesRepository;
         private readonly IMapper mapper;
+        private readonly IUserAssistant userAssistant;
 
-        public GetAllUserAddressesQueryHandler(IDeletableEntityRepository<Address> addressesRepository, IMapper mapper)
+        public GetAllUserAddressesQueryHandler(
+            IDeletableEntityRepository<Address> addressesRepository,
+            IMapper mapper,
+            IUserAssistant userAssistant)
         {
             this.addressesRepository = addressesRepository;
             this.mapper = mapper;
+            this.userAssistant = userAssistant;
         }
 
         public async Task<GetAllUserAddressesViewModel> Handle(GetAllUserAddressesQuery request, CancellationToken cancellationToken)
@@ -30,7 +35,7 @@ namespace Fashionista.Application.Addresses.Queries.GetAllUserAddresses
 
             var addresses = await this.addressesRepository
                 .All()
-                .Where(x => x.ApplicationUserId == request.User.Id)
+                .Where(x => x.ApplicationUserId == this.userAssistant.UserId)
                 .ProjectTo<AddressLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

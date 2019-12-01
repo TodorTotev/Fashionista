@@ -28,10 +28,7 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Delete
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
 
-            var product = this.dbContext.FavoriteProducts
-                .SingleOrDefault(x => x.ProductId == id);
-
-            product.IsDeleted.ShouldBe(true);
+            this.dbContext.FavoriteProducts.Count().ShouldBe(0);
         }
 
         [Trait(nameof(FavoriteProduct), "DeleteFavoriteProduct command tests")]
