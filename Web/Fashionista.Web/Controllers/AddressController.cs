@@ -4,7 +4,6 @@ namespace Fashionista.Web.Controllers
 
     using Fashionista.Application.Addresses.Commands.Create;
     using Fashionista.Application.Addresses.Commands.Delete;
-    using Fashionista.Application.Users.Queries.GetUser;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

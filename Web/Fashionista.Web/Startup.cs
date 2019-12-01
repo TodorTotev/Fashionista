@@ -5,6 +5,7 @@
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
+    using Fashionista.Infrastructure;
     using Fashionista.Infrastructure.Cloudinary;
     using Fashionista.Infrastructure.Messaging;
     using Fashionista.Persistence;
@@ -73,7 +74,7 @@
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-
+            services.AddScoped<IUserAssistant, UserAssistant>();
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services

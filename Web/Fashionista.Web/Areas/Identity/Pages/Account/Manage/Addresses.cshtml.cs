@@ -3,7 +3,6 @@ namespace Fashionista.Web.Areas.Identity.Pages.Account.Manage
     using System.Threading.Tasks;
 
     using Fashionista.Application.Addresses.Queries.GetAllUserAddresses;
-    using Fashionista.Application.Users.Queries.GetUser;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;

@@ -29,6 +29,8 @@
 
     <ItemGroup>
       <Folder Include="ProductColors\Commands" />
+      <Folder Include="ShoppingCart\Commands" />
+      <Folder Include="ShoppingCart\Queries" />
     </ItemGroup>
 
 </Project>

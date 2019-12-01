@@ -1,6 +1,10 @@
 namespace Fashionista.Domain.Entities
 {
-    public class ShoppingCartProduct
+    using System;
+
+    using Fashionista.Domain.Infrastructure;
+
+    public class ShoppingCartProduct : IDeletableEntity
     {
         public int ProductId { get; set; }
 
@@ -11,5 +15,9 @@ namespace Fashionista.Domain.Entities
         public ShoppingCart ShoppingCart { get; set; }
 
         public int Quantity { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

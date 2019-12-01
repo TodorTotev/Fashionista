@@ -2,7 +2,6 @@ namespace Fashionista.Web.Controllers
 {
     using System.Threading.Tasks;
 
-    using Fashionista.Application.Users.Queries.GetUser;
     using Fashionista.Application.Wishlist.Commands.Create;
     using Fashionista.Application.Wishlist.Commands.Delete;
     using Microsoft.AspNetCore.Mvc;
