@@ -4,6 +4,7 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged;
     using Fashionista.Domain.Entities;
@@ -18,9 +19,15 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var user = this.dbContext.Users.FirstOrDefault();
-            var query = new GetAllWishlistProductsPagedQuery { PageNumber = 0, PageSize = 3, User = user };
-            var sut = new GetAllWishlistProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var userId = this.dbContext.Users.FirstOrDefault()?.Id;
+            var userAccessorMock = new Mock<IUserAssistant>();
+            userAccessorMock.Setup(x => x.UserId).Returns(userId);
+
+            var query = new GetAllWishlistProductsPagedQuery { PageNumber = 0, PageSize = 3 };
+            var sut = new GetAllWishlistProductsPagedQueryHandler(
+                this.deletableEntityRepository,
+                this.mapper,
+                userAccessorMock.Object);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -36,7 +43,10 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllWishlistProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllWishlistProductsPagedQueryHandler(
+                this.deletableEntityRepository,
+                this.mapper,
+                It.IsAny<IUserAssistant>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

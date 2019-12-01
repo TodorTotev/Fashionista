@@ -4,7 +4,6 @@ namespace Fashionista.Web.Areas.Identity.Pages.Account.Manage
     using System.Threading.Tasks;
 
     using Fashionista.Application.Common.Models;
-    using Fashionista.Application.Users.Queries.GetUser;
     using Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -31,9 +30,8 @@ namespace Fashionista.Web.Areas.Identity.Pages.Account.Manage
         {
             this.Page -= 1;
 
-            var user = await this.mediator.Send(new GetUserQuery { Principal = this.User });
             var query = new GetAllWishlistProductsPagedQuery
-                { PageNumber = this.Page, PageSize = this.PageSize, User = user };
+                { PageNumber = this.Page, PageSize = this.PageSize };
 
             var viewModel = await this.mediator.Send(query);
             var pagedList = new StaticPagedList<ProductLookupModel>(

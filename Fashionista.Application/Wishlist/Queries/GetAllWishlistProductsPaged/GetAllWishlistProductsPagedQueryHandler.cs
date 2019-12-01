@@ -19,13 +19,16 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
     {
         private readonly IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository;
         private readonly IMapper mapper;
+        private readonly IUserAssistant userAssistant;
 
         public GetAllWishlistProductsPagedQueryHandler(
             IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IUserAssistant userAssistant)
         {
             this.favoriteProductsRepository = favoriteProductsRepository;
             this.mapper = mapper;
+            this.userAssistant = userAssistant;
         }
 
         public async Task<WishlistProductsViewModel> Handle(
@@ -36,7 +39,7 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
 
             var products = await this.favoriteProductsRepository
                 .All()
-                .Where(x => x.ApplicationUserId == request.User.Id)
+                .Where(x => x.ApplicationUserId == this.userAssistant.UserId)
                 .Select(x => x.Product)
                 .Skip(request.PageNumber * request.PageSize)
                 .Take(request.PageSize)

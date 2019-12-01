@@ -1,6 +1,5 @@
 namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
 {
-    using Fashionista.Domain.Entities;
     using MediatR;
 
     public class GetAllWishlistProductsPagedQuery : IRequest<WishlistProductsViewModel>
@@ -8,7 +7,5 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
         public int PageNumber { get; set; }
 
         public int PageSize { get; set; }
-
-        public ApplicationUser User { get; set; }
     }
 }
