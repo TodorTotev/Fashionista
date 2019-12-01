@@ -32,7 +32,7 @@ namespace Fashionista.Application.Wishlist.Commands.Delete
                                             cancellationToken)
                                     ?? throw new NotFoundException(nameof(FavoriteProduct), request.Id);
 
-            this.favoriteProductsRepository.Delete(requestedEntity);
+            this.favoriteProductsRepository.HardDelete(requestedEntity);
             await this.favoriteProductsRepository.SaveChangesAsync(cancellationToken);
 
             return requestedEntity.ProductId;

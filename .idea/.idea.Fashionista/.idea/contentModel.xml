@@ -94,7 +94,6 @@
             <e p="ProductLookupModel.cs" t="Include" />
             <e p="ProductSizeLookupModel.cs" t="Include" />
             <e p="SubCategoryLookupModel.cs" t="Include" />
-            <e p="WishlistProductLookup.cs" t="Include" />
           </e>
         </e>
         <e p="Exceptions" t="Include">
