@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
-using Fashionista.Domain.Entities.Enums;
-
 namespace Fashionista.Application.Common.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using AutoMapper;
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
+    using Fashionista.Domain.Entities.Enums;
 
     public class ProductLookupModel : IMapFrom<Product>, IHaveCustomMapping
     {
@@ -38,6 +38,8 @@ namespace Fashionista.Application.Common.Models
         public int AverageRating { get; set; }
 
         public int ReviewsCount { get; set; }
+
+        public int Quantity { get; set; }
 
         public ProductType ProductType { get; set; }
 

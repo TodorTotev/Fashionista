@@ -80,6 +80,8 @@ namespace Fashionista.Application.Tests.Infrastructure
                 SubCategoryId = 1,
             });
 
+            product.Entity.Photos.Add("TestUrl");
+
             dbContext.Add(new ProductAttributes
             {
                 Quantity = 1,
