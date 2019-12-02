@@ -572,6 +572,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSessionShoppingCartProducts" t="Include">
+              <e p="GetAllSessionShoppingCartProductsQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllShoppingCartProducts" t="Include">
               <e p="GetAllShoppingCartProductsQueryTests.cs" t="Include" />
             </e>

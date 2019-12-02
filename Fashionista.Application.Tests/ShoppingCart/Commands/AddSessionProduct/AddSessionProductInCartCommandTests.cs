@@ -25,7 +25,6 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
         {
             // Arrange
             var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
-            shoppingCartAssistantMock.Setup(x => x.Get()).Returns(new List<CartProductLookupModel>());
 
             var dummyList = new List<CartProductLookupModel>();
 

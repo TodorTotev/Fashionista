@@ -51,7 +51,9 @@ namespace Fashionista.Web.Controllers
                 return this.RedirectToAction(nameof(this.Index));
             }
 
-            var session = await this.Mediator.Send(new AddSessionProductCartCommand { Id = command.Id });
+            var products = await this.Mediator.Send(new GetAllSessionShoppingCartProductsQuery());
+
+            var session = await this.Mediator.Send(new AddSessionProductCartCommand { Id = command.Id, Session = products });
 
             if (session == null)
             {
