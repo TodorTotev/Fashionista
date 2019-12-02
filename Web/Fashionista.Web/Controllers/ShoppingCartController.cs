@@ -1,3 +1,5 @@
+using Fashionista.Application.ShoppingCart.Queries.GetAllSessionShoppingCartProducts;
+
 namespace Fashionista.Web.Controllers
 {
     using System.Collections.Generic;
@@ -28,11 +30,7 @@ namespace Fashionista.Web.Controllers
                 return this.View(model);
             }
 
-            var test = this.HttpContext.Session;
-
-            var session = this.HttpContext.Session
-                .GetObjectFromJson<List<CartProductLookupModel>>(
-                    GlobalConstants.ShoppingCartKey);
+            var session = await this.Mediator.Send(new GetAllSessionShoppingCartProductsQuery());
 
             if (session == null || !session.Any())
             {

@@ -74,15 +74,16 @@
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-            services.AddScoped<IUserAssistant, UserAssistant>();
-            services.AddScoped<IShoppingCartAssistant, ShoppingCartAssistant>();
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
+            
             services.AddSingleton(x => CloudinaryFactory.GetInstance(this.configuration));
             services.AddTransient<ICloudinaryHelper, CloudinaryHelper>();
+            services.AddScoped<IUserAssistant, UserAssistant>();
+            services.AddScoped<IShoppingCartAssistant, ShoppingCartAssistant>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

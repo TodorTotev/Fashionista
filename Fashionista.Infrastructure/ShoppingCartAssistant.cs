@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace Fashionista.Infrastructure
 {
     using System.Collections.Generic;

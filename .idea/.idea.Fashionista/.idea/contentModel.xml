@@ -314,6 +314,10 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSessionShoppingCartProducts" t="Include">
+              <e p="GetAllSessionShoppingCartProductsQuery.cs" t="Include" />
+              <e p="GetAllSessionShoppingCartProductsQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllShoppingCartProducts" t="Include">
               <e p="AllShoppingCartProductsViewModel.cs" t="Include" />
               <e p="GetAllShoppingCartProductsQuery.cs" t="Include" />
@@ -436,7 +440,6 @@
           <e p="BaseTest.cs" t="Include" />
           <e p="CommandTestBase.cs" t="Include" />
           <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
-          <e p="ShoppingCartFactory.cs" t="Include" />
         </e>
         <e p="MainCategories" t="Include">
           <e p="Commands" t="Include">
