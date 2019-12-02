@@ -33,9 +33,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            var session = this.shoppingCartAssistant.Get();
-
-            if (this.CheckIfSessionContainsProduct(session, request.Id))
+            if (this.CheckIfSessionContainsProduct(request.Session, request.Id))
             {
                 return null;
             }
@@ -54,11 +52,11 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
                 Quantity = 1,
             };
 
-            session.Add(newProduct);
+            request.Session.Add(newProduct);
 
-            this.shoppingCartAssistant.Set(session);
+            this.shoppingCartAssistant.Set(request.Session);
 
-            return session;
+            return request.Session;
         }
 
         private bool CheckIfSessionContainsProduct(List<CartProductLookupModel> session, int id) =>

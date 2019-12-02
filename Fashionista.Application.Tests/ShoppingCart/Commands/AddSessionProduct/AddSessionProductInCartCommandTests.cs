@@ -1,4 +1,5 @@
 using System;
+using Fashionista.Application.ShoppingCart.Queries.GetAllSessionShoppingCartProducts;
 
 namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
 {
@@ -26,8 +27,10 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
             shoppingCartAssistantMock.Setup(x => x.Get()).Returns(new List<CartProductLookupModel>());
 
+            var dummyList = new List<CartProductLookupModel>();
+
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductCartCommand { Id = 1 };
+            var command = new AddSessionProductCartCommand { Id = 1, Session = dummyList };
             var sut = new AddSessionProductCartCommandHandler(productsRepository, shoppingCartAssistantMock.Object);
 
             // Act
@@ -45,9 +48,10 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             // Arrange
             var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
             shoppingCartAssistantMock.Setup(x => x.Get()).Returns(new List<CartProductLookupModel>());
+            var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductCartCommand { Id = 100 };
+            var command = new AddSessionProductCartCommand { Id = 100, Session = dummyList };
             var sut = new AddSessionProductCartCommandHandler(productsRepository, shoppingCartAssistantMock.Object);
 
             // Act & Assert
