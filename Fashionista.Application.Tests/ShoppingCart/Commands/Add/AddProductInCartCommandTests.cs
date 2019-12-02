@@ -23,23 +23,19 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         public async Task Handle_GivenValidRequest_ShouldAddProductInCart()
         {
             // Arrange
-            var shoppingCartId = this.dbContext.Users.FirstOrDefault().ShoppingCartId;
-            var userAccessorMock = new Mock<IUserAssistant>();
-            userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
-
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var command = new AddProductInCartCommand { Id = 2, Quantity = 2 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
-                userAccessorMock.Object);
+                this.userAssistantMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
 
             // Assert
             var product = this.dbContext.ShoppingCartProducts.FirstOrDefault(x => x.ProductId == id);
-            product.ShoppingCartId.ShouldBe(shoppingCartId);
+            product.ShoppingCartId.ShouldBe(this.userAssistantMock.Object.ShoppingCartId);
             product.Quantity.ShouldBe(2);
         }
 
@@ -48,16 +44,12 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         public async Task Handle_GivenInvalidProductId_ShouldThrowNotFoundException()
         {
             // Arrange
-            var shoppingCartId = this.dbContext.Users.FirstOrDefault().ShoppingCartId;
-            var userAccessorMock = new Mock<IUserAssistant>();
-            userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
-
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var command = new AddProductInCartCommand { Id = 1000, Quantity = 2 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
-                userAccessorMock.Object);
+                this.userAssistantMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -68,16 +60,12 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
         {
             // Arrange
-            var shoppingCartId = this.dbContext.Users.FirstOrDefault().ShoppingCartId;
-            var userAccessorMock = new Mock<IUserAssistant>();
-            userAccessorMock.Setup(x => x.ShoppingCartId).Returns(shoppingCartId);
-
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var command = new AddProductInCartCommand {Id = 1, Quantity = 2};
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
-                userAccessorMock.Object);
+                this.userAssistantMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
