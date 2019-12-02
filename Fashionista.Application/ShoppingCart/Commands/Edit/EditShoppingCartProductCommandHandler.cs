@@ -43,7 +43,13 @@ namespace Fashionista.Application.ShoppingCart.Commands.Edit
                         && x.ShoppingCartId == this.userAssistant.ShoppingCartId, cancellationToken)
                 ?? throw new NotFoundException(nameof(ShoppingCartProduct), request.Id);
 
+            if (request.Quantity <= 0)
+            {
+                return shoppingCartProduct.ProductId;
+            }
+
             shoppingCartProduct.Quantity = request.Quantity;
+
             this.shoppingCartProductsRepository.Update(shoppingCartProduct);
             await this.shoppingCartProductsRepository.SaveChangesAsync(cancellationToken);
 

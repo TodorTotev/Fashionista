@@ -312,6 +312,14 @@
               <e p="AddSessionProductCartCommand.cs" t="Include" />
               <e p="AddSessionProductCartCommandHandler.cs" t="Include" />
             </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductFromCartCommand.cs" t="Include" />
+              <e p="DeleteProductFromCartCommandHandler.cs" t="Include" />
+            </e>
+            <e p="DeleteSession" t="Include">
+              <e p="DeleteSessionProductFromCartCommand.cs" t="Include" />
+              <e p="DeleteSessionProductFromCartCommandHandler.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditShoppingCartProductCommand.cs" t="Include" />
               <e p="EditShoppingCartProductCommandHandler.cs" t="Include" />
@@ -579,6 +587,9 @@
             </e>
             <e p="AddSessionProduct" t="Include">
               <e p="AddSessionProductInCartCommandTests.cs" t="Include" />
+            </e>
+            <e p="Delete" t="Include">
+              <e p="DeleteProductFromCartCommandTests.cs" t="Include" />
             </e>
             <e p="Edit" t="Include">
               <e p="EditShoppingCartProductCommandTests.cs" t="Include" />

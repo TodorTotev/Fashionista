@@ -43,6 +43,30 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Edit
         }
 
         [Trait(nameof(ShoppingCartProduct), "EditShoppingCartProduct command tests")]
+        [Fact(DisplayName = "Handle given valid invalid should not update")]
+        public async Task Handle_GivenInvalidRequest_ShouldNotUpdate()
+        {
+            // Arrange
+            var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
+            var command = new EditShoppingCartProductCommand { Id = 1, Quantity = 1 };
+            var sut = new EditShoppingCartProductCommandHandler(
+                productsRepository,
+                this.deletableEntityRepository,
+                this.userAssistantMock.Object);
+
+            // Act
+            var id = await sut.Handle(command, It.IsAny<CancellationToken>());
+
+            // Assert
+            var product = this.dbContext.ShoppingCartProducts
+                .FirstOrDefault(x =>
+                    x.ProductId == id
+                    && x.ShoppingCartId == this.userAssistantMock.Object.ShoppingCartId);
+
+            product.Quantity.ShouldBe(1);
+        }
+
+        [Trait(nameof(ShoppingCartProduct), "EditShoppingCartProduct command tests")]
         [Fact(DisplayName = "Handle given invalid ProductId should throw NotFoundException")]
         public async Task Handle_GivenInvalidProductId_ShouldThrowNotFoundException()
         {
