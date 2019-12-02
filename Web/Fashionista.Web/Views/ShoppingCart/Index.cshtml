@@ -42,13 +42,11 @@
                             </td>
                             <td>$@product.ProductPrice</td>
                             <td>
-                                @* <a class="text-danger pr-2" asp-controller="ShoppingCart" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-quantity="@(product.Quantity - 1)"> *@
-                                <a href="#">
+                                <a class="text-danger pr-2" asp-controller="ShoppingCart" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-quantity="@(product.Quantity - 1)">
                                     <i class="fas fa-minus-circle"> </i>
                                 </a>
                                 @product.Quantity
-                                @* <a class="text-danger pl-2" asp-controller="ShoppingCart" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-quantity="@(product.Quantity + 1)"> *@
-                                <a href="#">
+                                <a class="text-danger pl-2" asp-controller="ShoppingCart" asp-action="Edit" asp-route-id="@product.ProductId" asp-route-quantity="@(product.Quantity + 1)">
                                     <i class="fas fa-plus-circle"> </i>
                                 </a>
                             </td>
@@ -57,13 +55,11 @@
                         <tr class="product-action-row">
                             <td colspan="4" class="clearfix">
                                 <div class="float-left">
-                                    <a href="#"></a>
-                                    @* <a asp-controller="Wishlist" asp-action="Add" asp-route-id="@product.ProductId" class="btn-move">Move to Wishlist</a> *@
+                                    <a asp-controller="Wishlist" asp-action="Create" asp-route-id="@product.ProductId" class="btn-move">Move to Wishlist</a>
                                 </div><!-- End .float-left -->
 
                                 <div class="float-right">
-                                    <a href="#">
-                                        @* <a asp-controller="ShoppingCart" asp-action="Delete" asp-route-id="@product.ProductId" title="Remove product" class="btn-remove"> *@
+                                    <a asp-controller="ShoppingCart" asp-action="Delete" asp-route-id="@product.ProductId" title="Remove product" class="btn-remove">
                                         <span class="sr-only">Remove</span>
                                     </a>
                                 </div><!-- End .float-right -->
@@ -71,18 +67,15 @@
                         </tr>
                     }
                     </tbody>
-
                     <tfoot>
                     <tr>
                         <td colspan="4" class="clearfix">
                             <div class="float-left">
-                                <a href="#"/>
-                                @* <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Continue Shopping</a> *@
+                                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Continue Shopping</a>
                             </div><!-- End .float-left -->
 
                             <div class="float-right">
-                                <a href="#"/>
-                                @* <a asp-controller="ShoppingCart" asp-action="Clear" class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a> *@
+                                <a asp-controller="ShoppingCart" asp-action="Clear" class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a>
                             </div><!-- End .float-right -->
                         </td>
                     </tr>
