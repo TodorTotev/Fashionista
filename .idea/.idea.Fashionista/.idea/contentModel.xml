@@ -316,6 +316,10 @@
               <e p="ClearShoppingCartCommand.cs" t="Include" />
               <e p="ClearShoppingCartCommandHandler.cs" t="Include" />
             </e>
+            <e p="ClearSession" t="Include">
+              <e p="ClearSessionShoppingCartCommand.cs" t="Include" />
+              <e p="ClearSessionShoppingCartCommandHandler.cs" t="Include" />
+            </e>
             <e p="Delete" t="Include">
               <e p="DeleteProductFromCartCommand.cs" t="Include" />
               <e p="DeleteProductFromCartCommandHandler.cs" t="Include" />
@@ -594,6 +598,9 @@
             </e>
             <e p="Clear" t="Include">
               <e p="ClearShoppingCartCommandTests.cs" t="Include" />
+            </e>
+            <e p="ClearSession" t="Include">
+              <e p="ClearSessionShoppingCartCommandTests.cs" t="Include" />
             </e>
             <e p="Delete" t="Include">
               <e p="DeleteProductFromCartCommandTests.cs" t="Include" />
