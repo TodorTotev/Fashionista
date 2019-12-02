@@ -316,6 +316,10 @@
               <e p="EditShoppingCartProductCommand.cs" t="Include" />
               <e p="EditShoppingCartProductCommandHandler.cs" t="Include" />
             </e>
+            <e p="EditSession" t="Include">
+              <e p="EditSessionShoppingCartProductCommand.cs" t="Include" />
+              <e p="EditSessionShoppingCartProductCommandHandler.cs" t="Include" />
+            </e>
           </e>
           <e p="Queries" t="Include">
             <e p="GetAllSessionShoppingCartProducts" t="Include">
@@ -444,6 +448,7 @@
           <e p="BaseTest.cs" t="Include" />
           <e p="CommandTestBase.cs" t="Include" />
           <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
+          <e p="ShoppingCartAssistantFactory.cs" t="Include" />
           <e p="UserAssistantFactory.cs" t="Include" />
         </e>
         <e p="MainCategories" t="Include">
@@ -577,6 +582,9 @@
             </e>
             <e p="Edit" t="Include">
               <e p="EditShoppingCartProductCommandTests.cs" t="Include" />
+            </e>
+            <e p="EditSession" t="Include">
+              <e p="EditSessionShoppingCartProductCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">

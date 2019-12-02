@@ -1,14 +1,13 @@
 // ReSharper disable PossibleNullReferenceException
 
-using System;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Interfaces;
-
 namespace Fashionista.Application.Tests.ShoppingCart.Commands.Edit
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.ShoppingCart.Commands.Edit;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
