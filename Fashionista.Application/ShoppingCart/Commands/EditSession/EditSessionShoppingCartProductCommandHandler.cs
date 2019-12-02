@@ -33,6 +33,11 @@ namespace Fashionista.Application.ShoppingCart.Commands.EditSession
             var product = request.Session.SingleOrDefault(x => x.ProductId == request.Id)
                           ?? throw new NotFoundException(nameof(ShoppingCartProduct), request.Id);
 
+            if (request.Quantity <= 0)
+            {
+                return null;
+            }
+
             product.Quantity = request.Quantity;
             product.TotalPrice = request.Quantity * product.ProductPrice;
 

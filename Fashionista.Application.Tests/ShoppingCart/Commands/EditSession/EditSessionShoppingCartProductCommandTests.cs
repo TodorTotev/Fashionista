@@ -37,6 +37,22 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.EditSession
         }
 
         [Trait(nameof(ShoppingCartProduct), "EditSessionShoppingCartProduct command tests")]
+        [Fact(DisplayName = "Handle given invalid request should return return null")]
+        public async Task Handle_GivenInvalidRequest_ShouldReturnNull()
+        {
+            // Arrange
+            var products = this.shoppingCartAssistantMock.Object.Get();
+            var command = new EditSessionShoppingCartProductCommand { Id = 1, Quantity = 0, Session = products };
+            var sut = new EditSessionShoppingCartProductCommandHandler(this.shoppingCartAssistantMock.Object);
+
+            // Act
+            var session = await sut.Handle(command, It.IsAny<CancellationToken>());
+
+            // Assert
+            session.ShouldBeNull();
+        }
+
+        [Trait(nameof(ShoppingCartProduct), "EditSessionShoppingCartProduct command tests")]
         [Fact(DisplayName = "Handle given invalid ProductId should throw NotFoundException")]
         public async Task Handle_GivenInvalidProductId_ShouldThrowNotFoundException()
         {
