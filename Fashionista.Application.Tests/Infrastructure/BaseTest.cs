@@ -23,6 +23,7 @@ namespace Fashionista.Application.Tests.Infrastructure
         protected readonly Mock<IMediator> mediatorMock;
         protected readonly IDeletableEntityRepository<T> deletableEntityRepository;
         protected readonly Mock<IUserAssistant> userAssistantMock;
+        protected readonly Mock<IShoppingCartAssistant> shoppingCartAssistantMock;
 
         protected BaseTest()
         {
@@ -31,6 +32,7 @@ namespace Fashionista.Application.Tests.Infrastructure
             this.deletableEntityRepository = new EfDeletableEntityRepository<T>(this.dbContext);
             this.mediatorMock = new Mock<IMediator>();
             this.userAssistantMock = UserAssistantFactory.Create(this.dbContext.Users.FirstOrDefault().ShoppingCartId);
+            this.shoppingCartAssistantMock = ShoppingCartAssistantFactory.Create(this.dbContext.Products.ToList());
         }
 
         public void Dispose()

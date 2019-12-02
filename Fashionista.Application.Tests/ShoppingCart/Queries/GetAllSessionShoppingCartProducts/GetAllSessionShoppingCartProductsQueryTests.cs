@@ -25,20 +25,8 @@ namespace Fashionista.Application.Tests.ShoppingCart.Queries.GetAllSessionShoppi
         public async Task Handle_GivenValidRequest_ShouldReturnSessionProducts()
         {
             // Arrange
-            var dummyList = new List<CartProductLookupModel>();
-            this.dbContext.Products
-                .Select(x => new CartProductLookupModel()
-                {
-                    ProductId = x.Id,
-                })
-                .ToList()
-                .ForEach(x => dummyList.Add(x));
-
-            var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
-            shoppingCartAssistantMock.Setup(x => x.Get()).Returns(dummyList);
-
             var command = new GetAllSessionShoppingCartProductsQuery();
-            var sut = new GetAllSessionShoppingCartProductsQueryHandler(shoppingCartAssistantMock.Object);
+            var sut = new GetAllSessionShoppingCartProductsQueryHandler(this.shoppingCartAssistantMock.Object);
 
             // Act
             var session = await sut.Handle(command, It.IsAny<CancellationToken>());

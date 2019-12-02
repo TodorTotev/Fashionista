@@ -24,13 +24,11 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
         public async Task Handle_GivenValidRequest_ShouldCreateSession()
         {
             // Arrange
-            var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
-
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var command = new AddSessionProductCartCommand { Id = 1, Session = dummyList };
-            var sut = new AddSessionProductCartCommandHandler(productsRepository, shoppingCartAssistantMock.Object);
+            var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
 
             // Act
             var session = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -45,13 +43,11 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
         public async Task Handle_GivenInvalidProductId_ShouldThrowNotFoundException()
         {
             // Arrange
-            var shoppingCartAssistantMock = new Mock<IShoppingCartAssistant>();
-            shoppingCartAssistantMock.Setup(x => x.Get()).Returns(new List<CartProductLookupModel>());
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var command = new AddSessionProductCartCommand { Id = 100, Session = dummyList };
-            var sut = new AddSessionProductCartCommandHandler(productsRepository, shoppingCartAssistantMock.Object);
+            var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
