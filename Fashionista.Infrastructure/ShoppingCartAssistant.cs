@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Fashionista.Infrastructure
 {
     using System.Collections.Generic;
@@ -16,14 +18,20 @@ namespace Fashionista.Infrastructure
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public List<CartProductLookupModel> SessionProducts
-        {
-            get => this.httpContextAccessor
-                .HttpContext
-                .Session
-                .GetObjectFromJson<List<CartProductLookupModel>>(GlobalConstants.ShoppingCartKey);
+        public List<CartProductLookupModel> SessionProducts { get; set; }
 
-            set => this.httpContextAccessor
+        public List<CartProductLookupModel> Get()
+        {
+            return this.httpContextAccessor
+                    .HttpContext
+                    .Session
+                    .GetObjectFromJson<List<CartProductLookupModel>>(GlobalConstants.ShoppingCartKey)
+                ?? new List<CartProductLookupModel>();
+        }
+
+        public void Set(ICollection<CartProductLookupModel> value)
+        {
+            this.httpContextAccessor
                 .HttpContext
                 .Session
                 .SetObjectAsJson(GlobalConstants.ShoppingCartKey, value);

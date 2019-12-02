@@ -9,37 +9,31 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
-    using Fashionista.Application.ShoppingCart.Queries.GetAllShoppingCartProducts;
-    using Fashionista.Common;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
-    using Newtonsoft.Json;
 
     public class AddSessionProductCartCommandHandler :
-        IRequestHandler<AddSessionProductCartCommand, AllShoppingCartProductsViewModel>
+        IRequestHandler<AddSessionProductCartCommand, List<CartProductLookupModel>>
     {
-        private readonly IHttpContextAccessor accessor;
+        private readonly IShoppingCartAssistant shoppingCartAssistant;
         private readonly IDeletableEntityRepository<Product> productsRepository;
 
         public AddSessionProductCartCommandHandler(
-            IHttpContextAccessor httpContext,
-            IDeletableEntityRepository<Product> productsRepository)
+            IDeletableEntityRepository<Product> productsRepository,
+            IShoppingCartAssistant shoppingCartAssistant)
         {
-            this.accessor = httpContext;
+            this.shoppingCartAssistant = shoppingCartAssistant;
             this.productsRepository = productsRepository;
         }
 
-        public async Task<AllShoppingCartProductsViewModel> Handle(
+        public async Task<List<CartProductLookupModel>> Handle(
             AddSessionProductCartCommand request,
             CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            var session = this.GetObjectFromJson<List<CartProductLookupModel>>(
-                              this.accessor.HttpContext.Session, GlobalConstants.ShoppingCartKey)
-                          ?? new List<CartProductLookupModel>();
+            var session = this.shoppingCartAssistant.Get();
 
             if (this.CheckIfSessionContainsProduct(session, request.Id))
             {
@@ -62,23 +56,9 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
 
             session.Add(newProduct);
 
-            this.SetObjectAsJson(this.accessor.HttpContext.Session, GlobalConstants.ShoppingCartKey, session);
+            this.shoppingCartAssistant.Set(session);
 
-            return new AllShoppingCartProductsViewModel
-            {
-                ShoppingCartProducts = session,
-            };
-        }
-
-        private T GetObjectFromJson<T>(ISession session, string key)
-        {
-            var value = session.GetString(key);
-            return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
-        }
-
-        private void SetObjectAsJson(ISession session, string key, object value)
-        {
-            session.SetString(key, JsonConvert.SerializeObject(value));
+            return session;
         }
 
         private bool CheckIfSessionContainsProduct(List<CartProductLookupModel> session, int id) =>

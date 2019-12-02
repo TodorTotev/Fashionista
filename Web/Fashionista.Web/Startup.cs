@@ -75,6 +75,7 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IUserAssistant, UserAssistant>();
+            services.AddScoped<IShoppingCartAssistant, ShoppingCartAssistant>();
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services

@@ -115,6 +115,7 @@
           <e p="ICloudinaryHelper.cs" t="Include" />
           <e p="IDeletableEntityRepository.cs" t="Include" />
           <e p="IRepository.cs" t="Include" />
+          <e p="IShoppingCartAssistant.cs" t="Include" />
           <e p="IUserAssistant.cs" t="Include" />
           <e p="Mapping" t="Include">
             <e p="IHaveCustomMapping.cs" t="Include" />
@@ -308,8 +309,8 @@
               <e p="AddProductInCartCommandHandler.cs" t="Include" />
             </e>
             <e p="AddSesssion" t="Include">
-              <e p="AddSessionShoppingCartProductCommand.cs" t="Include" />
-              <e p="AddSessionShoppingCartProductCommandHandler.cs" t="Include" />
+              <e p="AddSessionProductCartCommand.cs" t="Include" />
+              <e p="AddSessionProductCartCommandHandler.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
@@ -435,7 +436,7 @@
           <e p="BaseTest.cs" t="Include" />
           <e p="CommandTestBase.cs" t="Include" />
           <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
-          <e p="UserManagerFactory.cs" t="Include" />
+          <e p="ShoppingCartFactory.cs" t="Include" />
         </e>
         <e p="MainCategories" t="Include">
           <e p="Commands" t="Include">
@@ -562,6 +563,9 @@
           <e p="Commands" t="Include">
             <e p="Add" t="Include">
               <e p="AddProductInCartCommandTests.cs" t="Include" />
+            </e>
+            <e p="AddSessionProduct" t="Include">
+              <e p="AddSessionProductInCartCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
@@ -693,6 +697,7 @@
           </e>
         </e>
         <e p="SessionAssistant.cs" t="Include" />
+        <e p="ShoppingCartAssistant.cs" t="Include" />
         <e p="stylecop.json" t="Include" />
         <e p="UserAssistant.cs" t="Include" />
       </e>
