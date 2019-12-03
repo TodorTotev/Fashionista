@@ -21,6 +21,15 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Name == name);
         }
 
+        internal static async Task<bool> CheckIfSubCategoryExists(
+            int id,
+            IDeletableEntityRepository<SubCategory> subCategoryRepository)
+        {
+            return await subCategoryRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Id == id);
+        }
+
         internal static async Task<bool> CheckIfSubCategoryWithSameNameExists(
             string name,
             IDeletableEntityRepository<SubCategory> subCategoryRepository)

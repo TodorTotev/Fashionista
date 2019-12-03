@@ -21,9 +21,13 @@ namespace Fashionista.Application.Common.Models
 
         public bool IsHidden { get; set; }
 
+        public int BrandId { get; set; }
+
         public string BrandName { get; set; }
 
         public string BrandPhotoUrl { get; set; }
+
+        public int SubCategoryId { get; set; }
 
         public string SubCategoryName { get; set; }
 
@@ -39,8 +43,6 @@ namespace Fashionista.Application.Common.Models
 
         public int ReviewsCount { get; set; }
 
-        public int Quantity { get; set; }
-
         public ProductType ProductType { get; set; }
 
         public ProductColor ProductColor { get; set; }
@@ -52,12 +54,6 @@ namespace Fashionista.Application.Common.Models
             configuration.CreateMap<Product, ProductLookupModel>()
                 .ForMember(
                     x => x.BrandName,
-                    y => y.MapFrom(
-                        src => src.Brand.Name));
-
-            configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(
-                    x => x.SubCategoryName,
                     y => y.MapFrom(
                         src => src.Brand.Name));
 

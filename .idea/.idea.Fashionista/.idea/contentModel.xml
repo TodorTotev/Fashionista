@@ -267,6 +267,10 @@
               <e p="GetAllMenProductsQueryHandler.cs" t="Include" />
               <e p="GetAllMenProductsViewModel.cs" t="Include" />
             </e>
+            <e p="GetAllProductsByCategory" t="Include">
+              <e p="CategoryIndexProductsViewModel.cs" t="Include" />
+              <e p="GetAllProductsByCategoryQuery.cs" t="Include" />
+            </e>
             <e p="GetAllProductsPaged" t="Include">
               <e p="GetAllProductsPagedQuery.cs" t="Include" />
               <e p="GetAllProductsPagedQueryHandler.cs" t="Include" />
