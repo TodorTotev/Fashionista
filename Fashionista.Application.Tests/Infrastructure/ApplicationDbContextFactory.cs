@@ -3,8 +3,7 @@ namespace Fashionista.Application.Tests.Infrastructure
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Fashionista.Domain.Entities;
-    using Fashionista.Domain.Entities.Enums;
+    using Fashionista.Application.Tests.Infrastructure.Seeding;
     using Fashionista.Persistence;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -21,145 +20,30 @@ namespace Fashionista.Application.Tests.Infrastructure
             var dbContext = new ApplicationDbContext(dbContextOptions);
             dbContext.Database.EnsureCreated();
 
-            dbContext.AddRange(new[]
-            {
-                new MainCategory { Name = "Category1" },
-                new MainCategory { Name = "Category2" },
-                new MainCategory { Name = "Category3" },
-            });
-
-            dbContext.SaveChanges();
-
-            for (int i = 1; i <= 3; i++)
-            {
-                var category = new SubCategory()
-                {
-                    Name = "Category" + i,
-                    Description = "TestDesc",
-                    MainCategoryId = 1,
-                };
-
-                dbContext.SubCategories.Add(category);
-                dbContext.SaveChanges();
-            }
-
-            dbContext.SaveChanges();
-
-            dbContext.Brands.Add(new Brand
-            {
-                Name = "TestBrand",
-                BrandPhotoUrl = "https://imgur.com/uyT0KJ8",
-            });
-
-            dbContext.SaveChanges();
-
-            dbContext.ProductColors.Add(new ProductColor
-            {
-                Name = "TestColor",
-            });
-            dbContext.SaveChanges();
-
-            dbContext.ProductSizes.AddAsync(new ProductSize
-            {
-                Name = "TestSize",
-                MainCategoryId = 1,
-            });
-
-            dbContext.SaveChanges();
-
-            var product = dbContext.Products.Add(new Product
-            {
-                Name = "ActiveProduct",
-                Description = "TestDesc",
-                Price = 100,
-                BrandId = 1,
-                IsHidden = false,
-                Photos = new List<string>(),
-                Reviews = new List<Review>(),
-                ProductType = ProductType.Men,
-                SubCategoryId = 1,
-            });
-
-            product.Entity.Photos.Add("TestUrl");
-
-            dbContext.Add(new ProductAttributes
-            {
-                Quantity = 1,
-                ProductSizeId = 1,
-                ProductColorId = 1,
-                ProductId = 1,
-            });
-
-            product.Entity.Reviews.Add(new Review
-            {
-                Rating = 5,
-            });
-
-            dbContext.SaveChanges();
-
-            dbContext.Products.Add(new Product
-            {
-                Name = "DraftProduct",
-                Description = "TestDesc",
-                Price = 100,
-                BrandId = 1,
-                IsHidden = true,
-                Photos = new List<string>(),
-                Reviews = new List<Review>(),
-                ProductType = ProductType.Women,
-                SubCategoryId = 1,
-            });
-
-            dbContext.SaveChanges();
-
-            var user = new ApplicationUser
-            {
-                FirstName = "TestFirstName",
-                LastName = "TestLastName",
-                Email = "Test@test.com",
-                ShoppingCart = new ShoppingCart(),
-            };
-
-            dbContext.Users.Add(user);
-            dbContext.SaveChanges();
-
-            var city = dbContext.Cities.Add(new City
-            {
-                Name = "TestCity",
-                Postcode = "TestPostCode",
-                Addresses = new List<Address>(),
-            });
-
-            dbContext.SaveChanges();
-
-            dbContext.Addresses.Add(new Address
-            {
-                Name = "TestAddress",
-                Description = "2",
-                CityId = city.Entity.Id,
-                ApplicationUserId = user.Id,
-            });
-
-            dbContext.SaveChangesAsync();
-
-            dbContext.FavoriteProducts.Add(new FavoriteProduct
-            {
-                ProductId = product.Entity.Id,
-                ApplicationUserId = user.Id,
-            });
-
-            dbContext.SaveChanges();
-
-            dbContext.ShoppingCartProducts.Add(new ShoppingCartProduct
-            {
-                ProductId = product.Entity.Id,
-                Quantity = 1,
-                ShoppingCartId = user.ShoppingCartId,
-            });
+            Seed(dbContext);
 
             dbContext.SaveChanges();
 
             return dbContext;
+        }
+
+        public static void Seed(ApplicationDbContext dbContext)
+        {
+            var seeders = new List<ITestSeeder>
+            {
+                new MainCategorySeeder(),
+                new SubCategorySeeder(),
+                new BrandsSeeder(),
+                new ProductAndSizesSeeder(),
+                new ProductSeeder(),
+                new UserSeeder(),
+            };
+
+            foreach (var seeder in seeders)
+            {
+                seeder.Seed(dbContext);
+                dbContext.SaveChangesAsync();
+            }
         }
 
         public static void Destroy(ApplicationDbContext context)
