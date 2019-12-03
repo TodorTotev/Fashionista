@@ -178,8 +178,8 @@
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
+              <e p="AddProductAttributeCommandHandler.cs" t="Include" />
               <e p="CreateProductAttributeCommand.cs" t="Include" />
-              <e p="CreateProductAttributeCommandHandler.cs" t="Include" />
               <e p="CreateProductAttributeCommandValidator.cs" t="Include" />
             </e>
             <e p="Delete" t="Include">
@@ -523,9 +523,6 @@
         </e>
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
-            <e p="Create" t="Include">
-              <e p="CreateProductAttributeCommandTests.cs" t="Include" />
-            </e>
             <e p="Delete" t="Include">
               <e p="DeleteProductAttributeCommandTests.cs" t="Include" />
             </e>
@@ -562,6 +559,9 @@
         </e>
         <e p="products" t="Include">
           <e p="Commands" t="Include">
+            <e p="AddAttribute" t="Include">
+              <e p="AddProductAttributeCommandTests.cs" t="Include" />
+            </e>
             <e p="AddReview" t="Include">
               <e p="AddReviewCommandTests.cs" t="Include" />
             </e>
@@ -815,6 +815,8 @@
           <e p="20191130131928_FAvoriteProductsDeletableEntity.Designer.cs" t="Include" />
           <e p="20191201135249_UpdateDeletableEntities.cs" t="Include" />
           <e p="20191201135249_UpdateDeletableEntities.Designer.cs" t="Include" />
+          <e p="20191203151426_ProductModification.cs" t="Include" />
+          <e p="20191203151426_ProductModification.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
