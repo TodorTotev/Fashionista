@@ -31,7 +31,7 @@ namespace Fashionista.Application.Common.Models
 
         public int SubCategoryMainCategoryId { get; set; }
 
-        public List<ProductAttributes> ProductAttributes { get; set; }
+        public ICollection<ProductAttributes> ProductAttributes { get; set; }
 
         public virtual ICollection<string> Photos { get; set; }
 

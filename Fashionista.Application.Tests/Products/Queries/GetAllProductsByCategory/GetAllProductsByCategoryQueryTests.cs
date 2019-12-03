@@ -25,6 +25,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
         public async Task Handle_GivenValidRequest_ShouldReturnListOfProducts()
         {
             // Arrange
+            var test = this.dbContext.Products.Where(x => x.SubCategoryId == 1).ToList();
             var query = new GetAllProductsByCategoryQuery { Id = 1 };
             var subCategoryRepository = new EfDeletableEntityRepository<SubCategory>(this.dbContext);
 
@@ -39,7 +40,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
             // Assert
             list.ShouldNotBeNull();
             list.ShouldBeOfType<List<ProductLookupModel>>();
-            list.Count.ShouldBe(2);
+            list.Count.ShouldBe(1);
             list.FirstOrDefault().SubCategoryId.ShouldBe(1);
             list.FirstOrDefault().Brand.Id.ShouldBe(1);
         }

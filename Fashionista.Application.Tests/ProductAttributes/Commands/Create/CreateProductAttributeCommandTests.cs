@@ -17,7 +17,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
 
     public class CreateProductAttributeCommandTests : BaseTest<Product>
     {
-        [Trait(nameof(Domain.Entities.ProductAttributes), "CreateProductAttributes command tests")]
+        [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
         [Fact(DisplayName = "Handle given valid request should create attribute")]
         public async Task Handle_GivenValidRequest_ShouldCreateAttribute()
         {
@@ -41,7 +41,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
             attribute.Product.Name.ShouldBe("DraftProduct");
         }
 
-        [Trait(nameof(Domain.Entities.ProductAttributes), "CreateProductAttributes command tests")]
+        [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenValidRequest_ShouldThrowArgumentNullException()
         {
@@ -52,7 +52,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
 
-        [Trait(nameof(Domain.Entities.ProductAttributes), "CreateProductAttributes command tests")]
+        [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
         [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
         public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
         {
