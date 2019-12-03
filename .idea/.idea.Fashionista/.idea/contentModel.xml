@@ -302,6 +302,10 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSizesByCategory" t="Include">
+              <e p="GetAllSizesByCategoryQuery.cs" t="Include" />
+              <e p="GetAllSizesByCategoryQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllSizesSelectList" t="Include">
               <e p="GetAllSizesSelectListQuery.cs" t="Include" />
               <e p="GetAllSizesSelectListQueryHandler.cs" t="Include" />
@@ -606,6 +610,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllSizesByCategory" t="Include">
+              <e p="GetAllSizesByCategoryQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllSizesSelectList" t="Include">
               <e p="GetAllSizesSelectListQueryTests.cs" t="Include" />
             </e>
