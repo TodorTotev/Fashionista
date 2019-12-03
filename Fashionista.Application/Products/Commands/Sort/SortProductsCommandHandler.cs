@@ -50,7 +50,10 @@ namespace Fashionista.Application.Products.Commands.Sort
             products = SortBySize(products, request.SizeId);
             products = ViewSort(products, request.Sort);
 
-            return products.ToList();
+            return products
+                .Skip(request.PageNumber * request.PageSize)
+                .Take(request.PageSize)
+                .ToList();
         }
 
         private static IEnumerable<ProductLookupModel> SortByGender(

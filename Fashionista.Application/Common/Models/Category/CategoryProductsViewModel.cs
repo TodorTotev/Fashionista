@@ -15,11 +15,11 @@ namespace Fashionista.Application.Common.Models.Category
 
         public ProductSort SortCondition { get; set; }
 
-        public ProductSize SortSize { get; set; }
+        public int SizeId { get; set; }
 
         public ProductType SortGender { get; set; }
 
-        public ProductColor SortColor { get; set; }
+        public int ColorId { get; set; }
 
         public IEnumerable<ProductLookupModel> Products { get; set; }
 

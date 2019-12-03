@@ -8,6 +8,10 @@ namespace Fashionista.Application.Products.Commands.Sort
 
     public class SortProductsCommand : IRequest<List<ProductLookupModel>>
     {
+        public int PageNumber { get; set; }
+
+        public int PageSize { get; set; }
+
         public int? BrandId { get; set; }
 
         public int ColorId { get; set; }
