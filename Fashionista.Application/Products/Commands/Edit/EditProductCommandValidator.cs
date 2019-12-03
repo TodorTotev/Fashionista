@@ -30,12 +30,6 @@ namespace Fashionista.Application.Products.Commands.Edit
 
             this.RuleFor(x => x.ProductType)
                 .NotEmpty();
-
-            this.RuleFor(x => x.ProductSize)
-                .NotEmpty();
-
-            this.RuleFor(x => x.ProductColor)
-                .NotEmpty();
         }
     }
 }

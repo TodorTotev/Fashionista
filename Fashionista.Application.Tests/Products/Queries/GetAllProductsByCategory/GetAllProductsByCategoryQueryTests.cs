@@ -41,6 +41,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
             list.ShouldBeOfType<List<ProductLookupModel>>();
             list.Count.ShouldBe(2);
             list.FirstOrDefault().SubCategoryId.ShouldBe(1);
+            list.FirstOrDefault().BrandId.ShouldBe(1);
         }
 
         [Trait(nameof(Product), "GetAllProductsByCategory query tests")]
