@@ -21,11 +21,7 @@ namespace Fashionista.Application.Common.Models
 
         public bool IsHidden { get; set; }
 
-        public int BrandId { get; set; }
-
-        public string BrandName { get; set; }
-
-        public string BrandPhotoUrl { get; set; }
+        public Brand Brand { get; set; }
 
         public int SubCategoryId { get; set; }
 
@@ -41,32 +37,10 @@ namespace Fashionista.Application.Common.Models
 
         public DateTime CreatedOn { get; set; }
 
-        public int AverageRating { get; set; }
-
-        public int ReviewsCount { get; set; }
-
         public ProductType ProductType { get; set; }
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(
-                    x => x.BrandName,
-                    y => y.MapFrom(
-                        src => src.Brand.Name));
-
-            configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(
-                    x => x.ReviewsCount,
-                    y => y.MapFrom(
-                        src => src.Reviews.Count));
-
-            configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(
-                    x => x.AverageRating,
-                    y => y.MapFrom(
-                        src => src.Reviews.Select(x => x.Rating).Sum() / src.Reviews.Count));
-
             configuration.CreateMap<Product, ProductLookupModel>()
                 .ForMember(
                     x => x.SubCategoryMainCategoryName,
@@ -78,12 +52,6 @@ namespace Fashionista.Application.Common.Models
                     x => x.SubCategoryMainCategoryId,
                     y => y.MapFrom(
                         src => src.SubCategory.MainCategoryId));
-
-            configuration.CreateMap<Product, ProductLookupModel>()
-                .ForMember(
-                    x => x.BrandPhotoUrl,
-                    y => y.MapFrom(
-                        src => src.Brand.BrandPhotoUrl));
         }
     }
 }

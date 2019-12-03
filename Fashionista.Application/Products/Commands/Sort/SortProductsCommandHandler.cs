@@ -82,7 +82,7 @@ namespace Fashionista.Application.Products.Commands.Sort
             }
 
             return products
-                .Where(x => x.BrandId == brandId)
+                .Where(x => x.Brand.Id == brandId)
                 .ToList();
         }
 

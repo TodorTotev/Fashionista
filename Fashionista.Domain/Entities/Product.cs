@@ -25,11 +25,11 @@ namespace Fashionista.Domain.Entities
 
         public virtual Brand Brand { get; set; }
 
-        public List<ProductAttributes> ProductAttributes { get; set; }
-
         public ProductType ProductType { get; set; }
 
         public virtual ICollection<string> Photos { get; set; }
+
+        public ICollection<ProductAttributes> ProductAttributes { get; set; } = new List<ProductAttributes>();
 
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 

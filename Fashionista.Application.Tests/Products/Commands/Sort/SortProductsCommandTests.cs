@@ -34,7 +34,7 @@ namespace Fashionista.Application.Tests.Products.Commands.Sort
                     SubCategoryId = x.SubCategoryId,
                     ProductAttributes = x.ProductAttributes,
                     ProductType = x.ProductType,
-                    BrandId = x.BrandId,
+                    Brand = this.dbContext.Brands.FirstOrDefault(),
                 })
                 .ToList()
                 .ForEach(x => dummyList.Add(x));
@@ -61,7 +61,7 @@ namespace Fashionista.Application.Tests.Products.Commands.Sort
             list.ShouldNotBeNull();
             list.Count.ShouldBe(1);
             var product = list.FirstOrDefault();
-            product.BrandId.ShouldBe(1);
+            product.Brand.Id.ShouldBe(1);
             product.ProductType.ShouldBe(ProductType.Men);
             product.ProductAttributes.FirstOrDefault().ProductColorId.ShouldBe(1);
             product.ProductAttributes.FirstOrDefault().ProductSizeId.ShouldBe(1);
@@ -80,7 +80,7 @@ namespace Fashionista.Application.Tests.Products.Commands.Sort
                     SubCategoryId = x.SubCategoryId,
                     ProductAttributes = x.ProductAttributes,
                     ProductType = x.ProductType,
-                    BrandId = x.BrandId,
+                    Brand = this.dbContext.Brands.FirstOrDefault(),
                 })
                 .ToList()
                 .ForEach(x => dummyList.Add(x));
@@ -117,7 +117,7 @@ namespace Fashionista.Application.Tests.Products.Commands.Sort
                     SubCategoryId = x.SubCategoryId,
                     ProductAttributes = x.ProductAttributes,
                     ProductType = x.ProductType,
-                    BrandId = x.BrandId,
+                    Brand = this.dbContext.Brands.FirstOrDefault(),
                 })
                 .ToList()
                 .ForEach(x => dummyList.Add(x));
