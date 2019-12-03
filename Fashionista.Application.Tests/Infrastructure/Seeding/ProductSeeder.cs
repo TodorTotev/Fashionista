@@ -22,6 +22,8 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 SubCategoryId = 1,
             });
 
+            dbContext.SaveChanges();
+
             product.Entity.Photos.Add("TestUrl");
 
             dbContext.Add(new Domain.Entities.ProductAttributes

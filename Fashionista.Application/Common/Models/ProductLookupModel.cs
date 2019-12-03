@@ -35,6 +35,8 @@ namespace Fashionista.Application.Common.Models
 
         public int SubCategoryMainCategoryId { get; set; }
 
+        public List<ProductAttributes> ProductAttributes { get; set; }
+
         public virtual ICollection<string> Photos { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -44,10 +46,6 @@ namespace Fashionista.Application.Common.Models
         public int ReviewsCount { get; set; }
 
         public ProductType ProductType { get; set; }
-
-        public ProductColor ProductColor { get; set; }
-
-        public ProductSize ProductSize { get; set; }
 
         public void CreateMappings(Profile configuration)
         {

@@ -44,7 +44,8 @@ namespace Fashionista.Application.Products.Queries.GetAllProductsByCategory
 
             var products = await this.productsRepository
                 .AllAsNoTracking()
-                .Where(x => x.SubCategoryId == request.Id)
+                .Where(x => x.SubCategoryId == request.Id
+                            && x.ProductAttributes.Any())
                 .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
