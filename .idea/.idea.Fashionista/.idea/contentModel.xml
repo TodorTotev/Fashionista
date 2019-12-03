@@ -219,6 +219,10 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllColors" t="Include">
+              <e p="GetAllColorsQuery.cs" t="Include" />
+              <e p="GetAllColorsQueryHandler.cs" t="Include" />
+            </e>
             <e p="GetAllColorsSelectList" t="Include">
               <e p="GetAllColorsSelectListQuery.cs" t="Include" />
               <e p="GetAllColorsSelectListQueryHandler.cs" t="Include" />
@@ -386,6 +390,10 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Details" t="Include">
+              <e p="GetSubCategoryDetailsQuery.cs" t="Include" />
+              <e p="GetSubCategoryDetailsQueryHandler.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditSubCategoryQuery.cs" t="Include" />
               <e p="EditSubCategoryQueryHandler.cs" t="Include" />
@@ -556,6 +564,9 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="GetAllColors" t="Include">
+              <e p="GetAllColorsQueryTests.cs" t="Include" />
+            </e>
             <e p="GetAllColorsSelectList" t="Include">
               <e p="GetAllColorsSelectListQueryTests.cs" t="Include" />
             </e>
@@ -667,13 +678,18 @@
             </e>
           </e>
           <e p="Queries" t="Include">
+            <e p="Details" t="Include">
+              <e p="GetSubCategoryDetailsQueryTests.cs" t="Include" />
+            </e>
             <e p="Edit" t="Include">
               <e p="EditSubCategoryQueryTests.cs" t="Include" />
             </e>
             <e p="GetAllSubCategories" t="Include">
               <e p="GetallSubCategoriesQueryTests.cs" t="Include" />
             </e>
-            <e p="GetAllSubCategoriesSelectListTests.cs" t="Include" />
+            <e p="GetAllSubCategoriesSelectList" t="Include">
+              <e p="GetAllSubCategoriesSelectListTests.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Wishlist" t="Include">
@@ -1010,6 +1026,9 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Address" t="Include">
             <e p="Create.cshtml" t="Include" />
+          </e>
+          <e p="Category" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />

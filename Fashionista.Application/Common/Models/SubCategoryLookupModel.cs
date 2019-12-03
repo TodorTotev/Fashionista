@@ -12,6 +12,8 @@ namespace Fashionista.Application.Common.Models
 
         public string Description { get; set; }
 
+        public int MainCategoryId { get; set; }
+
         public string MainCategoryName { get; set; }
 
         public int ProductsCount { get; set; }
