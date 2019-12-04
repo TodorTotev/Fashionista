@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Fashionista.Infrastructure
 {
     using System;
@@ -24,10 +26,16 @@ namespace Fashionista.Infrastructure
 
         public ClaimsPrincipal User => this.httpContextAccessor.HttpContext?.User;
 
-        public int ShoppingCartId => this.userManager.GetUserAsync(this.User).Result.ShoppingCartId;
+        public int ShoppingCartId => this.UserEntity.ShoppingCartId;
+
+        public string FullName => $"{this.UserEntity.FirstName} {this.UserEntity.LastName}";
+
+        public string PhoneNumber => this.UserEntity.PhoneNumber;
 
         public string UserId => this.User?.FindFirstValue(ClaimTypes.NameIdentifier) ?? "Annonymous";
 
         public string Username => this.User?.FindFirstValue(ClaimTypes.Name) ?? "John Doe";
+
+        private ApplicationUser UserEntity => this.userManager.GetUserAsync(this.User).Result;
     }
 }

@@ -10,6 +10,10 @@ namespace Fashionista.Application.Interfaces
 
         string UserId { get; }
 
+        string FullName { get; }
+
+        string PhoneNumber { get; }
+
         string Username { get; }
     }
 }

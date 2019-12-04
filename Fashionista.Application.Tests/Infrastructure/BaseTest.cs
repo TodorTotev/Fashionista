@@ -2,6 +2,8 @@
 
 // ReSharper disable PossibleNullReferenceException
 
+using Fashionista.Domain.Entities;
+
 namespace Fashionista.Application.Tests.Infrastructure
 {
     // ReSharper disable SA1401
@@ -31,9 +33,16 @@ namespace Fashionista.Application.Tests.Infrastructure
             this.mapper = AutoMapperFactory.Create();
             this.deletableEntityRepository = new EfDeletableEntityRepository<T>(this.dbContext);
             this.mediatorMock = new Mock<IMediator>();
-            this.userAssistantMock = UserAssistantFactory.Create(this.dbContext.Users.FirstOrDefault().ShoppingCartId);
+            this.userAssistantMock = UserAssistantFactory.Create(
+                this.User.ShoppingCartId,
+                this.User.Id,
+                this.User.FirstName,
+                this.User.LastName,
+                this.User.PhoneNumber);
             this.shoppingCartAssistantMock = ShoppingCartAssistantFactory.Create(this.dbContext.Products.ToList());
         }
+        
+        public ApplicationUser User => this.dbContext.Users.FirstOrDefault();
 
         public void Dispose()
         {

@@ -14,6 +14,7 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 LastName = "TestLastName",
                 Email = "Test@test.com",
                 ShoppingCart = new ShoppingCart(),
+                PhoneNumber = "12345678",
             };
 
             dbContext.Users.Add(user);
