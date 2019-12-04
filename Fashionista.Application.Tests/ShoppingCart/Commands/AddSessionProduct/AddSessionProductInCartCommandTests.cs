@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Fashionista.Application.ShoppingCart.Queries.GetAllSessionShoppingCartProducts;
+// ReSharper disable PossibleNullReferenceException
 
 namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
 {
@@ -27,8 +29,21 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductInCartCommand { Id = 1, Session = dummyList };
-            var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
+            var sizesRepository = new EfDeletableEntityRepository<ProductSize>(this.dbContext);
+            var colorsRepository = new EfDeletableEntityRepository<ProductColor>(this.dbContext);
+            var command = new AddSessionProductInCartCommand
+            {
+                Id = 1,
+                Session = dummyList,
+                ColorId = 1,
+                Quantity = 1,
+                SizeId = 1,
+            };
+            var sut = new AddSessionProductInCartCommandHandler(
+                productsRepository,
+                this.shoppingCartAssistantMock.Object,
+                sizesRepository,
+                colorsRepository);
 
             // Act
             var session = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -36,6 +51,8 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             // Arrange
             session.ShouldNotBeNull();
             session.Count.ShouldBe(1);
+            session.FirstOrDefault().ColorName.ShouldBe("TestColor");
+            session.FirstOrDefault().SizeName.ShouldBe("TestSize");
         }
 
         [Trait(nameof(ShoppingCartProduct), "AddSessionProductInCart command tests")]
@@ -46,8 +63,22 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductInCartCommand { Id = 100, Session = dummyList };
-            var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
+            var sizesRepository = new EfDeletableEntityRepository<ProductSize>(this.dbContext);
+            var colorsRepository = new EfDeletableEntityRepository<ProductColor>(this.dbContext);
+            var command = new AddSessionProductInCartCommand
+            {
+                Id = 1000,
+                Session = dummyList,
+                ColorId = 1,
+                Quantity = 1,
+                SizeId = 1,
+            };
+
+            var sut = new AddSessionProductInCartCommandHandler(
+                productsRepository,
+                this.shoppingCartAssistantMock.Object,
+                sizesRepository,
+                colorsRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -58,9 +89,11 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new AddSessionProductCartCommandHandler(
+            var sut = new AddSessionProductInCartCommandHandler(
                 It.IsAny<EfDeletableEntityRepository<Product>>(),
-                It.IsAny<IShoppingCartAssistant>());
+                It.IsAny<IShoppingCartAssistant>(),
+                It.IsAny<EfDeletableEntityRepository<ProductSize>>(),
+                It.IsAny<EfDeletableEntityRepository<ProductColor>>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

@@ -1,9 +1,7 @@
 namespace Fashionista.Application.Common.Models
 {
     using System.Collections.Generic;
-    using System.Linq;
 
-    using AutoMapper;
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
 
@@ -16,6 +14,10 @@ namespace Fashionista.Application.Common.Models
         public string ProductName { get; set; }
 
         public decimal ProductPrice { get; set; }
+
+        public string ColorName { get; set; }
+
+        public string SizeName { get; set; }
 
         public int Quantity { get; set; }
 
