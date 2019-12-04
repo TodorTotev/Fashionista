@@ -1,6 +1,7 @@
 namespace Fashionista.Domain.Entities
 {
     using System;
+    using System.Drawing;
 
     using Fashionista.Domain.Infrastructure;
 
@@ -16,7 +17,11 @@ namespace Fashionista.Domain.Entities
 
         public int ColorId { get; set; }
 
+        public ProductColor Color { get; set; }
+
         public int SizeId { get; set; }
+
+        public ProductSize Size { get; set; }
 
         public int Quantity { get; set; }
 
