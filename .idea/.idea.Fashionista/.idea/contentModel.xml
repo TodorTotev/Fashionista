@@ -333,8 +333,8 @@
               <e p="AddProductInCartCommandHandler.cs" t="Include" />
             </e>
             <e p="AddSesssion" t="Include">
-              <e p="AddSessionProductCartCommand.cs" t="Include" />
-              <e p="AddSessionProductCartCommandHandler.cs" t="Include" />
+              <e p="AddSessionProductInCartCommand.cs" t="Include" />
+              <e p="AddSessionProductInCartCommandHandler.cs" t="Include" />
             </e>
             <e p="Clear" t="Include">
               <e p="ClearShoppingCartCommand.cs" t="Include" />
@@ -848,6 +848,10 @@
           <e p="20191201135249_UpdateDeletableEntities.Designer.cs" t="Include" />
           <e p="20191203151426_ProductModification.cs" t="Include" />
           <e p="20191203151426_ProductModification.Designer.cs" t="Include" />
+          <e p="20191204141002_ShoppingCartProductModification.cs" t="Include" />
+          <e p="20191204141002_ShoppingCartProductModification.Designer.cs" t="Include" />
+          <e p="20191204142234_ShoppingCartProductModification1.cs" t="Include" />
+          <e p="20191204142234_ShoppingCartProductModification1.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
