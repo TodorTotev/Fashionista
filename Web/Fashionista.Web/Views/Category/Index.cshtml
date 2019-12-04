@@ -1,0 +1,209 @@
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Common
+
+
+@model Fashionista.Application.Common.Models.Category.CategoryProductsViewModel
+
+<div class="banner banner-cat" style="background-image: url('@Url.Content("~/images/banners/banner-top.jpg")');">
+    <div class="banner-content container">
+        <h2 class="banner-subtitle">check out collection with over </h2>
+        <h1 class="banner-title">
+            <span>@Model.Products.Count+</span> @Model.SubCategory.Name
+        </h1>
+    </div><!-- End .banner-content -->
+</div><!-- End .banner -->
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.SubCategory.Name</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+<form method="post" asp-controller="Category" asp-action="Index">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <nav class="toolbox">
+                    <div class="toolbox-left">
+                        <div class="toolbox-item toolbox-sort">
+                            <div class="select-custom">
+                                <select name="ProductSort" class="form-control">
+                                    <option value="1" selected="@(Model.ProductSort.ToString() == "Newest")">Sort by newness</option>
+                                    <option value="2" selected="@(Model.ProductSort.ToString() == "Oldest")">Sort by oldness</option>
+                                    <option value="4" selected="@(Model.ProductSort.ToString() == "PriceAscending")">Sort by price: low to high</option>
+                                    <option value="3" selected="@(Model.ProductSort.ToString() == "PriceDescending")">Sort by price: high to low</option>
+                                </select>
+                            </div><!-- End .select-custom -->
+
+
+                        </div><!-- End .toolbox-item -->
+                    </div><!-- End .toolbox-left -->
+                </nav>
+
+                <div class="product-wrapper">
+                    <div class="product-intro divide-line up-effect">
+                        @foreach (var product in Model.Products)
+                        {
+                            <div class="col-6 col-md-4 col-xl-3 product-default">
+                                <figure>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+                                        <img src="@product.Photos.FirstOrDefault()" alt="product">
+                                    </a>
+                                    <!-- <span class="product-label label-sale">27% OFF</span> -->
+                                </figure>
+                                <div class="product-details">
+                                    <div class="category-list">
+                                        <a href="#" class="product-category">@product.SubCategoryName</a>
+                                    </div>
+                                    <h2 class="product-title">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+                                    </h2>
+                                    <div class="ratings-container">
+                                        <div class="product-ratings">
+                                            <span class="ratings" style="width:100%"></span><!-- End .ratings -->
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div><!-- End .product-ratings -->
+                                    </div><!-- End .product-container -->
+                                    <div class="price-box">
+                                        <span class="product-price">@product.Price</span>
+                                    </div><!-- End .price-box -->
+                                    <div class="product-action">
+                                        <a asp-controller="Wishlist" asp-action="Create" asp-route-id="@product.Id" class="btn-icon-wish">
+                                            <i class="icon-heart"></i>
+                                        </a>
+                                        <a asp-controller="ShoppingCart" asp-action="Add" asp-route-id="@product.Id" class="btn-icon btn-add-cart"><i class="icon-bag"></i>ADD TO CART</a>
+                                    </div>
+                                </div><!-- End .product-details -->
+                            </div>
+                        }
+                    </div><!-- End .row -->
+                </div><!-- End .product-wrapper -->
+
+                <nav class="toolbox toolbox-pagination">
+                    <div class="toolbox-item toolbox-show">
+                    </div><!-- End .toolbox-item -->
+
+                    <ul class="pagination">
+                        @Html.PagedListPager(Model.Products, page => Url.Action("Index",
+                            new
+                            {
+                                PageNumber = page,
+                                Model.ProductSort,
+                                Model.SortGender
+                            }),
+                            new PagedListRenderOptions
+                            {
+                                MaximumPageNumbersToDisplay = 50,
+                                LiElementClasses = new[] {"page-item"},
+                                PageClasses = new[] {"page-link"}
+                            })
+                    </ul>
+                </nav>
+            </div><!-- End .col-lg-9 -->
+
+            <aside class="sidebar-shop col-lg-3 order-lg-first">
+                <div class="sidebar-wrapper">
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            <a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Fashion</a>
+                        </h3>
+
+                        <div class="collapse show" id="widget-body-1">
+                            <div class="widget-body">
+                                <ul class="cat-list">
+                                    <li>
+                                    <a asp-controller="Category" asp-action="Index" asp-route-id="@Model.SubCategory.Id">
+                                        <strong>Any</strong>
+                                    </a>
+                                    <li>
+                                        <a asp-controller="Category" asp-action="Men" asp-route-id="@Model.SubCategory.Id">
+                                            Men
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Category" asp-action="Women" asp-route-id="@Model.SubCategory.Id">Women</a>
+                                    </li>
+                                </ul>
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            <a data-toggle="collapse" href="#widget-body-3" role="button" aria-expanded="true" aria-controls="widget-body-3">Size</a>
+                        </h3>
+
+                        <div class="collapse show" id="widget-body-3">
+                            <div class="widget-body">
+                                <ul class="config-size-list">
+                                    <div class="select-custom">
+                                        <select asp-for="@Model.SizeId" asp-items="@(new SelectList(Model.Sizes, "Id", "Name"))" class="form-control">
+                                            <option value="1000">Any</option>
+                                        </select>
+                                    </div><!-- End .select-custom -->
+                                </ul>
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            <a data-toggle="collapse" href="#widget-body-4" role="button" aria-expanded="true" aria-controls="widget-body-4">Brands</a>
+                        </h3>
+
+                        <div class="collapse show" id="widget-body-4">
+                            <div class="widget-body">
+                                <ul class="cat-list">
+                                    <li>
+                                        <input type="radio" asp-for="BrandId" value="1000"/>
+                                        Any
+                                        <br/>
+                                    </li>
+                                    @foreach (var brand in Model.ListOfBrands.Brands)
+                                    {
+                                        <li>
+                                            <input type="radio" asp-for="BrandId" value="@brand.Id"/>
+                                            @brand.Name
+                                        </li>
+                                    }
+                                </ul>
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+
+                    <div class="widget">
+                        <h3 class="widget-title">
+                            <a data-toggle="collapse" href="#widget-body-6" role="button" aria-expanded="true" aria-controls="widget-body-6">Color</a>
+                        </h3>
+
+                        <div class="collapse show" id="widget-body-6">
+                            <div class="widget-body">
+                                <ul class="config-swatch-list">
+                                    <div class="select-custom">
+                                        <select asp-for="ColorId" asp-items="@(new SelectList(Model.Colors, "Id", "Name"))" class="form-control">
+                                            <option value="1000">Any</option>
+                                        </select>
+                                    </div><!-- End .select-custom -->
+                                </ul>
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+                    <div class="widget">
+                        <div class="collapse show" id="widget-body-6">
+                            <div class="widget-body">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                            </div><!-- End .widget-body -->
+                        </div><!-- End .collapse -->
+                    </div><!-- End .widget -->
+                </div><!-- End .sidebar-wrapper -->
+            </aside><!-- End .col-lg-3 -->
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+</form>
+
+<div class="mb-5"></div><!-- margin -->

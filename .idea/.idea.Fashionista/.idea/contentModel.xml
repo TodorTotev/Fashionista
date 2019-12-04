@@ -1029,6 +1029,8 @@
           </e>
           <e p="Category" t="Include">
             <e p="Index.cshtml" t="Include" />
+            <e p="Men.cshtml" t="Include" />
+            <e p="Women.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />
