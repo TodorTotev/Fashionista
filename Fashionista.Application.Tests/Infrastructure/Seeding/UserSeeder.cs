@@ -1,3 +1,5 @@
+using Fashionista.Domain.Entities.Enums;
+
 namespace Fashionista.Application.Tests.Infrastructure.Seeding
 {
     using System.Collections.Generic;
@@ -53,6 +55,18 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 Quantity = 1,
                 ShoppingCartId = user.ShoppingCartId,
             });
+
+            dbContext.Orders.Add(new Order
+            {
+                OrderState = OrderState.Processing,
+                ApplicationUserId = user.Id,
+                DeliveryAddressId = 1,
+                Recipient = $"{user.FirstName} {user.LastName}",
+                RecipientPhoneNumber = user.PhoneNumber,
+                DeliveryFee = 7,
+            });
+
+            dbContext.SaveChanges();
         }
     }
 }

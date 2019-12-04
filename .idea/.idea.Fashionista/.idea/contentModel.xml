@@ -177,12 +177,24 @@
         </e>
         <e p="Orders" t="Include">
           <e p="Commands" t="Include">
+            <e p="Complete" t="Include">
+              <e p="CompleteOrderCommand.cs" t="Include" />
+            </e>
             <e p="Create" t="Include">
               <e p="CreateOrderCommand.cs" t="Include" />
               <e p="CreateOrderCommandHandler.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Complete" t="Include">
+              <e p="CompleteOrderQuery.cs" t="Include" />
+              <e p="CompleteOrderQueryHandler.cs" t="Include" />
+            </e>
+            <e p="Create" t="Include">
+              <e p="CreateOrderQuery.cs" t="Include" />
+              <e p="CreateOrderQueryHandler.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
@@ -553,7 +565,14 @@
               <e p="CreateOrderCommandTests.cs" t="Include" />
             </e>
           </e>
-          <e p="Queries" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="Complete" t="Include">
+              <e p="CompleteOrderQueryTests.cs" t="Include" />
+            </e>
+            <e p="Create" t="Include">
+              <e p="CreateOrderQueryTests.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
