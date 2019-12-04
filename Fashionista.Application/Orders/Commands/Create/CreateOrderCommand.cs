@@ -7,11 +7,9 @@ namespace Fashionista.Application.Orders.Commands.Create
 
     public class CreateOrderCommand : IRequest<int>
     {
-        public string ApplicationUserId { get; set; }
-
+        public string CustomerInformation { get; set; }
+        
         public int? DeliveryAddressId { get; set; }
-
-        public string PhoneNumber { get; set; }
 
         public decimal DeliveryFee { get; set; }
 

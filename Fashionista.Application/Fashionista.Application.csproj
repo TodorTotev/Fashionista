@@ -28,7 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Orders\Queries" />
       <Folder Include="ProductColors\Commands" />
     </ItemGroup>
 
