@@ -14,6 +14,10 @@ namespace Fashionista.Domain.Entities
 
         public ShoppingCart ShoppingCart { get; set; }
 
+        public int ColorId { get; set; }
+
+        public int SizeId { get; set; }
+
         public int Quantity { get; set; }
 
         public bool IsDeleted { get; set; }
