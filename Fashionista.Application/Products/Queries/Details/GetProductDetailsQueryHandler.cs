@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Fashionista.Application.Products.Queries.Details
 {
     using System;
@@ -16,13 +18,16 @@ namespace Fashionista.Application.Products.Queries.Details
     public class GetProductDetailsQueryHandler : IRequestHandler<GetProductDetailsQuery, GetProductDetailsViewModel>
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
+        private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
         private readonly IMapper mapper;
 
         public GetProductDetailsQueryHandler(
             IDeletableEntityRepository<Product> productRepository,
+            IDeletableEntityRepository<ProductAttributes> productAttributesRepository,
             IMapper mapper)
         {
             this.productRepository = productRepository;
+            this.productAttributesRepository = productAttributesRepository;
             this.mapper = mapper;
         }
 

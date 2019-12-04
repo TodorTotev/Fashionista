@@ -3,11 +3,11 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Products.Queries.Details;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Repositories;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -20,7 +20,11 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         {
             // Arrange
             var query = new GetProductDetailsQuery { Id = 1 };
-            var sut = new GetProductDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var attributesRepository = new EfDeletableEntityRepository<ProductAttributes>(this.dbContext);
+            var sut = new GetProductDetailsQueryHandler(
+                this.deletableEntityRepository,
+                attributesRepository,
+                this.mapper);
 
             // Act
             var product = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -37,7 +41,11 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         {
             // Arrange
             var query = new GetProductDetailsQuery { Id = 1000 };
-            var sut = new GetProductDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var attributesRepository = new EfDeletableEntityRepository<ProductAttributes>(this.dbContext);
+            var sut = new GetProductDetailsQueryHandler(
+                this.deletableEntityRepository,
+                attributesRepository,
+                this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -48,7 +56,10 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         public async Task Handle_GivenNullRequest_ShouldReturnArgumentNullException()
         {
             // Arrange
-            var sut = new GetProductDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductDetailsQueryHandler(
+                this.deletableEntityRepository,
+                It.IsAny<EfDeletableEntityRepository<ProductAttributes>>(),
+                this.mapper);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
