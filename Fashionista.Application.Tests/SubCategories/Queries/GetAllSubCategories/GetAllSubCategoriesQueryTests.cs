@@ -1,12 +1,10 @@
-using System;
-using Fashionista.Application.SubCategories.Queries.GetAllSubCategories;
-
 namespace Fashionista.Application.Tests.SubCategories.Queries.GetAllSubCategories
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.SubCategories.Queries;
+    using Fashionista.Application.SubCategories.Queries.GetAllSubCategories;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Moq;

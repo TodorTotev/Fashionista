@@ -34,21 +34,29 @@ namespace Fashionista.Application.Products.Commands.Sort
         {
             request = request ?? throw new ArgumentNullException();
 
-            if (!await CommonCheckAssistant.CheckIfProductSizeExists(request.SizeId, this.sizesRepository))
-            {
-                throw new NotFoundException(nameof(ProductSize), request.SizeId);
-            }
-
-            if (!await CommonCheckAssistant.CheckIfProductColorExists(request.ColorId, this.colorsRepository))
-            {
-                throw new NotFoundException(nameof(ProductColor), request.ColorId);
-            }
-
             var products = SortByGender(request.Products, request.Gender);
             products = SortByBrand(products, request.BrandId);
-            products = SortByColor(products, request.ColorId);
-            products = SortBySize(products, request.SizeId);
             products = ViewSort(products, request.Sort);
+
+            if (request.ColorId != 0 && request.ColorId != 1000)
+            {
+                if (!await CommonCheckAssistant.CheckIfProductColorExists(request.ColorId, this.colorsRepository))
+                {
+                    throw new NotFoundException(nameof(ProductColor), request.ColorId);
+                }
+
+                products = SortByColor(products, request.ColorId);
+            }
+
+            if (request.SizeId != 0 && request.SizeId != 1000)
+            {
+                if (!await CommonCheckAssistant.CheckIfProductSizeExists(request.SizeId, this.sizesRepository))
+                {
+                    throw new NotFoundException(nameof(ProductSize), request.SizeId);
+                }
+
+                products = SortBySize(products, request.SizeId);
+            }
 
             return products
                 .Skip(request.PageNumber * request.PageSize)
@@ -121,3 +129,4 @@ namespace Fashionista.Application.Products.Commands.Sort
         }
     }
 }
+

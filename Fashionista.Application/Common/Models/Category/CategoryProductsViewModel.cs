@@ -14,7 +14,7 @@ namespace Fashionista.Application.Common.Models.Category
 
         public int? Page { get; set; }
 
-        public ProductSort SortCondition { get; set; }
+        public ProductSort ProductSort { get; set; }
 
         public int SizeId { get; set; }
 

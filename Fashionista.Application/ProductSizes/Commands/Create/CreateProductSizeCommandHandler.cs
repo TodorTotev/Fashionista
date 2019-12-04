@@ -30,6 +30,7 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
 
             if (await CommonCheckAssistant.CheckIfProductSizeWithSameNameExists(
                 request.Name,
+                request.MainCategoryId,
                 this.productSizeRepository))
             {
                 throw new EntityAlreadyExistsException(nameof(ProductSize), request.Name);

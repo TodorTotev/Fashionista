@@ -1,9 +1,8 @@
 // ReSharper disable PossibleNullReferenceException
 
-using System;
-
 namespace Fashionista.Application.Tests.Products.Commands.Sort
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
@@ -50,6 +49,8 @@ namespace Fashionista.Application.Tests.Products.Commands.Sort
                 Sort = ProductSort.Newest,
                 Gender = ProductType.Men,
                 Products = dummyList,
+                PageSize = 20,
+                PageNumber = 0,
             };
 
             var sut = new SortProductsCommandHandler(sizesRepository, colorsRepository);

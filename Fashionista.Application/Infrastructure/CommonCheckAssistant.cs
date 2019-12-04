@@ -112,11 +112,12 @@ namespace Fashionista.Application.Infrastructure
 
         internal static async Task<bool> CheckIfProductSizeWithSameNameExists(
             string name,
+            int id,
             IDeletableEntityRepository<ProductSize> sizesRepository)
         {
             return await sizesRepository
                 .AllAsNoTracking()
-                .AnyAsync(x => x.Name == name);
+                .AnyAsync(x => x.Name == name && x.MainCategoryId == id);
         }
 
         internal static async Task<bool> CheckIfProductContainsAttribute(
