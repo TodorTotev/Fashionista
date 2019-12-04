@@ -27,7 +27,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductCartCommand { Id = 1, Session = dummyList };
+            var command = new AddSessionProductInCartCommand { Id = 1, Session = dummyList };
             var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
 
             // Act
@@ -46,7 +46,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.AddSessionProduct
             var dummyList = new List<CartProductLookupModel>();
 
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddSessionProductCartCommand { Id = 100, Session = dummyList };
+            var command = new AddSessionProductInCartCommand { Id = 100, Session = dummyList };
             var sut = new AddSessionProductCartCommandHandler(productsRepository, this.shoppingCartAssistantMock.Object);
 
             // Act & Assert

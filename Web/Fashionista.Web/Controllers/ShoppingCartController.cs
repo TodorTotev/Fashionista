@@ -61,7 +61,14 @@ namespace Fashionista.Web.Controllers
                 return this.Redirect("/");
             }
 
-            await this.Mediator.Send(new AddSessionProductCartCommand { Id = command.Id, Session = products });
+            await this.Mediator.Send(new AddSessionProductInCartCommand
+                {
+                    Id = command.Id,
+                    Session = products,
+                    SizeId = command.SizeId,
+                    ColorId = command.ColorId,
+                    Quantity = command.Quantity,
+                });
 
             return this.RedirectToAction(nameof(this.Index));
         }

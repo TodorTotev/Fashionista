@@ -14,7 +14,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
     using Microsoft.EntityFrameworkCore;
 
     public class AddSessionProductCartCommandHandler :
-        IRequestHandler<AddSessionProductCartCommand, List<CartProductLookupModel>>
+        IRequestHandler<AddSessionProductInCartCommand, List<CartProductLookupModel>>
     {
         private readonly IShoppingCartAssistant shoppingCartAssistant;
         private readonly IDeletableEntityRepository<Product> productsRepository;
@@ -28,7 +28,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
         }
 
         public async Task<List<CartProductLookupModel>> Handle(
-            AddSessionProductCartCommand request,
+            AddSessionProductInCartCommand request,
             CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
