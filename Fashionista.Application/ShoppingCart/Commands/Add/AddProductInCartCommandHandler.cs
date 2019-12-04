@@ -46,6 +46,8 @@ namespace Fashionista.Application.ShoppingCart.Commands.Add
                 ProductId = request.Id,
                 ShoppingCartId = this.userAssistant.ShoppingCartId,
                 Quantity = request.Quantity ?? 1,
+                ColorId = request.ColorId,
+                SizeId = request.SizeId,
             };
 
             await this.shoppingCartProductsRepository.AddAsync(product);

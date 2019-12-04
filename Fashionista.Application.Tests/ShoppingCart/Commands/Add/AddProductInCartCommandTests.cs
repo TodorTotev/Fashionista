@@ -24,7 +24,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         {
             // Arrange
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand { Id = 2, Quantity = 2 };
+            var command = new AddProductInCartCommand { Id = 2, Quantity = 2, ColorId = 1, SizeId = 1 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
@@ -37,6 +37,8 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
             var product = this.dbContext.ShoppingCartProducts.FirstOrDefault(x => x.ProductId == id);
             product.ShoppingCartId.ShouldBe(this.userAssistantMock.Object.ShoppingCartId);
             product.Quantity.ShouldBe(2);
+            product.ColorId.ShouldBe(1);
+            product.SizeId.ShouldBe(1);
         }
 
         [Trait(nameof(ShoppingCartProduct), "AddProductInCart command tests")]
@@ -45,7 +47,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         {
             // Arrange
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand { Id = 1000, Quantity = 2 };
+            var command = new AddProductInCartCommand { Id = 1000, Quantity = 2, ColorId = 1, SizeId = 1 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,
@@ -61,7 +63,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         {
             // Arrange
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand {Id = 1, Quantity = 2};
+            var command = new AddProductInCartCommand { Id = 2, Quantity = 2, ColorId = 1, SizeId = 1 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,

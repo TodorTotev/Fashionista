@@ -76,22 +76,30 @@
                                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.</p>
                             </div><!-- End .product-desc -->
 
-                            <div class="product-action product-all-icons">
-                                <div class="product-single-qty">
-                                    <input class="horizontal-quantity form-control" type="text">
-                                </div><!-- End .product-single-qty -->
-                                @* <a asp-controller="ShoppingCart" asp-action="Add" asp-route-id="@Model.Id" class="paction add-cart" title="Add to Cart"> *@
-                                <a href="#" class="paction add-cart" title="Add to Cart">
-                                    <span>Add to Cart</span>
-                                </a>
-                                @* <a asp-controller="Wishlist" asp-action="Add" asp-route-id="@Model.Id" class="paction add-wishlist" title="Add to Wishlist"> *@
-                                <a href="#" class="paction add-wishlist" title="Add to Wishlist">
-                                    <span>Add to Wishlist</span>
-                                </a>
-                                <a href="#" class="paction add-compare" title="Add to Compare">
-                                    <span>Add to Compare</span>
-                                </a>
-                            </div><!-- End .product-action -->
+                            <form method="post" asp-controller="ShoppingCart" asp-action="Add" asp-route-id="@Model.Product.Id">
+                                <div class="product-filters-container">
+                                    <div class="product-single-filter">
+                                        <select asp-for="@Model.SizeId" asp-items="@(new SelectList(Model.Attributes.Sizes, "Id", "Name"))" class="form-control">
+                                            <option value="" selected disabled>Select size</option>
+                                        </select>
+                                        <select asp-for="@Model.ColorId" asp-items="@(new SelectList(Model.Attributes.Colors, "Id", "Name"))" class="form-control">
+                                            <option value="" selected disabled>Select color</option>
+                                        </select>
+                                    </div><!-- End .product-single-filter -->
+                                </div><!-- End .product-filters-container -->
+
+                                <div class="product-action product-all-icons">
+                                    <div class="product-single-qty">
+                                        <input asp-for="@Model.Quantity" class="horizontal-quantity form-control" type="text">
+                                    </div><!-- End .product-single-qty -->
+                                    <button type="submit" class="paction add-cart" title="Add to Cart">
+                                        <span>Add to Cart</span>
+                                    </button>
+                                    <a asp-controller="Wishlist" asp-action="Create" asp-route-id="@Model.Product.Id" class="paction add-wishlist" title="Add to Wishlist">
+                                        <span>Add to Wishlist</span>
+                                    </a>
+                                </div><!-- End .product-action -->
+                            </form>
 
                             <div class="product-single-share">
                                 <label>Share:</label>

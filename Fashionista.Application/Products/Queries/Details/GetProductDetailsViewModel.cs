@@ -12,5 +12,7 @@ namespace Fashionista.Application.Products.Queries.Details
        public int ColorId { get; set; }
 
        public int SizeId { get; set; }
+
+       public int Quantity { get; set; }
     }
 }
