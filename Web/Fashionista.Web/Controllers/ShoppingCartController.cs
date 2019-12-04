@@ -45,6 +45,7 @@ namespace Fashionista.Web.Controllers
             });
         }
 
+        [HttpPost]
         public async Task<IActionResult> Add(AddProductInCartCommand command)
         {
             if (this.User.Identity.IsAuthenticated)

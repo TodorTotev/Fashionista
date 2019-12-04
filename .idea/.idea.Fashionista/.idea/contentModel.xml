@@ -205,6 +205,11 @@
               <e p="GetAllProductAttributesQueryHandler.cs" t="Include" />
               <e p="GetAllProductAttributesViewModel.cs" t="Include" />
             </e>
+            <e p="GetColorsAndSizes" t="Include">
+              <e p="GetColorsAndSizesQuery.cs" t="Include" />
+              <e p="GetColorsAndSizesQueryHandler.cs" t="Include" />
+              <e p="ProductColorsAndSizesViewModel.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="ProductColors" t="Include">
@@ -554,6 +559,9 @@
             </e>
             <e p="GetAll" t="Include">
               <e p="GetAllProductAttributesQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetColorsAndSizes" t="Include">
+              <e p="GetColorsAndSizesQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>
