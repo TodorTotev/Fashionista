@@ -41,7 +41,6 @@ namespace Fashionista.Application.Orders.Commands.Create
                 OrderState = OrderState.Processing,
                 ApplicationUserId = this.userAssistant.UserId,
                 DeliveryAddressId = request.DeliveryAddressId,
-                Recipient = this.userAssistant.FullName,
                 RecipientPhoneNumber = this.userAssistant.PhoneNumber,
                 DeliveryFee = request.DeliveryFee,
             };

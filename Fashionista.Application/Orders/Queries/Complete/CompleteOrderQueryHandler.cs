@@ -45,7 +45,7 @@ namespace Fashionista.Application.Orders.Queries.Complete
                 throw new ArgumentException("shopping cart is empty", nameof(this.userAssistant.Username));
             }
 
-            var order = await this.ordersRepository
+            var command = await this.ordersRepository
                             .AllAsNoTracking()
                             .Where(x => x.ApplicationUserId == this.userAssistant.UserId
                                         && x.OrderState == OrderState.Processing)
@@ -58,9 +58,10 @@ namespace Fashionista.Application.Orders.Queries.Complete
                 .Where(x => x.ShoppingCart.User.Id == this.userAssistant.UserId)
                 .Sum(x => x.Product.Price);
 
-            order.TotalPrice = totalPrice;
+            command.TotalPrice = totalPrice;
+            command.Recipient = this.userAssistant.FullName;
 
-            return order;
+            return command;
         }
 
         private async Task<bool> CheckIfCartContainsProducts(string id) =>
