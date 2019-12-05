@@ -24,9 +24,12 @@ namespace Fashionista.Web.Components
                 return this.View(model);
             }
 
-            var sessionModel = await this.mediator.Send(new GetAllSessionShoppingCartProductsQuery());
+            var sessionProducts = await this.mediator.Send(new GetAllSessionShoppingCartProductsQuery());
 
-            return this.View(sessionModel);
+            return this.View(new AllShoppingCartProductsViewModel
+            {
+                ShoppingCartProducts = sessionProducts,
+            });
         }
     }
 }

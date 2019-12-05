@@ -92,6 +92,7 @@
             <e p="Category" t="Include">
               <e p="CategoryProductsViewModel.cs" t="Include" />
             </e>
+            <e p="InvoiceProductLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
             <e p="OrderLookupModel.cs" t="Include" />
             <e p="OrderProductLookupModel.cs" t="Include" />
@@ -205,6 +206,11 @@
               <e p="GetOrderDetailsQuery.cs" t="Include" />
               <e p="GetOrderDetailsQueryHandler.cs" t="Include" />
               <e p="OrderDetailsViewModel.cs" t="Include" />
+            </e>
+            <e p="GetOrderProducts" t="Include">
+              <e p="GetOrderProductsByOrderIdQuery.cs" t="Include" />
+              <e p="GetOrderProductsByOrderIdQueryHandler.cs" t="Include" />
+              <e p="OrderProductsViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -592,6 +598,9 @@
             </e>
             <e p="Details" t="Include">
               <e p="GetOrderDetailsQueryTests.cs" t="Include" />
+            </e>
+            <e p="GetOrderProducts" t="Include">
+              <e p="GetOrderProductsByOrderIdQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -1063,6 +1072,8 @@
           <e p="HomePageMenProductsViewComponent.cs" t="Include" />
           <e p="HomePageWomenProductsViewComponent.cs" t="Include" />
           <e p="NavigationViewComponent.cs" t="Include" />
+          <e p="ShoppingCartBasketViewComponent.cs" t="Include" />
+          <e p="ShoppingCartViewComponent.cs" t="Include" />
         </e>
         <e p="Controllers" t="Include">
           <e p="AddressController.cs" t="Include" />
@@ -1136,6 +1147,12 @@
                 <e p="Default.cshtml" t="Include" />
               </e>
               <e p="Navigation" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="ShoppingCart" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="ShoppingCartBasket" t="Include">
                 <e p="Default.cshtml" t="Include" />
               </e>
             </e>

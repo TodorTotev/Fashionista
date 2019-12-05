@@ -51,6 +51,14 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 ProductType = ProductType.Women,
                 SubCategoryId = 1,
             });
+
+            dbContext.OrderProducts.Add(new OrderProduct
+            {
+                ProductId = product.Entity.Id,
+                OrderId = 1,
+                Quantity = 5,
+                Product = product.Entity,
+            });
         }
     }
 }

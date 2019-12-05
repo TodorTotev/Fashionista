@@ -1,9 +1,11 @@
 namespace Fashionista.Application.Common.Models
 {
+    using System.Collections.Generic;
+
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
 
-    public class OrderProductLookupModel : IMapFrom<ShoppingCartProduct>
+    public class OrderProductLookupModel : IMapFrom<ShoppingCartProduct>, IMapFrom<OrderProduct>
     {
         public int ProductId { get; set; }
 
