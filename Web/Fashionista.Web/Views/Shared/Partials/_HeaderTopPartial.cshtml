@@ -1,3 +1,4 @@
+@using Fashionista.Web.Components
 <div class="header-top">
     <div class="container">
         <div class="header-left header-dropdowns">
@@ -90,7 +91,7 @@
                     </ul>
                 </div><!-- End .header-menu -->
             </div><!-- End .header-dropown -->
-            @* @await Component.InvokeAsync("ShoppingCartBasketComponent") *@
+            @await Component.InvokeAsync(typeof(ShoppingCartBasketViewComponent))
         </div><!-- End .header-right -->
     </div><!-- End .container -->
 </div><!-- End .header-top -->

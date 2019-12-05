@@ -1,0 +1,71 @@
+@model Fashionista.Application.ShoppingCart.Queries.GetAllShoppingCartProducts.AllShoppingCartProductsViewModel
+
+<div class="dropdown cart-dropdown">
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+        @if (Model.ShoppingCartProducts.Any())
+        {
+            <span class="cart-count">@Model.ShoppingCartProducts.Count()</span>
+        }
+    </a>
+
+    <div class="dropdown-menu">
+        <div class="dropdownmenu-wrapper">
+            @if (!Model.ShoppingCartProducts.Any())
+            {
+                <div class="dropdown-cart-header">
+                    <span>Your shopping cart is empty!</span>
+                </div><!-- End .dropdown-cart-header -->
+            }
+            else
+            {
+                <div class="dropdown-cart-header">
+                    <span>@Model.ShoppingCartProducts.Count() Items</span>
+
+                    <a asp-controller="ShoppingCart" asp-action="Index">View Cart</a>
+                </div>
+                <!-- End .dropdown-cart-header -->
+                <div class="dropdown-cart-products">
+
+                    @foreach (var product in Model.ShoppingCartProducts)
+                    {
+                        <div class="product">
+                            <div class="product-details">
+                                <h4 class="product-title">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId">@product.ProductName</a>
+                                </h4>
+
+                                <span class="cart-product-info">
+                                    <span class="cart-product-qty">@product.Quantity</span>
+                                    x $@product.ProductPrice
+                                </span>
+                            </div><!-- End .product-details -->
+
+                            <figure class="product-image-container">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="product-image">
+                                    <img src="@product.ProductPhotos.FirstOrDefault()" alt="product">
+                                </a>
+                                <a asp-controller="ShoppingCart" asp-action="Delete" class="btn-remove" title="Remove Product">
+                                    <i class="icon-cancel"></i>
+                                </a>
+                            </figure>
+                        </div>
+                        <!-- End .product -->
+                    }
+                </div>
+                <!-- End .cart-product -->
+
+                <div class="dropdown-cart-total">
+                    <span>Total</span>
+
+                    <span class="cart-total-price">$@Model.ShoppingCartProducts.Sum(x => x.ProductPrice).ToString("0.00")</span>
+                </div>
+                <!-- End .dropdown-cart-total -->
+
+                <div class="dropdown-cart-action">
+                    <a href="checkout-shipping.html" class="btn btn-block">Checkout</a>
+                </div>
+                <!-- End .dropdown-cart-total -->
+            }
+        </div><!-- End .dropdownmenu-wrapper -->
+    </div><!-- End .dropdown-menu -->
+</div><!-- End .dropdown -->
