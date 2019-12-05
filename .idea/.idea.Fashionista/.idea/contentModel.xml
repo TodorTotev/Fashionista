@@ -93,6 +93,7 @@
               <e p="CategoryProductsViewModel.cs" t="Include" />
             </e>
             <e p="MainCategoryLookupModel.cs" t="Include" />
+            <e p="OrderLookupModel.cs" t="Include" />
             <e p="ProductAttributesLookupModel.cs" t="Include" />
             <e p="ProductColorLookupModel.cs" t="Include" />
             <e p="ProductLookupModel.cs" t="Include" />
@@ -177,6 +178,10 @@
         </e>
         <e p="Orders" t="Include">
           <e p="Commands" t="Include">
+            <e p="Cancel" t="Include">
+              <e p="CancelOrderCommand.cs" t="Include" />
+              <e p="CancelOrderCommandHandler.cs" t="Include" />
+            </e>
             <e p="Complete" t="Include">
               <e p="CompleteOrderCommand.cs" t="Include" />
               <e p="CompleteOrderCommandHandler.cs" t="Include" />
@@ -194,6 +199,11 @@
             <e p="Create" t="Include">
               <e p="CreateOrderQuery.cs" t="Include" />
               <e p="CreateOrderQueryHandler.cs" t="Include" />
+            </e>
+            <e p="Details" t="Include">
+              <e p="GetOrderDetailsQuery.cs" t="Include" />
+              <e p="GetOrderDetailsQueryHandler.cs" t="Include" />
+              <e p="OrderDetailsViewModel.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -562,6 +572,9 @@
         </e>
         <e p="Orders" t="Include">
           <e p="Commands" t="Include">
+            <e p="Cancel" t="Include">
+              <e p="CancelOrderCommandTests.cs" t="Include" />
+            </e>
             <e p="Complete" t="Include">
               <e p="CompleteOrderCommandTests.cs" t="Include" />
             </e>
@@ -575,6 +588,9 @@
             </e>
             <e p="Create" t="Include">
               <e p="CreateOrderQueryTests.cs" t="Include" />
+            </e>
+            <e p="Details" t="Include">
+              <e p="GetOrderDetailsQueryTests.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -842,6 +858,7 @@
         </e>
         <e p="SessionAssistant.cs" t="Include" />
         <e p="ShoppingCartAssistant.cs" t="Include" />
+        <e p="StripeSettings.cs" t="Include" />
         <e p="stylecop.json" t="Include" />
         <e p="UserAssistant.cs" t="Include" />
       </e>
@@ -1051,6 +1068,8 @@
           <e p="BaseController.cs" t="Include" />
           <e p="CategoryController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="OrdersController.cs" t="Include" />
+          <e p="PaymentsController.cs" t="Include" />
           <e p="ProductController.cs" t="Include" />
           <e p="ShoppingCartController.cs" t="Include" />
           <e p="WishlistController.cs" t="Include" />
@@ -1092,6 +1111,11 @@
             <e p="Returns.cshtml" t="Include" />
             <e p="Shipping.cshtml" t="Include" />
             <e p="TermsOfService.cshtml" t="Include" />
+          </e>
+          <e p="Orders" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Details.cshtml" t="Include" />
+            <e p="Review.cshtml" t="Include" />
           </e>
           <e p="product" t="Include">
             <e p="Details.cshtml" t="Include" />

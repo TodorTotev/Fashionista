@@ -30,8 +30,8 @@ namespace Fashionista.Application.Addresses.Commands.Create
         {
             request = request ?? throw new ArgumentNullException();
 
-            var city = this.mediator.Send(new GetCityQuery { Name = request.City })
-                       ?? this.mediator.Send(new CreateCityCommand { Name = request.City, Postcode = request.Zip });
+            var city = await this.mediator.Send(new GetCityQuery { Name = request.City })
+                       ?? await this.mediator.Send(new CreateCityCommand { Name = request.City, Postcode = request.Zip });
 
             var address = new Address
             {
