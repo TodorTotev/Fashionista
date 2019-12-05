@@ -443,7 +443,7 @@ namespace Fashionista.Persistence.Migrations
                     OrderState = table.Column<int>(nullable: false),
                     PaymentState = table.Column<int>(nullable: true),
                     PaymentType = table.Column<int>(nullable: true),
-                    OrderDate = table.Column<DateTime>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: true),
                     DeliveryDate = table.Column<DateTime>(nullable: true),
                     DateSent = table.Column<DateTime>(nullable: true),
                     TotalPrice = table.Column<decimal>(nullable: false),

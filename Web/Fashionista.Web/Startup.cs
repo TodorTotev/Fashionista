@@ -23,6 +23,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
+    using Stripe;
 
     public class Startup
     {
@@ -79,11 +80,13 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
-            
+
             services.AddSingleton(x => CloudinaryFactory.GetInstance(this.configuration));
             services.AddTransient<ICloudinaryHelper, CloudinaryHelper>();
             services.AddScoped<IUserAssistant, UserAssistant>();
             services.AddScoped<IShoppingCartAssistant, ShoppingCartAssistant>();
+
+            services.Configure<StripeSettings>(this.configuration.GetSection("Stripe"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,6 +117,8 @@
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            StripeConfiguration.SetApiKey(this.configuration.GetSection("Stripe")["SecretKey"]);
 
             app.UseHttpsRedirection();
             app.UseSession();
