@@ -1,3 +1,4 @@
+@using Fashionista.Web.Components
 @model Fashionista.Application.Orders.Commands.Complete.CompleteOrderCommand
 
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
@@ -27,7 +28,7 @@
         </ul>
         <div class="row">
             <div class="col-lg-4">
-                @* @await Component.InvokeAsync("ShoppingCartComponent") *@
+                 @await Component.InvokeAsync(typeof(ShoppingCartViewComponent))
                 <div class="checkout-info-box">
                     <h3 class="step-title">
                         Ship To:

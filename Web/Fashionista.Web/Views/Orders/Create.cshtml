@@ -1,3 +1,4 @@
+@using Fashionista.Web.Components
 @model Fashionista.Application.Orders.Commands.Create.CreateOrderCommand
 
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
@@ -132,7 +133,7 @@
                 </ul>
             </div><!-- End .col-lg-8 -->
             <div class="col-lg-4">
-                @* @await Component.InvokeAsync("ShoppingCartComponent") *@
+                @await Component.InvokeAsync(typeof(ShoppingCartViewComponent))
             </div>
         </div><!-- End .row -->
 
