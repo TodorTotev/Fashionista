@@ -1,0 +1,36 @@
+@model Fashionista.Application.Orders.Queries.GetOrderProducts.OrderProductsViewModel
+
+<div class="order-summary">
+    <h3>Invoice</h3>
+
+    <h4>
+        <a data-toggle="collapse" href="#order-cart-section" class="collapsed" role="button" aria-expanded="false" aria-controls="order-cart-section">@Model.Products.Count() ordered products</a>
+    </h4>
+
+    <div class="collapse" id="order-cart-section">
+        <table class="table table-mini-cart">
+            <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td class="product-col">
+                        <figure class="product-image-container">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="product-image">
+                                <img src="@product.ProductPhotos.FirstOrDefault()" alt="product">
+                            </a>
+                        </figure>
+                        <div>
+                            <h2 class="product-title">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId">@product.ProductName</a>
+                            </h2>
+
+                            <span class="product-qty">Qty: @product.Quantity</span>
+                        </div>
+                    </td>
+                    <td class="price-col">$@product.ProductPrice</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div><!-- End #order-cart-section -->
+</div><!-- End .order-summary -->

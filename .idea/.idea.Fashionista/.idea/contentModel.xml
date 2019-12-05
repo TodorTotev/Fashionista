@@ -92,7 +92,6 @@
             <e p="Category" t="Include">
               <e p="CategoryProductsViewModel.cs" t="Include" />
             </e>
-            <e p="InvoiceProductLookupModel.cs" t="Include" />
             <e p="MainCategoryLookupModel.cs" t="Include" />
             <e p="OrderLookupModel.cs" t="Include" />
             <e p="OrderProductLookupModel.cs" t="Include" />
@@ -1071,6 +1070,7 @@
           <e p="HomePageBrandsViewComponent.cs" t="Include" />
           <e p="HomePageMenProductsViewComponent.cs" t="Include" />
           <e p="HomePageWomenProductsViewComponent.cs" t="Include" />
+          <e p="InvoiceProductsViewComponent.cs" t="Include" />
           <e p="NavigationViewComponent.cs" t="Include" />
           <e p="ShoppingCartBasketViewComponent.cs" t="Include" />
           <e p="ShoppingCartViewComponent.cs" t="Include" />
@@ -1144,6 +1144,9 @@
                 <e p="Default.cshtml" t="Include" />
               </e>
               <e p="HomePageWomenProducts" t="Include">
+                <e p="Default.cshtml" t="Include" />
+              </e>
+              <e p="InvoiceProducts" t="Include">
                 <e p="Default.cshtml" t="Include" />
               </e>
               <e p="Navigation" t="Include">
