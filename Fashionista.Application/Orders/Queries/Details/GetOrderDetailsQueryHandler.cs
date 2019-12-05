@@ -43,7 +43,7 @@ namespace Fashionista.Application.Orders.Queries.Details
                                         && x.OrderState == OrderState.Processed)
                             .ProjectTo<OrderLookupModel>(this.mapper.ConfigurationProvider)
                             .SingleOrDefaultAsync(cancellationToken)
-                        ?? throw new NotFoundException(nameof(Order), "request is invalid");
+                        ?? throw new NotFoundException(nameof(Order), request.Id);
 
             return new OrderDetailsViewModel
             {
