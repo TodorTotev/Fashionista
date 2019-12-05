@@ -1,5 +1,4 @@
 @using Fashionista.Web.Areas.Identity.Pages.Account.Manage
-@using Fashionista.Web.Common
 <aside class="sidebar col-lg-3">
     <div class="widget widget-dashboard">
         <h3 class="widget-title">My Account</h3>
@@ -17,14 +16,14 @@
             <li class="@ManageNavPages.AddressesNavClass(ViewContext)">
                 <a asp-page="./Addresses">Address Book</a>
             </li>
-            @* <li class="@Html.IsActive("Wishlist", "All")"> *@
-            @*     <a asp-controller="Wishlist" asp-action="All">My Wishlist</a> *@
-            @* </li> *@
-            <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)">
-                <a asp-page="./ExternalLogins">External logins</a>
+            <li class="@ManageNavPages.WishlistNavClass(ViewContext)">
+                <a asp-page="./Wishlist">My Wishlist</a>
             </li>
             <li>
                 <a href="#">Order History</a>
+            </li>
+            <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)">
+                <a asp-page="./ExternalLogins">External logins</a>
             </li>
             <li class="@ManageNavPages.PersonalDataNavClass(ViewContext)">
                 <a asp-page="./PersonalData">Personal Data</a>

@@ -26,7 +26,7 @@
     </ul>
 </div>
 <div class="header-center">
-    <a href="index.html" class="logo">
+    <a asp-controller="Home" asp-action="Index" class="logo">
         <img src="~/images/newlogo.png" alt="Logo">
     </a>
 </div>
@@ -37,32 +37,10 @@
             <a href="#" class="sf-with-ul">Pages</a>
             <ul>
                 <li>
-                    <a href="cart.html">Shopping Cart</a>
+                    <a asp-controller="ShoppingCart" asp-action="Index">Shopping Cart</a>
                 </li>
                 <li>
-                    <a href="#">Checkout</a>
-                    <ul>
-                        <li>
-                            <a href="checkout-shipping.html">Checkout Shipping</a>
-                        </li>
-                        <li>
-                            <a href="checkout-shipping-2.html">Checkout Shipping 2</a>
-                        </li>
-                        <li>
-                            <a href="checkout-review.html">Checkout Review</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                    <ul>
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li>
-                           <a href="#">My Account</a>
-                        </li>
-                    </ul>
+                    <a asp-area="Identity" asp-page="/Account/Manage">My Account</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
@@ -85,27 +63,9 @@
                     <partial name="_LoginPartial"/>
                 </li>
                 <li>
-                    <a href="#">Forgot Password</a>
+                    <a asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot Password</a>
                 </li>
             </ul>
-        </li>
-        <li>
-            <a href="#" class="sf-with-ul">Features</a>
-
-            <ul>
-                <li>
-                    <a href="#">Header Types</a>
-                </li>
-                <li>
-                    <a href="#">Footer Types</a>
-                </li>
-                <li>
-                    <a href="#">Homepage Variants</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Special Offer!</a>
         </li>
         @if (User.IsInRole("Administrator"))
         {
@@ -113,6 +73,9 @@
                 <a asp-controller="Home" asp-action="Index">Admin Panel</a>
             </li>
         }
+        <li>
+            <a href="#">Special Offer!</a>
+        </li>
 
     </ul>
 
