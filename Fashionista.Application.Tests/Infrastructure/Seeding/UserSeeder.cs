@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using Fashionista.Domain.Entities.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fashionista.Application.Tests.Infrastructure.Seeding
 {
@@ -65,6 +68,36 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 RecipientPhoneNumber = user.PhoneNumber,
                 DeliveryFee = 7,
             });
+            
+            var order2 = dbContext.Orders.Add(new Order
+            {
+                OrderState = OrderState.Processing,
+                ApplicationUserId = user.Id,
+                DeliveryAddressId = 1,
+                Recipient = $"{user.FirstName} {user.LastName}",
+                RecipientPhoneNumber = user.PhoneNumber,
+                DeliveryFee = 7,
+            });
+
+            var cartProducts = dbContext.ShoppingCartProducts
+                .Where(x => x.ShoppingCartId == 1)
+                .ToList();
+
+            order2.Entity.OrderProducts = cartProducts
+                .Select(currentProduct => new OrderProduct
+                {
+                    Order = order2.Entity,
+                    ProductId = currentProduct.ProductId,
+                    Quantity = currentProduct.Quantity,
+                    Price = currentProduct.Product.Price,
+                }).ToList();
+
+            order2.Entity.TotalPrice = order2.Entity.OrderProducts.Sum(x => x.Quantity * x.Price) + 7;
+            order2.Entity.OrderDate = DateTime.UtcNow;
+            order2.Entity.InvoiceNumber = order2.Entity.Id.ToString().PadLeft(5, '0');
+            order2.Entity.PaymentType = PaymentType.Card;
+            order2.Entity.OrderState = OrderState.Processed;
+            order2.Entity.PaymentState = PaymentState.AwaitingPayment;
 
             dbContext.SaveChanges();
         }
