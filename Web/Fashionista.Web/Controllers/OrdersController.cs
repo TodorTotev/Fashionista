@@ -1,15 +1,17 @@
-using Fashionista.Application.Orders.Commands.Cancel;
-using Fashionista.Application.Orders.Commands.Complete;
-using Fashionista.Application.Orders.Commands.Create;
-using Fashionista.Application.Orders.Queries.Complete;
-using Fashionista.Application.Orders.Queries.Details;
-
 namespace Fashionista.Web.Controllers
 {
     using System.Threading.Tasks;
+
+    using Fashionista.Application.Orders.Commands.Cancel;
+    using Fashionista.Application.Orders.Commands.Complete;
+    using Fashionista.Application.Orders.Commands.Create;
+    using Fashionista.Application.Orders.Queries.Complete;
     using Fashionista.Application.Orders.Queries.Create;
+    using Fashionista.Application.Orders.Queries.Details;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class OrdersController : BaseController
     {
         public async Task<IActionResult> Create()

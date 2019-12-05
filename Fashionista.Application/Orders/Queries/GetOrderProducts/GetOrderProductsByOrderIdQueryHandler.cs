@@ -39,8 +39,6 @@ namespace Fashionista.Application.Orders.Queries.GetOrderProducts
                 throw new NotFoundException(nameof(Order), request.Id);
             }
 
-            var test = this.orderProductsRepository.All().ToList();
-
             var products = await this.orderProductsRepository
                 .All()
                 .Where(x => x.OrderId == request.Id)
