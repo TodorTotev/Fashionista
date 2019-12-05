@@ -1,0 +1,152 @@
+@model Fashionista.Application.Orders.Commands.Create.CreateOrderCommand
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+
+<div class="container">
+    <ul class="checkout-progress-bar">
+        <li class="active">
+            <span>Shipping</span>
+        </li>
+        <li>
+            <span>Review &amp; Payments</span>
+        </li>
+        <li>
+            <span>Order Completed</span>
+        </li>
+    </ul>
+    <form method="post" asp-controller="Orders" asp-action="Create">
+        <div class="row">
+            <div class="col-lg-8">
+                <ul class="checkout-steps">
+                    <li>
+                        <h2 class="step-title">Customer Information</h2>
+                        <table class="table table-cart">
+                            <tbody>
+                            <tr class="product-row">
+                                <td>
+                                    <div class="form-group">
+                                        <input asp-for="@Model.CustomerInformation" class="form-control" placeholder="Name and Surname"/>
+                                        <span asp-validation-for="CustomerInformation" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="Phone number"/>
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="product-row">
+                            </tbody>
+                        </table>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <h2 class="step-title">Shipping Address</h2>
+                            <div class="cart-table-container">
+                                <table class="table table-cart">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="price-col">Street</th>
+                                        <th class="price-col">Additional Information</th>
+                                        <th class="price-col">City</th>
+                                        <th class="price-col">Postcode</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var address in Model.Addresses)
+                                    {
+                                        <tr class="product-row">
+                                            <td>
+                                                <input asp-for="DeliveryAddressId" type="radio" value="@address.Id">
+                                            </td>
+                                            <td>@address.Name</td>
+                                            <td>@address.Description</td>
+                                            <td>@address.CityName</td>
+                                            <td>@address.CityPostcode</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="8">
+                                            <div class="footable-pagination-wrapper">
+                                                <div class="form-footer">
+                                                    <a asp-controller="Address" asp-action="Create" class="btn btn-primary">Add address</a>
+                                                </div><!-- End .form-footer -->
+                                                <div class="divider>"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div><!-- End .cart-table-container -->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <h2 class="step-title">Shipping Methods</h2>
+                            <div class="cart-table-container">
+                                <table class="table table-cart">
+                                    <tbody>
+                                    <tr class="product-row">
+                                        <td>
+                                            <input asp-for="DeliveryFee" type="radio" value="7">
+                                            <span asp-validation-for="DeliveryFee" class="text-danger"></span>
+                                        </td>
+                                        <td>Standart Shipping</td>
+                                        <td>$7.00</td>
+                                        <td>3 - 8 Business Days</td>
+                                        <td>
+                                            <p>Estimated Delivery:</p> @DateTime.UtcNow.AddDays(3).ToShortDateString() - @DateTime.UtcNow.AddDays(8).ToShortDateString()</td>
+                                    </tr>
+                                    <tr class="product-row">
+                                        <td>
+                                            <input asp-for="DeliveryFee" type="radio" value="20">
+                                            <span asp-validation-for="DeliveryFee" class="text-danger"></span>
+                                        </td>
+                                        <td>Express Shipping</td>
+                                        <td>$20.00</td>
+                                        <td>1 - 2 Business Days</td>
+                                        <td>
+                                            <p>Estimated Delivery:</p> @DateTime.UtcNow.AddDays(1).ToShortDateString() - @DateTime.UtcNow.AddDays(2).ToShortDateString()</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- End .checkout-step-shipping -->
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- End .col-lg-8 -->
+            <div class="col-lg-4">
+                @* @await Component.InvokeAsync("ShoppingCartComponent") *@
+            </div>
+        </div><!-- End .row -->
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-steps-action">
+                    <button type="submit" class="btn btn-primary float-right">NEXT</button>
+                </div><!-- End .checkout-steps-action -->
+            </div><!-- End .col-lg-8 -->
+        </div><!-- End .row -->
+    </form>
+</div><!-- End .container -->
+<div class="mb-6"></div>
+
+@section Scripts {
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml"/>
+}

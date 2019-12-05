@@ -1,0 +1,117 @@
+@using Fashionista.Domain.Entities.Enums
+@using Fashionista.Infrastructure
+@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> Stripe
+@model Fashionista.Application.Orders.Queries.Details.OrderDetailsViewModel
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+<div class="container">
+    <ul class="checkout-progress-bar">
+        <li>
+            <span>Shipping</span>
+        </li>
+        <li class="">
+            <span>Review &amp; Payments</span>
+        </li>
+        <li class="active">
+            <span>Finalize order</span>
+        </li>
+    </ul>
+    <div class="row">
+        <div class="col-lg-8">
+            <ul class="checkout-steps">
+                <h2 class="step-title">Order Details</h2>
+
+                <div class="shipping-step-addresses">
+                    <div class="shipping-address-box">
+                        <address>
+                            @Model.Order.Recipient <br>
+                            @Model.Order.DeliveryAddressName, @Model.Order.DeliveryAddressDescription <br>
+                            @Model.Order.DeliveryAddressCityName, @Model.Order.DeliveryAddressCityPostCode <br>
+                            United States <br>
+                            @Model.Order.RecipientPhoneNumber <br>
+                        </address>
+                    </div><!-- End .shipping-address-box -->
+                    <div class="shipping-address-box">
+                        <address>
+                            Order Id: @Model.Order.Id <br>
+                            Invoice Number: @Model.Order.InvoiceNumber <br>
+                            Payment Method: @Model.Order.PaymentType <br>
+                            Date created: @Model.Order.OrderDate <br>
+                            Delivery date: 12/12/12 - 12/12/12 <br>
+                        </address>
+                    </div><!-- End .shipping-address-box -->
+                </div><!-- End .shipping-step-addresses -->
+
+                <div class="clearfix">
+                    <a asp-controller="Orders" asp-action="Cancel" asp-route-id="@Model.Order.Id" class="btn btn-primary float-left">CANCEL ORDER</a>
+                    @if (@Model.Order.PaymentType == PaymentType.Card)
+                    {
+                        var amount = (Model.Order.TotalPrice + Model.Order.DeliveryFee) * 100;
+                        <form method="POST" asp-controller="Payments" asp-action="Charge">
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="@Stripe.Value.PublishableKey"
+                                    data-locale="en"
+                                    data-amount=@amount;
+                                    data-name="Fashion Nova Online Store"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-zip-code="true"
+                                    data-label="@(Model.Order.TotalPrice + Model.Order.DeliveryFee)$">
+                                    </script>
+                            <script>
+                                      document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                                    </script>
+                            <button class="btn btn-primary float-right">PAY WITH CARD</button>
+                        </form>
+                    }
+                </div>
+                
+            </ul>
+        </div>
+
+        <div class="col-lg-4">
+            @* @await Component.InvokeAsync("InvoiceProductsComponent", new {OrderId = Model.Id}) *@
+
+            <div class="checkout-info-box">
+                <table class="table table-totals">
+                    <tbody>
+                    <tr>
+                        <td>Products price:</td>
+                        <td>$@Model.Order.TotalPrice</td>
+                    </tr>
+
+                    <tr>
+                        <td>Delivery fee:</td>
+                        <td>$@Model.Order.DeliveryFee</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>Order Total:</td>
+                        <td>$@(Model.Order.TotalPrice + Model.Order.DeliveryFee)</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div><!-- End .checkout-info-box -->
+
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+</div>
+
+<div class="mb-6"></div><!-- margin -->
+
+@section Scripts {
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml"/>
+}

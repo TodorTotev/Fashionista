@@ -1,0 +1,135 @@
+@model Fashionista.Application.Orders.Commands.Complete.CompleteOrderCommand
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">
+                    <i class="icon-home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </div><!-- End .container -->
+</nav>
+
+<div class="container">
+    <ul class="checkout-progress-bar">
+            <li>
+                <span>Shipping</span>
+            </li>
+            <li class="active">
+                <span>Review &amp; Payments</span>
+            </li>
+            <li>
+                <span>Finalize Order</span>
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col-lg-4">
+                @* @await Component.InvokeAsync("ShoppingCartComponent") *@
+                <div class="checkout-info-box">
+                    <h3 class="step-title">
+                        Ship To:
+                        <a href="#" title="Edit" class="step-title-edit">
+                            <span class="sr-only">Edit</span><i class="icon-pencil"></i>
+                        </a>
+                    </h3>
+
+                    <address>
+                        @Model.Recipient <br>
+                        @Model.DeliveryAddressName @Model.DeliveryAddressDescription <br>
+                        @Model.DeliveryAddressCityName @Model.DeliveryAddressCityPostCode <br>
+                        Bulgaria <br>
+                        @Model.RecipientPhoneNumber
+                    </address>
+                </div><!-- End .checkout-info-box -->
+
+                @if (Model.DeliveryFee == 7)
+                {
+                    <div class="checkout-info-box">
+                        <h3 class="step-title">
+                            Standart shipping:
+                        </h3>
+
+                        <p>Estimated delivery:</p>
+                        @DateTime.UtcNow.AddDays(1).ToShortDateString() - @DateTime.UtcNow.AddDays(2).ToShortDateString()
+                    </div><!-- End .checkout-info-box -->
+                }
+                else
+                {
+                    @if (Model.DeliveryFee == 20)
+                    {
+                        <div class="checkout-info-box">
+                            <h3 class="step-title">
+                                Standard shipping:
+                            </h3>
+
+                            <p>Estimated delivery:</p>
+                            @DateTime.UtcNow.AddDays(3).ToShortDateString() - @DateTime.UtcNow.AddDays(8).ToShortDateString()
+                        </div><!-- End .checkout-info-box -->
+                    }
+                }
+            </div><!-- End .col-lg-4 -->
+
+                
+            <div class="col-lg-8 order-lg-first">
+                <form method="post" asp-controller="Orders" asp-action="Review">
+                <div class="checkout-payment">
+                    <h2 class="step-title">Payment Method:</h2>
+                    <ul class="checkout-steps">
+                        <li>
+                            <div class="form-group">
+                                <table>
+                                    <tbody>
+                                    <tr class="product-row">
+                                        <td>
+                                            <label>
+                                                <input asp-for="PaymentType" type="radio" value="Cash" checked>
+                                                Cash on Delivery
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr class="product-row">
+                                        <td>
+                                            <input asp-for="PaymentType" type="radio" value="Card">
+                                            <label>Credit/Debit Card</label>
+                                        </td>
+                                    </tr>
+                                    <tr class="product-row">
+                                        <td>
+                                            <input asp-for="PaymentType" type="radio" value="PayPal">
+                                            <label>PayPal</label>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- End .checkout-step-shipping -->
+                            <span asp-validation-for="PaymentType" class="text-danger"></span>
+                        </li>
+                    </ul>
+
+                    <div class="clearfix">
+                        <button type="submit" class="btn btn-primary float-left">CANCEL ORDER</button>
+                        <button type="submit" class="btn btn-primary float-right">PLACE ORDER</button>
+                    </div><!-- End .clearfix -->
+                </div><!-- End .checkout-payment -->
+                </form>
+
+                <div class="checkout-discount">
+                    <h4>
+                        <a data-toggle="collapse" href="#checkout-discount-section" class="collapsed" role="button" aria-expanded="false" aria-controls="checkout-discount-section">Apply Discount Code</a>
+                    </h4>
+
+                    <div class="collapse" id="checkout-discount-section">
+                        <form action="#">
+                            <input type="text" class="form-control form-control-sm" placeholder="Enter discount code" required>
+                            <button class="btn btn-sm btn-outline-secondary" type="submit">Apply Discount</button>
+                        </form>
+                    </div><!-- End .collapse -->
+                </div><!-- End .checkout-discount -->
+            </div><!-- End .col-lg-8 -->
+        </div><!-- End .row -->
+</div><!-- End .container -->
+
+<div class="mb-6"></div><!-- margin -->
