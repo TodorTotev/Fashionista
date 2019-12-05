@@ -47,6 +47,7 @@ namespace Fashionista.Application.Orders.Commands.Complete
             var cartProducts = await this.shoppingCartProductsRepository
                 .All()
                 .Where(x => x.ShoppingCartId == this.userAssistant.ShoppingCartId)
+                .ProjectTo<CartProductLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
             order.OrderProducts = cartProducts
@@ -55,7 +56,7 @@ namespace Fashionista.Application.Orders.Commands.Complete
                     Order = order,
                     ProductId = currentProduct.ProductId,
                     Quantity = currentProduct.Quantity,
-                    Price = currentProduct.Product.Price,
+                    Price = currentProduct.ProductPrice,
                 }).ToList();
 
             order.TotalPrice = order.OrderProducts.Sum(x => x.Quantity * x.Price) + request.DeliveryFee;
