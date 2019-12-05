@@ -57,6 +57,8 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
                 ProductId = 1,
                 Quantity = 1,
                 ShoppingCartId = user.ShoppingCartId,
+                SizeId = 1,
+                ColorId = 1,
             });
 
             dbContext.Orders.Add(new Order

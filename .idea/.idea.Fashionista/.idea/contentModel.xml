@@ -94,6 +94,7 @@
             </e>
             <e p="MainCategoryLookupModel.cs" t="Include" />
             <e p="OrderLookupModel.cs" t="Include" />
+            <e p="OrderProductLookupModel.cs" t="Include" />
             <e p="ProductAttributesLookupModel.cs" t="Include" />
             <e p="ProductColorLookupModel.cs" t="Include" />
             <e p="ProductLookupModel.cs" t="Include" />

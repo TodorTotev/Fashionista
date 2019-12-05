@@ -21,7 +21,7 @@ namespace Fashionista.Application.Tests.Orders.Commands.Complete
         {
             // Arrange
             var shoppingCartRepository = new EfDeletableEntityRepository<ShoppingCartProduct>(this.dbContext);
-            var command = new CompleteOrderCommand { PaymentType = PaymentType.PayPal, DeliveryFee = 7 };
+            var command = new CompleteOrderCommand { PaymentType = PaymentType.PayPal, DeliveryFee = 7, };
             var sut = new CompleteOrderCommandHandler(
                 this.deletableEntityRepository,
                 shoppingCartRepository,

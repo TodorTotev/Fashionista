@@ -63,7 +63,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Add
         {
             // Arrange
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
-            var command = new AddProductInCartCommand { Id = 2, Quantity = 2, ColorId = 1, SizeId = 1 };
+            var command = new AddProductInCartCommand { Id = 1, Quantity = 2, ColorId = 1, SizeId = 1 };
             var sut = new AddProductInCartCommandHandler(
                 this.deletableEntityRepository,
                 productsRepository,

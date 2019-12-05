@@ -47,7 +47,7 @@ namespace Fashionista.Application.Orders.Commands.Complete
             var cartProducts = await this.shoppingCartProductsRepository
                 .All()
                 .Where(x => x.ShoppingCartId == this.userAssistant.ShoppingCartId)
-                .ProjectTo<CartProductLookupModel>(this.mapper.ConfigurationProvider)
+                .ProjectTo<OrderProductLookupModel>(this.mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
             order.OrderProducts = cartProducts

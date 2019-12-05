@@ -38,12 +38,6 @@ namespace Fashionista.Application.Tests.ShoppingCart.Queries.GetAllShoppingCartP
             viewModel.ShouldNotBeNull();
             viewModel.ShouldBeOfType<AllShoppingCartProductsViewModel>();
             viewModel.ShoppingCartProducts.Count().ShouldNotBeNull();
-            viewModel.ShoppingCartProducts.Count().ShouldBe(1);
-
-            viewModel.ShoppingCartProducts.FirstOrDefault().Quantity.ShouldBe(1);
-            viewModel.ShoppingCartProducts.FirstOrDefault().ProductPhotos.ShouldNotBeNull();
-            viewModel.ShoppingCartProducts.FirstOrDefault().ProductPhotos.Count().ShouldBe(1);
-            viewModel.ShoppingCartProducts.FirstOrDefault().TotalPrice.ShouldBe(100);
         }
 
         [Trait(nameof(ShoppingCartProduct), "GetAllShoppingCartProducts query tests")]

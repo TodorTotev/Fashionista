@@ -1,13 +1,12 @@
 // ReSharper disable PossibleNullReferenceException
 
-using System;
-using Fashionista.Application.Exceptions;
-using Fashionista.Application.Interfaces;
-
 namespace Fashionista.Application.Tests.Orders.Commands.Create
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.Orders.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -28,6 +27,7 @@ namespace Fashionista.Application.Tests.Orders.Commands.Create
             {
                 DeliveryAddressId = 1,
                 DeliveryFee = 100,
+                PhoneNumber = "12345678",
             };
 
             var addressRepository = new EfDeletableEntityRepository<Address>(this.dbContext);
@@ -48,7 +48,6 @@ namespace Fashionista.Application.Tests.Orders.Commands.Create
             order.DeliveryAddressId.ShouldBe(1);
             order.DeliveryFee.ShouldBe(100);
             order.RecipientPhoneNumber.ShouldBe("12345678");
-            order.Recipient.ShouldBe("TestFirstName TestLastName");
         }
 
         [Trait(nameof(Order), "CreateOrder command tests")]

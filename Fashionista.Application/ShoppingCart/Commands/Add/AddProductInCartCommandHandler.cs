@@ -36,7 +36,11 @@ namespace Fashionista.Application.ShoppingCart.Commands.Add
                 throw new NotFoundException(nameof(Product), request.Id);
             }
 
-            if (await this.CheckIfProductIsPresentInUserShoppingCart(request.Id, this.userAssistant.ShoppingCartId))
+            if (await this.CheckIfProductIsPresentInUserShoppingCart(
+                request.Id,
+                this.userAssistant.ShoppingCartId,
+                request.SizeId,
+                request.ColorId))
             {
                 throw new EntityAlreadyExistsException(nameof(request), request.Id);
             }
@@ -56,10 +60,16 @@ namespace Fashionista.Application.ShoppingCart.Commands.Add
             return product.ProductId;
         }
 
-        private async Task<bool> CheckIfProductIsPresentInUserShoppingCart(int productId, int userShoppingCartId) =>
+        private async Task<bool> CheckIfProductIsPresentInUserShoppingCart(
+            int productId,
+            int userShoppingCartId,
+            int sizeId,
+            int colorId) =>
             await this.shoppingCartProductsRepository
                 .AllAsNoTracking()
                 .AnyAsync(x => x.ShoppingCartId == userShoppingCartId
-                               && x.ProductId == productId);
+                               && x.ProductId == productId
+                               && x.SizeId == sizeId
+                               && x.ColorId == colorId);
     }
 }

@@ -7,6 +7,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.Create
     using Fashionista.Application.Orders.Queries.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Repositories;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -19,7 +20,8 @@ namespace Fashionista.Application.Tests.Orders.Queries.Create
         {
             // Arrange
             var query = new CreateOrderQuery();
-            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object);
+            var addressesRepository = new EfDeletableEntityRepository<Address>(this.dbContext);
+            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository, this.mapper);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -35,7 +37,8 @@ namespace Fashionista.Application.Tests.Orders.Queries.Create
         public async Task Handle_GivenValidRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object);
+            var addressesRepository = new EfDeletableEntityRepository<Address>(this.dbContext);
+            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository, this.mapper);
 
             // Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

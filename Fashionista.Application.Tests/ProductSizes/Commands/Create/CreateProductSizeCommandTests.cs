@@ -39,7 +39,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
         public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
         {
             // Arrange
-            var command = new CreateProductSizeCommand { Name = "TestSize" };
+            var command = new CreateProductSizeCommand { Name = "TestSize", MainCategoryId = 1};
             var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
 
             // Act & Assert
