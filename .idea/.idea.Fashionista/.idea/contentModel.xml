@@ -190,6 +190,10 @@
             <e p="Create" t="Include">
               <e p="CreateOrderCommand.cs" t="Include" />
               <e p="CreateOrderCommandHandler.cs" t="Include" />
+              <e p="CreateOrderCommandValidator.cs" t="Include" />
+            </e>
+            <e p="Validation" t="Include">
+              <e p="Constants.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">

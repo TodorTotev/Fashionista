@@ -39,16 +39,16 @@
                             <i class="mdi mdi-notification-clear-all"></i><span class="hide-menu">Products</span>
                         </a>
                         <ul aria-expanded="false" class="collapse first-level">
-                            @* <li class="sidebar-item"> *@
-                            @*     <a asp-controller="Products" asp-action="Index" class="sidebar-link"> *@
-                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Active Products</span> *@
-                            @*     </a> *@
-                            @* </li> *@
-                            @* <li class="sidebar-item"> *@
-                            @*     <a asp-controller="Products" asp-action="Draft" class="sidebar-link"> *@
-                            @*         <i class="mdi mdi-octagram"></i><span class="hide-menu"> Draft Products</span> *@
-                            @*     </a> *@
-                            @* </li> *@
+                            <li class="sidebar-item">
+                                <a asp-controller="Products" asp-action="Index" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Active Products</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-controller="Products" asp-action="Draft" class="sidebar-link">
+                                    <i class="mdi mdi-octagram"></i><span class="hide-menu"> Draft Products</span>
+                                </a>
+                            </li>
                         </ul>
                         <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

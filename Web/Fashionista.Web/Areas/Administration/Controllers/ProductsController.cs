@@ -71,8 +71,8 @@ namespace Fashionista.Web.Areas.Administration.Controllers
                 return this.View(command);
             }
 
-            await this.Mediator.Send(command);
-            return this.RedirectToAction(nameof(this.Index));
+            var id = await this.Mediator.Send(command);
+            return this.RedirectToAction("AddAttributes", new { Id = id });
         }
 
         public async Task<IActionResult> Edit(EditProductQuery query)
