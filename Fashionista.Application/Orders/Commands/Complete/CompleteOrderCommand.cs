@@ -3,8 +3,9 @@ namespace Fashionista.Application.Orders.Commands.Complete
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
     using Fashionista.Domain.Entities.Enums;
+    using MediatR;
 
-    public class CompleteOrderCommand : IMapFrom<Order>
+    public class CompleteOrderCommand : IRequest<int>, IMapFrom<Order>
     {
         public decimal TotalPrice { get; set; }
 

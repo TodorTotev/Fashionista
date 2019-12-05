@@ -59,7 +59,6 @@ namespace Fashionista.Application.Orders.Queries.Complete
                 .Sum(x => x.Product.Price);
 
             command.TotalPrice = totalPrice;
-            command.Recipient = this.userAssistant.FullName;
 
             return command;
         }

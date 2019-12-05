@@ -179,6 +179,7 @@
           <e p="Commands" t="Include">
             <e p="Complete" t="Include">
               <e p="CompleteOrderCommand.cs" t="Include" />
+              <e p="CompleteOrderCommandHandler.cs" t="Include" />
             </e>
             <e p="Create" t="Include">
               <e p="CreateOrderCommand.cs" t="Include" />
@@ -561,6 +562,9 @@
         </e>
         <e p="Orders" t="Include">
           <e p="Commands" t="Include">
+            <e p="Complete" t="Include">
+              <e p="CompleteOrderCommandTests.cs" t="Include" />
+            </e>
             <e p="Create" t="Include">
               <e p="CreateOrderCommandTests.cs" t="Include" />
             </e>
