@@ -1,3 +1,5 @@
+using Fashionista.Application.ShoppingCart.Commands.Clear;
+
 namespace Fashionista.Web.Controllers
 {
     using System.Threading.Tasks;
@@ -57,6 +59,7 @@ namespace Fashionista.Web.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var model = await this.Mediator.Send(new GetOrderDetailsQuery { Id = id });
+            await this.Mediator.Send(new ClearShoppingCartCommand());
 
             return this.View(model);
         }

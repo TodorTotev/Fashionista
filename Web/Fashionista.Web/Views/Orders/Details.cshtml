@@ -1,5 +1,6 @@
 @using Fashionista.Domain.Entities.Enums
 @using Fashionista.Infrastructure
+@using Fashionista.Web.Components
 @using Microsoft.Extensions.Options
 @inject IOptions<StripeSettings> Stripe
 @model Fashionista.Application.Orders.Queries.Details.OrderDetailsViewModel
@@ -65,7 +66,7 @@
                                     data-key="@Stripe.Value.PublishableKey"
                                     data-locale="en"
                                     data-amount=@amount;
-                                    data-name="Fashion Nova Online Store"
+                                    data-name="Fashionista Online Store"
                                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                     data-zip-code="true"
                                     data-label="@(Model.Order.TotalPrice + Model.Order.DeliveryFee)$">
@@ -82,7 +83,7 @@
         </div>
 
         <div class="col-lg-4">
-            @* @await Component.InvokeAsync("InvoiceProductsComponent", new {OrderId = Model.Id}) *@
+            @await Component.InvokeAsync(typeof(InvoiceProductsViewComponent), new {OrderId = Model.Order.Id})
 
             <div class="checkout-info-box">
                 <table class="table table-totals">
