@@ -1,4 +1,6 @@
-﻿using Fashionista.Application.Infrastructure;
+﻿using System.Reflection;
+using Fashionista.Application.Common.Models;
+using Fashionista.Application.Infrastructure;
 using Fashionista.Web.Middlewares;
 
 namespace Fashionista.Web
@@ -59,7 +61,7 @@ namespace Fashionista.Web
             services.AddMediatR(typeof(ApplicationDependencyInjectionHelper).Assembly);
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CustomExceptionNotificationBehaviour<,>));
-            
+
             services.AddScoped<INotifyService, UserNotificationHub>();
 
             services.AddSingleton(this.configuration);
@@ -105,6 +107,9 @@ namespace Fashionista.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(OrderLookupModel).GetTypeInfo().Assembly);
+
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {

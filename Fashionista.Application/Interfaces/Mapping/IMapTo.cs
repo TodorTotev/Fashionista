@@ -1,6 +1,6 @@
 ﻿namespace Fashionista.Application.Interfaces.Mapping
 {
-    public interface IMapTo<TEntity>
+    public interface IMapTo<T>
     {
     }
 }
