@@ -1,7 +1,4 @@
-﻿using System.Configuration;
-using Fashionista.Persistence.Infrastructure;
-
-namespace Fashionista.Web
+﻿namespace Fashionista.Web
 {
     using AutoMapper;
     using Fashionista.Application;
@@ -10,8 +7,10 @@ namespace Fashionista.Web
     using Fashionista.Domain.Entities;
     using Fashionista.Infrastructure;
     using Fashionista.Infrastructure.Cloudinary;
+    using Fashionista.Infrastructure.Hubs;
     using Fashionista.Infrastructure.Messaging;
     using Fashionista.Persistence;
+    using Fashionista.Persistence.Infrastructure;
     using Fashionista.Persistence.Interfaces;
     using Fashionista.Persistence.Repositories;
     using Fashionista.Persistence.Seeding;
@@ -136,8 +135,8 @@ namespace Fashionista.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<UserNotificationHub>("/userNotificationHub");
                 endpoints.MapRazorPages();
-
                 endpoints.MapControllerRoute(
                     name: "areaRoute",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
