@@ -1,4 +1,7 @@
-﻿namespace Fashionista.Web
+﻿using System.Configuration;
+using Fashionista.Persistence.Infrastructure;
+
+namespace Fashionista.Web
 {
     using AutoMapper;
     using Fashionista.Application;
@@ -87,6 +90,9 @@
             services.AddScoped<IShoppingCartAssistant, ShoppingCartAssistant>();
 
             services.Configure<StripeSettings>(this.configuration.GetSection("Stripe"));
+
+            services.Configure<RedisConfigurationOptions>(this.configuration.GetSection("Redis"));
+            services.AddTransient(typeof(IRedisService<>), typeof(RedisService<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
