@@ -40,8 +40,10 @@ namespace Fashionista.Application.Tests.Infrastructure
                 this.User.LastName,
                 this.User.PhoneNumber);
             this.shoppingCartAssistantMock = ShoppingCartAssistantFactory.Create(this.dbContext.Products.ToList());
+
+            MapperInitializer.InitializeMapper();
         }
-        
+
         public ApplicationUser User => this.dbContext.Users.FirstOrDefault();
 
         public void Dispose()

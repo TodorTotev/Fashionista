@@ -5,9 +5,8 @@ namespace Fashionista.Application.Addresses.Queries.GetAllUserAddresses
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -16,16 +15,13 @@ namespace Fashionista.Application.Addresses.Queries.GetAllUserAddresses
     public class GetAllUserAddressesQueryHandler : IRequestHandler<GetAllUserAddressesQuery, GetAllUserAddressesViewModel>
     {
         private readonly IDeletableEntityRepository<Address> addressesRepository;
-        private readonly IMapper mapper;
         private readonly IUserAssistant userAssistant;
 
         public GetAllUserAddressesQueryHandler(
             IDeletableEntityRepository<Address> addressesRepository,
-            IMapper mapper,
             IUserAssistant userAssistant)
         {
             this.addressesRepository = addressesRepository;
-            this.mapper = mapper;
             this.userAssistant = userAssistant;
         }
 
@@ -36,7 +32,7 @@ namespace Fashionista.Application.Addresses.Queries.GetAllUserAddresses
             var addresses = await this.addressesRepository
                 .All()
                 .Where(x => x.ApplicationUserId == this.userAssistant.UserId)
-                .ProjectTo<AddressLookupModel>(this.mapper.ConfigurationProvider)
+                .To<AddressLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new GetAllUserAddressesViewModel
