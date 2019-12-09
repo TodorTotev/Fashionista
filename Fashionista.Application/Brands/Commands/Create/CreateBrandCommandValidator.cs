@@ -1,6 +1,7 @@
 namespace Fashionista.Application.Brands.Commands.Create
 {
     using FluentValidation;
+    using Humanizer;
 
     using static Validation.Constants;
 
@@ -10,7 +11,7 @@ namespace Fashionista.Application.Brands.Commands.Create
         {
             this.RuleFor(x => x.Name)
                 .Length(NameMinLength, NameMaxLength)
-                .WithMessage(string.Format(NameLengthMessage, NameMinLength, NameMaxLength));
+                .WithMessage(NameLengthMessage.FormatWith(NameMinLength, NameMaxLength));
 
             this.RuleFor(x => x.Photo)
                 .NotEmpty();
