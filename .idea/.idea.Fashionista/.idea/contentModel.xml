@@ -900,6 +900,7 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Configurations" t="Include">
+          <e p="NotificationConfiguration.cs" t="Include" />
           <e p="ProductConfiguration.cs" t="Include" />
           <e p="ShoppingCartConfiguration.cs" t="Include" />
           <e p="UserConfiguration.cs" t="Include" />
@@ -944,6 +945,8 @@
           <e p="20191204142234_ShoppingCartProductModification1.Designer.cs" t="Include" />
           <e p="20191209115413_NotificationEntity.cs" t="Include" />
           <e p="20191209115413_NotificationEntity.Designer.cs" t="Include" />
+          <e p="20191209155631_UserNotificationsModified.cs" t="Include" />
+          <e p="20191209155631_UserNotificationsModified.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

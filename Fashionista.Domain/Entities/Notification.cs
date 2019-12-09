@@ -7,7 +7,7 @@ namespace Fashionista.Domain.Entities
     {
         public string ApplicationUserId { get; set; }
 
-        public ApplicationUser Player { get; set; }
+        public ApplicationUser User { get; set; }
 
         public string Header { get; set; }
 

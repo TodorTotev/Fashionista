@@ -85,6 +85,7 @@ namespace Fashionista.Persistence
             ProductConfiguration.Configure(builder);
             ShoppingCartConfiguration.Configure(builder);
             UserConfiguration.Configure(builder);
+            ProductConfiguration.Configure(builder);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 

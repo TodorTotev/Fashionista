@@ -38,6 +38,8 @@ namespace Fashionista.Domain.Entities
 
         public virtual ICollection<Address> Addresses { get; set; }
 
+        public virtual ICollection<Notification> Notifications { get; set; } = new HashSet<Notification>();
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
