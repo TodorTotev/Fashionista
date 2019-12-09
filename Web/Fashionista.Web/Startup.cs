@@ -108,7 +108,8 @@ namespace Fashionista.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             AutoMapperConfig.RegisterMappings(
-                typeof(OrderLookupModel).GetTypeInfo().Assembly);
+                typeof(OrderLookupModel).GetTypeInfo().Assembly,
+                typeof(ApplicationUser).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
