@@ -16,14 +16,11 @@ namespace Fashionista.Application.Brands.Queries.GetAllBrandsSelectList
         IRequestHandler<GetAllBrandsSelectListQuery, GetAllBrandsSelectListViewModel>
     {
         private readonly IDeletableEntityRepository<Brand> brandsRepository;
-        private readonly IMapper mapper;
 
         public GetAllBrandsSelectListQueryHandler(
-            IDeletableEntityRepository<Brand> brandsRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Brand> brandsRepository)
         {
             this.brandsRepository = brandsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllBrandsSelectListViewModel> Handle(GetAllBrandsSelectListQuery request, CancellationToken cancellationToken)
