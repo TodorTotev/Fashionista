@@ -1,4 +1,5 @@
-﻿using Fashionista.Web.Middlewares;
+﻿using Fashionista.Application.Infrastructure;
+using Fashionista.Web.Middlewares;
 
 namespace Fashionista.Web
 {
@@ -55,10 +56,15 @@ namespace Fashionista.Web
             services.ConfigureControllers();
             services.AddHttpContextAccessor();
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CustomExceptionNotificationBehaviour<,>));
+
             services.AddMediatR(typeof(ApplicationDependencyInjectionHelper).Assembly);
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CustomExceptionNotificationBehaviour<,>));
 
             services.AddSingleton(this.configuration);
+
+            services.AddSignalR();
 
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
