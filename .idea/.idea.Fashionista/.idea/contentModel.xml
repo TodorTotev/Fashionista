@@ -10,6 +10,7 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Fashionista.1260509013.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p=".git/info/exclude" t="IncludeRecursive" />
       <e p="Common" t="Include" />
       <e p="Core" t="Include" />
       <e p="Fashionista.Application" t="IncludeRecursive">
@@ -105,6 +106,7 @@
         <e p="Exceptions" t="Include">
           <e p="BaseCustomException.cs" t="Include" />
           <e p="EntityAlreadyExistsException.cs" t="Include" />
+          <e p="ForbiddenException.cs" t="Include" />
           <e p="NotFoundException.cs" t="Include" />
         </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
@@ -115,10 +117,13 @@
             <e p="QueryableMappingExtensions.cs" t="Include" />
           </e>
           <e p="CommonCheckAssistant.cs" t="Include" />
+          <e p="CustomExceptionNotificationBehaviour.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
           <e p="ICloudinaryHelper.cs" t="Include" />
           <e p="IDeletableEntityRepository.cs" t="Include" />
+          <e p="INotifyService.cs" t="Include" />
+          <e p="IRedisService.cs" t="Include" />
           <e p="IRepository.cs" t="Include" />
           <e p="IShoppingCartAssistant.cs" t="Include" />
           <e p="IUserAssistant.cs" t="Include" />
@@ -787,6 +792,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Fashionista.Common.csproj" t="IncludeRecursive" />
         <e p="GlobalConstants.cs" t="Include" />
+        <e p="JsonAssistant.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -850,6 +856,9 @@
           <e p="CloudinaryHelper.cs" t="Include" />
         </e>
         <e p="Fashionista.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="Hubs" t="Include">
+          <e p="UserNotificationHub.cs" t="Include" />
+        </e>
         <e p="Humanizer" t="Include">
           <e p="HumanizerMetadataProvider.cs" t="Include" />
         </e>
@@ -894,6 +903,8 @@
           <e p="DesignTimeDbContextFactory.cs" t="Include" />
           <e p="EfExpressionHelper.cs" t="Include" />
           <e p="EntityIndexesConfiguration.cs" t="Include" />
+          <e p="RedisConfigurationOptions.cs" t="Include" />
+          <e p="RedisService.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
           <e p="IDbQueryRunner.cs" t="Include" />
@@ -1096,9 +1107,15 @@
         </e>
         <e p="Fashionista.Web.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
+          <e p="HttpContextExtensions.cs" t="Include" />
           <e p="ServiceCollectionExtensions.cs" t="Include" />
         </e>
         <e p="libman.json" t="Include" />
+        <e p="Middlewares" t="Include">
+          <e p="CustomExceptionHandlerMiddleware.cs" t="Include" />
+          <e p="MiddlewareExtensions.cs" t="Include" />
+          <e p="NotificationHandlerMiddleware.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -1172,6 +1189,7 @@
               <e p="_Layout.cshtml" t="Include" />
               <e p="_LayoutAdmin.cshtml" t="Include" />
             </e>
+            <e p="NotFound.cshtml" t="Include" />
             <e p="Partials" t="Include">
               <e p="_DashboardNavigationPartial.cshtml" t="Include" />
               <e p="_FooterPartial.cshtml" t="Include" />
@@ -7311,6 +7329,7 @@
           </e>
           <e p="js" t="Include">
             <e p="bootstrap.bundle.min.js" t="Include" />
+            <e p="exceptions.js" t="Include" />
             <e p="jquery.barrating.min.js" t="Include" />
             <e p="jquery.barrating.min.js.map" t="Include" />
             <e p="jquery.min.js" t="Include" />
@@ -7335,6 +7354,16 @@
             <e p="webfont.js" t="Include" />
           </e>
           <e p="lib" t="Include">
+            <e p="aspnet-signalr" t="Include">
+              <e p="dist" t="Include">
+                <e p="browser" t="Include">
+                  <e p="signalr.js" t="Include" />
+                  <e p="signalr.js.map" t="Include" />
+                  <e p="signalr.min.js" t="Include" />
+                  <e p="signalr.min.js.map" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="bootstrap" t="Include">
               <e p="dist" t="Include">
                 <e p="css" t="Include">
