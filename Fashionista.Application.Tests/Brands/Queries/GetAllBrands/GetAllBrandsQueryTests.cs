@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrands
         {
             // Arrange
             var query = new GetAllBrandsQuery();
-            var sut = new GetAllBrandsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllBrandsQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -35,7 +35,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrands
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllBrandsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllBrandsQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
