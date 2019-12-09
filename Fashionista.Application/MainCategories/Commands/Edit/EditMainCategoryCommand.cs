@@ -5,13 +5,13 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class EditMainCategoryCommand : IRequest<int>, IHaveCustomMapping
+    public class EditMainCategoryCommand : IRequest<int>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public void CreateMappings(Profile configuration)
+        public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<MainCategory, EditMainCategoryCommand>()
                 .ForMember(

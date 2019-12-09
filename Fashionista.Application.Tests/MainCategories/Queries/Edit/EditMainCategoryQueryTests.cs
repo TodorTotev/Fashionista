@@ -3,7 +3,6 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.MainCategories.Commands.Edit;
     using Fashionista.Application.MainCategories.Queries.Edit;
@@ -21,7 +20,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
         {
             // Arrange
             var query = new EditMainCategoryQuery { Id = 1 };
-            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -37,7 +36,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
         {
             // Arrange
             var query = new EditMainCategoryQuery { Id = 1000 };
-            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -48,7 +47,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.Edit
         public async Task Handle_GivenNullRequest_ShouldTurnArgumentNullException()
         {
             // Arrange
-            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+            var sut = new EditMainCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

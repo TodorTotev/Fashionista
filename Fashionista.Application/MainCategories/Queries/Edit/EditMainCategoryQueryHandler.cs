@@ -4,8 +4,8 @@ namespace Fashionista.Application.MainCategories.Queries.Edit
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.MainCategories.Commands.Edit;
     using Fashionista.Domain.Entities;
@@ -15,14 +15,11 @@ namespace Fashionista.Application.MainCategories.Queries.Edit
     public class EditMainCategoryQueryHandler : IRequestHandler<EditMainCategoryQuery, EditMainCategoryCommand>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public EditMainCategoryQueryHandler(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
             this.mainCategoryRepository = mainCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<EditMainCategoryCommand> Handle(EditMainCategoryQuery request, CancellationToken cancellationToken)
@@ -34,7 +31,7 @@ namespace Fashionista.Application.MainCategories.Queries.Edit
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(MainCategory), request.Id);
 
-            var command = this.mapper.Map<EditMainCategoryCommand>(requestedEntity);
+            var command = requestedEntity.To<EditMainCategoryCommand>();
             return command;
         }
     }
