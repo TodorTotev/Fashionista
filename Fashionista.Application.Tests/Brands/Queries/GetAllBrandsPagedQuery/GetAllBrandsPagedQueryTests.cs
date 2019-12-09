@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQuery
         {
             // Arrange
             var query = new GetAllBrandsPagedQuery { PageNumber = 0, PageSize = 3 };
-            var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -35,7 +35,7 @@ namespace Fashionista.Application.Tests.Brands.Queries.GetAllBrandsPagedQuery
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllBrandsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

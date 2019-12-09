@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Fashionista.Application.Brands.Queries.GetAllBrandsPaged
 {
     using System;
@@ -5,25 +7,20 @@ namespace Fashionista.Application.Brands.Queries.GetAllBrandsPaged
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetAllBrandsPagedQueryHandler : IRequestHandler<GetAllBrandsPagedQuery, GetAllBrandsPagedViewModel>
     {
         private readonly IDeletableEntityRepository<Brand> brandsRepository;
-        private readonly IMapper mapper;
 
         public GetAllBrandsPagedQueryHandler(
-            IDeletableEntityRepository<Brand> brandsRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Brand> brandsRepository)
         {
             this.brandsRepository = brandsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllBrandsPagedViewModel> Handle(GetAllBrandsPagedQuery request, CancellationToken cancellationToken)
@@ -34,7 +31,7 @@ namespace Fashionista.Application.Brands.Queries.GetAllBrandsPaged
                 .AllAsNoTracking()
                 .Skip(request.PageNumber * request.PageSize)
                 .Take(request.PageSize)
-                .ProjectTo<BrandLookupModel>(this.mapper.ConfigurationProvider)
+                .To<BrandLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new GetAllBrandsPagedViewModel
