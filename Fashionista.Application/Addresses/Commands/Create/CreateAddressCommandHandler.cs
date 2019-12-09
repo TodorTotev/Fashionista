@@ -1,3 +1,4 @@
+// ReSharper disable MethodSupportsCancellation
 namespace Fashionista.Application.Addresses.Commands.Create
 {
     using System;
@@ -43,6 +44,8 @@ namespace Fashionista.Application.Addresses.Commands.Create
 
             await this.addressesRepository.AddAsync(address);
             await this.addressesRepository.SaveChangesAsync(cancellationToken);
+
+            await this.mediator.Publish(new AddressCreatedNotification { AddressName = address.Name });
 
             return address.Id;
         }

@@ -17,6 +17,7 @@
         <e p="Addresses" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
+              <e p="AddressCreatedNotification.cs" t="Include" />
               <e p="CreateAddressCommand.cs" t="Include" />
               <e p="CreateAddressCommandHandler.cs" t="Include" />
               <e p="CreateAddressCommandValidator.cs" t="Include" />
@@ -106,15 +107,19 @@
         <e p="Exceptions" t="Include">
           <e p="BaseCustomException.cs" t="Include" />
           <e p="EntityAlreadyExistsException.cs" t="Include" />
+          <e p="FailedDeletionException.cs" t="Include" />
           <e p="ForbiddenException.cs" t="Include" />
           <e p="NotFoundException.cs" t="Include" />
         </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
           <e p="Automapper" t="Include">
+            <e p="AutoMapperConfig.cs" t="Include" />
             <e p="AutoMapperProfile.cs" t="Include" />
+            <e p="EnumerableMappingExtensions.cs" t="Include" />
             <e p="MapperProfileHelper.cs" t="Include" />
-            <e p="QueryableMappingExtensions.cs" t="Include" />
+            <e p="ObjectMappingExtensions.cs" t="Include" />
+            <e p="QueryableObjectsMappingExtensions.cs" t="Include" />
           </e>
           <e p="CommonCheckAssistant.cs" t="Include" />
           <e p="CustomExceptionNotificationBehaviour.cs" t="Include" />
@@ -129,6 +134,7 @@
           <e p="IUserAssistant.cs" t="Include" />
           <e p="Mapping" t="Include">
             <e p="IHaveCustomMapping.cs" t="Include" />
+            <e p="IHaveCustomMappings.cs" t="Include" />
             <e p="IMapFrom.cs" t="Include" />
             <e p="IMapTo.cs" t="Include" />
           </e>
@@ -539,6 +545,7 @@
           <e p="BaseTest.cs" t="Include" />
           <e p="CommandTestBase.cs" t="Include" />
           <e p="CustomDynamicModelCacheKeyFactory.cs" t="Include" />
+          <e p="MapperInitializer.cs" t="Include" />
           <e p="Seeding" t="Include">
             <e p="BrandsSeeder.cs" t="Include" />
             <e p="ITestSeeder.cs" t="Include" />
