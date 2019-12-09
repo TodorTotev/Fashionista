@@ -1,6 +1,7 @@
 namespace Fashionista.Application.MainCategories.Commands.Edit
 {
     using FluentValidation;
+    using Humanizer;
 
     using static Validation.Constants;
 
@@ -11,7 +12,7 @@ namespace Fashionista.Application.MainCategories.Commands.Edit
             this.RuleFor(x => x.Name)
                 .NotEmpty()
                 .Length(NameMinLength, NameMaxLength)
-                .WithMessage(string.Format(NameLengthMessage, NameMinLength, NameMaxLength));
+                .WithMessage(NameLengthMessage.FormatWith(NameMinLength, NameMaxLength));
         }
     }
 }
