@@ -1,4 +1,6 @@
-﻿namespace Fashionista.Persistence
+﻿using Fashionista.Domain;
+
+namespace Fashionista.Persistence
 {
     using System;
     using System.Linq;
@@ -52,6 +54,8 @@
         public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
 
         public DbSet<Brand> Brands { get; set; }
+        
+        public DbSet<Notification> Notifications { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

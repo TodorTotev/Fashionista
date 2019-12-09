@@ -806,6 +806,7 @@
           <e p="City.cs" t="Include" />
           <e p="Enums" t="Include">
             <e p="DeliveryType.cs" t="Include" />
+            <e p="NotificationType.cs" t="Include" />
             <e p="OrderState.cs" t="Include" />
             <e p="PaymentState.cs" t="Include" />
             <e p="PaymentType.cs" t="Include" />
@@ -814,6 +815,7 @@
           </e>
           <e p="FavoriteProduct.cs" t="Include" />
           <e p="MainCategory.cs" t="Include" />
+          <e p="Notification.cs" t="Include" />
           <e p="Order.cs" t="Include" />
           <e p="OrderProduct.cs" t="Include" />
           <e p="Product.cs" t="Include" />
@@ -922,6 +924,8 @@
           <e p="20191204141002_ShoppingCartProductModification.Designer.cs" t="Include" />
           <e p="20191204142234_ShoppingCartProductModification1.cs" t="Include" />
           <e p="20191204142234_ShoppingCartProductModification1.Designer.cs" t="Include" />
+          <e p="20191209115413_NotificationEntity.cs" t="Include" />
+          <e p="20191209115413_NotificationEntity.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
