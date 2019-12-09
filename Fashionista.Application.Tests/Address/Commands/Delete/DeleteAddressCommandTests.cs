@@ -34,6 +34,24 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
         }
 
         [Trait(nameof(Address), "DeleteAddress command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw FailedDeletionException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowFailedDeletionException()
+        {
+            // Arrange
+            var command = new DeleteAddressCommand { Id = 1 };
+            var sut = new DeleteAddressCommandHandler(this.deletableEntityRepository);
+
+            var address = await this.deletableEntityRepository
+                .GetByIdWithDeletedAsync(1);
+
+            this.deletableEntityRepository.Delete(address);
+            await this.deletableEntityRepository.SaveChangesAsync();
+
+            // Act & Assert
+            await Should.ThrowAsync<FailedDeletionException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(Address), "DeleteAddress command tests")]
         [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
         public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
         {

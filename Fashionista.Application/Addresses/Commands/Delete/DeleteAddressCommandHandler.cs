@@ -3,7 +3,6 @@
 namespace Fashionista.Application.Addresses.Commands.Delete
 {
     using System;
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -12,6 +11,8 @@ namespace Fashionista.Application.Addresses.Commands.Delete
     using Fashionista.Domain.Entities;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
+
+    using static Fashionista.Common.GlobalConstants;
 
     public class DeleteAddressCommandHandler : IRequestHandler<DeleteAddressCommand, int>
     {
@@ -30,6 +31,11 @@ namespace Fashionista.Application.Addresses.Commands.Delete
                                       .AllWithDeleted()
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Address), request.Id);
+
+            if (requestedEntity.IsDeleted)
+            {
+                throw new FailedDeletionException(nameof(Address), request.Id, EntityAlreadyDeletedMessage);
+            }
 
             this.addressesRepository.Delete(requestedEntity);
             await this.addressesRepository.SaveChangesAsync(cancellationToken);
