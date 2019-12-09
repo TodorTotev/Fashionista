@@ -13,5 +13,12 @@ namespace Fashionista.Common
         public const int BRAND_IMAGE_WIDTH = 184;
 
         #endregion
+
+        #region Exceptions
+
+        public const string EntityAlreadyDeletedMessage = "Entity is already deleted";
+
+
+        #endregion
     }
 }
