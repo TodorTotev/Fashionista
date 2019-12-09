@@ -4,9 +4,9 @@ namespace Fashionista.Application.MainCategories.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -14,13 +14,10 @@ namespace Fashionista.Application.MainCategories.Commands.Create
     public class CreateMainCategoryCommandHandler : IRequestHandler<CreateMainCategoryCommand, int>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public CreateMainCategoryCommandHandler(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
-            this.mapper = mapper;
             this.mainCategoryRepository = mainCategoryRepository;
         }
 
@@ -33,7 +30,7 @@ namespace Fashionista.Application.MainCategories.Commands.Create
                 throw new EntityAlreadyExistsException(nameof(MainCategory), request.Name);
             }
 
-            var category = this.mapper.Map<MainCategory>(request);
+            var category = request.To<MainCategory>();
 
             await this.mainCategoryRepository.AddAsync(category);
             await this.mainCategoryRepository.SaveChangesAsync(cancellationToken);

@@ -5,7 +5,6 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.MainCategories.Commands.Create;
@@ -30,7 +29,7 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
 
             var mainCategoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
 
-            var test = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
+            var test = new CreateMainCategoryCommandHandler(mainCategoryRepository);
 
             // Act
             var id = await test.Handle(command, It.IsAny<CancellationToken>());
@@ -49,8 +48,7 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             var sut = new CreateMainCategoryCommandHandler(
-                It.IsAny<IDeletableEntityRepository<MainCategory>>(),
-                It.IsAny<IMapper>());
+                It.IsAny<IDeletableEntityRepository<MainCategory>>());
 
             await Should.ThrowAsync<ArgumentNullException>(
                 sut.Handle(null, It.IsAny<CancellationToken>()));
@@ -68,7 +66,7 @@ namespace Fashionista.Application.Tests.MainCategories.Commands.Create
 
             var mainCategoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
 
-            var sut = new CreateMainCategoryCommandHandler(mainCategoryRepository, this.mapper);
+            var sut = new CreateMainCategoryCommandHandler(mainCategoryRepository);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
