@@ -1,4 +1,6 @@
-﻿namespace Fashionista.Web
+﻿using BESL.Web.Middlewares;
+
+namespace Fashionista.Web
 {
     using AutoMapper;
     using Fashionista.Application;
@@ -132,6 +134,8 @@
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.UseCustomExceptionHandlerMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
