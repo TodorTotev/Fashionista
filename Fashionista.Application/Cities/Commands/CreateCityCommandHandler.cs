@@ -4,9 +4,9 @@ namespace Fashionista.Application.Cities.Commands
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -14,14 +14,11 @@ namespace Fashionista.Application.Cities.Commands
     public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, City>
     {
         private readonly IDeletableEntityRepository<City> citiesRepository;
-        private readonly IMapper mapper;
 
         public CreateCityCommandHandler(
-            IDeletableEntityRepository<City> citiesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<City> citiesRepository)
         {
             this.citiesRepository = citiesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<City> Handle(CreateCityCommand request, CancellationToken cancellationToken)
@@ -33,7 +30,7 @@ namespace Fashionista.Application.Cities.Commands
                 throw new EntityAlreadyExistsException(nameof(City), request.Name);
             }
 
-            var city = this.mapper.Map<City>(request);
+            var city = request.To<City>();
             await this.citiesRepository.AddAsync(city);
             await this.citiesRepository.SaveChangesAsync(cancellationToken);
 

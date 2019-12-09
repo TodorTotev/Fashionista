@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.Cities.Commands.Create
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Cities.Commands;
@@ -21,7 +20,7 @@ namespace Fashionista.Application.Tests.Cities.Commands.Create
         {
             // Arrange
             var command = new CreateCityCommand { Name = "NewCity", Postcode = "NewZip" };
-            var sut = new CreateCityCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateCityCommandHandler(this.deletableEntityRepository);
 
             // Act
             var createdCity = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -41,7 +40,7 @@ namespace Fashionista.Application.Tests.Cities.Commands.Create
         {
             // Arrange
             var command = new CreateCityCommand { Name = "TestCity", Postcode = "TestZip" };
-            var sut = new CreateCityCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateCityCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(
@@ -53,7 +52,7 @@ namespace Fashionista.Application.Tests.Cities.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateCityCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateCityCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(
