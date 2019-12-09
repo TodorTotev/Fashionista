@@ -1,6 +1,4 @@
-﻿using Fashionista.Web.Middlewares;
-
-namespace BESL.Web.Middlewares
+﻿namespace Fashionista.Web.Middlewares
 {
     using Microsoft.AspNetCore.Builder;
 

@@ -1,4 +1,4 @@
-﻿using BESL.Web.Middlewares;
+﻿using Fashionista.Web.Middlewares;
 
 namespace Fashionista.Web
 {
@@ -134,7 +134,8 @@ namespace Fashionista.Web
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
+            app.UseNotificationHandlerMiddleware();
             app.UseCustomExceptionHandlerMiddleware();
 
             app.UseEndpoints(endpoints =>
