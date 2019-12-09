@@ -52,7 +52,7 @@ namespace Fashionista.Application.Brands.Commands.Create
             return await this.cloudinaryHelper.UploadImage(
                 request.Photo,
                 name: $"{request.Name}-brand-main-shot",
-                transformation: new Transformation().Width(BRAND_IMAGE_WIDTH).Height(BRAND_IMAGE_HEIGHT));
+                transformation: new Transformation().Width(BrandImageWidth).Height(BrandImageHeight));
         }
     }
 }

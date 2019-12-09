@@ -37,6 +37,23 @@ namespace Fashionista.Application.Tests.Brands.Commands.Delete
         }
 
         [Trait(nameof(Brand), "DeleteBrand command tests")]
+        [Fact(DisplayName = "Handle invalid valid request should throw FailedDeletionException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowFailedDeletionException()
+        {
+            // Arrange
+            var command = new DeleteBrandCommand { Id = 1 };
+            var sut = new DeleteBrandCommandHandler(this.deletableEntityRepository);
+
+            var brand = await this.deletableEntityRepository.GetByIdWithDeletedAsync(1);
+
+            this.deletableEntityRepository.Delete(brand);
+            await this.deletableEntityRepository.SaveChangesAsync();
+
+            // Act & Assert
+            await Should.ThrowAsync<FailedDeletionException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(Brand), "DeleteBrand command tests")]
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
