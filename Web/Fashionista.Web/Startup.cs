@@ -56,11 +56,11 @@ namespace Fashionista.Web
             services.ConfigureControllers();
             services.AddHttpContextAccessor();
 
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CustomExceptionNotificationBehaviour<,>));
-
             services.AddMediatR(typeof(ApplicationDependencyInjectionHelper).Assembly);
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CustomExceptionNotificationBehaviour<,>));
+            
+            services.AddScoped<INotifyService, UserNotificationHub>();
 
             services.AddSingleton(this.configuration);
 
