@@ -5,8 +5,6 @@ namespace Fashionista.Application.Cities.Queries.GetCity
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Fashionista.Application.Exceptions;
-    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
