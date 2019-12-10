@@ -10,6 +10,8 @@ namespace Fashionista.Application.Products.Commands.Delete
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
+    using static Fashionista.Common.GlobalConstants;
+
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, int>
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
@@ -27,6 +29,11 @@ namespace Fashionista.Application.Products.Commands.Delete
                                       .AllWithDeleted()
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
+
+            if (requestedEntity.IsDeleted)
+            {
+                throw new FailedDeletionException(nameof(Product), request.Id, DeletedNotificationMsg);
+            }
 
             this.productsRepository.Delete(requestedEntity);
             await this.productsRepository.SaveChangesAsync(cancellationToken);

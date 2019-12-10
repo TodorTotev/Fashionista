@@ -33,6 +33,24 @@ namespace Fashionista.Application.Tests.Products.Commands.Delete
         }
 
         [Trait(nameof(Product), "DeleteProduct command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw FailedDeletionException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowFailedDeletionException()
+        {
+            // Arrange
+            var command = new DeleteProductCommand { Id = 1 };
+            var sut = new DeleteProductCommandHandler(this.deletableEntityRepository);
+
+            var product = await this.deletableEntityRepository
+                .GetByIdWithDeletedAsync(1);
+
+            this.deletableEntityRepository.Delete(product);
+            await this.deletableEntityRepository.SaveChangesAsync();
+
+            // Act & Assert
+            await Should.ThrowAsync<FailedDeletionException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(Product), "DeleteProduct command tests")]
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
