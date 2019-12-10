@@ -21,7 +21,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.Create
             // Arrange
             var query = new CreateOrderQuery();
             var addressesRepository = new EfDeletableEntityRepository<Address>(this.dbContext);
-            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository, this.mapper);
+            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -38,7 +38,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.Create
         {
             // Arrange
             var addressesRepository = new EfDeletableEntityRepository<Address>(this.dbContext);
-            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository, this.mapper);
+            var sut = new CreateOrderQueryHandler(this.userAssistantMock.Object, addressesRepository);
 
             // Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

@@ -5,9 +5,8 @@ namespace Fashionista.Application.Orders.Queries.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.Orders.Commands.Create;
     using Fashionista.Domain.Entities;
@@ -18,16 +17,13 @@ namespace Fashionista.Application.Orders.Queries.Create
     {
         private readonly IUserAssistant userAssistant;
         private readonly IDeletableEntityRepository<Address> addressesRepository;
-        private readonly IMapper mapper;
 
         public CreateOrderQueryHandler(
             IUserAssistant userAssistant,
-            IDeletableEntityRepository<Address> addressesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Address> addressesRepository)
         {
             this.userAssistant = userAssistant;
             this.addressesRepository = addressesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<CreateOrderCommand> Handle(CreateOrderQuery request, CancellationToken cancellationToken)
@@ -37,7 +33,7 @@ namespace Fashionista.Application.Orders.Queries.Create
             var addresses = await this.addressesRepository
                 .All()
                 .Where(x => x.ApplicationUserId == this.userAssistant.UserId)
-                .ProjectTo<AddressLookupModel>(this.mapper.ConfigurationProvider)
+                .To<AddressLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new CreateOrderCommand

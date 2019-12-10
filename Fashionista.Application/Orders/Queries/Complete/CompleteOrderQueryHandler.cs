@@ -1,5 +1,3 @@
-using Fashionista.Application.Infrastructure.Automapper;
-
 namespace Fashionista.Application.Orders.Queries.Complete
 {
     using System;
@@ -7,9 +5,8 @@ namespace Fashionista.Application.Orders.Queries.Complete
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.Orders.Commands.Complete;
     using Fashionista.Domain.Entities;
