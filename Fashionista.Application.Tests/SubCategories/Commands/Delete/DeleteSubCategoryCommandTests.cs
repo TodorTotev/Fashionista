@@ -35,6 +35,24 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Delete
         }
 
         [Trait(nameof(SubCategory), "DeleteSubCategory command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw FailedDeletionException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowFailedDeletionException()
+        {
+            // Arrange
+            var command = new DeleteSubCategoryCommand { Id = 1 };
+            var sut = new DeleteSubCategoryCommandHandler(this.deletableEntityRepository);
+
+            var category = await this.deletableEntityRepository
+                .GetByIdWithDeletedAsync(1);
+
+            this.deletableEntityRepository.Delete(category);
+            await this.deletableEntityRepository.SaveChangesAsync();
+
+            // Act & Assert
+            await Should.ThrowAsync<FailedDeletionException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(SubCategory), "DeleteSubCategory command tests")]
         [Fact(DisplayName = "Handle given null request should throw ArgumentNullException")]
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
