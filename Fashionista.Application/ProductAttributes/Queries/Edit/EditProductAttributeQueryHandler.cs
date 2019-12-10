@@ -1,15 +1,13 @@
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using Fashionista.Application.Products.Commands.Edit;
-
 namespace Fashionista.Application.ProductAttributes.Queries.Edit
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
     using AutoMapper;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.ProductAttributes.Commands.Edit;
     using Fashionista.Domain.Entities;
@@ -20,14 +18,11 @@ namespace Fashionista.Application.ProductAttributes.Queries.Edit
         EditProductAttributeQueryHandler : IRequestHandler<EditProductAttributeQuery, EditProductAttributeCommand>
     {
         private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
-        private readonly IMapper mapper;
 
         public EditProductAttributeQueryHandler(
-            IDeletableEntityRepository<ProductAttributes> productAttributesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<ProductAttributes> productAttributesRepository)
         {
             this.productAttributesRepository = productAttributesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<EditProductAttributeCommand> Handle(
@@ -39,7 +34,7 @@ namespace Fashionista.Application.ProductAttributes.Queries.Edit
             var command = await this.productAttributesRepository
                               .AllAsNoTracking()
                               .Where(x => x.Id == request.Id)
-                              .ProjectTo<EditProductAttributeCommand>(this.mapper.ConfigurationProvider)
+                              .To<EditProductAttributeCommand>()
                               .SingleOrDefaultAsync(cancellationToken)
                           ?? throw new NotFoundException(nameof(Product), request.Id);
 

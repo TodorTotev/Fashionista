@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Edit
         {
             // Arrange
             var query = new EditProductAttributeQuery { Id = 1 };
-            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -36,7 +36,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Edit
         {
             // Arrange
             var command = new EditProductAttributeQuery { Id = 1000 };
-            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository);
 
             // Act & assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -47,7 +47,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.Edit
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new EditProductAttributeQueryHandler(this.deletableEntityRepository);
 
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
