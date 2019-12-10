@@ -6,13 +6,11 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.SubCategories.Commands.Create;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
-    using Fashionista.Persistence.Repositories;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -30,7 +28,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
                 Description = "ValidDescription",
                 MainCategoryId = 1,
             };
-            var test = new CreateSubCategoryCommandHandler(this.deletableEntityRepository, this.mapper);
+            var test = new CreateSubCategoryCommandHandler(this.deletableEntityRepository);
 
             // Act
             var id = await test.Handle(command, It.IsAny<CancellationToken>());
@@ -51,8 +49,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             var sut = new CreateSubCategoryCommandHandler(
-                It.IsAny<IDeletableEntityRepository<SubCategory>>(),
-                It.IsAny<IMapper>());
+                It.IsAny<IDeletableEntityRepository<SubCategory>>());
 
             await Should.ThrowAsync<ArgumentNullException>(
                 sut.Handle(null, It.IsAny<CancellationToken>()));
@@ -70,7 +67,7 @@ namespace Fashionista.Application.Tests.SubCategories.Commands.Create
                 MainCategoryId = 1,
             };
 
-            var sut = new CreateSubCategoryCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateSubCategoryCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await sut.Handle(command, It.IsAny<CancellationToken>());

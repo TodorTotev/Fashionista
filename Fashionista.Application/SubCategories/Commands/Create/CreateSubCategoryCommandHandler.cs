@@ -4,9 +4,9 @@ namespace Fashionista.Application.SubCategories.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -14,14 +14,11 @@ namespace Fashionista.Application.SubCategories.Commands.Create
     public class CreateSubCategoryCommandHandler : IRequestHandler<CreateSubCategoryCommand, int>
     {
         private readonly IDeletableEntityRepository<SubCategory> subCategoryRepository;
-        private readonly IMapper mapper;
 
         public CreateSubCategoryCommandHandler(
-            IDeletableEntityRepository<SubCategory> subCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<SubCategory> subCategoryRepository)
         {
             this.subCategoryRepository = subCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<int> Handle(CreateSubCategoryCommand request, CancellationToken cancellationToken)
@@ -33,7 +30,7 @@ namespace Fashionista.Application.SubCategories.Commands.Create
                 throw new EntityAlreadyExistsException(nameof(SubCategory), request.Name);
             }
 
-            var category = this.mapper.Map<SubCategory>(request);
+            var category = request.To<SubCategory>();
 
             await this.subCategoryRepository.AddAsync(category);
             await this.subCategoryRepository.SaveChangesAsync(cancellationToken);
