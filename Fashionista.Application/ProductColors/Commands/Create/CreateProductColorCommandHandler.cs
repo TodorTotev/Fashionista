@@ -4,9 +4,9 @@ namespace Fashionista.Application.ProductColors.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -14,14 +14,11 @@ namespace Fashionista.Application.ProductColors.Commands.Create
     public class CreateProductColorCommandHandler : IRequestHandler<CreateProductColorCommand, int>
     {
         private readonly IDeletableEntityRepository<ProductColor> productColorsRepository;
-        private readonly IMapper mapper;
 
         public CreateProductColorCommandHandler(
-            IDeletableEntityRepository<ProductColor> productColorsRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<ProductColor> productColorsRepository)
         {
             this.productColorsRepository = productColorsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<int> Handle(CreateProductColorCommand request, CancellationToken cancellationToken)
@@ -35,7 +32,7 @@ namespace Fashionista.Application.ProductColors.Commands.Create
                 throw new EntityAlreadyExistsException(nameof(ProductColor), request.Name);
             }
 
-            var productColor = this.mapper.Map<ProductColor>(request);
+            var productColor = request.To<ProductColor>();
             await this.productColorsRepository.AddAsync(productColor);
             await this.productColorsRepository.SaveChangesAsync(cancellationToken);
 

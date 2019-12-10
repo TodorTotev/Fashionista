@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.Create
         {
             // Arrange
             var command = new CreateProductColorCommand { Name = "NewColor" };
-            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -38,7 +38,7 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.Create
         {
             // Arrange
             var command = new CreateProductColorCommand { Name = "TestColor" };
-            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -49,7 +49,7 @@ namespace Fashionista.Application.Tests.ProductColors.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductColorCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
