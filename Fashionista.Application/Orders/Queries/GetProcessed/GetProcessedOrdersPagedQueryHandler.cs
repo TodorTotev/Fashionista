@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-
+// ReSharper disable RedundantAssignment
 namespace Fashionista.Application.Orders.Queries.GetProcessed
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,27 +15,29 @@ namespace Fashionista.Application.Orders.Queries.GetProcessed
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetProcessedOrdersQueryHandler : IRequestHandler<GetProcessedOrdersQuery, OrdersViewModel>
+    public class GetProcessedOrdersPagedQueryHandler : IRequestHandler<GetProcessedOrdersPagedQuery, OrdersViewModel>
     {
         private readonly IDeletableEntityRepository<Order> ordersRepository;
 
-        public GetProcessedOrdersQueryHandler(IDeletableEntityRepository<Order> ordersRepository)
+        public GetProcessedOrdersPagedQueryHandler(IDeletableEntityRepository<Order> ordersRepository)
         {
             this.ordersRepository = ordersRepository;
         }
 
-        public async Task<OrdersViewModel> Handle(GetProcessedOrdersQuery request, CancellationToken cancellationToken)
+        public async Task<OrdersViewModel> Handle(GetProcessedOrdersPagedQuery request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var orders = new List<OrderLookupModel>();
 
-            if (request.IsDelivered)
+            if (!request.IsDelivered)
             {
                 orders = await this.ordersRepository
                     .All()
                     .Where(x => x.OrderState == OrderState.Processed
                                 && x.PaymentState == PaymentState.Paid)
+                    .Skip(request.PageNumber * request.PageSize)
+                    .Take(request.PageSize)
                     .To<OrderLookupModel>()
                     .ToListAsync(cancellationToken);
             }
@@ -45,6 +47,8 @@ namespace Fashionista.Application.Orders.Queries.GetProcessed
                     .All()
                     .Where(x => x.OrderState == OrderState.Delivered
                                 && x.PaymentState == PaymentState.Paid)
+                    .Skip(request.PageNumber * request.PageSize)
+                    .Take(request.PageSize)
                     .To<OrderLookupModel>()
                     .ToListAsync(cancellationToken);
             }

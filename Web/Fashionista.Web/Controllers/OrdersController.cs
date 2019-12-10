@@ -1,5 +1,3 @@
-using Fashionista.Application.ShoppingCart.Commands.Clear;
-
 namespace Fashionista.Web.Controllers
 {
     using System.Threading.Tasks;
@@ -10,6 +8,7 @@ namespace Fashionista.Web.Controllers
     using Fashionista.Application.Orders.Queries.Complete;
     using Fashionista.Application.Orders.Queries.Create;
     using Fashionista.Application.Orders.Queries.Details;
+    using Fashionista.Application.ShoppingCart.Commands.Clear;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +27,7 @@ namespace Fashionista.Web.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(command);
+                return this.View(await this.Mediator.Send(new CreateOrderQuery()));
             }
 
             await this.Mediator.Send(command);
