@@ -44,7 +44,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
                 .SingleOrDefaultAsync(x => x.Id == id);
 
             this.mediatorMock.Verify(x => x.Publish(
-                It.IsAny<Address>(), It.IsAny<CancellationToken>()));
+                It.IsAny<AddressCreatedNotification>(), It.IsAny<CancellationToken>()));
             address.Name.ShouldBe("NewStreet");
             address.Description.ShouldBe("NewDesc");
             address.City.Name.ShouldBe("TestCity");

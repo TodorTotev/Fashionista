@@ -26,7 +26,7 @@ namespace Fashionista.Web.Controllers
             }
 
             await this.Mediator.Send(command);
-            await Task.Delay(3000);
+            await Task.Delay(1500);
             return this.Redirect("Addresses");
         }
 
@@ -35,6 +35,7 @@ namespace Fashionista.Web.Controllers
         {
             await this.Mediator.Send(command);
 
+            await Task.Delay(1500);
             return this.Redirect("Addresses");
         }
     }

@@ -17,10 +17,14 @@ namespace Fashionista.Application.Addresses.Commands.Delete
     public class DeleteAddressCommandHandler : IRequestHandler<DeleteAddressCommand, int>
     {
         private readonly IDeletableEntityRepository<Address> addressesRepository;
+        private readonly IMediator mediator;
 
-        public DeleteAddressCommandHandler(IDeletableEntityRepository<Address> addressesRepository)
+        public DeleteAddressCommandHandler(
+            IDeletableEntityRepository<Address> addressesRepository,
+            IMediator mediator)
         {
             this.addressesRepository = addressesRepository;
+            this.mediator = mediator;
         }
 
         public async Task<int> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
@@ -39,6 +43,8 @@ namespace Fashionista.Application.Addresses.Commands.Delete
 
             this.addressesRepository.Delete(requestedEntity);
             await this.addressesRepository.SaveChangesAsync(cancellationToken);
+
+            await this.mediator.Publish(new AddressDeletedNotification { AddressName = requestedEntity.Name });
 
             return requestedEntity.Id;
         }

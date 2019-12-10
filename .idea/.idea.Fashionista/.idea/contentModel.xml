@@ -23,6 +23,7 @@
               <e p="CreateAddressCommandValidator.cs" t="Include" />
             </e>
             <e p="Delete" t="Include">
+              <e p="AddressDeletedNotification.cs" t="Include" />
               <e p="DeleteAddressCommand.cs" t="Include" />
               <e p="DeleteAddressCommandHandler.cs" t="Include" />
             </e>

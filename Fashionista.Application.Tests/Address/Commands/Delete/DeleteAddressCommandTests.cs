@@ -20,7 +20,8 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
         {
             // Arrange
             var command = new DeleteAddressCommand { Id = 1 };
-            var sut = new DeleteAddressCommandHandler(this.deletableEntityRepository);
+            var sut = new DeleteAddressCommandHandler(
+                this.deletableEntityRepository, this.mediatorMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -31,6 +32,9 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
                 .FirstAsync(x => x.Id == id);
 
             deletedAddress.IsDeleted.ShouldBe(true);
+
+            this.mediatorMock.Verify(x => x.Publish(
+                It.IsAny<AddressDeletedNotification>(), It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(Address), "DeleteAddress command tests")]
@@ -39,7 +43,8 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
         {
             // Arrange
             var command = new DeleteAddressCommand { Id = 1 };
-            var sut = new DeleteAddressCommandHandler(this.deletableEntityRepository);
+            var sut = new DeleteAddressCommandHandler(
+                this.deletableEntityRepository, this.mediatorMock.Object);
 
             var address = await this.deletableEntityRepository
                 .GetByIdWithDeletedAsync(1);
@@ -57,7 +62,8 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
         {
             // Arrange
             var command = new DeleteAddressCommand { Id = 1000 };
-            var sut = new DeleteAddressCommandHandler(this.deletableEntityRepository);
+            var sut = new DeleteAddressCommandHandler(
+                this.deletableEntityRepository, this.mediatorMock.Object);
 
             // Act & assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -68,7 +74,8 @@ namespace Fashionista.Application.Tests.Address.Commands.Delete
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new DeleteAddressCommandHandler(this.deletableEntityRepository);
+            var sut = new DeleteAddressCommandHandler(
+                this.deletableEntityRepository, this.mediatorMock.Object);
 
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
