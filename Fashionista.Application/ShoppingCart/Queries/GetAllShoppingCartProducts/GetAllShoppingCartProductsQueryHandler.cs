@@ -5,9 +5,8 @@ namespace Fashionista.Application.ShoppingCart.Queries.GetAllShoppingCartProduct
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -18,16 +17,13 @@ namespace Fashionista.Application.ShoppingCart.Queries.GetAllShoppingCartProduct
             AllShoppingCartProductsViewModel>
     {
         private readonly IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository;
-        private readonly IMapper mapper;
         private readonly IUserAssistant userAssistant;
 
         public GetAllShoppingCartProductsQueryHandler(
             IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository,
-            IMapper mapper,
             IUserAssistant userAssistant)
         {
             this.shoppingCartProductsRepository = shoppingCartProductsRepository;
-            this.mapper = mapper;
             this.userAssistant = userAssistant;
         }
 
@@ -40,7 +36,7 @@ namespace Fashionista.Application.ShoppingCart.Queries.GetAllShoppingCartProduct
             var products = await this.shoppingCartProductsRepository
                 .All()
                 .Where(x => x.ShoppingCartId == this.userAssistant.ShoppingCartId)
-                .ProjectTo<CartProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<CartProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new AllShoppingCartProductsViewModel

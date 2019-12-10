@@ -28,7 +28,6 @@ namespace Fashionista.Application.Tests.ShoppingCart.Queries.GetAllShoppingCartP
             var command = new GetAllShoppingCartProductsQuery();
             var sut = new GetAllShoppingCartProductsQueryHandler(
                 this.deletableEntityRepository,
-                this.mapper,
                 userAccessorMock.Object);
 
             // Act
@@ -47,7 +46,6 @@ namespace Fashionista.Application.Tests.ShoppingCart.Queries.GetAllShoppingCartP
             // Arrange
             var sut = new GetAllShoppingCartProductsQueryHandler(
                 this.deletableEntityRepository,
-                this.mapper,
                 It.IsAny<IUserAssistant>());
 
             // Act & Assert
