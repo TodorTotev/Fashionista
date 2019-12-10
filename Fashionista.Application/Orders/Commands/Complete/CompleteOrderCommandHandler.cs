@@ -59,7 +59,6 @@ namespace Fashionista.Application.Orders.Commands.Complete
             order.InvoiceNumber = order.Id.ToString().PadLeft(5, '0');
             order.PaymentType = request.PaymentType;
             order.OrderState = OrderState.Processed;
-            order.PaymentState = PaymentState.AwaitingPayment;
 
             this.ordersRepository.Update(order);
             await this.ordersRepository.SaveChangesAsync(cancellationToken);

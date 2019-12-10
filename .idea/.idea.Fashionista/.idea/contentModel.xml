@@ -229,6 +229,11 @@
               <e p="GetOrderProductsByOrderIdQueryHandler.cs" t="Include" />
               <e p="OrderProductsViewModel.cs" t="Include" />
             </e>
+            <e p="GetProcessed" t="Include">
+              <e p="GetProcessedOrdersPagedQuery.cs" t="Include" />
+              <e p="GetProcessedOrdersPagedQueryHandler.cs" t="Include" />
+              <e p="OrdersViewModel.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="ProductAttributes" t="Include">
@@ -620,6 +625,9 @@
             <e p="GetOrderProducts" t="Include">
               <e p="GetOrderProductsByOrderIdQueryTests.cs" t="Include" />
             </e>
+            <e p="GetProcessed" t="Include">
+              <e p="GetProcessedOrdersQueryTests.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="ProductAttributes" t="Include">
@@ -989,6 +997,7 @@
               <e p="BrandsController.cs" t="Include" />
               <e p="HomeController.cs" t="Include" />
               <e p="MainCategoriesController.cs" t="Include" />
+              <e p="OrderController.cs" t="Include" />
               <e p="ProductColorController.cs" t="Include" />
               <e p="ProductsController.cs" t="Include" />
               <e p="ProductSizeController.cs" t="Include" />
@@ -1006,6 +1015,10 @@
                 <e p="Create.cshtml" t="Include" />
                 <e p="Edit.cshtml" t="Include" />
                 <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Order" t="Include">
+                <e p="Delivered.cshtml" t="Include" />
+                <e p="Processed.cshtml" t="Include" />
               </e>
               <e p="ProductColor" t="Include">
                 <e p="Create.cshtml" t="Include" />

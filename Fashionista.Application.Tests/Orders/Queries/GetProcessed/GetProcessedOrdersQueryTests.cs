@@ -18,8 +18,8 @@ namespace Fashionista.Application.Tests.Orders.Queries.GetProcessed
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var query = new GetProcessedOrdersQuery();
-            var sut = new GetProcessedOrdersQueryHandler(this.deletableEntityRepository);
+            var query = new GetProcessedOrdersPagedQuery();
+            var sut = new GetProcessedOrdersPagedQueryHandler(this.deletableEntityRepository);
 
             // Act
             var model = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -34,7 +34,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.GetProcessed
         public async Task Handle_GivenNullRequest_ShouldReturnArgumentNullException()
         {
             // Arrange
-            var sut = new GetProcessedOrdersQueryHandler(this.deletableEntityRepository);
+            var sut = new GetProcessedOrdersPagedQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

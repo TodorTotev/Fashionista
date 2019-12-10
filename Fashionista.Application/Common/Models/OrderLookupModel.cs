@@ -20,6 +20,8 @@ namespace Fashionista.Application.Common.Models
 
         public DateTime OrderDate { get; set; }
 
+        public DateTime? DateSent { get; set; }
+
         public string Recipient { get; set; }
 
         public string RecipientPhoneNumber { get; set; }

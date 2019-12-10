@@ -8,7 +8,7 @@ namespace Fashionista.Application.Orders.Commands.Create
     {
         public CreateOrderCommandValidator()
         {
-            this.RuleFor(x => x.Addresses)
+            this.RuleFor(x => x.DeliveryAddressId)
                 .NotEmpty()
                 .WithMessage(AddressRequiredMsg);
 
