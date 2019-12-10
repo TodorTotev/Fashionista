@@ -4,8 +4,8 @@ namespace Fashionista.Application.Products.Queries.Edit
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.Products.Commands.Edit;
     using Fashionista.Domain.Entities;
@@ -15,14 +15,11 @@ namespace Fashionista.Application.Products.Queries.Edit
     public class EditProductQueryHandler : IRequestHandler<EditProductQuery, EditProductCommand>
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
-        private readonly IMapper mapper;
 
         public EditProductQueryHandler(
-            IDeletableEntityRepository<Product> productRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Product> productRepository)
         {
             this.productRepository = productRepository;
-            this.mapper = mapper;
         }
 
         public async Task<EditProductCommand> Handle(EditProductQuery request, CancellationToken cancellationToken)
@@ -34,7 +31,7 @@ namespace Fashionista.Application.Products.Queries.Edit
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
-            var command = this.mapper.Map<EditProductCommand>(requestedEntity);
+            var command = requestedEntity.To<EditProductCommand>();
             return command;
         }
     }

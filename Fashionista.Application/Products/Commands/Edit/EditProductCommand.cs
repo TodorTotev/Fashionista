@@ -11,7 +11,7 @@ namespace Fashionista.Application.Products.Commands.Edit
     using MediatR;
     using Microsoft.AspNetCore.Http;
 
-    public class EditProductCommand : IRequest<int>, IHaveCustomMapping
+    public class EditProductCommand : IRequest<int>, IMapFrom<Product>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -35,7 +35,7 @@ namespace Fashionista.Application.Products.Commands.Edit
 
         public GetAllBrandsSelectListViewModel Brands { get; set; }
 
-        public void CreateMappings(Profile configuration)
+        public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Product, EditProductCommand>()
                 .ForMember(x => x.Photos, opt => opt.Ignore());
