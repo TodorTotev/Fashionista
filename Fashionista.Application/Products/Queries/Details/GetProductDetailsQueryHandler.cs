@@ -1,15 +1,12 @@
-using System.Linq;
-
 namespace Fashionista.Application.Products.Queries.Details
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -18,17 +15,11 @@ namespace Fashionista.Application.Products.Queries.Details
     public class GetProductDetailsQueryHandler : IRequestHandler<GetProductDetailsQuery, GetProductDetailsViewModel>
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
-        private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
-        private readonly IMapper mapper;
 
         public GetProductDetailsQueryHandler(
-            IDeletableEntityRepository<Product> productRepository,
-            IDeletableEntityRepository<ProductAttributes> productAttributesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Product> productRepository)
         {
             this.productRepository = productRepository;
-            this.productAttributesRepository = productAttributesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetProductDetailsViewModel> Handle(
@@ -39,7 +30,7 @@ namespace Fashionista.Application.Products.Queries.Details
 
             var requestedEntity = await this.productRepository
                                       .AllAsNoTracking()
-                                      .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
+                                      .To<ProductLookupModel>()
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 

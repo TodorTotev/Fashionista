@@ -20,13 +20,10 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         {
             // Arrange
             var query = new GetProductDetailsQuery { Id = 1 };
-            var attributesRepository = new EfDeletableEntityRepository<ProductAttributes>(this.dbContext);
             var sut = new GetProductDetailsQueryHandler(
-                this.deletableEntityRepository,
-                attributesRepository,
-                this.mapper);
+                this.deletableEntityRepository);
 
-            // Act
+                // Act
             var product = await sut.Handle(query, It.IsAny<CancellationToken>());
 
             // Assert
@@ -41,11 +38,8 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         {
             // Arrange
             var query = new GetProductDetailsQuery { Id = 1000 };
-            var attributesRepository = new EfDeletableEntityRepository<ProductAttributes>(this.dbContext);
             var sut = new GetProductDetailsQueryHandler(
-                this.deletableEntityRepository,
-                attributesRepository,
-                this.mapper);
+                this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -57,9 +51,7 @@ namespace Fashionista.Application.Tests.Products.Queries.Details
         {
             // Arrange
             var sut = new GetProductDetailsQueryHandler(
-                this.deletableEntityRepository,
-                It.IsAny<EfDeletableEntityRepository<ProductAttributes>>(),
-                this.mapper);
+                this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
