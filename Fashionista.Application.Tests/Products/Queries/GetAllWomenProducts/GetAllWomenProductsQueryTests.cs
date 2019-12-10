@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllWomenProducts
         {
             // Arrange
             var query = new GetAllWomenProductsQuery();
-            var sut = new GetAllWomenProductsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllWomenProductsQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -36,7 +36,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllWomenProducts
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllWomenProductsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllWomenProductsQueryHandler(this.deletableEntityRepository);
 
             // Act & assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

@@ -5,9 +5,8 @@ namespace Fashionista.Application.Products.Queries.GetAllWomenProducts
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Fashionista.Domain.Entities.Enums;
@@ -17,12 +16,10 @@ namespace Fashionista.Application.Products.Queries.GetAllWomenProducts
     public class GetAllWomenProductsQueryHandler : IRequestHandler<GetAllWomenProductsQuery, GetAllWomenProductsViewModel>
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
-        private readonly IMapper mapper;
 
-        public GetAllWomenProductsQueryHandler(IDeletableEntityRepository<Product> productsRepository, IMapper mapper)
+        public GetAllWomenProductsQueryHandler(IDeletableEntityRepository<Product> productsRepository)
         {
             this.productsRepository = productsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllWomenProductsViewModel> Handle(GetAllWomenProductsQuery request, CancellationToken cancellationToken)
@@ -32,7 +29,7 @@ namespace Fashionista.Application.Products.Queries.GetAllWomenProducts
             var products = await this.productsRepository
                 .AllAsNoTracking()
                 .Where(x => x.ProductType == ProductType.Women)
-                .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new GetAllWomenProductsViewModel
