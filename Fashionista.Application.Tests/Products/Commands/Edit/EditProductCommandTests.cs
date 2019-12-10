@@ -1,4 +1,5 @@
 using System;
+using Fashionista.Application.Exceptions;
 using Shouldly;
 
 namespace Fashionista.Application.Tests.Products.Commands.Edit
@@ -56,6 +57,37 @@ namespace Fashionista.Application.Tests.Products.Commands.Edit
             product.Price = 1;
             product.SubCategoryId = 1;
             product.ProductType = ProductType.Women;
+        }
+
+        [Trait(nameof(Product), "EditProduct command test")]
+        [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
+        {
+            // Arrange
+            var cloudinaryHelperMock = new Mock<ICloudinaryHelper>();
+            cloudinaryHelperMock
+                .Setup(x => x.UploadImage(It.IsAny<IFormFile>(), It.IsAny<string>(), It.IsAny<Transformation>()));
+
+            var command = new EditProductCommand
+            {
+                Id = 1,
+                Name = "ModifiedProduct",
+                Description = "ModifiedDescription",
+                IsHidden = false,
+                Price = 1,
+                SubCategoryId = 1,
+                ProductType = ProductType.Women,
+                BrandId = 50,
+            };
+
+            var brandsRepository = new EfDeletableEntityRepository<Brand>(this.dbContext);
+            var sut = new EditProductCommandHandler(
+                this.deletableEntityRepository,
+                brandsRepository,
+                cloudinaryHelperMock.Object);
+
+            // Act & Assert
+            await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(Product), "EditProduct command test")]
