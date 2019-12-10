@@ -1,8 +1,10 @@
 namespace Fashionista.Application.ProductAttributes.Queries.Create
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Application.ProductAttributes.Commands.Create;
@@ -31,11 +33,16 @@ namespace Fashionista.Application.ProductAttributes.Queries.Create
             request = request ?? throw new ArgumentNullException(nameof(request));
 
             var requestedEntity = await this.productRepository
-                    .GetByIdWithDeletedAsync(request.Id)
+                                      .All()
+                                      .Where(x => x.Id == request.Id)
+                                      .SingleOrDefaultAsync(cancellationToken)
                                   ?? throw new NotFoundException(nameof(Product), request.Id);
 
             var subCategory = await this.subCategoryRepository
-                .GetByIdWithDeletedAsync(requestedEntity.SubCategoryId);
+                                  .All()
+                                  .Where(x => x.Id == requestedEntity.SubCategoryId)
+                                  .SingleOrDefaultAsync(cancellationToken)
+                              ?? throw new NotFoundException(nameof(Product), request.Id);
 
             return new CreateProductAttributeCommand
             {
