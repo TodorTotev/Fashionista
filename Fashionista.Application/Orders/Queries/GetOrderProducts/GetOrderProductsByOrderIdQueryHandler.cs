@@ -5,29 +5,26 @@ namespace Fashionista.Application.Orders.Queries.GetOrderProducts
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetOrderProductsByOrderIdQueryHandler : IRequestHandler<GetOrderProductsByOrderIdQuery, OrderProductsViewModel>
+    public class GetOrderProductsByOrderIdQueryHandler :
+        IRequestHandler<GetOrderProductsByOrderIdQuery, OrderProductsViewModel>
     {
         private readonly IDeletableEntityRepository<OrderProduct> orderProductsRepository;
         private readonly IDeletableEntityRepository<Order> ordersRepository;
-        private readonly IMapper mapper;
 
         public GetOrderProductsByOrderIdQueryHandler(
             IDeletableEntityRepository<OrderProduct> orderProductsRepository,
-            IDeletableEntityRepository<Order> ordersRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Order> ordersRepository)
         {
             this.orderProductsRepository = orderProductsRepository;
             this.ordersRepository = ordersRepository;
-            this.mapper = mapper;
         }
 
         public async Task<OrderProductsViewModel> Handle(GetOrderProductsByOrderIdQuery request, CancellationToken cancellationToken)
@@ -42,7 +39,7 @@ namespace Fashionista.Application.Orders.Queries.GetOrderProducts
             var products = await this.orderProductsRepository
                 .All()
                 .Where(x => x.OrderId == request.Id)
-                .ProjectTo<OrderProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<OrderProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new OrderProductsViewModel
