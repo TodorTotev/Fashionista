@@ -5,6 +5,6 @@ namespace Fashionista.Domain.Entities.Enums
         Delivered = 1,
         Processed = 2,
         Cancelled = 3,
-        Processing = 4,
+        Pending = 4,
     }
 }

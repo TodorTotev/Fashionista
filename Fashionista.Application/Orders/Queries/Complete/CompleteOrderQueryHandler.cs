@@ -48,7 +48,7 @@ namespace Fashionista.Application.Orders.Queries.Complete
             var command = await this.ordersRepository
                             .AllAsNoTracking()
                             .Where(x => x.ApplicationUserId == this.userAssistant.UserId
-                                        && x.OrderState == OrderState.Processing)
+                                        && x.OrderState == OrderState.Pending)
                             .ProjectTo<CompleteOrderCommand>(this.mapper.ConfigurationProvider)
                             .SingleOrDefaultAsync(cancellationToken)
                         ?? throw new NotFoundException(nameof(ApplicationUser), $"doesn't have processing orders");

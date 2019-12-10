@@ -38,7 +38,7 @@ namespace Fashionista.Application.Orders.Commands.Create
 
             var order = new Order
             {
-                OrderState = OrderState.Processing,
+                OrderState = OrderState.Pending,
                 ApplicationUserId = this.userAssistant.UserId,
                 DeliveryAddressId = request.DeliveryAddressId,
                 Recipient = request.CustomerInformation,

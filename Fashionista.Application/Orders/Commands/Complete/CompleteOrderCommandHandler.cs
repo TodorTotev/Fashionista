@@ -41,7 +41,7 @@ namespace Fashionista.Application.Orders.Commands.Complete
             var order = await this.ordersRepository
                 .All()
                 .Where(x => x.ApplicationUserId == this.userAssistant.UserId
-                            && x.OrderState == OrderState.Processing)
+                            && x.OrderState == OrderState.Pending)
                 .SingleOrDefaultAsync(cancellationToken);
 
             var cartProducts = await this.shoppingCartProductsRepository

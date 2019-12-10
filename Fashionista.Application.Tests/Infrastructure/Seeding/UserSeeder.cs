@@ -63,7 +63,7 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
 
             dbContext.Orders.Add(new Order
             {
-                OrderState = OrderState.Processing,
+                OrderState = OrderState.Pending,
                 ApplicationUserId = user.Id,
                 DeliveryAddressId = 1,
                 Recipient = $"{user.FirstName} {user.LastName}",
@@ -73,7 +73,7 @@ namespace Fashionista.Application.Tests.Infrastructure.Seeding
             
             var order2 = dbContext.Orders.Add(new Order
             {
-                OrderState = OrderState.Processing,
+                OrderState = OrderState.Pending,
                 ApplicationUserId = user.Id,
                 DeliveryAddressId = 1,
                 Recipient = $"{user.FirstName} {user.LastName}",
