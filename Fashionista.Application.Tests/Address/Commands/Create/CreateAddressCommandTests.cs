@@ -1,6 +1,3 @@
-using System.Linq;
-using Fashionista.Application.Interfaces;
-
 // ReSharper disable PossibleNullReferenceException
 
 namespace Fashionista.Application.Tests.Address.Commands.Create
@@ -9,6 +6,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Addresses.Commands.Create;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
@@ -23,10 +21,6 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateAddress()
         {
             // Arrange
-            var userId = this.dbContext.Users.FirstOrDefault().Id;
-            var userAccessorMock = new Mock<IUserAssistant>();
-            userAccessorMock.Setup(x => x.UserId).Returns(userId);
-
             var command = new CreateAddressCommand
             {
                 Street = "NewStreet",
@@ -38,7 +32,7 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
             var sut = new CreateAddressCommandHandler(
             this.deletableEntityRepository,
             this.mediatorMock.Object,
-            userAccessorMock.Object);
+            this.userAssistantMock.Object);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -49,6 +43,8 @@ namespace Fashionista.Application.Tests.Address.Commands.Create
             var address = await this.dbContext.Addresses
                 .SingleOrDefaultAsync(x => x.Id == id);
 
+            this.mediatorMock.Verify(x => x.Publish(
+                It.IsAny<Address>(), It.IsAny<CancellationToken>()));
             address.Name.ShouldBe("NewStreet");
             address.Description.ShouldBe("NewDesc");
             address.City.Name.ShouldBe("TestCity");

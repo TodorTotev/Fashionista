@@ -1,5 +1,6 @@
 namespace Fashionista.Application.Addresses.Commands.Create
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -18,25 +19,36 @@ namespace Fashionista.Application.Addresses.Commands.Create
         {
             private readonly IDeletableEntityRepository<Notification> notificationRepository;
             private readonly IUserAssistant userAssistant;
+            private readonly INotifyService notifyService;
 
-            public Handler(IDeletableEntityRepository<Notification> notificationRepository, IUserAssistant userAssistant)
+            public Handler(
+                IDeletableEntityRepository<Notification> notificationRepository,
+                IUserAssistant userAssistant,
+                INotifyService notifyService)
             {
                 this.notificationRepository = notificationRepository;
                 this.userAssistant = userAssistant;
+                this.notifyService = notifyService;
             }
 
             public async Task Handle(AddressCreatedNotification notification, CancellationToken cancellationToken)
             {
-                var entity = new Notification
+                var notificationEntity = new Notification
                 {
+                    Id = Guid.NewGuid().ToString(),
                     ApplicationUserId = this.userAssistant.UserId,
                     Header = notification.AddressName,
                     Content = CreatedNotificationMsg,
                     Type = NotificationType.Success,
                 };
 
-                await this.notificationRepository.AddAsync(entity);
+                await this.notificationRepository.AddAsync(notificationEntity);
                 await this.notificationRepository.SaveChangesAsync(cancellationToken);
+
+                await this.notifyService.SendUserPushNotification(
+                    notification.AddressName,
+                    CreatedNotificationMsg,
+                    NotificationType.Success.ToString());
             }
         }
     }
