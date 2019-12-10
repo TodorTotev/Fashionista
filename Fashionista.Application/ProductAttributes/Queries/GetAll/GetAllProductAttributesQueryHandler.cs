@@ -5,14 +5,12 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
-    using Humanizer;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
@@ -22,16 +20,13 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
     {
         private readonly IDeletableEntityRepository<ProductAttributes> productAttributesRepository;
         private readonly IDeletableEntityRepository<Product> productsRepository;
-        private readonly IMapper mapper;
 
         public GetAllProductAttributesQueryHandler(
             IDeletableEntityRepository<ProductAttributes> productAttributesRepository,
-            IDeletableEntityRepository<Product> productsRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<Product> productsRepository)
         {
             this.productAttributesRepository = productAttributesRepository;
             this.productsRepository = productsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllProductAttributesViewModel> Handle(
@@ -42,13 +37,13 @@ namespace Fashionista.Application.ProductAttributes.Queries.GetAll
 
             if (!await CommonCheckAssistant.CheckIfProductExists(request.Id, this.productsRepository))
             {
-                throw new NotFoundException(nameof(Product), "with id {0}".FormatWith(request.Id));
+                throw new NotFoundException(nameof(Product), request.Id);
             }
 
             var requestedEntities = await this.productAttributesRepository
                 .AllAsNoTracking()
                 .Where(x => x.ProductId == request.Id)
-                .ProjectTo<ProductAttributesLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductAttributesLookupModel>()
                 .ToListAsync(cancellationToken);
 
             var product = await this.productsRepository

@@ -5,7 +5,6 @@ namespace Fashionista.Application.ProductAttributes.Queries.Edit
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
