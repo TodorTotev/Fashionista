@@ -4,9 +4,8 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategories
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -16,14 +15,11 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategories
         IRequestHandler<GetAllMainCategoriesQuery, GetAllMainCategoriesViewModel>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public GetAllMainCategoriesQueryHandler(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
             this.mainCategoryRepository = mainCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllMainCategoriesViewModel> Handle(
@@ -34,7 +30,7 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategories
 
             var currentEntities = await this.mainCategoryRepository
                 .AllAsNoTracking()
-                .ProjectTo<MainCategoryLookupModel>(this.mapper.ConfigurationProvider)
+                .To<MainCategoryLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new GetAllMainCategoriesViewModel
