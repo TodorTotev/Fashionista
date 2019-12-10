@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         {
             // Arrange
             var query = new GetProductSizeQuery { Id = 1 };
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
 
             // Act
             var size = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -36,7 +36,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
@@ -48,7 +48,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetProductSize
         {
             // Arrange
             var query = new GetProductSizeQuery { Id = 1000 };
-            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductSizeQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));

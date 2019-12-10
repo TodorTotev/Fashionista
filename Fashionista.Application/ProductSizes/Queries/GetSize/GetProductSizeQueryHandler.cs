@@ -4,11 +4,10 @@ namespace Fashionista.Application.ProductSizes.Queries.GetSize
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -17,14 +16,11 @@ namespace Fashionista.Application.ProductSizes.Queries.GetSize
     public class GetProductSizeQueryHandler : IRequestHandler<GetProductSizeQuery, ProductSizeLookupModel>
     {
         private readonly IDeletableEntityRepository<ProductSize> productSizesRepository;
-        private readonly IMapper mapper;
 
         public GetProductSizeQueryHandler(
-            IDeletableEntityRepository<ProductSize> productSizesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<ProductSize> productSizesRepository)
         {
             this.productSizesRepository = productSizesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<ProductSizeLookupModel> Handle(GetProductSizeQuery request, CancellationToken cancellationToken)
@@ -38,7 +34,7 @@ namespace Fashionista.Application.ProductSizes.Queries.GetSize
 
             return await this.productSizesRepository
                 .AllAsNoTracking()
-                .ProjectTo<ProductSizeLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductSizeLookupModel>()
                 .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         }
     }
