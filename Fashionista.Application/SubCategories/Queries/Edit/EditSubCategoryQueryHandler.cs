@@ -31,7 +31,7 @@ namespace Fashionista.Application.SubCategories.Queries.Edit
                                       .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken)
                                   ?? throw new NotFoundException(nameof(SubCategory), request.Id);
 
-            var command = request.To<EditSubCategoryCommand>();
+            var command = requestedEntity.To<EditSubCategoryCommand>();
             return command;
         }
     }

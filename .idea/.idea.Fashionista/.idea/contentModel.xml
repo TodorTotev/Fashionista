@@ -107,10 +107,12 @@
         </e>
         <e p="Exceptions" t="Include">
           <e p="BaseCustomException.cs" t="Include" />
+          <e p="CartAlreadyContainsProductException.cs" t="Include" />
           <e p="EntityAlreadyExistsException.cs" t="Include" />
           <e p="FailedDeletionException.cs" t="Include" />
           <e p="ForbiddenException.cs" t="Include" />
           <e p="NotFoundException.cs" t="Include" />
+          <e p="ProductContainsAttributeException.cs" t="Include" />
         </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
         <e p="Infrastructure" t="Include">
