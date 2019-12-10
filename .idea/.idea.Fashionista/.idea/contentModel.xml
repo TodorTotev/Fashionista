@@ -112,6 +112,7 @@
           <e p="FailedDeletionException.cs" t="Include" />
           <e p="ForbiddenException.cs" t="Include" />
           <e p="NotFoundException.cs" t="Include" />
+          <e p="OrderAlreadySentException.cs" t="Include" />
           <e p="ProductContainsAttributeException.cs" t="Include" />
         </e>
         <e p="Fashionista.Application.csproj" t="IncludeRecursive" />
@@ -205,6 +206,10 @@
               <e p="CreateOrderCommand.cs" t="Include" />
               <e p="CreateOrderCommandHandler.cs" t="Include" />
               <e p="CreateOrderCommandValidator.cs" t="Include" />
+            </e>
+            <e p="SendOrder" t="Include">
+              <e p="SendOrderCommand.cs" t="Include" />
+              <e p="SendOrderCommandHandler.cs" t="Include" />
             </e>
             <e p="Validation" t="Include">
               <e p="Constants.cs" t="Include" />
@@ -610,6 +615,9 @@
             </e>
             <e p="Create" t="Include">
               <e p="CreateOrderCommandTests.cs" t="Include" />
+            </e>
+            <e p="Send" t="Include">
+              <e p="SendOrderCommandTests.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">
