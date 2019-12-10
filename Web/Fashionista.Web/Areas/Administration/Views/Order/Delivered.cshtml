@@ -21,14 +21,13 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Invoice number</th>
                                 <th>Total Price</th>
                                 <th>Order date</th>
                                 <th>Date sent</th>
                                 <th>Payment type</th>
-                                <th>Created On</th>
-                                <th>Gender</th>
-                                <th></th>
+                                <th>Recipient</th>
+                                <th>Recipient phone number</th>
+                                <th>Invoice number</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,23 +37,13 @@
                                 {
                                     <tr>
                                         <td>@order.Id</td>
-                                        <td>@order.InvoiceNumber</td>
                                         <td>@order.TotalPrice</td>
                                         <td>@order.OrderDate</td>
                                         <td>@order.DateSent</td>
                                         <td>@order.PaymentType</td>
                                         <td>@order.Recipient</td>
                                         <td>@order.RecipientPhoneNumber</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Settings
-                                                </button>
-                                                <div class="dropdown-menu animated flipInX">
-                                                    <a href="#" class="dropdown-item">Mark order sent</a>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        <td>@order.InvoiceNumber</td>
                                     </tr>
                                 }
                             }
@@ -90,4 +79,3 @@
     <script src="admin/assets/libs/footable/js/footable.min.js"></script>
     <script src="admin/dist/js/pages/tables/footable-init.js"></script>
 }
-
