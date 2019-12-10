@@ -48,8 +48,8 @@
                                                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Settings
                                                 </button>
-                                                <div class="dropdown-menu animated flipInX">
-                                                    <a href="#" class="dropdown-item">Mark order sent</a>
+                                                <div asp class="dropdown-menu animated flipInX">
+                                                    <a asp-controller="Order" asp-action="Send" asp-route-id="@order.Id" class="dropdown-item">Mark order sent</a>
                                                 </div>
                                             </div>
                                         </td>

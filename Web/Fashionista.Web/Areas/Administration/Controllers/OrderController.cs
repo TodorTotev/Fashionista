@@ -1,3 +1,5 @@
+using Fashionista.Application.Orders.Commands.SendOrder;
+
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Linq;
@@ -36,6 +38,13 @@ namespace Fashionista.Web.Areas.Administration.Controllers
                 viewModel.CurrentOrders, page.Value + 1, pageSize, viewModel.CurrentOrders.Count());
 
             return this.View(pagedList);
+        }
+
+        public async Task<IActionResult> Send(SendOrderCommand command)
+        {
+            await this.Mediator.Send(command);
+
+            return this.RedirectToAction(nameof(this.Processed));
         }
     }
 }
