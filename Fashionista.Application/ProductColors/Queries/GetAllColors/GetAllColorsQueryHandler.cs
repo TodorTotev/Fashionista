@@ -5,9 +5,8 @@ namespace Fashionista.Application.ProductColors.Queries.GetAllColors
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -16,12 +15,10 @@ namespace Fashionista.Application.ProductColors.Queries.GetAllColors
     public class GetAllColorsQueryHandler : IRequestHandler<GetAllColorsQuery, List<ProductColorLookupModel>>
     {
         private readonly IDeletableEntityRepository<ProductColor> productColorsRepository;
-        private readonly IMapper mapper;
 
-        public GetAllColorsQueryHandler(IDeletableEntityRepository<ProductColor> productColorsRepository, IMapper mapper)
+        public GetAllColorsQueryHandler(IDeletableEntityRepository<ProductColor> productColorsRepository)
         {
             this.productColorsRepository = productColorsRepository;
-            this.mapper = mapper;
         }
 
         public async Task<List<ProductColorLookupModel>> Handle(GetAllColorsQuery request, CancellationToken cancellationToken)
@@ -30,7 +27,7 @@ namespace Fashionista.Application.ProductColors.Queries.GetAllColors
 
             return await this.productColorsRepository
                 .All()
-                .ProjectTo<ProductColorLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductColorLookupModel>()
                 .ToListAsync(cancellationToken);
         }
     }

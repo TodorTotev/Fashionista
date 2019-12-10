@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetAllColors
         {
             // Arrange
             var query = new GetAllColorsQuery();
-            var sut = new GetAllColorsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllColorsQueryHandler(this.deletableEntityRepository);
 
             // Act
             var list = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -36,7 +36,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetAllColors
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllColorsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllColorsQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
