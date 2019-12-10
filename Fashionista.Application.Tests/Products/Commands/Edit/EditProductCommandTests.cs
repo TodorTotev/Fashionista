@@ -59,6 +59,34 @@ namespace Fashionista.Application.Tests.Products.Commands.Edit
             product.ProductType = ProductType.Women;
         }
 
+        [Trait(nameof(Product), "EditProduct command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var command = new EditProductCommand
+            {
+                Id = 1,
+                Name = "ActiveProduct",
+                Description = "ModifiedDescription",
+                IsHidden = false,
+                Price = 1,
+                SubCategoryId = 1,
+                ProductType = ProductType.Women,
+                BrandId = 1,
+            };
+
+            var cloudinaryHelperMock = new Mock<ICloudinaryHelper>();
+            cloudinaryHelperMock
+                .Setup(x => x.UploadImage(It.IsAny<IFormFile>(), It.IsAny<string>(), It.IsAny<Transformation>()));
+
+            var brandRepository = new EfDeletableEntityRepository<Brand>(this.dbContext);
+            var sut = new EditProductCommandHandler(this.deletableEntityRepository, brandRepository, cloudinaryHelperMock.Object);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
         [Trait(nameof(Product), "EditProduct command test")]
         [Fact(DisplayName = "Handle given invalid request should throw NotFoundException")]
         public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
