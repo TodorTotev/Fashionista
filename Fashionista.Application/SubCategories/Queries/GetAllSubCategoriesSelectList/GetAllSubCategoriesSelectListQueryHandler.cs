@@ -7,9 +7,6 @@ namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelec
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using Fashionista.Application.Common.Models;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -19,14 +16,11 @@ namespace Fashionista.Application.SubCategories.Queries.GetAllSubCategoriesSelec
         IRequestHandler<GetAllSubCategoriesSelectListQuery, GetAllSubCategoriesSelectListViewModel>
     {
         private readonly IDeletableEntityRepository<SubCategory> subCategoryRepository;
-        private readonly IMapper mapper;
 
         public GetAllSubCategoriesSelectListQueryHandler(
-            IDeletableEntityRepository<SubCategory> subCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<SubCategory> subCategoryRepository)
         {
             this.subCategoryRepository = subCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllSubCategoriesSelectListViewModel> Handle(
