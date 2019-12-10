@@ -10,6 +10,7 @@ namespace Fashionista.Application.Brands.Commands.Create
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     using static Fashionista.Common.GlobalConstants;
 
@@ -30,7 +31,7 @@ namespace Fashionista.Application.Brands.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfBrandWithSameNameExists(request.Name, this.brandsRepository))
+            if (await this.CheckIfBrandWithSameNameExists(request.Name))
             {
                 throw new EntityAlreadyExistsException(nameof(Brand), request.Name);
             }
@@ -54,5 +55,11 @@ namespace Fashionista.Application.Brands.Commands.Create
                 name: $"{request.Name}-brand-main-shot",
                 transformation: new Transformation().Width(BrandImageWidth).Height(BrandImageHeight));
         }
+
+        private async Task<bool> CheckIfBrandWithSameNameExists(
+            string name)
+            => await this.brandsRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
     }
 }

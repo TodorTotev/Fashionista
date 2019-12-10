@@ -52,14 +52,7 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Id == brandId);
         }
 
-        internal static async Task<bool> CheckIfBrandWithSameNameExists(
-            string name,
-            IDeletableEntityRepository<Brand> brandRepository)
-        {
-            return await brandRepository
-                .AllAsNoTracking()
-                .AnyAsync(x => x.Name == name);
-        }
+        internal static async 
 
         #endregion
 
