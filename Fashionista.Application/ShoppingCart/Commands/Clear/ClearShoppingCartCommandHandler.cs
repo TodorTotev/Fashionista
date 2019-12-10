@@ -32,7 +32,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.Clear
                                           .Where(x => x.ShoppingCartId == this.userAssistant.ShoppingCartId)
                                           .ToListAsync(cancellationToken);
 
-            products.ForEach(x => this.shoppingCartProductsRepository.Delete(x));
+            products.ForEach(x => this.shoppingCartProductsRepository.HardDelete(x));
 
             return await this.shoppingCartProductsRepository.SaveChangesAsync(cancellationToken);
         }
