@@ -1,3 +1,5 @@
+using Fashionista.Application.Exceptions;
+
 namespace Fashionista.Application.Tests.Products.Commands.Create
 {
     using System.Collections.Generic;
@@ -42,7 +44,6 @@ namespace Fashionista.Application.Tests.Products.Commands.Create
             var sut = new CreateProductCommandHandler(
                 this.deletableEntityRepository,
                 brandsRepository,
-                this.mapper,
                 cloudinaryHelperMock.Object);
 
             // Act
@@ -60,6 +61,66 @@ namespace Fashionista.Application.Tests.Products.Commands.Create
             createdProduct.BrandId.ShouldBe(1);
             createdProduct.ProductType.ShouldBe(ProductType.Men);
             createdProduct.SubCategoryId.ShouldBe(1);
+        }
+
+        [Trait(nameof(Product), "Create product command tests")]
+        [Fact(DisplayName = "Handle given valid request should create product")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowNotFoundException()
+        {
+            // Arrange
+            var cloudinaryHelperMock = new Mock<ICloudinaryHelper>();
+            cloudinaryHelperMock
+                .Setup(x => x.UploadImage(It.IsAny<IFormFile>(), It.IsAny<string>(), It.IsAny<Transformation>()));
+
+            var command = new CreateProductCommand
+            {
+                Name = "ValidName",
+                Description = "ValidDescription",
+                Photos = It.IsAny<ICollection<IFormFile>>(),
+                BrandId = 50,
+                Price = 120,
+                ProductType = ProductType.Men,
+                SubCategoryId = 1,
+            };
+
+            var brandsRepository = new EfDeletableEntityRepository<Brand>(this.dbContext);
+            var sut = new CreateProductCommandHandler(
+                this.deletableEntityRepository,
+                brandsRepository,
+                cloudinaryHelperMock.Object);
+
+            // Act & Assert
+            await Should.ThrowAsync<NotFoundException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+        }
+
+        [Trait(nameof(Product), "Create product command tests")]
+        [Fact(DisplayName = "Handle given valid request should create product")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        {
+            // Arrange
+            var cloudinaryHelperMock = new Mock<ICloudinaryHelper>();
+            cloudinaryHelperMock
+                .Setup(x => x.UploadImage(It.IsAny<IFormFile>(), It.IsAny<string>(), It.IsAny<Transformation>()));
+
+            var command = new CreateProductCommand
+            {
+                Name = "ActiveProduct",
+                Description = "ValidDescription",
+                Photos = It.IsAny<ICollection<IFormFile>>(),
+                BrandId = 1,
+                Price = 120,
+                ProductType = ProductType.Men,
+                SubCategoryId = 1,
+            };
+
+            var brandsRepository = new EfDeletableEntityRepository<Brand>(this.dbContext);
+            var sut = new CreateProductCommandHandler(
+                this.deletableEntityRepository,
+                brandsRepository,
+                cloudinaryHelperMock.Object);
+
+            // Act & Assert
+            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }

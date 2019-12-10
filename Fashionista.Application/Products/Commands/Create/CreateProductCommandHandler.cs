@@ -4,9 +4,9 @@ namespace Fashionista.Application.Products.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -16,18 +16,15 @@ namespace Fashionista.Application.Products.Commands.Create
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
         private readonly IDeletableEntityRepository<Brand> brandsRepository;
-        private readonly IMapper mapper;
         private readonly ICloudinaryHelper cloudinaryHelper;
 
         public CreateProductCommandHandler(
             IDeletableEntityRepository<Product> productsRepository,
             IDeletableEntityRepository<Brand> brandsRepository,
-            IMapper mapper,
             ICloudinaryHelper cloudinaryHelper)
         {
             this.productsRepository = productsRepository;
             this.brandsRepository = brandsRepository;
-            this.mapper = mapper;
             this.cloudinaryHelper = cloudinaryHelper;
         }
 
@@ -45,7 +42,7 @@ namespace Fashionista.Application.Products.Commands.Create
                 throw new EntityAlreadyExistsException(nameof(Product), request.Name);
             }
 
-            var product = this.mapper.Map<Product>(request);
+            var product = request.To<Product>();
 
             if (request.Photos != null)
             {
