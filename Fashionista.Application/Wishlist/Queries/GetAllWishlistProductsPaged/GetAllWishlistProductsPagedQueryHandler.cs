@@ -5,9 +5,8 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -18,16 +17,13 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
             WishlistProductsViewModel>
     {
         private readonly IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository;
-        private readonly IMapper mapper;
         private readonly IUserAssistant userAssistant;
 
         public GetAllWishlistProductsPagedQueryHandler(
             IDeletableEntityRepository<FavoriteProduct> favoriteProductsRepository,
-            IMapper mapper,
             IUserAssistant userAssistant)
         {
             this.favoriteProductsRepository = favoriteProductsRepository;
-            this.mapper = mapper;
             this.userAssistant = userAssistant;
         }
 
@@ -43,7 +39,7 @@ namespace Fashionista.Application.Wishlist.Queries.GetAllWishlistProductsPaged
                 .Select(x => x.Product)
                 .Skip(request.PageNumber * request.PageSize)
                 .Take(request.PageSize)
-                .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return new WishlistProductsViewModel

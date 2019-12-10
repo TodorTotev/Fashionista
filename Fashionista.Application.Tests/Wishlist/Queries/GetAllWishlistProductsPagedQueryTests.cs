@@ -26,7 +26,6 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
             var query = new GetAllWishlistProductsPagedQuery { PageNumber = 0, PageSize = 3 };
             var sut = new GetAllWishlistProductsPagedQueryHandler(
                 this.deletableEntityRepository,
-                this.mapper,
                 userAccessorMock.Object);
 
             // Act
@@ -45,7 +44,6 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
             // Arrange
             var sut = new GetAllWishlistProductsPagedQueryHandler(
                 this.deletableEntityRepository,
-                this.mapper,
                 It.IsAny<IUserAssistant>());
 
             // Act & Assert
