@@ -1,16 +1,14 @@
-using System;
-using Fashionista.Application.Exceptions;
-using Moq;
-
 namespace Fashionista.Application.Tests.ProductAttributes.Commands.Delete
 {
-    using System.Linq;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductAttributes.Commands.Delete;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
+    using Moq;
     using Shouldly;
     using Xunit;
 
@@ -31,9 +29,28 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Delete
             id.ShouldBe(1);
 
             var deletedEntity = await this.deletableEntityRepository
-                .GetByIdWithDeletedAsync(id);
+                .AllWithDeleted()
+                .SingleOrDefaultAsync(x => x.Id == 1);
 
             deletedEntity.IsDeleted.ShouldBe(true);
+        }
+
+        [Trait(nameof(ProductAttributes), "DeleteProductAttribute command tests")]
+        [Fact(DisplayName = "Handle given invalid request should throw FailedDeletionException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowFailedDeletionException()
+        {
+            // Arrange
+            var command = new DeleteProductAttributeCommand { Id = 1 };
+            var sut = new DeleteProductAttributeCommandHandler(this.deletableEntityRepository);
+
+            var attribute = await this.deletableEntityRepository
+                .GetByIdWithDeletedAsync(1);
+
+            this.deletableEntityRepository.Delete(attribute);
+            await this.deletableEntityRepository.SaveChangesAsync();
+
+            // Act & Assert
+            await Should.ThrowAsync<FailedDeletionException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(ProductAttributes), "DeleteProductAttribute command tests")]
