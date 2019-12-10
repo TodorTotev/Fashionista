@@ -1,7 +1,3 @@
-using Fashionista.Application.ProductAttributes.Commands.Delete;
-using Fashionista.Application.ProductAttributes.Commands.Edit;
-using Fashionista.Application.ProductAttributes.Queries.Edit;
-
 namespace Fashionista.Web.Areas.Administration.Controllers
 {
     using System.Linq;
@@ -10,7 +6,10 @@ namespace Fashionista.Web.Areas.Administration.Controllers
     using Fashionista.Application.Brands.Queries.GetAllBrandsSelectList;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.ProductAttributes.Commands.Create;
+    using Fashionista.Application.ProductAttributes.Commands.Delete;
+    using Fashionista.Application.ProductAttributes.Commands.Edit;
     using Fashionista.Application.ProductAttributes.Queries.Create;
+    using Fashionista.Application.ProductAttributes.Queries.Edit;
     using Fashionista.Application.ProductAttributes.Queries.GetAll;
     using Fashionista.Application.ProductColors.Queries.GetAllColorsSelectList;
     using Fashionista.Application.Products.Commands.Create;
