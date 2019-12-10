@@ -20,7 +20,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         {
             // Arrange
             var query = new GetProductColorQuery { Id = 1 };
-            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act
             var color = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -37,7 +37,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         {
             // Arrange
             var query = new GetProductColorQuery { Id = 1000 };
-            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -48,7 +48,7 @@ namespace Fashionista.Application.Tests.ProductColors.Queries.GetColor
         public async Task Handle_GivenValidRequest_ShouldReturnArgumentNullException()
         {
             // Arrange
-            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetProductColorQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
