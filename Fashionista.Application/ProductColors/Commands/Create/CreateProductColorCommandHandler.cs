@@ -5,11 +5,11 @@ namespace Fashionista.Application.ProductColors.Commands.Create
     using System.Threading.Tasks;
 
     using Fashionista.Application.Exceptions;
-    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class CreateProductColorCommandHandler : IRequestHandler<CreateProductColorCommand, int>
     {
@@ -25,9 +25,8 @@ namespace Fashionista.Application.ProductColors.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfProductColorWithSameNameExists(
-                request.Name,
-                this.productColorsRepository))
+            if (await this.CheckIfProductColorWithSameNameExists(
+                request.Name))
             {
                 throw new EntityAlreadyExistsException(nameof(ProductColor), request.Name);
             }
@@ -38,5 +37,11 @@ namespace Fashionista.Application.ProductColors.Commands.Create
 
             return productColor.Id;
         }
+
+        private async Task<bool> CheckIfProductColorWithSameNameExists(
+            string name) =>
+         await this.productColorsRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
     }
 }
