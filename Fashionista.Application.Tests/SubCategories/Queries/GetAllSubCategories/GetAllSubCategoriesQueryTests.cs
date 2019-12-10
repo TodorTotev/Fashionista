@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.GetAllSubCategorie
         {
             // Arrange
             var query = new GetAllSubCategoriesQuery();
-            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -34,7 +34,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.GetAllSubCategorie
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllSubCategoriesQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
