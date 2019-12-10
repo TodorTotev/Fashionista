@@ -1,3 +1,5 @@
+using Fashionista.Application.Infrastructure.Automapper;
+
 namespace Fashionista.Application.Orders.Queries.Complete
 {
     using System;
@@ -20,18 +22,15 @@ namespace Fashionista.Application.Orders.Queries.Complete
         private readonly IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository;
         private readonly IDeletableEntityRepository<Order> ordersRepository;
         private readonly IUserAssistant userAssistant;
-        private readonly IMapper mapper;
 
         public CompleteOrderQueryHandler(
             IDeletableEntityRepository<Order> ordersRepository,
             IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository,
-            IUserAssistant userAssistant,
-            IMapper mapper)
+            IUserAssistant userAssistant)
         {
             this.ordersRepository = ordersRepository;
             this.shoppingCartProductsRepository = shoppingCartProductsRepository;
             this.userAssistant = userAssistant;
-            this.mapper = mapper;
         }
 
         public async Task<CompleteOrderCommand> Handle(
@@ -42,14 +41,14 @@ namespace Fashionista.Application.Orders.Queries.Complete
 
             if (!await this.CheckIfCartContainsProducts(this.userAssistant.UserId))
             {
-                throw new ArgumentException("shopping cart is empty", nameof(this.userAssistant.Username));
+                throw new CartAlreadyContainsProductException();
             }
 
             var command = await this.ordersRepository
                             .AllAsNoTracking()
                             .Where(x => x.ApplicationUserId == this.userAssistant.UserId
                                         && x.OrderState == OrderState.Pending)
-                            .ProjectTo<CompleteOrderCommand>(this.mapper.ConfigurationProvider)
+                            .To<CompleteOrderCommand>()
                             .SingleOrDefaultAsync(cancellationToken)
                         ?? throw new NotFoundException(nameof(ApplicationUser), $"doesn't have processing orders");
 
