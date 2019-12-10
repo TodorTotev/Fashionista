@@ -1,11 +1,10 @@
-using System;
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.SubCategories.Queries.Details
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.SubCategories.Queries.Details;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -21,7 +20,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Details
         {
             // Arrange
             var query = new GetSubCategoryDetailsQuery { Id = 1 };
-            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository);
 
             // Act
             var category = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -38,7 +37,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Details
         {
             // Arrange
             var query = new GetSubCategoryDetailsQuery { Id = 100 };
-            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -49,7 +48,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Details
         public async Task Handle_GivenValidRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetSubCategoryDetailsQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

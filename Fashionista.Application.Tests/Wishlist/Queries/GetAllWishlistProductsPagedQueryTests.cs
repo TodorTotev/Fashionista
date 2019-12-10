@@ -19,14 +19,10 @@ namespace Fashionista.Application.Tests.Wishlist.Queries
         public async Task Handle_GivenValidRequest_ShouldReturnViewModel()
         {
             // Arrange
-            var userId = this.dbContext.Users.FirstOrDefault()?.Id;
-            var userAccessorMock = new Mock<IUserAssistant>();
-            userAccessorMock.Setup(x => x.UserId).Returns(userId);
-
             var query = new GetAllWishlistProductsPagedQuery { PageNumber = 0, PageSize = 3 };
             var sut = new GetAllWishlistProductsPagedQueryHandler(
                 this.deletableEntityRepository,
-                userAccessorMock.Object);
+                this.userAssistantMock.Object);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());

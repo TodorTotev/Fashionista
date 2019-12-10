@@ -5,10 +5,9 @@ namespace Fashionista.Application.SubCategories.Queries.Details
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -17,14 +16,11 @@ namespace Fashionista.Application.SubCategories.Queries.Details
     public class GetSubCategoryDetailsQueryHandler : IRequestHandler<GetSubCategoryDetailsQuery, SubCategoryLookupModel>
     {
         private readonly IDeletableEntityRepository<SubCategory> subCategoriesRepository;
-        private readonly IMapper mapper;
 
         public GetSubCategoryDetailsQueryHandler(
-            IDeletableEntityRepository<SubCategory> subCategoriesRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<SubCategory> subCategoriesRepository)
         {
             this.subCategoriesRepository = subCategoriesRepository;
-            this.mapper = mapper;
         }
 
         public async Task<SubCategoryLookupModel> Handle(GetSubCategoryDetailsQuery request, CancellationToken cancellationToken)
@@ -34,7 +30,7 @@ namespace Fashionista.Application.SubCategories.Queries.Details
             var requestedEntity = await this.subCategoriesRepository
                                       .AllAsNoTracking()
                                       .Where(x => x.Id == request.Id)
-                                      .ProjectTo<SubCategoryLookupModel>(this.mapper.ConfigurationProvider)
+                                      .To<SubCategoryLookupModel>()
                                       .SingleOrDefaultAsync(cancellationToken)
                                   ?? throw new NotFoundException(nameof(SubCategory), request.Id);
 
