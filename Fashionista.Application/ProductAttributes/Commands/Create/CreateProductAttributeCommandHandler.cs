@@ -11,11 +11,11 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class AddProductAttributeCommandHandler : IRequestHandler<CreateProductAttributeCommand, int>
+    public class CreateProductAttributeCommandHandler : IRequestHandler<CreateProductAttributeCommand, int>
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
 
-        public AddProductAttributeCommandHandler(IDeletableEntityRepository<Product> productsRepository)
+        public CreateProductAttributeCommandHandler(IDeletableEntityRepository<Product> productsRepository)
         {
             this.productsRepository = productsRepository;
         }
@@ -28,7 +28,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
                 .All()
                 .SingleOrDefaultAsync(x => x.Id == request.ProductId, cancellationToken);
 
-            if (product.ProductAttributes.Any(x => x.ProductColorId == request.ProductColorId && x.ProductSizeId == request.ProductSizeId))
+            if (this.CheckIfProductContainsAttribute(product, request.ProductColorId, request.ProductSizeId))
             {
                 throw new EntityAlreadyExistsException(
                     nameof(Product),
@@ -46,5 +46,8 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
 
             return product.Id;
         }
+
+        private bool CheckIfProductContainsAttribute(Product product, int colorId, int sizeId) =>
+            product.ProductAttributes.Any(x => x.ProductColorId == colorId && x.ProductSizeId == sizeId);
     }
 }

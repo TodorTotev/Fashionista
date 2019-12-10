@@ -232,8 +232,8 @@
         <e p="ProductAttributes" t="Include">
           <e p="Commands" t="Include">
             <e p="Create" t="Include">
-              <e p="AddProductAttributeCommandHandler.cs" t="Include" />
               <e p="CreateProductAttributeCommand.cs" t="Include" />
+              <e p="CreateProductAttributeCommandHandler.cs" t="Include" />
               <e p="CreateProductAttributeCommandValidator.cs" t="Include" />
             </e>
             <e p="Delete" t="Include">
