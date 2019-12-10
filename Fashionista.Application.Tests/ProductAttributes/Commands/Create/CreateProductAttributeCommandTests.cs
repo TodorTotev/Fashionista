@@ -24,7 +24,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
             // Arrange
             var command = new CreateProductAttributeCommand
                 { Quantity = 1, ProductColorId = 1, ProductSizeId = 1, ProductId = 2 };
-            var sut = new AddProductAttributeCommandHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository);
 
             // Act
             var productId = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -46,23 +46,23 @@ namespace Fashionista.Application.Tests.ProductAttributes.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new AddProductAttributeCommandHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
 
         [Trait(nameof(ProductAttributes), "CreateProductAttributes command tests")]
-        [Fact(DisplayName = "Handle given invalid request should throw EntityAlreadyExistsException")]
-        public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
+        [Fact(DisplayName = "Handle given invalid request should throw ProductAlreadyContainsAttributeException")]
+        public async Task Handle_GivenInvalidRequest_ShouldThrowProductContainsAttributeException()
         {
             // Arrange
             var command = new CreateProductAttributeCommand
                 { Quantity = 1, ProductColorId = 1, ProductSizeId = 1, ProductId = 1 };
-            var sut = new AddProductAttributeCommandHandler(this.deletableEntityRepository);
+            var sut = new CreateProductAttributeCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
-            await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
+            await Should.ThrowAsync<ProductContainsAttributeException>(sut.Handle(command, It.IsAny<CancellationToken>()));
         }
     }
 }

@@ -30,9 +30,7 @@ namespace Fashionista.Application.ProductAttributes.Commands.Create
 
             if (this.CheckIfProductContainsAttribute(product, request.ProductColorId, request.ProductSizeId))
             {
-                throw new EntityAlreadyExistsException(
-                    nameof(Product),
-                    "Attribute with same color and size already exists!");
+                throw new ProductContainsAttributeException();
             }
 
             product.ProductAttributes.Add(new ProductAttributes
