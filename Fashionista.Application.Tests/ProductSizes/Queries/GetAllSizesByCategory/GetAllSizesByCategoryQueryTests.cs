@@ -1,14 +1,13 @@
-using System;
-using Fashionista.Persistence.Repositories;
-
 namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesByCategory
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
+    using Fashionista.Persistence.Repositories;
     using Moq;
     using Shouldly;
     using Xunit;
@@ -23,7 +22,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesByCatego
             var query = new GetAllSizesByCategoryQuery { Id = 1 };
             var categoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
             var sut = new GetAllSizesByCategoryQueryHandler(
-                this.deletableEntityRepository, categoryRepository, this.mapper);
+                this.deletableEntityRepository, categoryRepository);
 
             // Act
             var list = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -41,7 +40,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesByCatego
             var query = new GetAllSizesByCategoryQuery { Id = 1000 };
             var categoryRepository = new EfDeletableEntityRepository<MainCategory>(this.dbContext);
             var sut = new GetAllSizesByCategoryQueryHandler(
-                this.deletableEntityRepository, categoryRepository, this.mapper);
+                this.deletableEntityRepository, categoryRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -54,8 +53,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesByCatego
             // Arrange
             var sut = new GetAllSizesByCategoryQueryHandler(
                 this.deletableEntityRepository,
-                It.IsAny<EfDeletableEntityRepository<MainCategory>>(),
-                this.mapper);
+                It.IsAny<EfDeletableEntityRepository<MainCategory>>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

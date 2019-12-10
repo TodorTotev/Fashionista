@@ -1,5 +1,3 @@
-using Fashionista.Application.Infrastructure;
-
 namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory
 {
     using System;
@@ -7,10 +5,10 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
+
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -21,16 +19,13 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory
     {
         private readonly IDeletableEntityRepository<ProductSize> productSizesRepository;
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public GetAllSizesByCategoryQueryHandler(
             IDeletableEntityRepository<ProductSize> productSizesRepository,
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
             this.productSizesRepository = productSizesRepository;
             this.mainCategoryRepository = mainCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<List<ProductSizeLookupModel>> Handle(
@@ -39,7 +34,7 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await CheckIfCategoryExists(this.mainCategoryRepository, request.Id))
+            if (!await this.CheckIfCategoryExists(request.Id))
             {
                 throw new NotFoundException(nameof(MainCategory), request.Id);
             }
@@ -47,15 +42,14 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesByCategory
             var sizes = await this.productSizesRepository
                 .All()
                 .Where(x => x.MainCategoryId == request.Id)
-                .ProjectTo<ProductSizeLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductSizeLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return sizes;
         }
 
-        private static async Task<bool> CheckIfCategoryExists(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository, int id) =>
-            await mainCategoryRepository
+        private async Task<bool> CheckIfCategoryExists(int id) =>
+            await this.mainCategoryRepository
                 .All()
                 .AnyAsync(x => x.Id == id);
     }
