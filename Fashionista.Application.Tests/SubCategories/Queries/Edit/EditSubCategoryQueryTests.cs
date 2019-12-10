@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
@@ -22,7 +21,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
         {
             // Arrange
             var query = new EditSubCategoryQuery { Id = 1 };
-            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act
             var command = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -39,7 +38,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
         {
             // Arrange
             var query = new EditSubCategoryQuery() { Id = 1000 };
-            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -50,7 +49,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries.Edit
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository, It.IsAny<IMapper>());
+            var sut = new EditSubCategoryQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));

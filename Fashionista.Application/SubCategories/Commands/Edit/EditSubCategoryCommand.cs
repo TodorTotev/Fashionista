@@ -5,7 +5,7 @@ namespace Fashionista.Application.SubCategories.Commands.Edit
     using Fashionista.Domain.Entities;
     using MediatR;
 
-    public class EditSubCategoryCommand : IRequest<int>, IHaveCustomMapping
+    public class EditSubCategoryCommand : IRequest<int>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -13,7 +13,7 @@ namespace Fashionista.Application.SubCategories.Commands.Edit
 
         public string Description { get; set; }
 
-        public void CreateMappings(Profile configuration)
+        public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<SubCategory, EditSubCategoryCommand>();
         }
