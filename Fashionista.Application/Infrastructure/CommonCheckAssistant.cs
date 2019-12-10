@@ -92,16 +92,6 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Id == id);
         }
 
-        internal static async Task<bool> CheckIfProductSizeWithSameNameExists(
-            string name,
-            int id,
-            IDeletableEntityRepository<ProductSize> sizesRepository)
-        {
-            return await sizesRepository
-                .AllAsNoTracking()
-                .AnyAsync(x => x.Name == name && x.MainCategoryId == id);
-        }
-
         #endregion
     }
 }

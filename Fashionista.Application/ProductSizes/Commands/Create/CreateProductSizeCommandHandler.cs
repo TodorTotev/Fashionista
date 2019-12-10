@@ -4,43 +4,46 @@ namespace Fashionista.Application.ProductSizes.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
     using Fashionista.Application.Exceptions;
-    using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class CreateProductSizeCommandHandler : IRequestHandler<CreateProductSizeCommand, int>
     {
         private readonly IDeletableEntityRepository<ProductSize> productSizeRepository;
-        private readonly IMapper mapper;
 
         public CreateProductSizeCommandHandler(
-            IDeletableEntityRepository<ProductSize> productSizeRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<ProductSize> productSizeRepository)
         {
             this.productSizeRepository = productSizeRepository;
-            this.mapper = mapper;
         }
 
         public async Task<int> Handle(CreateProductSizeCommand request, CancellationToken cancellationToken)
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (await CommonCheckAssistant.CheckIfProductSizeWithSameNameExists(
+            if (await this.CheckIfProductSizeWithSameNameExists(
                 request.Name,
-                request.MainCategoryId,
-                this.productSizeRepository))
+                request.MainCategoryId))
             {
                 throw new EntityAlreadyExistsException(nameof(ProductSize), request.Name);
             }
 
-            var productSize = this.mapper.Map<ProductSize>(request);
+            var productSize = request.To<ProductSize>();
             await this.productSizeRepository.AddAsync(productSize);
             await this.productSizeRepository.SaveChangesAsync(cancellationToken);
 
             return productSize.Id;
         }
+
+        private async Task<bool> CheckIfProductSizeWithSameNameExists(
+            string name,
+            int id) =>
+            await this.productSizeRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name && x.MainCategoryId == id);
     }
 }

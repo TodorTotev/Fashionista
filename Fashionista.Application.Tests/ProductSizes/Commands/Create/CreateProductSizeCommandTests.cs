@@ -19,8 +19,8 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
         public async Task Handle_GivenValidRequest_ShouldCreateSize()
         {
             // Arrange
-            var command = new CreateProductSizeCommand { Name = "NewSize", MainCategoryId = 1};
-            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
+            var command = new CreateProductSizeCommand { Name = "NewSize", MainCategoryId = 1 };
+            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository);
 
             // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
@@ -39,8 +39,8 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
         public async Task Handle_GivenInvalidRequest_ShouldThrowEntityAlreadyExistsException()
         {
             // Arrange
-            var command = new CreateProductSizeCommand { Name = "TestSize", MainCategoryId = 1};
-            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
+            var command = new CreateProductSizeCommand { Name = "TestSize", MainCategoryId = 1 };
+            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<EntityAlreadyExistsException>(sut.Handle(command, It.IsAny<CancellationToken>()));
@@ -51,7 +51,7 @@ namespace Fashionista.Application.Tests.ProductSizes.Commands.Create
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new CreateProductSizeCommandHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
