@@ -19,7 +19,7 @@
          {
              // Arrange
              var query = new GetAllMainCategoriesNavigationQuery();
-             var sut = new GetAllMainCategoriesNavigationQueryHandler(this.deletableEntityRepository, this.mapper);
+             var sut = new GetAllMainCategoriesNavigationQueryHandler(this.deletableEntityRepository);
 
              // Act
              var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -37,7 +37,7 @@
          public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
          {
              // Arrange
-             var sut = new GetAllMainCategoriesNavigationQueryHandler(this.deletableEntityRepository, this.mapper);
+             var sut = new GetAllMainCategoriesNavigationQueryHandler(this.deletableEntityRepository);
 
              // Assert
              await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
