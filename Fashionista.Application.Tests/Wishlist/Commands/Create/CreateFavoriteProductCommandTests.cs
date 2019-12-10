@@ -1,7 +1,5 @@
 // ReSharper disable PossibleNullReferenceException
 
-using Fashionista.Application.Interfaces;
-
 namespace Fashionista.Application.Tests.Wishlist.Commands.Create
 {
     using System;
@@ -9,6 +7,7 @@ namespace Fashionista.Application.Tests.Wishlist.Commands.Create
     using System.Threading;
     using System.Threading.Tasks;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Interfaces;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Application.Wishlist.Commands.Create;
     using Fashionista.Domain.Entities;

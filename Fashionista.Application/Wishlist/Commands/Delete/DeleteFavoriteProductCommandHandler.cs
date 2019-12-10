@@ -1,6 +1,7 @@
 namespace Fashionista.Application.Wishlist.Commands.Delete
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -29,10 +30,9 @@ namespace Fashionista.Application.Wishlist.Commands.Delete
 
             var requestedEntity = await this.favoriteProductsRepository
                                         .AllWithDeleted()
-                                        .SingleOrDefaultAsync(
-                                            x => x.Product.Id == request.Id
-                                                 && x.ApplicationUserId == this.userAssistant.UserId,
-                                            cancellationToken)
+                                        .Where(x => x.Product.Id == request.Id
+                                                    && x.ApplicationUserId == this.userAssistant.UserId)
+                                        .SingleOrDefaultAsync(cancellationToken)
                                     ?? throw new NotFoundException(nameof(FavoriteProduct), request.Id);
 
             this.favoriteProductsRepository.HardDelete(requestedEntity);
