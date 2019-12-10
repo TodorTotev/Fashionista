@@ -6,11 +6,10 @@ namespace Fashionista.Application.Products.Queries.GetAllProductsByCategory
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Infrastructure;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
@@ -21,16 +20,13 @@ namespace Fashionista.Application.Products.Queries.GetAllProductsByCategory
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
         private readonly IDeletableEntityRepository<SubCategory> subCategoryRepository;
-        private readonly IMapper mapper;
 
         public GetAllProductsByCategoryQueryHandler(
             IDeletableEntityRepository<Product> productsRepository,
-            IDeletableEntityRepository<SubCategory> subCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<SubCategory> subCategoryRepository)
         {
             this.productsRepository = productsRepository;
             this.subCategoryRepository = subCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<List<ProductLookupModel>> Handle(GetAllProductsByCategoryQuery request, CancellationToken cancellationToken)
@@ -46,7 +42,7 @@ namespace Fashionista.Application.Products.Queries.GetAllProductsByCategory
                 .AllAsNoTracking()
                 .Where(x => x.SubCategoryId == request.Id
                             && x.ProductAttributes.Any())
-                .ProjectTo<ProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<ProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             return products;

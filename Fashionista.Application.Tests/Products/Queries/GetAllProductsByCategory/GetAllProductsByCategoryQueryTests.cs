@@ -7,7 +7,6 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using AutoMapper;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
     using Fashionista.Application.Products.Queries.GetAllProductsByCategory;
@@ -25,14 +24,12 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
         public async Task Handle_GivenValidRequest_ShouldReturnListOfProducts()
         {
             // Arrange
-            var test = this.dbContext.Products.Where(x => x.SubCategoryId == 1).ToList();
             var query = new GetAllProductsByCategoryQuery { Id = 1 };
             var subCategoryRepository = new EfDeletableEntityRepository<SubCategory>(this.dbContext);
 
             var sut = new GetAllProductsByCategoryQueryHandler(
                 this.deletableEntityRepository,
-                subCategoryRepository,
-                this.mapper);
+                subCategoryRepository);
 
             // Act
             var list = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -55,8 +52,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
 
             var sut = new GetAllProductsByCategoryQueryHandler(
                 this.deletableEntityRepository,
-                subCategoryRepository,
-                this.mapper);
+                subCategoryRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -69,8 +65,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsByCategor
             // Arrange
             var sut = new GetAllProductsByCategoryQueryHandler(
                 this.deletableEntityRepository,
-                It.IsAny<EfDeletableEntityRepository<SubCategory>>(),
-                It.IsAny<IMapper>());
+                It.IsAny<EfDeletableEntityRepository<SubCategory>>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
