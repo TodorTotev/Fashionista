@@ -1,7 +1,6 @@
-using System;
-
 namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsPaged
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -20,7 +19,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsPaged
         {
             // Arrange
             var query = new GetAllProductsPagedQuery { PageNumber = 0, PageSize = 3, IsActive = true };
-            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -37,7 +36,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsPaged
         {
             // Arrange
             var query = new GetAllProductsPagedQuery { PageNumber = 0, PageSize = 3, IsActive = true };
-            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act
             var listOfProducts = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -54,7 +53,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsPaged
         {
             // Arrange
             var query = new GetAllProductsPagedQuery { PageNumber = 0, PageSize = 3, IsActive = false };
-            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act
             var listOfProducts = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -70,7 +69,7 @@ namespace Fashionista.Application.Tests.Products.Queries.GetAllProductsPaged
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllProductsPagedQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
