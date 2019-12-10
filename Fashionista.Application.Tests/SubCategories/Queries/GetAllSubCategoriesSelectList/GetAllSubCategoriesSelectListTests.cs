@@ -1,4 +1,4 @@
-namespace Fashionista.Application.Tests.SubCategories.Queries
+namespace Fashionista.Application.Tests.SubCategories.Queries.GetAllSubCategoriesSelectList
 {
     using System;
     using System.Linq;
@@ -19,7 +19,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries
         {
             // Arrange
             var query = new GetAllSubCategoriesSelectListQuery();
-            var sut = new GetAllSubCategoriesSelectListQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllSubCategoriesSelectListQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -35,7 +35,7 @@ namespace Fashionista.Application.Tests.SubCategories.Queries
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllSubCategoriesSelectListQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllSubCategoriesSelectListQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
