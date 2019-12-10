@@ -6,7 +6,6 @@ namespace Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Fashionista.Application.Exceptions;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;

@@ -4,7 +4,6 @@ namespace Fashionista.Application.Tests.ProductSizes.Queries.GetAllSizesSelectLi
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductSizes.Queries.GetAllSizesSelectList;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
