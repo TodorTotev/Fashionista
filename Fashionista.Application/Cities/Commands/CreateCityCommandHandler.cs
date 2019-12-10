@@ -5,11 +5,11 @@ namespace Fashionista.Application.Cities.Commands
     using System.Threading.Tasks;
 
     using Fashionista.Application.Exceptions;
-    using Fashionista.Application.Infrastructure;
     using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, City>
     {
@@ -25,7 +25,7 @@ namespace Fashionista.Application.Cities.Commands
         {
             request = request ?? throw new ArgumentNullException();
 
-            if (await CommonCheckAssistant.CheckIfCityWithSameNameExists(request.Name, this.citiesRepository))
+            if (await this.CheckIfCityWithSameNameExists(request.Name))
             {
                 throw new EntityAlreadyExistsException(nameof(City), request.Name);
             }
@@ -36,5 +36,11 @@ namespace Fashionista.Application.Cities.Commands
 
             return city;
         }
+
+        private async Task<bool> CheckIfCityWithSameNameExists(
+            string name)
+            => await this.citiesRepository
+                .AllAsNoTracking()
+                .AnyAsync(x => x.Name == name);
     }
 }

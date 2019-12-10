@@ -52,8 +52,6 @@ namespace Fashionista.Application.Infrastructure
                 .AnyAsync(x => x.Id == brandId);
         }
 
-        internal static async 
-
         #endregion
 
         internal static async Task<bool> CheckIfProductWithSameNameExists(
@@ -127,14 +125,5 @@ namespace Fashionista.Application.Infrastructure
         }
 
         #endregion
-
-        internal static async Task<bool> CheckIfCityWithSameNameExists(
-            string name,
-            IDeletableEntityRepository<City> citiesRepository)
-        {
-            return await citiesRepository
-                .AllAsNoTracking()
-                .AnyAsync(x => x.Name == name);
-        }
     }
 }
