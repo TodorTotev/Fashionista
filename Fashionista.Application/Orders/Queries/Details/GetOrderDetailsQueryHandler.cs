@@ -5,10 +5,9 @@ namespace Fashionista.Application.Orders.Queries.Details
     using System.Threading;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Fashionista.Application.Common.Models;
     using Fashionista.Application.Exceptions;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Fashionista.Domain.Entities.Enums;
@@ -19,16 +18,13 @@ namespace Fashionista.Application.Orders.Queries.Details
     {
         private readonly IDeletableEntityRepository<Order> ordersRepository;
         private readonly IUserAssistant userAssistant;
-        private readonly IMapper mapper;
 
         public GetOrderDetailsQueryHandler(
             IDeletableEntityRepository<Order> ordersRepository,
-            IUserAssistant userAssistant,
-            IMapper mapper)
+            IUserAssistant userAssistant)
         {
             this.ordersRepository = ordersRepository;
             this.userAssistant = userAssistant;
-            this.mapper = mapper;
         }
 
         public async Task<OrderDetailsViewModel> Handle(GetOrderDetailsQuery request, CancellationToken cancellationToken)
@@ -41,7 +37,7 @@ namespace Fashionista.Application.Orders.Queries.Details
                                         && x.PaymentState == PaymentState.AwaitingPayment
                                         && x.Id == request.Id
                                         && x.OrderState == OrderState.Processed)
-                            .ProjectTo<OrderLookupModel>(this.mapper.ConfigurationProvider)
+                            .To<OrderLookupModel>()
                             .SingleOrDefaultAsync(cancellationToken)
                         ?? throw new NotFoundException(nameof(Order), request.Id);
 

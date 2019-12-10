@@ -21,10 +21,9 @@ namespace Fashionista.Application.Tests.Orders.Queries.Details
             var query = new GetOrderDetailsQuery { Id = 2 };
             var sut = new GetOrderDetailsQueryHandler(
                 this.deletableEntityRepository,
-                this.userAssistantMock.Object,
-                this.mapper);
+                this.userAssistantMock.Object);
 
-            // Act
+                // Act
             var model = await sut.Handle(query, It.IsAny<CancellationToken>());
 
             // Assert
@@ -42,8 +41,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.Details
             var query = new GetOrderDetailsQuery { Id = 100 };
             var sut = new GetOrderDetailsQueryHandler(
                 this.deletableEntityRepository,
-                this.userAssistantMock.Object,
-                this.mapper);
+                this.userAssistantMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -56,8 +54,7 @@ namespace Fashionista.Application.Tests.Orders.Queries.Details
             // Arrange
             var sut = new GetOrderDetailsQueryHandler(
                 this.deletableEntityRepository,
-                this.userAssistantMock.Object,
-                this.mapper);
+                this.userAssistantMock.Object);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
