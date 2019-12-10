@@ -42,7 +42,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.Add
                 request.SizeId,
                 request.ColorId))
             {
-                throw new EntityAlreadyExistsException(nameof(request), request.Id);
+                throw new CartAlreadyContainsProductException();
             }
 
             var product = new ShoppingCartProduct
