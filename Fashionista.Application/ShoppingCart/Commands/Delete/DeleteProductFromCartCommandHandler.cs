@@ -34,7 +34,7 @@ namespace Fashionista.Application.ShoppingCart.Commands.Delete
                                        && x.ShoppingCartId == this.userAssistant.ShoppingCartId, cancellationToken)
                           ?? throw new NotFoundException(nameof(ShoppingCartProduct), request.Id);
 
-            this.shoppingCartProductsRepository.Delete(product);
+            this.shoppingCartProductsRepository.HardDelete(product);
             await this.shoppingCartProductsRepository.SaveChangesAsync(cancellationToken);
 
             return product.ProductId;

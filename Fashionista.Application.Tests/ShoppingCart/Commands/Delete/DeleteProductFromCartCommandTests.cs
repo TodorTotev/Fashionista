@@ -30,12 +30,7 @@ namespace Fashionista.Application.Tests.ShoppingCart.Commands.Delete
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
 
             // Assert
-            var product = this.dbContext.ShoppingCartProducts
-                .FirstOrDefault(x =>
-                    x.ProductId == id
-                    && x.ShoppingCartId == this.userAssistantMock.Object.ShoppingCartId);
-
-            product.IsDeleted.ShouldBe(true);
+            this.dbContext.ShoppingCartProducts.Count().ShouldBe(0);
         }
 
         [Trait(nameof(ShoppingCartProduct), "DeleteProductFromCart command tests")]
