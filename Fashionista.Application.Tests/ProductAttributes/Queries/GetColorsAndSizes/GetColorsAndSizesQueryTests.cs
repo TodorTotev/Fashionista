@@ -1,13 +1,12 @@
 // ReSharper disable PossibleNullReferenceException
 
-using System;
-using Fashionista.Application.Exceptions;
-
 namespace Fashionista.Application.Tests.ProductAttributes.Queries.GetColorsAndSizes
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Fashionista.Application.Exceptions;
     using Fashionista.Application.ProductAttributes.Queries.GetColorsAndSizes;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -27,8 +26,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.GetColorsAndSi
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var sut = new GetColorsAndSizesQueryHandler(
                 this.deletableEntityRepository,
-                productsRepository,
-                this.mapper);
+                productsRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -51,8 +49,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.GetColorsAndSi
             var productsRepository = new EfDeletableEntityRepository<Product>(this.dbContext);
             var sut = new GetColorsAndSizesQueryHandler(
                 this.deletableEntityRepository,
-                productsRepository,
-                this.mapper);
+                productsRepository);
 
             // Act & Assert
             await Should.ThrowAsync<NotFoundException>(sut.Handle(query, It.IsAny<CancellationToken>()));
@@ -65,8 +62,7 @@ namespace Fashionista.Application.Tests.ProductAttributes.Queries.GetColorsAndSi
             // Arrange
             var sut = new GetColorsAndSizesQueryHandler(
                 this.deletableEntityRepository,
-                It.IsAny<EfDeletableEntityRepository<Product>>(),
-                this.mapper);
+                It.IsAny<EfDeletableEntityRepository<Product>>());
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
