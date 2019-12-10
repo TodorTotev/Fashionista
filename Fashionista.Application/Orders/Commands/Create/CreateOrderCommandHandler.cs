@@ -31,7 +31,7 @@ namespace Fashionista.Application.Orders.Commands.Create
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
-            if (!await this.CheckIfAddressExists(this.addressesRepository, request.DeliveryAddressId))
+            if (!await this.CheckIfAddressExists(request.DeliveryAddressId))
             {
                 throw new NotFoundException(nameof(Address), request.DeliveryAddressId);
             }
@@ -52,9 +52,8 @@ namespace Fashionista.Application.Orders.Commands.Create
             return order.Id;
         }
 
-        private async Task<bool> CheckIfAddressExists(
-            IDeletableEntityRepository<Address> addressRepository, int? id) =>
-            await addressRepository
+        private async Task<bool> CheckIfAddressExists(int? id) =>
+            await this.addressesRepository
                 .AllAsNoTracking()
                 .AnyAsync(x => x.Id == id);
     }

@@ -3,11 +3,9 @@
 namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategorySelectList
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Fashionista.Application.Common.Models;
     using Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSelectList;
     using Fashionista.Application.Tests.Infrastructure;
     using Fashionista.Domain.Entities;
@@ -23,7 +21,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
         {
             // Arrange
             var query = new GetAllMainCategoriesSelectListQuery();
-            var sut = new GetAllMainCategoriesSelectListQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllMainCategoriesSelectListQueryHandler(this.deletableEntityRepository);
 
             // Act
             var viewModel = await sut.Handle(query, It.IsAny<CancellationToken>());
@@ -39,7 +37,7 @@ namespace Fashionista.Application.Tests.MainCategories.Queries.GetAllMainCategor
         public async Task Handle_GivenNullRequest_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var sut = new GetAllMainCategoriesSelectListQueryHandler(this.deletableEntityRepository, this.mapper);
+            var sut = new GetAllMainCategoriesSelectListQueryHandler(this.deletableEntityRepository);
 
             // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
