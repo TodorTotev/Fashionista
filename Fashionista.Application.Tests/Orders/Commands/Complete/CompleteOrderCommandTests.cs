@@ -25,10 +25,9 @@ namespace Fashionista.Application.Tests.Orders.Commands.Complete
             var sut = new CompleteOrderCommandHandler(
                 this.deletableEntityRepository,
                 shoppingCartRepository,
-                this.userAssistantMock.Object,
-                this.mapper);
+                this.userAssistantMock.Object);
 
-            // Act
+                // Act
             var id = await sut.Handle(command, It.IsAny<CancellationToken>());
 
             // Assert
@@ -49,10 +48,9 @@ namespace Fashionista.Application.Tests.Orders.Commands.Complete
             var sut = new CompleteOrderCommandHandler(
                 this.deletableEntityRepository,
                 It.IsAny<EfDeletableEntityRepository<ShoppingCartProduct>>(),
-                this.userAssistantMock.Object,
-                this.mapper);
+                this.userAssistantMock.Object);
 
-            // Act & Assert
+                // Act & Assert
             await Should.ThrowAsync<ArgumentNullException>(sut.Handle(null, It.IsAny<CancellationToken>()));
         }
     }

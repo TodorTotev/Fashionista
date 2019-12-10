@@ -1,7 +1,3 @@
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Fashionista.Application.Common.Models;
-
 namespace Fashionista.Application.Orders.Commands.Complete
 {
     using System;
@@ -9,6 +5,8 @@ namespace Fashionista.Application.Orders.Commands.Complete
     using System.Threading;
     using System.Threading.Tasks;
 
+    using Fashionista.Application.Common.Models;
+    using Fashionista.Application.Infrastructure.Automapper;
     using Fashionista.Application.Interfaces;
     using Fashionista.Domain.Entities;
     using Fashionista.Domain.Entities.Enums;
@@ -20,18 +18,15 @@ namespace Fashionista.Application.Orders.Commands.Complete
         private readonly IDeletableEntityRepository<Order> ordersRepository;
         private readonly IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository;
         private readonly IUserAssistant userAssistant;
-        private readonly IMapper mapper;
 
         public CompleteOrderCommandHandler(
             IDeletableEntityRepository<Order> ordersRepository,
             IDeletableEntityRepository<ShoppingCartProduct> shoppingCartProductsRepository,
-            IUserAssistant userAssistant,
-            IMapper mapper)
+            IUserAssistant userAssistant)
         {
             this.ordersRepository = ordersRepository;
             this.shoppingCartProductsRepository = shoppingCartProductsRepository;
             this.userAssistant = userAssistant;
-            this.mapper = mapper;
         }
 
         public async Task<int> Handle(CompleteOrderCommand request, CancellationToken cancellationToken)
@@ -47,7 +42,7 @@ namespace Fashionista.Application.Orders.Commands.Complete
             var cartProducts = await this.shoppingCartProductsRepository
                 .All()
                 .Where(x => x.ShoppingCartId == this.userAssistant.ShoppingCartId)
-                .ProjectTo<OrderProductLookupModel>(this.mapper.ConfigurationProvider)
+                .To<OrderProductLookupModel>()
                 .ToListAsync(cancellationToken);
 
             order.OrderProducts = cartProducts
