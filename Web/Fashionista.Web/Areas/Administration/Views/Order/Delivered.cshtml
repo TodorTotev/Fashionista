@@ -1,0 +1,93 @@
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common
+
+
+@model StaticPagedList<Fashionista.Application.Common.Models.OrderLookupModel>
+
+@{
+    this.ViewData["Title"] = "Administration | All Delivered Orders";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Orders List</h4>
+                    <div class="table-responsive">
+                        <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list" data-paging="true" data-paging-size="7">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Invoice number</th>
+                                <th>Total Price</th>
+                                <th>Order date</th>
+                                <th>Date sent</th>
+                                <th>Payment type</th>
+                                <th>Created On</th>
+                                <th>Gender</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @{
+                                foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td>@order.Id</td>
+                                        <td>@order.InvoiceNumber</td>
+                                        <td>@order.TotalPrice</td>
+                                        <td>@order.OrderDate</td>
+                                        <td>@order.DateSent</td>
+                                        <td>@order.PaymentType</td>
+                                        <td>@order.Recipient</td>
+                                        <td>@order.RecipientPhoneNumber</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Settings
+                                                </button>
+                                                <div class="dropdown-menu animated flipInX">
+                                                    <a href="#" class="dropdown-item">Mark order sent</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            </tbody>
+                            <tfoot>
+                            <tr class="footable-paging">
+                                <td colspan="8">
+                                    <div class="footable-pagination-wrapper">
+                                        <ul class="pagination justify-content-center">
+                                            @Html.PagedListPager(Model, page => Url.Action("Delivered", new {page}),
+                                                new PagedListRenderOptions
+                                                {
+                                                    MaximumPageNumbersToDisplay = 20,
+                                                    LiElementClasses = new[] {"page-item"},
+                                                    PageClasses = new[] {"page-link"}
+                                                })
+                                        </ul>
+                                        <div class="divider>"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="admin/assets/libs/moment/moment.js" type="text/javascript"></script>
+    <script src="admin/assets/libs/footable/js/footable.min.js"></script>
+    <script src="admin/dist/js/pages/tables/footable-init.js"></script>
+}
+
