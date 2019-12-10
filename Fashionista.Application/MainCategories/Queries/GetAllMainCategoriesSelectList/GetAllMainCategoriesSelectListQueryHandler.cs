@@ -16,14 +16,11 @@ namespace Fashionista.Application.MainCategories.Queries.GetAllMainCategoriesSel
         IRequestHandler<GetAllMainCategoriesSelectListQuery, GetAllMainCategoriesSelectListViewModel>
     {
         private readonly IDeletableEntityRepository<MainCategory> mainCategoryRepository;
-        private readonly IMapper mapper;
 
         public GetAllMainCategoriesSelectListQueryHandler(
-            IDeletableEntityRepository<MainCategory> mainCategoryRepository,
-            IMapper mapper)
+            IDeletableEntityRepository<MainCategory> mainCategoryRepository)
         {
             this.mainCategoryRepository = mainCategoryRepository;
-            this.mapper = mapper;
         }
 
         public async Task<GetAllMainCategoriesSelectListViewModel> Handle(
