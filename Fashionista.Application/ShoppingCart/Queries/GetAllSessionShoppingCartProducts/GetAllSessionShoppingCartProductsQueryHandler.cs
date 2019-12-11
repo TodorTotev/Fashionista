@@ -25,6 +25,8 @@ namespace Fashionista.Application.ShoppingCart.Queries.GetAllSessionShoppingCart
         {
             request = request ?? throw new ArgumentNullException(nameof(request));
 
+            var test = this.shoppingCartAssistant.Get();
+
             return this.shoppingCartAssistant.Get();
         }
     }

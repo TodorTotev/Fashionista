@@ -66,6 +66,8 @@ namespace Fashionista.Application.ShoppingCart.Commands.AddSesssion
                 Quantity = request.Quantity ?? 1,
                 ColorName = color.Name,
                 SizeName = size.Name,
+                ColorId = color.Id,
+                SizeId = size.Id,
             };
 
             request.Session.Add(newProduct);

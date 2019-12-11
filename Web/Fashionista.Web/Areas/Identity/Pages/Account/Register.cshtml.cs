@@ -3,8 +3,11 @@
     using System.ComponentModel.DataAnnotations;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-
+    using Fashionista.Application.ShoppingCart.Queries.GetAllSessionShoppingCartProducts;
+    using Fashionista.Common;
     using Fashionista.Domain.Entities;
+    using Fashionista.Persistence;
+    using MediatR;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
@@ -21,17 +24,23 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILogger<RegisterModel> logger;
         private readonly IEmailSender emailSender;
+        private readonly IMediator mediator;
+        private readonly ApplicationDbContext db;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IMediator mediator,
+            ApplicationDbContext db)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
             this.emailSender = emailSender;
+            this.mediator = mediator;
+            this.db = db;
         }
 
         [BindProperty]
@@ -75,6 +84,26 @@
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     await this.signInManager.SignInAsync(user, isPersistent: false);
+
+                    var cart = await this.mediator.Send(new GetAllSessionShoppingCartProductsQuery());
+
+                    if (cart.Count > 0)
+                    {
+                        foreach (var product in cart)
+                        {
+                            var item = new ShoppingCartProduct();
+                            item.ProductId = product.ProductId;
+                            item.Quantity = product.Quantity;
+                            item.ColorId = product.ColorId;
+                            item.SizeId = product.SizeId;
+                            user.ShoppingCart.ShoppingCartProducts.Add(item);
+                        }
+
+                        this.db.SaveChanges();
+                    }
+
+                    this.HttpContext.Session.Remove(GlobalConstants.ShoppingCartKey);
+
                     return this.LocalRedirect(returnUrl);
                 }
 

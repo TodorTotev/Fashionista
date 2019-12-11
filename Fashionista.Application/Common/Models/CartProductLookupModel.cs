@@ -1,3 +1,5 @@
+using AutoMapper;
+
 namespace Fashionista.Application.Common.Models
 {
     using System.Collections.Generic;
@@ -5,7 +7,7 @@ namespace Fashionista.Application.Common.Models
     using Fashionista.Application.Interfaces.Mapping;
     using Fashionista.Domain.Entities;
 
-    public class CartProductLookupModel : IMapFrom<ShoppingCartProduct>
+    public class CartProductLookupModel : IMapFrom<ShoppingCartProduct>, IHaveCustomMappings
     {
         private decimal totalPrice;
 
@@ -15,7 +17,11 @@ namespace Fashionista.Application.Common.Models
 
         public decimal ProductPrice { get; set; }
 
+        public int ColorId { get; set; }
+
         public string ColorName { get; set; }
+
+        public int SizeId { get; set; }
 
         public string SizeName { get; set; }
 
@@ -28,5 +34,20 @@ namespace Fashionista.Application.Common.Models
         }
 
         public ICollection<string> ProductPhotos { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<ShoppingCartProduct, CartProductLookupModel>()
+                .ForMember(
+                    x => x.ColorId,
+                    y => y.MapFrom(
+                        src => src.ColorId));
+
+            configuration.CreateMap<ShoppingCartProduct, CartProductLookupModel>()
+                .ForMember(
+                    x => x.SizeId,
+                    y => y.MapFrom(
+                        src => src.SizeId));
+        }
     }
 }
