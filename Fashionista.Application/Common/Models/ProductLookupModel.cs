@@ -39,6 +39,10 @@ namespace Fashionista.Application.Common.Models
 
         public ProductType ProductType { get; set; }
 
+        public virtual ICollection<Review> Reviews { get; set; }
+
+        public double AvgRating => (this.Reviews.Sum(x => x.Rating) / this.Reviews.Count * 10) * 2;
+
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<Product, ProductLookupModel>()

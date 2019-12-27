@@ -14,10 +14,20 @@
                     <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
                 </h2>
                 <div class="ratings-container">
-                    <div class="product-ratings">
-                        <span class="ratings" style="width:90%"></span><!-- End .ratings -->
-                        <span class="tooltiptext tooltip-top"></span>
-                    </div><!-- End .product-ratings -->
+                    @if (product.Reviews.Count > 0)
+                    {
+                        <div class="product-ratings">
+                            <span class="ratings" style="@product.AvgRating%"></span><!-- End .ratings -->
+                            <span class="tooltiptext tooltip-top"></span>
+                        </div><!-- End .product-ratings -->
+                    }
+                    else
+                    {
+                        <div class="product-ratings">
+                            <span class="ratings" style="width:0"></span><!-- End .ratings -->
+                            <span class="tooltiptext tooltip-top"></span>
+                        </div><!-- End .product-ratings -->
+                    }
                 </div><!-- End .product-container -->
                 <div class="price-box">
                     <span class="product-price">$@product.Price</span>

@@ -50,13 +50,26 @@
                         <div class="product-single-details">
                             <h1 class="product-title">@Model.Product.Name</h1>
                             
-                            <div class="ratings-container">
-                                <div class="product-ratings">
-                                    <span class="ratings" style="width:23%"></span><!-- End .ratings -->
-                                </div><!-- End .product-ratings -->
+                            @if (Model.Product.Reviews.Count > 0)
+                            {
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:@Model.Product.AvgRating%"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
 
-                                <a href="#" class="rating-link">( 6 Reviews )</a>
-                            </div><!-- End .product-container -->
+                                    <a href="#" class="rating-link">( @Model.Product.Reviews.Count() Reviews )</a>
+                                </div><!-- End .product-container -->
+                            }
+                            else
+                            {
+                                <div class="ratings-container">
+                                    <div class="product-ratings">
+                                        <span class="ratings" style="width:0"></span><!-- End .ratings -->
+                                    </div><!-- End .product-ratings -->
+
+                                    <a href="#" class="rating-link">( 0 reviews )</a>
+                                </div><!-- End .product-container -->
+                            }
 
                             <div class="price-box">
                                 <span class="product-price">$@Model.Product.Price</span>
