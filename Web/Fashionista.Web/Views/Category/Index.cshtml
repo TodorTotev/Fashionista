@@ -1,6 +1,10 @@
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Mvc.Core.Common
 
+@{
+    this.ViewData["Title"] = $"Fashionista | ${Model.SubCategory.Name}";
+    Layout = "Layouts/_Layout";
+}
 
 @model Fashionista.Application.Common.Models.Category.CategoryProductsViewModel
 

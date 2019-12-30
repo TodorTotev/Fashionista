@@ -5,6 +5,11 @@
 @inject IOptions<StripeSettings> Stripe
 @model Fashionista.Application.Orders.Queries.Details.OrderDetailsViewModel
 
+@{
+    this.ViewData["Title"] = "Order Details";
+    Layout = "Layouts/_Layout";
+}
+
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">

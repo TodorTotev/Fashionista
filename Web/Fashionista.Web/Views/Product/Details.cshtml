@@ -1,5 +1,10 @@
 @model Fashionista.Application.Products.Queries.Details.GetProductDetailsViewModel
 
+@{
+    this.ViewData["Title"] = $"{Model.Product.Name}";
+    Layout = "Layouts/_Layout";
+}
+
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">

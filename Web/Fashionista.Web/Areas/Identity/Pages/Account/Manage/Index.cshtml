@@ -1,11 +1,15 @@
 @page
 @model IndexModel
 
+@{
+    this.ViewData["Title"] = "My Account";
+}
+
 <nav aria-label="breadcrumb" class="breadcrumb-nav">
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a asp-controller="Home" asp-action="Index">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="icon-home"></i>
                 </a>
             </li>
